@@ -78,7 +78,6 @@ public class HoverMovement : MonoBehaviour {
 		newForward = Vector3.Cross(averageNormal.normalized, transform.right);
 		transform.up = averageNormal.normalized;
 		transform.forward = newForward;
-		
 	}
 
 	public void Move(float forward, float steer) {
@@ -94,7 +93,7 @@ public class HoverMovement : MonoBehaviour {
 	void FixedUpdate() {
 		UpdateNormals();
 		ApplyForces();
-		Reorient();
+		//Reorient();
 	}
 
 	void OnDrawGizmos() {
