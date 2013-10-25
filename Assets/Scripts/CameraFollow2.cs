@@ -5,7 +5,7 @@ using System.Collections;
 
 // Causes the attached Camera component to smoothly follow and track a target.
 [RequireComponent (typeof(Camera))]
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow2 : MonoBehaviour {
 	public float distance;
 	public float height;
 	public float heightDamping;
