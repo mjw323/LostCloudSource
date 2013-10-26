@@ -15,6 +15,10 @@ public class HoverMovement : MonoBehaviour {
 	public float raycastOffset;
 	public float slerpStep;
 
+	private float jumpPower; // measures how long jump was held, 0 - 1
+	public float jumpLength = 3.0f; //how many seconds to build maximum jump
+	public float jumpForce = 20.0f; //The max force applied when jumping
+
 	Transform[] samplers;
 	RaycastHit hit;
 	Vector3[] normals;
@@ -80,9 +84,11 @@ public class HoverMovement : MonoBehaviour {
 		transform.forward = newForward;
 	}
 
-	public void Move(float forward, float steer) {
-		rigidbody.AddForce(transform.forward * forward * forwardPower);
-		rigidbody.AddTorque(transform.up * steer * steerPower);
+	public void Move(float forward, float steer, bool jump) {
+		if (jump){jumpPower = Mathf.Clamp(jumpPower+(Time.deltaTime)/jumpLength,0.0f,1.0f);}
+		else{rigidbody.AddForce(transform.up * jumpForce * Mathf.Sqrt(jumpPower));}
+		rigidbody.AddForce(transform.forward * forward * forwardPower * (1 + (0.25f * jumpPower)));
+		rigidbody.AddTorque(transform.up * steer * steerPower * (0.5f + ((1 - jumpPower)/1)));
 	}
 
 	void Awake() {

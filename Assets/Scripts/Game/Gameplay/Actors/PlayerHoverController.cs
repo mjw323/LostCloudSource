@@ -6,6 +6,10 @@ public class PlayerHoverController : MonoBehaviour {
 
 	void Update()
 	{
-		m_hover.Move(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+		m_hover.Move(
+				//Mathf.Sign(Input.GetAxis("Vertical"))*Mathf.Pow(Mathf.Abs(Input.GetAxis("Vertical")),1/2),
+				Input.GetAxis("Vertical"),
+				Input.GetAxis("Horizontal"),
+				Input.GetButton("Jump"));
 	}
 }

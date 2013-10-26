@@ -19,6 +19,14 @@ public class Hover : MonoBehaviour
 	Transform m_thruster;
 	float m_thrust;
 	float m_lean;
+	private bool m_jump;
+	private bool detach;
+	
+	private float jumpPower; // measures how long jump was held, 0 - 1
+	public float jumpLength = 3.0f; //how many seconds to build maximum jump
+	public float jumpForce = 20.0f; //The max force applied when jumping
+	
+	private bool onGround;
 
 	// Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
 	Vector3 CalculateBoardDimensions()
@@ -75,10 +83,12 @@ public class Hover : MonoBehaviour
 		m_thruster = thruster.transform;
 	}
 
-	public void Move(float thrust, float lean)
+	public void Move(float thrust, float lean, bool jump)
 	{
 		m_thrust = thrust;
 		m_lean = lean;
+		m_jump = jump;
+		
 	}
 
 	void Awake()
@@ -91,17 +101,43 @@ public class Hover : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		onGround = false;
 		for (int i = 0; i < m_sensors.Length; i++)
 		{
-			if (Physics.Raycast(new Ray(m_sensors[i].position, -m_sensors[i].up), out m_hits[i]))
+			if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*2))
 			{
+				onGround = true;
+				if (!detach){
 				float hoverForce = (hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime;
 				rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
+				}
 			}
 		}
-		rigidbody.AddForceAtPosition(transform.forward * thrustPower * m_thrust, m_thruster.position);
-		rigidbody.AddTorque(transform.up * steerPower * m_lean);
+		
+		//transform.rotation.eulerAngles.z = Mathf.Clamp (transform.rotation.eulerAngles.z, -90.0f, 90.0f);
+		//transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
+		
+		if (!onGround && detach){detach = false;}
+		
+		if (onGround){
+		if (m_jump){
+			jumpPower = Mathf.Clamp(jumpPower+(Time.deltaTime)/jumpLength,0.0f,1.0f);}
+		else{
+			if (jumpPower > 0.0f){
+				detach = true; 
+				rigidbody.AddForce(transform.up * jumpForce * Mathf.Sqrt(jumpPower), ForceMode.Impulse);
+				jumpPower = 0.0f;
+			}
+			}
+		}
+		else{jumpPower = 0.0f;}
+		
+		rigidbody.AddForceAtPosition(m_thruster.forward * m_thrust * thrustPower * (1 + (0.25f * jumpPower)), m_thruster.position);
+		rigidbody.AddTorque(transform.up * m_lean * steerPower * (0.5f + ((1 - jumpPower)/1)));
+		
+
 		m_thrust = 0;
 		m_lean = 0;
+		m_jump = false;
 	}
 }

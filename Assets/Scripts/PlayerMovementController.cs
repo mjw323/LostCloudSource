@@ -12,6 +12,9 @@ public class PlayerMovementController : MonoBehaviour {
 	}
 	
 	void Update() {
-		hoverMovement.Move(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+		hoverMovement.Move(
+				Mathf.Sign(Input.GetAxis("Vertical"))*Mathf.Pow(Mathf.Abs(Input.GetAxis("Vertical")),1/2), 
+				Input.GetAxis("Horizontal"),
+				Input.GetButton("Jump"));
 	}
 }
