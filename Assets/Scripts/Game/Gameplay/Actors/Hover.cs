@@ -116,8 +116,12 @@ public class Hover : MonoBehaviour
 		}
 		
 		clampVector = transform.rotation.eulerAngles;
-		clampVector.z = Mathf.Clamp (clampVector.z,Mathf.Deg2Rad*-90.0f,Mathf.Deg2Rad*90.0f);
-		clampVector.x = Mathf.Clamp (clampVector.x,Mathf.Deg2Rad*-90.0f,Mathf.Deg2Rad*90.0f);
+		
+		if (clampVector.z > 180) { clampVector.z = - 180 + (clampVector.z-180);}
+		if (clampVector.x > 180) { clampVector.x = - 180 + (clampVector.x-180);}
+		
+		clampVector.z = Mathf.Clamp (clampVector.z,-70.0f,70.0f);
+		clampVector.x = Mathf.Clamp (clampVector.x,-70.0f,70.0f);
 		
 		transform.localEulerAngles = clampVector;
 		
