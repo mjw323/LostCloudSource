@@ -27,6 +27,7 @@ public class Hover : MonoBehaviour
 	public float jumpForce = 20.0f; //The max force applied when jumping
 	
 	private bool onGround;
+	private Vector3 clampVector;
 
 	// Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
 	Vector3 CalculateBoardDimensions()
@@ -113,6 +114,12 @@ public class Hover : MonoBehaviour
 				}
 			}
 		}
+		
+		clampVector = transform.rotation.eulerAngles;
+		clampVector.z = Mathf.Clamp (clampVector.z,Mathf.Deg2Rad*-90.0f,Mathf.Deg2Rad*90.0f);
+		clampVector.x = Mathf.Clamp (clampVector.x,Mathf.Deg2Rad*-90.0f,Mathf.Deg2Rad*90.0f);
+		
+		transform.localEulerAngles = clampVector;
 		
 		//transform.rotation.eulerAngles.z = Mathf.Clamp (transform.rotation.eulerAngles.z, -90.0f, 90.0f);
 		//transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
