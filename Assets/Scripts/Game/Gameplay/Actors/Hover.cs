@@ -99,6 +99,11 @@ public class Hover : MonoBehaviour
 		CreateThruster(boardDimensions);
 		m_hits = new RaycastHit[m_sensors.Length];
 	}
+	
+	void OnCollisionEnter(Collision collision) {
+		detach = false;
+		Debug.Log("Hit ground!");
+	}
 
 	void FixedUpdate()
 	{

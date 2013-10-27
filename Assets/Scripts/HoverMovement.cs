@@ -90,6 +90,8 @@ public class HoverMovement : MonoBehaviour {
 		rigidbody.AddForce(transform.forward * forward * forwardPower * (1 + (0.25f * jumpPower)));
 		rigidbody.AddTorque(transform.up * steer * steerPower * (0.5f + ((1 - jumpPower)/1)));
 	}
+	
+
 
 	void Awake() {
 		CreateSamplers(CalculateSamplerTransforms(CalculateBoardDimensions()));
