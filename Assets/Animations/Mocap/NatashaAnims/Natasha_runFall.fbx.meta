@@ -1,0 +1,692 @@
+fileFormatVersion: 2
+guid: 9064f28a1bb364125a6257b7c79b753b
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Natasha_01:ARIEL
+    100002: Natasha_01:C7
+    100004: Natasha_01:CLAV
+    100006: Natasha_01:LANK
+    100008: Natasha_01:LBHD
+    100010: Natasha_01:LBSH
+    100012: Natasha_01:LBWT
+    100014: Natasha_01:LELB
+    100016: Natasha_01:LFHD
+    100018: Natasha_01:LFSH
+    100020: Natasha_01:LFWT
+    100022: Natasha_01:LHEL
+    100024: Natasha_01:LHIP
+    100026: Natasha_01:LIEL
+    100028: Natasha_01:LIHAND
+    100030: Natasha_01:LIWR
+    100032: Natasha_01:LKNE
+    100034: Natasha_01:LKNI
+    100036: Natasha_01:LMT1
+    100038: Natasha_01:LMT5
+    100040: Natasha_01:LMWT
+    100042: Natasha_01:LOHAND
+    100044: Natasha_01:LOWR
+    100046: Natasha_01:LSHN
+    100048: Natasha_01:LTOE
+    100050: Natasha_01:LUPA
+    100052: Natasha_01:LWRE
+    100054: Natasha_01:RANK
+    100056: Natasha_01:RBHD
+    100058: Natasha_01:RBSH
+    100060: Natasha_01:RBWT
+    100062: Natasha_01:RELB
+    100064: Natasha_01:RFHD
+    100066: Natasha_01:RFSH
+    100068: Natasha_01:RFWT
+    100070: Natasha_01:RHEL
+    100072: Natasha_01:RHIP
+    100074: Natasha_01:RIEL
+    100076: Natasha_01:RIHAND
+    100078: Natasha_01:RIWR
+    100080: Natasha_01:RKNE
+    100082: Natasha_01:RKNI
+    100084: Natasha_01:RMT1
+    100086: Natasha_01:RMT5
+    100088: Natasha_01:RMWT
+    100090: Natasha_01:ROHAND
+    100092: Natasha_01:ROWR
+    100094: Natasha_01:RSHN
+    100096: Natasha_01:RTOE
+    100098: Natasha_01:RUPA
+    100100: Natasha_01:RWRE
+    100102: Natasha_01:Solving
+    100104: Natasha_01:Solving:Head
+    100106: Natasha_01:Solving:Head_End
+    100108: Natasha_01:Solving:Hips
+    100110: Natasha_01:Solving:LeftArm
+    100112: Natasha_01:Solving:LeftFoot
+    100114: Natasha_01:Solving:LeftForeArm
+    100116: Natasha_01:Solving:LeftHand
+    100118: Natasha_01:Solving:LeftHandEnd
+    100120: Natasha_01:Solving:LeftHandThumb
+    100122: Natasha_01:Solving:LeftHandThumbEnd
+    100124: Natasha_01:Solving:LeftLeg
+    100126: Natasha_01:Solving:LeftShoulder
+    100128: Natasha_01:Solving:LeftToeBase
+    100130: Natasha_01:Solving:LeftToeEnd
+    100132: Natasha_01:Solving:LeftUpLeg
+    100134: Natasha_01:Solving:RightArm
+    100136: Natasha_01:Solving:RightFoot
+    100138: Natasha_01:Solving:RightForeArm
+    100140: Natasha_01:Solving:RightHand
+    100142: Natasha_01:Solving:RightHandEnd
+    100144: Natasha_01:Solving:RightHandThumb
+    100146: Natasha_01:Solving:RightHandThumbEnd
+    100148: Natasha_01:Solving:RightLeg
+    100150: Natasha_01:Solving:RightShoulder
+    100152: Natasha_01:Solving:RightToeBase
+    100154: Natasha_01:Solving:RightToeEnd
+    100156: Natasha_01:Solving:RightUpLeg
+    100158: Natasha_01:Solving:Spine
+    100160: Natasha_01:STRN
+    100162: Natasha_01:T10
+    100164: //RootNode
+    100166: System
+    100168: System:MX_3p_10179
+    100170: System:MX_3p_10183
+    100172: System:MX_3p_10184
+    100174: System:MX_3p_10493
+    100176: System:MX_3p_10494
+    100178: System:MX_3p_10495
+    100180: System:MX_3p_10496
+    100182: System:MX_3p_10497
+    100184: System:MX_3p_10498
+    100186: System:MX_3p_10499
+    100188: System:MX_3p_10502
+    100190: System:MX_3p_10503
+    100192: System:MX_3p_12301
+    100194: System:MX_3p_12309
+    100196: System:T20_15966
+    100198: System:T20_15998
+    100200: Unlabeled_Markers
+    100202: Unlabeled_Markers:_100
+    100204: Unlabeled_Markers:_101
+    100206: Unlabeled_Markers:_105
+    100208: Unlabeled_Markers:_107
+    100210: Unlabeled_Markers:_108
+    100212: Unlabeled_Markers:_109
+    100214: Unlabeled_Markers:_110
+    100216: Unlabeled_Markers:_111
+    100218: Unlabeled_Markers:_112
+    100220: Unlabeled_Markers:_14
+    100222: Unlabeled_Markers:_19
+    100224: Unlabeled_Markers:_2
+    100226: Unlabeled_Markers:_23
+    100228: Unlabeled_Markers:_37
+    100230: Unlabeled_Markers:_39
+    100232: Unlabeled_Markers:_43
+    100234: Unlabeled_Markers:_66
+    100236: Unlabeled_Markers:_67
+    100238: Unlabeled_Markers:_68
+    100240: Unlabeled_Markers:_69
+    100242: Unlabeled_Markers:_70
+    100244: Unlabeled_Markers:_71
+    100246: Unlabeled_Markers:_72
+    100248: Unlabeled_Markers:_73
+    100250: Unlabeled_Markers:_74
+    100252: Unlabeled_Markers:_75
+    100254: Unlabeled_Markers:_76
+    100256: Unlabeled_Markers:_77
+    100258: Unlabeled_Markers:_78
+    100260: Unlabeled_Markers:_79
+    100262: Unlabeled_Markers:_87
+    100264: Unlabeled_Markers:_91
+    100266: Unlabeled_Markers:_92
+    100268: Unlabeled_Markers:_94
+    100270: Unlabeled_Markers:_99
+    400000: Natasha_01:ARIEL
+    400002: Natasha_01:C7
+    400004: Natasha_01:CLAV
+    400006: Natasha_01:LANK
+    400008: Natasha_01:LBHD
+    400010: Natasha_01:LBSH
+    400012: Natasha_01:LBWT
+    400014: Natasha_01:LELB
+    400016: Natasha_01:LFHD
+    400018: Natasha_01:LFSH
+    400020: Natasha_01:LFWT
+    400022: Natasha_01:LHEL
+    400024: Natasha_01:LHIP
+    400026: Natasha_01:LIEL
+    400028: Natasha_01:LIHAND
+    400030: Natasha_01:LIWR
+    400032: Natasha_01:LKNE
+    400034: Natasha_01:LKNI
+    400036: Natasha_01:LMT1
+    400038: Natasha_01:LMT5
+    400040: Natasha_01:LMWT
+    400042: Natasha_01:LOHAND
+    400044: Natasha_01:LOWR
+    400046: Natasha_01:LSHN
+    400048: Natasha_01:LTOE
+    400050: Natasha_01:LUPA
+    400052: Natasha_01:LWRE
+    400054: Natasha_01:RANK
+    400056: Natasha_01:RBHD
+    400058: Natasha_01:RBSH
+    400060: Natasha_01:RBWT
+    400062: Natasha_01:RELB
+    400064: Natasha_01:RFHD
+    400066: Natasha_01:RFSH
+    400068: Natasha_01:RFWT
+    400070: Natasha_01:RHEL
+    400072: Natasha_01:RHIP
+    400074: Natasha_01:RIEL
+    400076: Natasha_01:RIHAND
+    400078: Natasha_01:RIWR
+    400080: Natasha_01:RKNE
+    400082: Natasha_01:RKNI
+    400084: Natasha_01:RMT1
+    400086: Natasha_01:RMT5
+    400088: Natasha_01:RMWT
+    400090: Natasha_01:ROHAND
+    400092: Natasha_01:ROWR
+    400094: Natasha_01:RSHN
+    400096: Natasha_01:RTOE
+    400098: Natasha_01:RUPA
+    400100: Natasha_01:RWRE
+    400102: Natasha_01:Solving
+    400104: Natasha_01:Solving:Head
+    400106: Natasha_01:Solving:Head_End
+    400108: Natasha_01:Solving:Hips
+    400110: Natasha_01:Solving:LeftArm
+    400112: Natasha_01:Solving:LeftFoot
+    400114: Natasha_01:Solving:LeftForeArm
+    400116: Natasha_01:Solving:LeftHand
+    400118: Natasha_01:Solving:LeftHandEnd
+    400120: Natasha_01:Solving:LeftHandThumb
+    400122: Natasha_01:Solving:LeftHandThumbEnd
+    400124: Natasha_01:Solving:LeftLeg
+    400126: Natasha_01:Solving:LeftShoulder
+    400128: Natasha_01:Solving:LeftToeBase
+    400130: Natasha_01:Solving:LeftToeEnd
+    400132: Natasha_01:Solving:LeftUpLeg
+    400134: Natasha_01:Solving:RightArm
+    400136: Natasha_01:Solving:RightFoot
+    400138: Natasha_01:Solving:RightForeArm
+    400140: Natasha_01:Solving:RightHand
+    400142: Natasha_01:Solving:RightHandEnd
+    400144: Natasha_01:Solving:RightHandThumb
+    400146: Natasha_01:Solving:RightHandThumbEnd
+    400148: Natasha_01:Solving:RightLeg
+    400150: Natasha_01:Solving:RightShoulder
+    400152: Natasha_01:Solving:RightToeBase
+    400154: Natasha_01:Solving:RightToeEnd
+    400156: Natasha_01:Solving:RightUpLeg
+    400158: Natasha_01:Solving:Spine
+    400160: Natasha_01:STRN
+    400162: Natasha_01:T10
+    400164: //RootNode
+    400166: System
+    400168: System:MX_3p_10179
+    400170: System:MX_3p_10183
+    400172: System:MX_3p_10184
+    400174: System:MX_3p_10493
+    400176: System:MX_3p_10494
+    400178: System:MX_3p_10495
+    400180: System:MX_3p_10496
+    400182: System:MX_3p_10497
+    400184: System:MX_3p_10498
+    400186: System:MX_3p_10499
+    400188: System:MX_3p_10502
+    400190: System:MX_3p_10503
+    400192: System:MX_3p_12301
+    400194: System:MX_3p_12309
+    400196: System:T20_15966
+    400198: System:T20_15998
+    400200: Unlabeled_Markers
+    400202: Unlabeled_Markers:_100
+    400204: Unlabeled_Markers:_101
+    400206: Unlabeled_Markers:_105
+    400208: Unlabeled_Markers:_107
+    400210: Unlabeled_Markers:_108
+    400212: Unlabeled_Markers:_109
+    400214: Unlabeled_Markers:_110
+    400216: Unlabeled_Markers:_111
+    400218: Unlabeled_Markers:_112
+    400220: Unlabeled_Markers:_14
+    400222: Unlabeled_Markers:_19
+    400224: Unlabeled_Markers:_2
+    400226: Unlabeled_Markers:_23
+    400228: Unlabeled_Markers:_37
+    400230: Unlabeled_Markers:_39
+    400232: Unlabeled_Markers:_43
+    400234: Unlabeled_Markers:_66
+    400236: Unlabeled_Markers:_67
+    400238: Unlabeled_Markers:_68
+    400240: Unlabeled_Markers:_69
+    400242: Unlabeled_Markers:_70
+    400244: Unlabeled_Markers:_71
+    400246: Unlabeled_Markers:_72
+    400248: Unlabeled_Markers:_73
+    400250: Unlabeled_Markers:_74
+    400252: Unlabeled_Markers:_75
+    400254: Unlabeled_Markers:_76
+    400256: Unlabeled_Markers:_77
+    400258: Unlabeled_Markers:_78
+    400260: Unlabeled_Markers:_79
+    400262: Unlabeled_Markers:_87
+    400264: Unlabeled_Markers:_91
+    400266: Unlabeled_Markers:_92
+    400268: Unlabeled_Markers:_94
+    400270: Unlabeled_Markers:_99
+    7400000: Natasha_FallingTrippingRunning001_x2d
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations:
+    - name: Natasha_FallingTrippingRunning001_x2d
+      takeName: Natasha_FallingTrippingRunning001_x2d
+      firstFrame: 120
+      lastFrame: 188
+      wrapMode: 0
+      orientationOffsetY: 20.5
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 0
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Natasha_01:Solving:Hips
+      humanName: Hips
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: 11.304781, y: 0, z: 5.65239048}
+        preQ: {x: .557614028, y: .43603, z: -.552574217, w: -.440006852}
+        postQ: {x: .496203035, y: .496203035, z: -.503768325, w: -.503768325}
+        length: 14.1309805
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: -60.0000038, y: -60.0000038, z: -90}
+        max: {x: 60.0000038, y: 60.0000038, z: 50}
+        value: {x: 30.0846214, y: 0, z: 15.0423107}
+        preQ: {x: -.532754123, y: .46854344, z: -.547564566, w: .44363606}
+        postQ: {x: -.506291747, y: .506291747, z: -.493628055, w: .493627995}
+        length: 37.6057854
+        modified: 1
+    - boneName: Natasha_01:Solving:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: -60.0000038, y: -60.0000038, z: -90}
+        max: {x: 60.0000038, y: 60.0000038, z: 50}
+        value: {x: 30.0846214, y: 0, z: 15.0423107}
+        preQ: {x: -.567669272, y: .438730717, z: -.505550146, w: .479255527}
+        postQ: {x: -.488809139, y: .488809168, z: -.510945737, w: .510945797}
+        length: 37.6057854
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: 28.948946, y: 0, z: 14.474473}
+        preQ: {x: -.078650862, y: .728803754, z: -.0448144525, w: .678712487}
+        postQ: {x: -.506296396, y: .506296396, z: -.493623257, w: .493623197}
+        length: 36.1861916
+        modified: 1
+    - boneName: Natasha_01:Solving:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: 28.9489517, y: 0, z: 14.4744759}
+        preQ: {x: -.00904443488, y: .658334315, z: -.0726476684, w: .749157071}
+        postQ: {x: -.487385511, y: .487385422, z: -.512303948, w: .512303948}
+        length: 36.1861992
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: -30.0000019, z: -50}
+        max: {x: 0, y: 30.0000019, z: 50}
+        value: {x: 5.83627129, y: 0, z: 2.91813564}
+        preQ: {x: -.547494829, y: .461416841, z: -.510549784, w: .476112038}
+        postQ: {x: -.516442955, y: .52107048, z: -.535813332, w: .417942852}
+        length: 7.29534149
+        modified: 1
+    - boneName: Natasha_01:Solving:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: -30.0000019, z: -50}
+        max: {x: 0, y: 30.0000019, z: 50}
+        value: {x: 6.27772045, y: 0, z: 3.13886023}
+        preQ: {x: -.511016011, y: .462657869, z: -.578557074, w: .435983807}
+        postQ: {x: -.546534896, y: .432043135, z: -.530219913, w: .483223617}
+        length: 7.84715271
+        modified: 1
+    - boneName: Natasha_01:Solving:Spine
+      humanName: Spine
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: 32.1812401, y: 0, z: 16.09062}
+        preQ: {x: -.422145784, y: -.565216422, z: .453559726, w: .544615984}
+        postQ: {x: -.500553012, y: -.500553071, z: .499446273, w: .499446243}
+        length: 40.2265663
+        modified: 1
+    - boneName: Natasha_01:Solving:Head
+      humanName: Head
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: 8.04531002, y: 0, z: 4.02265501}
+        preQ: {x: -.511587322, y: -.489268959, z: .487937212, w: .510697186}
+        postQ: {x: -.546734989, y: -.587159216, z: .424990952, w: .419174969}
+        length: 10.0566416
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: -15.000001, z: -15.000001}
+        max: {x: 0, y: 15.000001, z: 30.0000019}
+        value: {x: 13.644146, y: 0, z: 6.82207298}
+        preQ: {x: -.0830572844, y: .0137506565, z: .981964409, w: .169287488}
+        postQ: {x: -.0581537336, y: -.0581537001, z: .704711437, w: .704711258}
+        length: 17.0551872
+        modified: 1
+    - boneName: Natasha_01:Solving:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: -15.000001, z: -15.000001}
+        max: {x: 0, y: 15.000001, z: 30.0000019}
+        value: {x: 13.6441479, y: 0, z: 6.82207394}
+        preQ: {x: -.00595269166, y: .045437485, z: .127735406, w: .990749002}
+        postQ: {x: .10700395, y: .107003964, z: .698963583, w: .698963583}
+        length: 17.0551891
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: -90, y: -100, z: -60.0000038}
+        max: {x: 90, y: 100, z: 100}
+        value: {x: 20.6148491, y: 0, z: 10.3074245}
+        preQ: {x: .123798318, y: -.245976359, z: .939135969, w: .20540975}
+        postQ: {x: -.275970012, y: -.275969982, z: .651030362, w: .651030302}
+        length: 25.7685699
+        modified: 1
+    - boneName: Natasha_01:Solving:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: -90, y: -100, z: -60.0000038}
+        max: {x: 90, y: 100, z: 100}
+        value: {x: 20.6148453, y: 0, z: 10.3074226}
+        preQ: {x: .23072584, y: -.0711012781, z: .195859566, w: .950446904}
+        postQ: {x: .324601322, y: .324601471, z: .628198802, w: .628198981}
+        length: 25.7685661
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: 17.3748875, y: 0, z: 8.68744373}
+        preQ: {x: .390280604, y: -.0167973768, z: .918343067, w: .0635984391}
+        postQ: {x: .397926241, y: .39792636, z: .584512293, w: .584512234}
+        length: 21.7186184
+        modified: 1
+    - boneName: Natasha_01:Solving:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: 17.3748913, y: 0, z: 8.68744564}
+        preQ: {x: -.017284682, y: .329372823, z: -.0668101907, w: -.94167459}
+        postQ: {x: .4521752, y: .45217517, z: -.54363364, w: -.543633699}
+        length: 21.7186241
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: -40, z: -80}
+        max: {x: 0, y: 40, z: 80}
+        value: {x: 8.68744373, y: 0, z: 4.34372187}
+        preQ: {x: -.132425085, y: -.13242507, z: .694596052, w: .694595933}
+        postQ: {x: -.0271285642, y: -.253815979, z: .731742859, w: .631976068}
+        length: 10.8593092
+        modified: 1
+    - boneName: Natasha_01:Solving:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: -40, z: -80}
+        max: {x: 0, y: 40, z: 80}
+        value: {x: 8.68744564, y: 0, z: 4.34372282}
+        preQ: {x: .0661957189, y: .0661957264, z: .704001486, w: .704001546}
+        postQ: {x: .153451428, y: -.0527261421, z: .79033339, w: .590800941}
+        length: 10.8593121
+        modified: 1
+    - boneName: Natasha_01:Solving:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
+        value: {x: 6.24014282, y: 0, z: 3.12007141}
+        preQ: {x: .733632743, y: -.00327214622, z: .674407423, w: .0833470151}
+        postQ: {x: .71528095, y: -.243009925, z: .629112303, w: -.183130965}
+        length: 7.80018091
+        modified: 1
+    - boneName: Natasha_01:Solving:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
+        value: {x: 6.24014091, y: 0, z: 3.12007046}
+        preQ: {x: .691959202, y: .0809579119, z: .716612756, w: .0332314409}
+        postQ: {x: .640716791, y: -.230665028, z: .683287382, w: -.263427138}
+        length: 7.80017853
+        modified: 1
+    skeleton:
+    - name: Natasha_runFall
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:Hips
+      position: {x: 0, y: 80.3914413, z: 0}
+      rotation: {x: -.11710646, y: -.00804464053, z: -.00362250907, w: .993080139}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftUpLeg
+      position: {x: -11.9201288, y: 0, z: 0}
+      rotation: {x: .176335439, y: .000225373282, z: -.0238144305, w: .984041929}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftLeg
+      position: {x: -0, y: -37.6057816, z: 0}
+      rotation: {x: .000188321894, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftFoot
+      position: {x: -0, y: -36.186203, z: 0}
+      rotation: {x: -.00173594942, y: -.025556881, z: .0887144282, w: .995727599}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftToeBase
+      position: {x: -0, y: 0, z: 15.6003609}
+      rotation: {x: -.355796605, y: 0, z: -0, w: .934563398}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftToeEnd
+      position: {x: -0, y: 0, z: 7.5}
+      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightUpLeg
+      position: {x: 11.9201288, y: 0, z: 0}
+      rotation: {x: .181756616, y: .0215262733, z: .0526866391, w: .981695056}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightLeg
+      position: {x: -0, y: -37.6057816, z: 0}
+      rotation: {x: .0304105692, y: -0, z: -0, w: .999537408}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightFoot
+      position: {x: -0, y: -36.186203, z: 0}
+      rotation: {x: -.0133058, y: -.0100473836, z: -.0804828256, w: .996616483}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightToeBase
+      position: {x: -0, y: 0, z: 15.6003609}
+      rotation: {x: -.424187839, y: 0, z: -0, w: .905574203}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightToeEnd
+      position: {x: -0, y: 0, z: 7.5}
+      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:Spine
+      position: {x: -0, y: 14.1309843, z: 0}
+      rotation: {x: .117034636, y: .0065055592, z: .0261366758, w: .992762506}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:Head
+      position: {x: -0, y: 40.2265739, z: 0}
+      rotation: {x: -.0137905115, y: .144123673, z: -.0453933738, w: .988421738}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:Head_End
+      position: {x: -0, y: 11.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftShoulder
+      position: {x: -0, y: 24.4276085, z: 0}
+      rotation: {x: -.115481809, y: .0181084145, z: .567072868, w: .815330803}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftArm
+      position: {x: -0, y: 17.0551891, z: 0}
+      rotation: {x: -.0221472532, y: .29053551, z: .197310135, w: .936038017}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftForeArm
+      position: {x: -0, y: 25.7685738, z: 0}
+      rotation: {x: .0578714088, y: -.211271107, z: -.0254390296, w: .975381017}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftHand
+      position: {x: -0, y: 21.7186241, z: 0}
+      rotation: {x: -.144244581, y: .0145523502, z: -.0993166119, w: .984437823}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftHandEnd
+      position: {x: -0, y: 10, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftHandThumb
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -.217672125, y: -.277796239, z: -.064782463, w: .93340838}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:LeftHandThumbEnd
+      position: {x: -0, y: 0, z: 10}
+      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightShoulder
+      position: {x: -0, y: 24.4276085, z: 0}
+      rotation: {x: -.128265724, y: -.0920838192, z: -.597716093, w: .786004961}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightArm
+      position: {x: -0, y: 17.0551891, z: 0}
+      rotation: {x: -.061479561, y: -.307225734, z: -.183781773, w: .93169564}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightForeArm
+      position: {x: -0, y: 25.7685738, z: 0}
+      rotation: {x: .0568331145, y: .37604177, z: .0371369943, w: .924112201}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightHand
+      position: {x: -0, y: 21.7186241, z: 0}
+      rotation: {x: -.158357516, y: .0205144323, z: -.126823068, w: .978988171}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightHandEnd
+      position: {x: -0, y: 10, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightHandThumb
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -.202096909, y: .276512653, z: .0595997274, w: .937627614}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:Solving:RightHandThumbEnd
+      position: {x: -0, y: 0, z: 10}
+      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 3
+  userData: 
