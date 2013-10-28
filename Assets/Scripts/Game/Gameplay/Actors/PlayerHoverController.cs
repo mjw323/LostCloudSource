@@ -10,6 +10,8 @@ public class PlayerHoverController : MonoBehaviour {
 				//Mathf.Sign(Input.GetAxis("Vertical"))*Mathf.Pow(Mathf.Abs(Input.GetAxis("Vertical")),1/2),
 				Input.GetAxis("Vertical"),
 				Input.GetAxis("Horizontal"),
-				Input.GetButton("Jump"));
+				Input.GetButton("Jump"),
+				Input.GetAxis ("Glide"),
+				Input.GetButton ("Glide"));
 	}
 }

@@ -13,18 +13,32 @@ public class Hover : MonoBehaviour
 
 	public float thrustPower;
 	public float steerPower;
+	public float angleClamp = 50.0f;
+	public float airAngleClamp = 10.0f;
+	private float currentClamp;
 
 	[HideInInspector] Transform[] m_sensors;
 	RaycastHit[] m_hits;
 	Transform m_thruster;
 	float m_thrust;
 	float m_lean;
+	float m_glide;
 	private bool m_jump;
 	private bool detach;
 	
 	private float jumpPower; // measures how long jump was held, 0 - 1
 	public float jumpLength = 3.0f; //how many seconds to build maximum jump
 	public float jumpForce = 20.0f; //The max force applied when jumping
+	public float glideForce = 400.0f;
+	public float glideLength = 4.0f;
+	public float glideApex = 1.0f; //how many seconds after you start gliding at which it reaches its apex
+	public float glideApexAdd = 0.5f; //glide power ranges from power*1 to power*(1+ApexAdd), with most power at apex time
+	
+	private float hoverMod;
+	private float steerMod;
+	private float glideLeft = 0.0f;
+	private float airTime = 0.0f;
+	private float glidePower;
 	
 	private bool onGround;
 	private Vector3 clampVector;
@@ -84,11 +98,13 @@ public class Hover : MonoBehaviour
 		m_thruster = thruster.transform;
 	}
 
-	public void Move(float thrust, float lean, bool jump)
+	public void Move(float thrust, float lean, bool jump, float glide, bool glide2)
 	{
 		m_thrust = thrust;
 		m_lean = lean;
 		m_jump = jump;
+		if (glide2){m_glide = 1.0f;}
+		else{m_glide = Mathf.Abs (glide);}
 		
 	}
 
@@ -108,9 +124,13 @@ public class Hover : MonoBehaviour
 	void FixedUpdate()
 	{
 		onGround = false;
+		
+		hoverMod = 1;
+		if (detach){hoverMod = 0.5f;}
+		
 		for (int i = 0; i < m_sensors.Length; i++)
 		{
-			if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*2))
+			if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*(hoverMod)))
 			{
 				onGround = true;
 				if (!detach){
@@ -125,10 +145,18 @@ public class Hover : MonoBehaviour
 		if (clampVector.z > 180) { clampVector.z = - 180 + (clampVector.z-180);}
 		if (clampVector.x > 180) { clampVector.x = - 180 + (clampVector.x-180);}
 		
-		clampVector.z = Mathf.Clamp (clampVector.z,-70.0f,70.0f);
-		clampVector.x = Mathf.Clamp (clampVector.x,-70.0f,70.0f);
+		currentClamp = angleClamp + ((airAngleClamp-angleClamp) * Mathf.Clamp (airTime/0.5f,0.0f,1.0f));
+		
+		clampVector.z = Mathf.Clamp (clampVector.z,-currentClamp,currentClamp);
+		clampVector.x = Mathf.Clamp (clampVector.x,-currentClamp,currentClamp);
 		
 		transform.localEulerAngles = clampVector;
+		
+		if (!onGround && m_glide>0.5f && glideLeft > 0){
+			glidePower = glideForce * (1 + (glideApexAdd * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
+			rigidbody.AddForce(transform.up * glidePower);
+			glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
+		}
 		
 		//transform.rotation.eulerAngles.z = Mathf.Clamp (transform.rotation.eulerAngles.z, -90.0f, 90.0f);
 		//transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
@@ -136,6 +164,8 @@ public class Hover : MonoBehaviour
 		if (!onGround && detach){detach = false;}
 		
 		if (onGround){
+			airTime = 0;
+			glideLeft = Mathf.Clamp(glideLeft+(Time.deltaTime*3),0.0f,glideLength);
 		if (m_jump){
 			jumpPower = Mathf.Clamp(jumpPower+(Time.deltaTime)/jumpLength,0.0f,1.0f);}
 		else{
@@ -146,10 +176,16 @@ public class Hover : MonoBehaviour
 			}
 			}
 		}
-		else{jumpPower = 0.0f;}
+		else{
+				jumpPower = 0.0f;
+				airTime += (Time.deltaTime);
+		}
+		
+		steerMod = 1;
+		if (!onGround){steerMod = 0.35f;}
 		
 		rigidbody.AddForceAtPosition(m_thruster.forward * m_thrust * thrustPower * (1 + (0.25f * jumpPower)), m_thruster.position);
-		rigidbody.AddTorque(transform.up * m_lean * steerPower * (0.5f + ((1 - jumpPower)/1)));
+		rigidbody.AddTorque(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/1)));
 		
 
 		m_thrust = 0;
