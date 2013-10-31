@@ -32,7 +32,7 @@ public class Hover : MonoBehaviour
 	public float glideForce = 400.0f;
 	public float glideLength = 4.0f;
 	public float glideApex = 1.0f; //how many seconds after you start gliding at which it reaches its apex
-	public float glideApexAdd = 0.5f; //glide power ranges from power*1 to power*(1+ApexAdd), with most power at apex time
+	public float glideApexForce = 600.0f; //glide power ranges from power*1 to power*(1+ApexAdd), with most power at apex time
 	
 	private float hoverMod;
 	private float steerMod;
@@ -153,7 +153,7 @@ public class Hover : MonoBehaviour
 		transform.localEulerAngles = clampVector;
 		
 		if (!onGround && m_glide>0.5f && glideLeft > 0){
-			glidePower = glideForce * (1 + (glideApexAdd * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
+			glidePower = glideForce + (((glideApexForce-glideForce) * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
 			rigidbody.AddForce(transform.up * glidePower);
 			glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
 		}
