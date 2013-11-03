@@ -2342,12 +2342,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
 --- !u!132 &477462779
 GUIText:
   m_ObjectHideFlags: 0
@@ -3670,17 +3664,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverProperties:
     hoverHeight: 1.75
-    hoverDamping: 7500
-  thrustPower: 500
-  steerPower: 100
+    hoverDamping: 75000
+  thrustPower: 5000
+  steerPower: 1000
   angleClamp: 50
   airAngleClamp: 10
   jumpLength: 2.5
-  jumpForce: 400
-  glideForce: 400
+  jumpForce: 4000
+  glideForce: 4000
   glideLength: 2.5
   glideApex: 1
-  glideApexForce: 600
+  glideApexForce: 6000
 --- !u!4 &786832295
 Transform:
   m_ObjectHideFlags: 0
@@ -3714,7 +3708,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1204853398}
   m_GameObject: {fileID: 786832291}
   serializedVersion: 2
-  m_Mass: 30
+  m_Mass: 300
   m_Drag: 1
   m_AngularDrag: 3
   m_UseGravity: 1
@@ -5179,11 +5173,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: hoverProperties.hoverDamping
-      value: 7500
+      value: 75000
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: thrustPower
-      value: 500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: m_UseGravity
@@ -5191,15 +5185,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: jumpForce
-      value: 400
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: m_Mass
-      value: 30
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: steerPower
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: jumpLength
@@ -5216,6 +5210,14 @@ Prefab:
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: glideLength
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: glideForce
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: glideApexForce
+      value: 6000
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2300000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
