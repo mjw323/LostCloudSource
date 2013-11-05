@@ -42,6 +42,12 @@ public class Hover : MonoBehaviour
 	
 	private bool onGround;
 	private Vector3 clampVector;
+	private bool grinding = false;
+	Transform grindRail;
+	private Transform[] grindPoints;
+	
+	float closestPos = 100;
+	Transform closestBone;
 
 	// Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
 	Vector3 CalculateBoardDimensions()
@@ -124,6 +130,7 @@ public class Hover : MonoBehaviour
 	void FixedUpdate()
 	{
 		onGround = false;
+		grinding = false;
 		
 		hoverMod = 1;
 		if (detach){hoverMod = 0.5f;}
@@ -137,7 +144,18 @@ public class Hover : MonoBehaviour
 				float hoverForce = (hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime;
 				rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
 				}
+				if (m_hits[i].collider.gameObject.tag=="Grind"){
+					grinding = true;
+					grindRail = m_hits[i].transform;
+					Debug.Log("Found grind rail!");
+				}
 			}
+		}
+		
+		if (grinding){
+			grindPoints = grindRail.GetComponentsInChildren<Transform>();
+			rigidbody.AddForce ((grindPoints[1].position - transform.position) * 10000);
+			Debug.Log(grindPoints.Length.ToString());
 		}
 		
 		clampVector = transform.rotation.eulerAngles;
@@ -162,6 +180,11 @@ public class Hover : MonoBehaviour
 		//transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
 		
 		if (!onGround && detach){detach = false;}
+		if (grinding){
+				m_thrust = 0;
+				m_jump = false;
+				m_lean = 0;
+		}
 		
 		if (onGround){
 			airTime = 0;
