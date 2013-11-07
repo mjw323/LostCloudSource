@@ -42,12 +42,16 @@ public class Hover : MonoBehaviour
 	
 	private bool onGround;
 	private Vector3 clampVector;
+	
 
 	private bool grinding = false;
-	private Transform grindRail;
+	private Transform grindRail = null;
 	private Transform[] grindPoints;
+	private Transform lastRail = null;
+	private Transform grindPoint;
 	public float grindSpeed = 10000;
 	public float maxGrindDist = 5.0f; // Maximum distance for impules toward rail
+	public float grindPointDist = 0.75f; // distance to a grind point before you seek the next one
 
 	// Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
 	Vector3 CalculateBoardDimensions()
@@ -126,7 +130,7 @@ public class Hover : MonoBehaviour
 		detach = false;
 		Debug.Log("Hit ground!");
 	}
-
+	/*
 	void OnCollisionStay(Collision collision) {
 		foreach (ContactPoint contact in collision.contacts) {
 			if(contact.otherCollider.tag=="Grind") {
@@ -144,6 +148,26 @@ public class Hover : MonoBehaviour
 				Debug.Log("Yarrr! Ye be leavin' the rail.");
 			}
 		}
+	}*/
+	
+	void OnTriggerEnter(Collider col) {
+		if(col.gameObject.tag == "Grind" && col.gameObject.transform!=lastRail){ 
+				grindRail = col.gameObject.transform;
+				grindPoints = grindRail.GetComponentsInChildren<Transform>();
+				//Debug.Log("Found rail");
+			}
+		
+	}
+	void OnTriggerExit(Collider col) {
+		if (col.gameObject.transform==lastRail){
+			lastRail = null;
+		}
+		/*if(col.gameObject.transform == grindRail){ 
+				grindRail = null;
+				grinding = false;
+				//Debug.Log("Lost rail :(");
+			}*/
+		
 	}
 
 	void FixedUpdate()
@@ -177,46 +201,53 @@ public class Hover : MonoBehaviour
 		//       child/parents in the desired direction.
 		Vector3 dir;
 		// Impulse toward rail on button press, if board is close enough
-		if(Input.GetButton("Grind")) {
-			RaycastHit[] hits;
+		if(Input.GetButton("Grind") && grindRail != null) {
+			if (!grinding){
+					Debug.Log("hey girl i see u tryna grind");
+					grindPoint = nearestGrindPoint (null);
+					Debug.Log ("Now grinding to "+grindPoint);
+					rigidbody.velocity = new Vector3(0,0,0); //cancel all forces
+					grinding = true;
+			}
+			/*RaycastHit[] hits;
 			hits = rigidbody.SweepTestAll(rigidbody.velocity.normalized, maxGrindDist);
 
 			foreach( RaycastHit hit in hits ) {
-				if( hit.transform.tag=="Grind" /*&& !grinding*/ ) {
+				if( hit.transform.tag=="Grind"  ) {
 					Debug.Log("Avast! Be ye lookin' to grind? " + hit.point);
 					Debug.DrawLine(hit.point, transform.position,Color.green,5.0f);
 					dir = hit.point - transform.position;
 					rigidbody.AddForce(dir.normalized * grindSpeed);
 				}
-			}
+			}*/
 		}
 
 		if(grinding){
-			grindPoints = grindRail.GetComponentsInChildren<Transform>();
-
+			rigidbody.useGravity = false;
+			m_lean = 0;
+			m_thrust = 0;
 			// Find nearest point on the rail in the
-			// direction of the player velocity
-			Vector3 nearestPoint = new Vector3(Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
-			//Vector3 secondPoint = new Vector3(Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
-			foreach( Transform point in grindPoints ) {
-				dir = point.position - transform.position;
-				// Rail in front of where we're going?
-				if( Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0 ) {
-					// Current point closer than nearest?
-					if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(nearestPoint,transform.position) ) {
-						nearestPoint = point.position;
-					} /*else if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(secondPoint,transform.position) ) {
-						secondPoint = point.position;
-					}*/
+			// direction of the player velocity		
+			
+			if (grindPoint == null || !Input.GetButton("Grind")){
+				grinding = false;
+				lastRail = grindRail;
+				grindRail = null;
+				if (grindPoint == null){Debug.Log("Couldn't find next point!");}
+			}
+			else{
+			Debug.DrawLine(grindPoint.position, transform.position,Color.red,5.0f);//,false);
+			dir = grindPoint.position - transform.position;
+			//transform.rotation += (dir.normalized - transform.rotation)*.2;
+			rigidbody.AddForce(dir.normalized * grindSpeed /** Vector3.Distance(grindPoint.position,transform.position)*/);
+			//Debug.Log("Arrr! Ye still be grindin': " + grindPoint);
+				if (Vector3.Distance(transform.position,grindPoint.position)<grindPointDist){
+					grindPoint = nearestGrindPoint (grindPoint);
+					Debug.Log ("Now grinding to "+grindPoint);
 				}
-			}			
-
-			Debug.DrawLine(nearestPoint, transform.position,Color.red,5.0f);//,false);
-
-			dir = nearestPoint - transform.position;
-			rigidbody.AddForce(dir.normalized * grindSpeed);
-			Debug.Log("Arrr! Ye still be grindin': " + nearestPoint);
+			}
 		}
+		else{rigidbody.useGravity = true;}
 		
 		clampVector = transform.rotation.eulerAngles;
 		
@@ -240,11 +271,6 @@ public class Hover : MonoBehaviour
 		//transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
 		
 		if (!onGround && detach){detach = false;}
-		if (grinding){
-				m_thrust = 0;
-				m_jump = false;
-				m_lean = 0;
-		}
 		
 		if (onGround){
 			airTime = 0;
@@ -276,5 +302,28 @@ public class Hover : MonoBehaviour
 
 		// Reset grind state
 		//grinding = false;
+	}
+	
+	Transform nearestGrindPoint(Transform exclude)
+	{
+		Vector3 nearestPoint = new Vector3(Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
+		Transform nearestTrans = null;
+		Vector3 dir;
+		foreach( Transform point in grindPoints ) {
+			if (point != exclude){
+				dir = point.position - transform.position;
+				// Rail in front of where we're going?
+				if( Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0 ) {
+					// Current point closer than nearest?
+					if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(nearestPoint,transform.position) ) {
+						nearestPoint = point.position;
+						nearestTrans = point;
+					}/*else if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(secondPoint,transform.position) ) {
+						secondPoint = point.position;
+					}*/
+				}
+			}
+		}
+	return nearestTrans;
 	}
 }

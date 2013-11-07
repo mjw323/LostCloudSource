@@ -193,11 +193,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400010, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.38243437
+      value: 6.50815678
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.21000004
+      value: 8.16249371
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -213,11 +213,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -.0209731087
+      value: .116055347
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: .999780059
+      value: .9932428
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
       propertyPath: m_LocalScale.x
@@ -2506,6 +2506,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
 --- !u!132 &477462779
 GUIText:
   m_ObjectHideFlags: 0
@@ -3807,13 +3850,26 @@ GameObject:
   - 114: {fileID: 786832296}
   - 114: {fileID: 786832293}
   - 65: {fileID: 786832298}
+  - 135: {fileID: 786832292}
   m_Layer: 0
   m_Name: Hoverboard
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!135 &786832292
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 786832291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: -.25, z: 0}
 --- !u!114 &786832293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3835,12 +3891,13 @@ MonoBehaviour:
   airAngleClamp: 10
   jumpLength: 2.5
   jumpForce: 4000
-  glideForce: 4000
-  glideLength: 2.5
+  glideForce: 3000
+  glideLength: 3
   glideApex: 1
-  glideApexForce: 6000
+  glideApexForce: 5000
   grindSpeed: 10000
   maxGrindDist: 15
+  grindPointDist: 2
 --- !u!4 &786832295
 Transform:
   m_ObjectHideFlags: 0
@@ -5463,19 +5520,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: glideLength
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: glideForce
-      value: 4000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: glideApexForce
-      value: 6000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: maxGrindDist
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: grindSpeed
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: grindPointDist
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2300000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
@@ -8202,6 +8271,8 @@ GameObject:
   - 137: {fileID: 1977503703}
   - 95: {fileID: 1977503702}
   - 64: {fileID: 1977503705}
+  - 54: {fileID: 1977503704}
+  - 114: {fileID: 1977503706}
   m_Layer: 0
   m_Name: railingWithBones_bound
   m_TagString: Grind
@@ -8215,8 +8286,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
   m_PrefabInternal: {fileID: 16851799}
   m_GameObject: {fileID: 1977503700}
-  m_LocalRotation: {x: 0, y: 0, z: -.0209731087, w: .999780059}
-  m_LocalPosition: {x: 6.38243437, y: 3.21000004, z: 14.8010492}
+  m_LocalRotation: {x: 0, y: 0, z: .116055347, w: .9932428}
+  m_LocalPosition: {x: 6.50815678, y: 8.16249371, z: 14.8010492}
   m_LocalScale: {x: 617.450012, y: .0900000036, z: 38.9199982}
   m_Children:
   - {fileID: 1532395087}
@@ -8272,6 +8343,21 @@ SkinnedMeshRenderer:
     m_Center: {x: -10.0483904, y: -3.20000005, z: -.119168282}
     m_Extent: {x: 10.0478125, y: 3.1099999, z: 9.92859364}
   m_DirtyAABB: 0
+--- !u!54 &1977503704
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1977503700}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &1977503705
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8279,12 +8365,62 @@ MeshCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1977503700}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 10fd24521b5123b44a8e205c110bd65f, type: 3}
+--- !u!114 &1977503706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1977503700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7693141d1cedc45aa01a860f5c383a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1979570312
 GameObject:
   m_ObjectHideFlags: 0
