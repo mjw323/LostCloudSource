@@ -42,12 +42,12 @@ public class Hover : MonoBehaviour
 	
 	private bool onGround;
 	private Vector3 clampVector;
+
 	private bool grinding = false;
-	Transform grindRail;
+	private Transform grindRail;
 	private Transform[] grindPoints;
-	
-	float closestPos = 100;
-	Transform closestBone;
+	public float grindSpeed = 10000;
+	public float maxGrindDist = 5.0f; // Maximum distance for impules toward rail
 
 	// Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
 	Vector3 CalculateBoardDimensions()
@@ -127,10 +127,28 @@ public class Hover : MonoBehaviour
 		Debug.Log("Hit ground!");
 	}
 
+	void OnCollisionStay(Collision collision) {
+		foreach (ContactPoint contact in collision.contacts) {
+			if(contact.otherCollider.tag=="Grind") {
+				grinding = true;
+				grindRail = contact.otherCollider.transform;
+				Debug.Log("Yarrr! Ye be colldin' with a rail.");
+			}
+		}
+	}
+
+	void OnCollisionExit(Collision collision) {
+		foreach (ContactPoint contact in collision.contacts) {
+			if(contact.otherCollider.tag=="Grind") {
+				grinding = false;
+				Debug.Log("Yarrr! Ye be leavin' the rail.");
+			}
+		}
+	}
+
 	void FixedUpdate()
 	{
 		onGround = false;
-		grinding = false;
 		
 		hoverMod = 1;
 		if (detach){hoverMod = 0.5f;}
@@ -144,18 +162,60 @@ public class Hover : MonoBehaviour
 				float hoverForce = (hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime;
 				rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
 				}
-				if (m_hits[i].collider.gameObject.tag=="Grind"){
+				/*if (m_hits[i].collider.gameObject.tag=="Grind"){
 					grinding = true;
 					grindRail = m_hits[i].transform;
-					Debug.Log("Found grind rail!");
+					Debug.Log("Yaarrr! Ye be grindin, ye scallywag.");
+				}*/
+			}
+		}
+
+		// GRINDS ----------------------------------------------------------------------------------------------------
+		// TODO: Costruct a node list based on current direction
+		// 		 then move player toward next node. Get bone tree
+		//       from skinned mesh renderer then construct list using
+		//       child/parents in the desired direction.
+		Vector3 dir;
+		// Impulse toward rail on button press, if board is close enough
+		if(Input.GetButton("Grind")) {
+			RaycastHit[] hits;
+			hits = rigidbody.SweepTestAll(rigidbody.velocity.normalized, maxGrindDist);
+
+			foreach( RaycastHit hit in hits ) {
+				if( hit.transform.tag=="Grind" /*&& !grinding*/ ) {
+					Debug.Log("Avast! Be ye lookin' to grind? " + hit.point);
+					Debug.DrawLine(hit.point, transform.position,Color.green,5.0f);
+					dir = hit.point - transform.position;
+					rigidbody.AddForce(dir.normalized * grindSpeed);
 				}
 			}
 		}
-		
-		if (grinding){
+
+		if(grinding){
 			grindPoints = grindRail.GetComponentsInChildren<Transform>();
-			rigidbody.AddForce ((grindPoints[1].position - transform.position) * 10000);
-			Debug.Log(grindPoints.Length.ToString());
+
+			// Find nearest point on the rail in the
+			// direction of the player velocity
+			Vector3 nearestPoint = new Vector3(Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
+			//Vector3 secondPoint = new Vector3(Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
+			foreach( Transform point in grindPoints ) {
+				dir = point.position - transform.position;
+				// Rail in front of where we're going?
+				if( Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0 ) {
+					// Current point closer than nearest?
+					if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(nearestPoint,transform.position) ) {
+						nearestPoint = point.position;
+					} /*else if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(secondPoint,transform.position) ) {
+						secondPoint = point.position;
+					}*/
+				}
+			}			
+
+			Debug.DrawLine(nearestPoint, transform.position,Color.red,5.0f);//,false);
+
+			dir = nearestPoint - transform.position;
+			rigidbody.AddForce(dir.normalized * grindSpeed);
+			Debug.Log("Arrr! Ye still be grindin': " + nearestPoint);
 		}
 		
 		clampVector = transform.rotation.eulerAngles;
@@ -210,9 +270,11 @@ public class Hover : MonoBehaviour
 		rigidbody.AddForceAtPosition(m_thruster.forward * m_thrust * thrustPower * (1 + (0.25f * jumpPower)), m_thruster.position);
 		rigidbody.AddTorque(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/1)));
 		
-
 		m_thrust = 0;
 		m_lean = 0;
 		m_jump = false;
+
+		// Reset grind state
+		//grinding = false;
 	}
 }
