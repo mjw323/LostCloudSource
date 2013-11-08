@@ -50,6 +50,7 @@ public class Hover : MonoBehaviour
 	private Transform lastRail = null;
 	private Transform grindPoint = null;
 	private Vector3 grindDir;
+	public float grindOffset = 1.0f;
 	public float grindSpeed = 10000;
 	public float maxGrindDist = 5.0f; // Maximum distance for impules toward rail
 	public float grindPointDist = 0.75f; // distance to a grind point before you seek the next one
@@ -172,7 +173,8 @@ public class Hover : MonoBehaviour
 					grindRail = null;
 					Debug.Log("Lost rail :(");
 				} else {
-					rigidbody.velocity = Vector3.zero;
+					float mag = Vector3.Magnitude(rigidbody.velocity);
+					rigidbody.velocity = grindDir.normalized * mag; //Vector3.zero;
 				}
 		}
 		
@@ -243,13 +245,13 @@ public class Hover : MonoBehaviour
 			else{
 				if (grindPoint == null){Debug.Log("Couldn't find next point!");}
 				//Debug.DrawLine(grindPoint.position, transform.position,Color.red,25.0f);//,false);
-				dir = grindPoint.position - transform.position;
+				//dir = grindPoint.position + (Vector3.up*grindOffset) - transform.position;
 				//transform.rotation += (dir.normalized - transform.rotation)*.2;
 				rigidbody.AddForce(grindDir.normalized * grindSpeed /** Vector3.Distance(grindPoint.position,transform.position)*/);
 				Debug.DrawLine(grindPoint.position,10000 * grindDir.normalized, Color.red,300.0f,false);
 				
 				// Did we pass the point? Hmm....
-				dir = grindPoint.position - transform.position;
+				dir = grindPoint.position + (Vector3.up*grindOffset) - transform.position;
 				if( Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) < 0 ) {
 					float mag = Vector3.Magnitude(rigidbody.velocity);
 					grindPoint = nearestGrindPoint(null);
@@ -382,22 +384,23 @@ public class Hover : MonoBehaviour
 
 		// Construct grind direction vector
 		if( nearestTrans != null ) {
+			Vector3 goPos = nearestTrans.position + (Vector3.up * grindOffset);
 			if( nearestTrans.childCount != 0 ) {
 				dir = nearestTrans.GetChild(0).position - transform.position;
 				if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) < 0) {
-					grindDir = nearestTrans.position - nearestTrans.GetChild(0).position;
+					grindDir = goPos - nearestTrans.GetChild(0).position;
 					grindDir.Normalize();
 				} else if (Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0 && nearestTrans.parent == null) {
-					grindDir = nearestTrans.position - transform.position;
+					grindDir = goPos - transform.position;
 					grindDir.Normalize();
 				}
 			} else if ( nearestTrans.parent != null ) {
 				dir = nearestTrans.parent.position - transform.position;
 				if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) < 0) {
-					grindDir = nearestTrans.position - nearestTrans.parent.position;
+					grindDir = goPos - nearestTrans.parent.position;
 					grindDir.Normalize();
 				} else if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0 && nearestTrans.childCount == 0) {
-					grindDir = nearestTrans.position - transform.position;
+					grindDir = goPos - transform.position;
 					grindDir.Normalize();
 				}
 			}
