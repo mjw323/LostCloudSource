@@ -251,8 +251,9 @@ public class Hover : MonoBehaviour
 				// Did we pass the point? Hmm....
 				dir = grindPoint.position - transform.position;
 				if( Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) < 0 ) {
+					float mag = Vector3.Magnitude(rigidbody.velocity);
 					grindPoint = nearestGrindPoint(null);
-					rigidbody.velocity = Vector3.zero;
+					rigidbody.velocity = grindDir.normalized * mag; //Vector3.zero;
 				} /*else if (Vector3.Distance(transform.position,grindPoint.position)<grindPointDist) {
 					grindPoint = nearestGrindPoint(grindPoint);
 					Debug.Log ("Now grinding to "+grindPoint);
