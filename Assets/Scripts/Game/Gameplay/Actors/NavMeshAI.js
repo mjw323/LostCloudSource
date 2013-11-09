@@ -1,4 +1,6 @@
-﻿var target : Transform;
+﻿//Controls Monster AI movement and leaping
+
+var target : Transform;
 var Leaping : boolean;
 var leapDistance : float;
 
@@ -12,9 +14,12 @@ function Update(){
 	}
 	
 	if (Random.Range(1,500) == 1 || Leaping){
-	if (!Leaping){Debug.Log("Leap!");}
+		if (!Leaping){
+			Debug.Log("Leap!");
+		}
+	if (Vector3.Magnitude(target.position - this.transform.position) < 50){
 		leap();
-		
+		}
 	}
 	
 
