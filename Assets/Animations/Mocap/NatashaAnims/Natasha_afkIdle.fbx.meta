@@ -276,7 +276,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .00999999978
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -301,342 +301,777 @@ ModelImporter:
     - boneName: Natasha_01:Solving:Hips
       humanName: Hips
       limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: 11.30478, y: 0, z: 5.65239}
-        preQ: {x: .554126918, y: .439755678, z: -.551940024, w: -.441498071}
-        postQ: {x: .507826746, y: .507826686, z: -.492048711, w: -.49204877}
-        length: 14.1309795
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftUpLeg
       humanName: LeftUpperLeg
       limit:
-        min: {x: -60.0000038, y: -60.0000038, z: -90}
-        max: {x: 60.0000038, y: 60.0000038, z: 50}
-        value: {x: 30.0846176, y: 0, z: 15.0423088}
-        preQ: {x: -.535495341, y: .444339246, z: -.551040053, w: .460610539}
-        postQ: {x: -.491333514, y: .491333485, z: -.508518755, w: .508518815}
-        length: 37.6057816
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightUpLeg
       humanName: RightUpperLeg
       limit:
-        min: {x: -60.0000038, y: -60.0000038, z: -90}
-        max: {x: 60.0000038, y: 60.0000038, z: 50}
-        value: {x: 30.0846119, y: 0, z: 15.0423059}
-        preQ: {x: -.548639834, y: .434201419, z: -.528341949, w: .480955511}
-        postQ: {x: -.483792186, y: .483792156, z: -.515698671, w: .515698671}
-        length: 37.6057739
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftLeg
       humanName: LeftLowerLeg
       limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: 28.9489555, y: 0, z: 14.4744778}
-        preQ: {x: -.0597075075, y: .692439556, z: -.0615740828, w: .716359496}
-        postQ: {x: -.491333783, y: .491333723, z: -.508518517, w: .508518517}
-        length: 36.186203
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightLeg
       humanName: RightLowerLeg
       limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: 28.9489613, y: 0, z: 14.4744806}
-        preQ: {x: -.0151730198, y: .661423326, z: -.0617688559, w: .747310817}
-        postQ: {x: -.482712805, y: .482712805, z: -.516709149, w: .516709089}
-        length: 36.1862106
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftFoot
       humanName: LeftFoot
       limit:
-        min: {x: 0, y: -30.0000019, z: -50}
-        max: {x: 0, y: 30.0000019, z: 50}
-        value: {x: 5.99798393, y: 0, z: 2.99899197}
-        preQ: {x: -.519904017, y: .460996181, z: -.537874341, w: .477360874}
-        postQ: {x: -.523630679, y: .51642698, z: -.514343143, w: .441095293}
-        length: 7.4974823
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightFoot
       humanName: RightFoot
       limit:
-        min: {x: 0, y: -30.0000019, z: -50}
-        max: {x: 0, y: 30.0000019, z: 50}
-        value: {x: 6.37601137, y: 0, z: 3.18800569}
-        preQ: {x: -.514693737, y: .448528707, z: -.57942307, w: .445175499}
-        postQ: {x: -.530174673, y: .425845444, z: -.537639976, w: .498511404}
-        length: 7.97001648
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:Spine
       humanName: Spine
       limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: 32.1812401, y: 0, z: 16.09062}
-        preQ: {x: .439495027, y: .569832385, z: -.435712963, w: -.540637791}
-        postQ: {x: .50673908, y: .50673914, z: -.493168741, w: -.493168682}
-        length: 40.2265663
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:Head
       humanName: Head
       limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: 8.04531002, y: 0, z: 4.02265501}
-        preQ: {x: -.513861179, y: -.499513388, z: .491319567, w: .495013177}
-        postQ: {x: -.473380148, y: -.586871147, z: .41746974, w: .50716114}
-        length: 10.0566416
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftShoulder
       humanName: LeftShoulder
       limit:
-        min: {x: 0, y: -15.000001, z: -15.000001}
-        max: {x: 0, y: 15.000001, z: 30.0000019}
-        value: {x: 13.644145, y: 0, z: 6.82207251}
-        preQ: {x: -.0762937889, y: .0130740972, z: .984859705, w: .155111417}
-        postQ: {x: -.0973745063, y: -.0973745137, z: .700370073, w: .700369895}
-        length: 17.0551853
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightShoulder
       humanName: RightShoulder
       limit:
-        min: {x: 0, y: -15.000001, z: -15.000001}
-        max: {x: 0, y: 15.000001, z: 30.0000019}
-        value: {x: 13.6441507, y: 0, z: 6.82207537}
-        preQ: {x: -.0168939196, y: .0543289334, z: .141318664, w: .988327742}
-        postQ: {x: .120452687, y: .12045265, z: .696771979, w: .69677186}
-        length: 17.0551929
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftArm
       humanName: LeftUpperArm
       limit:
-        min: {x: -90, y: -100, z: -60.0000038}
-        max: {x: 90, y: 100, z: 100}
-        value: {x: 20.6148491, y: 0, z: 10.3074245}
-        preQ: {x: .0794328526, y: -.241845831, z: .946886539, w: .196486056}
-        postQ: {x: -.294480562, y: -.294480622, z: .642869413, w: .642869413}
-        length: 25.7685699
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightArm
       humanName: RightUpperArm
       limit:
-        min: {x: -90, y: -100, z: -60.0000038}
-        max: {x: 90, y: 100, z: 100}
-        value: {x: 20.6148472, y: 0, z: 10.3074236}
-        preQ: {x: .250279814, y: -.0480547957, z: .185489073, w: .949022889}
-        postQ: {x: .321732432, y: .321732521, z: .629673004, w: .629673064}
-        length: 25.768568
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftForeArm
       humanName: LeftLowerArm
       limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: 17.3748913, y: 0, z: 8.68744564}
-        preQ: {x: .356402099, y: -.018878676, z: .932327509, w: .0581931062}
-        postQ: {x: .396027148, y: .396027088, z: .585800648, w: .585800707}
-        length: 21.7186241
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightForeArm
       humanName: RightLowerArm
       limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: 17.3748913, y: 0, z: 8.68744564}
-        preQ: {x: -.0153282927, y: .331333667, z: -.0719387531, w: -.940642238}
-        postQ: {x: .483911872, y: .483911872, z: -.515586317, w: -.515586317}
-        length: 21.7186222
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftHand
       humanName: LeftHand
       limit:
-        min: {x: 0, y: -40, z: -80}
-        max: {x: 0, y: 40, z: 80}
-        value: {x: 8.68744564, y: 0, z: 4.34372282}
-        preQ: {x: -.134654939, y: -.134654954, z: .694167078, w: .694167137}
-        postQ: {x: -.0030719121, y: -.272648394, z: .685301423, w: .675289035}
-        length: 10.8593121
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightHand
       humanName: RightHand
       limit:
-        min: {x: 0, y: -40, z: -80}
-        max: {x: 0, y: 40, z: 80}
-        value: {x: 8.68744564, y: 0, z: 4.34372282}
-        preQ: {x: .0232120361, y: .0232120287, z: .706725657, w: .706725717}
-        postQ: {x: .105788939, y: -.100257456, z: .817601383, w: .557032466}
-        length: 10.8593111
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:LeftToeBase
       humanName: LeftToes
       limit:
-        min: {x: 0, y: 0, z: -50}
-        max: {x: 0, y: 0, z: 50}
-        value: {x: 6.24014235, y: 0, z: 3.12007117}
-        preQ: {x: .73543185, y: .00509379106, z: .675597012, w: .0517940558}
-        postQ: {x: .733801484, y: -.107357293, z: .667032003, w: -.0712606981}
-        length: 7.80017996
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     - boneName: Natasha_01:Solving:RightToeBase
       humanName: RightToes
       limit:
-        min: {x: 0, y: 0, z: -50}
-        max: {x: 0, y: 0, z: 50}
-        value: {x: 6.24013853, y: 0, z: 3.12006927}
-        preQ: {x: .676008284, y: .0737719461, z: .732669652, w: .0276680626}
-        postQ: {x: .652445197, y: -.152371004, z: .720437527, w: -.179075405}
-        length: 7.80017519
-        modified: 1
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        preQ: {x: 0, y: 0, z: 0, w: 0}
+        postQ: {x: 0, y: 0, z: 0, w: 0}
+        length: 0
+        modified: 0
     skeleton:
-    - name: Natasha_afkIdle
+    - name: Natasha_afkIdle(Clone)
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: .99999994}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:ARIEL
+      position: {x: -.0941703022, y: 1.5849508, z: -.393446267}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:C7
+      position: {x: -.0870226175, y: 1.15144897, z: -.477739751}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:CLAV
+      position: {x: -.0861930102, y: 1.23582137, z: -.261765212}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LANK
+      position: {x: -.223048821, y: .0990559161, z: -.404472142}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LBHD
+      position: {x: -.170718595, y: 1.47352922, z: -.416944951}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LBSH
+      position: {x: -.199965551, y: 1.23728406, z: -.477281511}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LBWT
+      position: {x: -.218479976, y: .875568449, z: -.429825038}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LELB
+      position: {x: -.484590054, y: 1.24348307, z: -.423473716}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LFHD
+      position: {x: -.157233536, y: 1.54421341, z: -.321237981}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LFSH
+      position: {x: -.180623293, y: 1.27117264, z: -.310202539}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LFWT
+      position: {x: -.211693019, y: .8765921, z: -.253783941}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LHEL
+      position: {x: -.171917021, y: .059851747, z: -.44249928}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LHIP
+      position: {x: -.229010284, y: .641909719, z: -.272096902}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LIEL
+      position: {x: -.470949382, y: 1.17794192, z: -.384205401}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LIHAND
+      position: {x: -.771934927, y: 1.24656308, z: -.404638886}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LIWR
+      position: {x: -.712959111, y: 1.2515111, z: -.377258062}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LKNE
+      position: {x: -.21887967, y: .439411014, z: -.325306654}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LKNI
+      position: {x: -.14305383, y: .437217593, z: -.321273923}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LMT1
+      position: {x: -.173013076, y: .0633693933, z: -.244710147}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LMT5
+      position: {x: -.252889037, y: .0607547089, z: -.257096738}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LMWT
+      position: {x: -.259097308, y: .871439695, z: -.334581822}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LOHAND
+      position: {x: -.763813972, y: 1.23499799, z: -.453339726}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LOWR
+      position: {x: -.700025976, y: 1.22720039, z: -.43312633}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LSHN
+      position: {x: -.215488613, y: .23247695, z: -.348512024}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LTOE
+      position: {x: -.215456426, y: .0740925819, z: -.20548366}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LUPA
+      position: {x: -.356577247, y: 1.25856447, z: -.427761763}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:LWRE
+      position: {x: -.597399533, y: 1.21731186, z: -.424730748}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RANK
+      position: {x: .0998332873, y: .0989060774, z: -.446134359}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RBHD
+      position: {x: -.0358243883, y: 1.44498682, z: -.42988956}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RBSH
+      position: {x: .0314549468, y: 1.24513102, z: -.472616106}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RBWT
+      position: {x: .0417644382, y: .876828313, z: -.441627294}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RELB
+      position: {x: .300339967, y: 1.20953536, z: -.39877218}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RFHD
+      position: {x: -.0130917048, y: 1.52942824, z: -.340386331}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RFSH
+      position: {x: .0036695993, y: 1.26023257, z: -.308775157}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RFWT
+      position: {x: .0541380234, y: .861420333, z: -.269352436}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RHEL
+      position: {x: .0336305462, y: .0736824125, z: -.480766624}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RHIP
+      position: {x: .064373441, y: .612922132, z: -.286010474}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RIEL
+      position: {x: .295495987, y: 1.1620543, z: -.356615961}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RIHAND
+      position: {x: .610580862, y: 1.21111917, z: -.331976354}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RIWR
+      position: {x: .532437563, y: 1.22704804, z: -.324888676}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RKNE
+      position: {x: .073875539, y: .437499583, z: -.339508355}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RKNI
+      position: {x: .00890647434, y: .426122516, z: -.337676644}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RMT1
+      position: {x: .0539864227, y: .0589600205, z: -.28951329}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RMT5
+      position: {x: .143606588, y: .0569859073, z: -.302392304}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RMWT
+      position: {x: .0893519074, y: .873446763, z: -.351876974}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:ROHAND
+      position: {x: .598556221, y: 1.21261001, z: -.402379483}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:ROWR
+      position: {x: .535618484, y: 1.22585702, z: -.388486743}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RSHN
+      position: {x: .0751639754, y: .320890069, z: -.368518561}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RTOE
+      position: {x: .0985381305, y: .0766389966, z: -.259408325}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RUPA
+      position: {x: .170756087, y: 1.2736702, z: -.399297863}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:RWRE
+      position: {x: .408526063, y: 1.24190879, z: -.376686156}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: 0, w: .99999994}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:Hips
-      position: {x: -9.53674316e-07, y: 80.6460953, z: 0}
-      rotation: {x: -.11236161, y: .0154557647, z: -.00373792159, w: .993540108}
+      position: {x: 0, y: .806460917, z: 0}
+      rotation: {x: -.112361617, y: .0154557656, z: -.00373792183, w: .993540168}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftUpLeg
-      position: {x: -11.9201288, y: 0, z: 0}
-      rotation: {x: .169962898, y: .00175293058, z: .00738269417, w: .985421181}
+      position: {x: -.119201288, y: 0, z: 0}
+      rotation: {x: .169962913, y: .00175293069, z: .00738269463, w: .98542124}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftLeg
-      position: {x: -0, y: -37.6057816, z: 0}
-      rotation: {x: .00145129615, y: -0, z: -0, w: .999998927}
+      position: {x: -0, y: -.376057804, z: 0}
+      rotation: {x: .00145129627, y: -0, z: -0, w: .999998987}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftFoot
-      position: {x: -0, y: -36.186203, z: 0}
-      rotation: {x: -.0200290103, y: -.0574172065, z: .0353741907, w: .997522295}
+      position: {x: -0, y: -.361862034, z: 0}
+      rotation: {x: -.0200290121, y: -.0574172102, z: .0353741944, w: .997522354}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftToeBase
-      position: {x: -0, y: 0, z: 15.6003609}
+      position: {x: -0, y: 0, z: .156003609}
       rotation: {x: -.166341916, y: 0, z: -0, w: .98606813}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftToeEnd
-      position: {x: -0, y: 0, z: 7.5}
-      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      position: {x: -0, y: 0, z: .0749999955}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightUpLeg
-      position: {x: 11.9201288, y: 0, z: 0}
-      rotation: {x: .1784271, y: .0102754077, z: .0428938344, w: .982963979}
+      position: {x: .119201288, y: 0, z: 0}
+      rotation: {x: .178427115, y: .0102754086, z: .0428938381, w: .982964039}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightLeg
-      position: {x: -0, y: -37.6057816, z: 0}
-      rotation: {x: .0328237489, y: -0, z: -0, w: .999461114}
+      position: {x: -0, y: -.376057804, z: 0}
+      rotation: {x: .0328237526, y: -0, z: -0, w: .999461174}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightFoot
-      position: {x: -0, y: -36.186203, z: 0}
-      rotation: {x: -.026157612, y: .00354518485, z: -.0681234822, w: .997327566}
+      position: {x: -0, y: -.361862034, z: 0}
+      rotation: {x: -.0261576138, y: .00354518509, z: -.0681234896, w: .997327626}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightToeBase
-      position: {x: -0, y: 0, z: 15.6003609}
-      rotation: {x: -.303894073, y: 0, z: -0, w: .952705801}
+      position: {x: -0, y: 0, z: .156003609}
+      rotation: {x: -.303894103, y: 0, z: -0, w: .95270586}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightToeEnd
-      position: {x: -0, y: 0, z: 7.5}
-      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      position: {x: -0, y: 0, z: .0749999955}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:Spine
-      position: {x: -0, y: 14.1309843, z: 0}
+      position: {x: -0, y: .141309842, z: 0}
       rotation: {x: .117447898, y: -.00301357941, z: .0143013876, w: .99297148}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:Head
-      position: {x: -0, y: 40.2265739, z: 0}
-      rotation: {x: -.10609059, y: .0552345775, z: -.0225854013, w: .992564201}
+      position: {x: -0, y: .402265728, z: 0}
+      rotation: {x: -.106090598, y: .0552345812, z: -.0225854032, w: .992564261}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:Head_End
-      position: {x: -0, y: 11.5, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      position: {x: -0, y: .114999995, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftShoulder
-      position: {x: -0, y: 24.4276085, z: 0}
-      rotation: {x: -.143386915, y: .0667269304, z: .572428584, w: .804557681}
+      position: {x: -0, y: .244276077, z: 0}
+      rotation: {x: -.14338696, y: .0667269453, z: .572428823, w: .804557681}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftArm
-      position: {x: -0, y: 17.0551891, z: 0}
-      rotation: {x: -.0431917459, y: .27138567, z: .190119207, w: .94251734}
+      position: {x: -0, y: .170551881, z: 0}
+      rotation: {x: -.0431916602, y: .271385759, z: .190119177, w: .9425174}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftForeArm
-      position: {x: -0, y: 25.7685738, z: 0}
-      rotation: {x: .0580748059, y: -.237359285, z: -.0142170731, w: .969580173}
+      position: {x: -0, y: .257685721, z: 0}
+      rotation: {x: .0580748096, y: -.2373593, z: -.014217074, w: .969580233}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftHand
-      position: {x: -0, y: 21.7186241, z: 0}
-      rotation: {x: -.185782909, y: .00818571821, z: -.0432501361, w: .981604338}
+      position: {x: -0, y: .217186242, z: 0}
+      rotation: {x: -.185782924, y: .00818571914, z: -.0432501398, w: .981604397}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftHandEnd
-      position: {x: -0, y: 10, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      position: {x: -0, y: .099999994, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftHandThumb
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: -.217672125, y: -.277796239, z: -.064782463, w: .93340838}
+      rotation: {x: -.217672139, y: -.277796268, z: -.0647824705, w: .933408439}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:LeftHandThumbEnd
-      position: {x: -0, y: 0, z: 10}
-      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      position: {x: -0, y: 0, z: .099999994}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightShoulder
-      position: {x: -0, y: 24.4276085, z: 0}
-      rotation: {x: -.151650652, y: -.109985247, z: -.581593335, w: .791615069}
+      position: {x: -0, y: .244276077, z: 0}
+      rotation: {x: -.151650652, y: -.109985247, z: -.581593394, w: .791615129}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightArm
-      position: {x: -0, y: 17.0551891, z: 0}
-      rotation: {x: -.0567316599, y: -.279122293, z: -.189293638, w: .939702094}
+      position: {x: -0, y: .170551881, z: 0}
+      rotation: {x: -.0567314848, y: -.279122353, z: -.189293489, w: .939702272}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightForeArm
-      position: {x: -0, y: 25.7685738, z: 0}
-      rotation: {x: .048220858, y: .426078826, z: .0404833853, w: .902492464}
+      position: {x: -0, y: .257685721, z: 0}
+      rotation: {x: .0482206382, y: .426078886, z: .040483281, w: .902492523}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightHand
-      position: {x: -0, y: 21.7186241, z: 0}
-      rotation: {x: -.151666597, y: .0279987976, z: -.1793679, w: .971617401}
+      position: {x: -0, y: .217186242, z: 0}
+      rotation: {x: -.151666611, y: .0279987995, z: -.179367915, w: .97161746}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightHandEnd
-      position: {x: -0, y: 10, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      position: {x: -0, y: .099999994, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightHandThumb
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: -.202096879, y: .276512623, z: .0595997199, w: .937627494}
+      rotation: {x: -.202096894, y: .276512682, z: .0595997274, w: .937627614}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Natasha_01:Solving:RightHandThumbEnd
-      position: {x: -0, y: 0, z: 10}
-      rotation: {x: 0, y: -0, z: -0, w: .99999994}
+      position: {x: -0, y: 0, z: .099999994}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:STRN
+      position: {x: -.0879648775, y: 1.0361948, z: -.219558671}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Natasha_01:T10
+      position: {x: -.0857280269, y: .963574946, z: -.439278185}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10179
+      position: {x: 5.60527706, y: 2.63654661, z: 2.85117555}
+      rotation: {x: .951936722, y: .253392816, z: .163758963, w: -.0528349876}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10183
+      position: {x: -2.69824123, y: 3.1155746, z: -5.17041779}
+      rotation: {x: -.312001586, y: .360553205, z: .707667887, w: .521404386}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10184
+      position: {x: 2.64283299, y: 3.23173404, z: -5.31293058}
+      rotation: {x: .652737677, y: .581376195, z: -.319627583, w: .365750641}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10493
+      position: {x: -4.8151536, y: 2.64521074, z: -.0786209852}
+      rotation: {x: .274160445, y: .960625291, z: .00767934183, w: .0444537476}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10494
+      position: {x: -5.26509142, y: 2.66121769, z: -5.33051062}
+      rotation: {x: .191246524, y: .891106963, z: .0406340957, w: .409514427}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10495
+      position: {x: -5.02673435, y: 2.6416347, z: -3.13434839}
+      rotation: {x: .25829497, y: .943181932, z: -.0893227905, w: .188978851}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10496
+      position: {x: 5.66378355, y: 2.74260592, z: 4.69220114}
+      rotation: {x: .923509955, y: .159264624, z: .339749545, w: .0795888305}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10497
+      position: {x: 2.79081535, y: 3.16835952, z: 5.28261566}
+      rotation: {x: .637413442, y: .586756647, z: .266016424, w: -.422677219}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10498
+      position: {x: 4.87843227, y: 2.64490557, z: -.0270051453}
+      rotation: {x: .956901431, y: .289335072, z: -.0247806553, w: .00329967868}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10499
+      position: {x: -.630679905, y: 3.15771604, z: 5.35826969}
+      rotation: {x: .343220025, y: -.391405463, z: .613244116, w: .594081998}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10502
+      position: {x: 1.29504848, y: 3.18893242, z: -5.27030849}
+      rotation: {x: .601292193, y: .61233598, z: -.338261485, w: .386097848}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_10503
+      position: {x: -4.56607771, y: 2.63068652, z: 2.90142298}
+      rotation: {x: .297720432, y: .935412049, z: .0641682222, w: -.179580942}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_12301
+      position: {x: -2.34373546, y: 3.02973104, z: 5.41976738}
+      rotation: {x: .55021733, y: .237353936, z: .790223897, w: .128336415}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:MX_3p_12309
+      position: {x: 4.58340836, y: 2.64973831, z: -3.12504172}
+      rotation: {x: .953897595, y: .234861434, z: -.186835691, w: .00346249714}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:T20_15966
+      position: {x: 1.36783242, y: 3.16642547, z: 5.34003782}
+      rotation: {x: .357248515, y: -.340233356, z: .596621871, w: .632974803}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: System:T20_15998
+      position: {x: -.183653727, y: 3.28057265, z: -5.45458174}
+      rotation: {x: -.290410578, y: .420142591, z: .633043349, w: .581719875}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_4
+      position: {x: -.146582231, y: 1.21947443, z: -.728724897}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_19
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_22
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_36
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_37
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_45
+      position: {x: .0375084877, y: 1.21762347, z: -.677669942}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_50
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_53
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_56
+      position: {x: -.182699963, y: 1.43218887, z: -.472680897}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_59
+      position: {x: .138495788, y: 1.34760118, z: -.338626474}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_60
+      position: {x: .140051648, y: 1.34204006, z: -.298559517}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_61
+      position: {x: .139516279, y: 1.34032381, z: -.276079357}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_66
+      position: {x: .136930615, y: 1.32635772, z: -.186262235}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_67
+      position: {x: .138697624, y: 1.32460034, z: -.185585424}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_70
+      position: {x: .168235973, y: 1.31486905, z: -.247723341}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Unlabeled_Markers:_76
+      position: {x: .168068826, y: 1.30913949, z: -.340748489}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     handles: []
