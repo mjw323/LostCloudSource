@@ -1,20 +1,37 @@
 ﻿using UnityEngine;
 using System;
 
-[AddComponentMenu ("Scripts/Character/Movement/FootMovement")]
+[AddComponentMenu ("Player/FootMovement")]
 [RequireComponent (typeof(CharacterController))]
 public class FootMovement : MonoBehaviour
 {
-	[HideInInspector] private Transform m_transform;
-	[HideInInspector] private CharacterController m_characterController;
+	[Serializable]
+	public class RunningParameters
+	{
+		public float speed;
+		public float rotationDegreesPerSecond;
+	}
 
-	[SerializeField] private float m_speed;
-	[SerializeField] private float m_gravity;
-	[SerializeField] private float m_rotationDegreesPerSecond;
+	[Serializable]
+	public class FallingParameters
+	{
+		public float gravity;
+		public float maxSpeed;
+	}
+
+	[SerializeField] private RunningParameters m_running;
+	[SerializeField] private FallingParameters m_falling;
+
+	[HideInInspector] Transform m_transform;
+	[HideInInspector] CharacterController m_characterController;
+	[HideInInspector] Animator m_animator;
+
+	[HideInInspector] private int m_speedId;
+	[HideInInspector] private int m_directionId;
 
 	private Vector3 m_direction;
+	private Vector3 m_xzVelocity;
 	private float m_yVelocity;
-	private float m_localAngle;
 
 	public void MoveTowards(Vector3 direction)
 	{
@@ -27,37 +44,46 @@ public class FootMovement : MonoBehaviour
 	{
 		m_transform = GetComponent<Transform>();
 		m_characterController = GetComponent<CharacterController>();
+		m_animator = GetComponentInChildren<Animator>();
+		if (m_animator == null)
+		{
+			Debug.LogError("Animator component not found on any child object.");
+			Debug.Break();
+		}
+
+		m_speedId = Animator.StringToHash("Speed");
+		m_directionId = Animator.StringToHash("Direction");
 	}
 
 	void Update()
 	{
-		m_localAngle = Vector3.Angle(m_transform.forward, m_direction);
-		m_localAngle *= (Vector3.Cross(m_transform.forward, m_direction).y >= 0f ? 1f : -1f);
-		Debug.DrawRay(m_transform.position, m_transform.forward, Color.blue);
-		Debug.DrawRay(m_transform.position, m_direction, Color.red);
-		print(m_localAngle);
-
-		if (m_characterController.isGrounded)
-		{
-			m_yVelocity = 0f;
-		}
+		float runSpeed = m_direction.sqrMagnitude * m_running.speed;
+		float turnAngle;
+		if (m_direction == Vector3.zero)
+			turnAngle = 0f;
 		else
 		{
-			m_yVelocity -= m_gravity * Time.deltaTime;
+			float angleSign = (Vector3.Cross(m_direction, m_transform.forward).y >= 0) ? -1f : 1f;
+			turnAngle = Vector3.Angle(m_direction, m_transform.forward) * angleSign;
 		}
 
-		Vector3 xzVelocity = m_transform.forward * Mathf.Lerp(0f, m_speed, m_direction.sqrMagnitude);
-		Vector3 finalVelocity = new Vector3(0f, m_yVelocity, 0f) + xzVelocity;
-		m_characterController.Move(finalVelocity * Time.deltaTime);
-	}
-
-	void FixedUpdate()
-	{
-		if ( (m_direction.sqrMagnitude > 0) )//&& (m_localAngle >= 0 && m_direction.x >= 0) || (m_localAngle < 0 && m_direction.x < 0))
+		if (m_xzVelocity != Vector3.zero)
 		{
-			//Vector3 yRotation = new Vector3(0f, Mathf.Lerp(0f, m_rotationDegreesPerSecond * Mathf.Sign(m_localAngle), m_direction.sqrMagnitude));
-			m_transform.rotation = Quaternion.RotateTowards(m_transform.rotation, Quaternion.LookRotation(m_direction, Vector3.up), m_rotationDegreesPerSecond * Time.deltaTime);
-			//m_transform.rotation = m_transform.rotation * deltaRotation;	
+			m_transform.rotation = Quaternion.RotateTowards(m_transform.rotation, Quaternion.LookRotation(m_direction, m_transform.up), m_running.rotationDegreesPerSecond * Time.deltaTime);
 		}
+
+		m_animator.SetFloat(m_speedId, runSpeed);
+		m_animator.SetFloat(m_directionId, turnAngle);
+
+		if (m_characterController.isGrounded)
+			m_yVelocity = 0f;
+		else
+			m_yVelocity -= m_falling.gravity * Time.deltaTime;
+
+		m_xzVelocity = m_transform.forward * runSpeed;
+
+		Vector3 finalVelocity = m_xzVelocity;
+		finalVelocity.y = m_yVelocity;
+		m_characterController.Move(finalVelocity * Time.deltaTime);
 	}
 }

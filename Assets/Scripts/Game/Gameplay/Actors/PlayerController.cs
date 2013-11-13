@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[AddComponentMenu ("Scripts/Character/PlayerController")]
+[AddComponentMenu ("Player/PlayerController")]
 [RequireComponent (typeof(Player))]
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 	void Awake()
 	{
 		m_player = GetComponent<Player>();
+		
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
 		if (mainCamera == null)
 		{

@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: nokeControl
+  m_Name: Noke
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: Speed
@@ -725,7 +725,7 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Natasha_Idle001_x2d
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
@@ -740,7 +740,7 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: runJump
+  m_Name: RunningJump
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
@@ -772,7 +772,7 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: walkRun
+  m_Name: Walk/Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
@@ -820,7 +820,7 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Natasha_IdleMore001_x2d
+  m_Name: AFK
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
@@ -867,7 +867,7 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: jump
+  m_Name: IdleJump
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
@@ -924,6 +924,9 @@ StateMachine:
       - {fileID: 110162613}
       - {fileID: 110177939}
     data:
+      first: {fileID: 110250619}
+      second: []
+    data:
       first: {fileID: 110203199}
       second:
       - {fileID: 110133607}
@@ -944,9 +947,6 @@ StateMachine:
       - {fileID: 110145685}
     data:
       first: {fileID: 110236681}
-      second: []
-    data:
-      first: {fileID: 110250619}
       second: []
     data:
       first: {fileID: 110257703}
