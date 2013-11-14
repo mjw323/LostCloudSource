@@ -52,7 +52,6 @@ public class Hover : MonoBehaviour
 	private Vector3 initialGrindDir = Vector3.zero;
 	public float grindHeight = 1.0f;
 	public float grindSpeed = 10000;
-	public string boneBaseName = "joint";
 
 	// Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
 	Vector3 CalculateBoardDimensions()
@@ -212,7 +211,7 @@ public class Hover : MonoBehaviour
 				Vector3 fixedDir = Vector3.zero;
 				dir = grindPoint.position - transform.position;
 				dir.y = 0.0f;
-				fixedDir = grindDir + dir;
+				fixedDir = grindDir + dir + grindHeight * Vector3.up;
 
 				// Move along rail
 				rigidbody.AddForce(fixedDir.normalized * grindSpeed);
@@ -225,7 +224,7 @@ public class Hover : MonoBehaviour
 
 					dir = grindPoint.position - transform.position;
 					dir.y = 0.0f;
-					fixedDir = grindDir + dir;
+					fixedDir = grindDir + dir + grindHeight * Vector3.up;
 					rigidbody.velocity = fixedDir.normalized * mag;
 				}
 			}
