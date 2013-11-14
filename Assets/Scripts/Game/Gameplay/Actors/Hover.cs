@@ -47,13 +47,11 @@ public class Hover : MonoBehaviour
 	private bool grinding = false;
 	private Transform grindRail = null;
 	private Transform[] grindPoints;
-	private Transform lastRail = null;
 	private Transform grindPoint = null;
 	private Vector3 grindDir;
+	private Vector3 initialGrindDir = Vector3.zero;
 	public float grindOffset = 1.0f;
 	public float grindSpeed = 10000;
-	public float maxGrindDist = 5.0f; // Maximum distance for impules toward rail
-	public float grindPointDist = 0.75f; // distance to a grind point before you seek the next one
 
 	// Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
 	Vector3 CalculateBoardDimensions()
@@ -131,53 +129,46 @@ public class Hover : MonoBehaviour
 	void OnCollisionEnter(Collision collision) {
 		detach = false;
 		grinding = false;
-		Debug.Log("Hit ground!");
 	}
-	/*
-	void OnCollisionStay(Collision collision) {
-		foreach (ContactPoint contact in collision.contacts) {
-			if(contact.otherCollider.tag=="Grind") {
-				grinding = true;
-				grindRail = contact.otherCollider.transform;
-				Debug.Log("Yarrr! Ye be colldin' with a rail.");
-			}
+	
+	// Nearing rail
+	void OnTriggerEnter(Collider col) {
+		if(col.gameObject.tag == "Grind"){ 
+				grindRail = col.gameObject.transform;
+				grindPoints = grindRail.GetComponentsInChildren<Transform>();
+
+				initialGrindDir = rigidbody.velocity;
+				initialGrindDir.y = 0.0f;
+				initialGrindDir.Normalize();
 		}
 	}
 
-	void OnCollisionExit(Collision collision) {
-		foreach (ContactPoint contact in collision.contacts) {
-			if(contact.otherCollider.tag=="Grind") {
-				grinding = false;
-				Debug.Log("Yarrr! Ye be leavin' the rail.");
-			}
+	// On rail
+	void OnTriggerStay(Collider col) {
+		if(col.gameObject.tag == "Grind") {
+			grindPoint = nearestGrindPoint();
+			
+			float mag = Vector3.Magnitude(rigidbody.velocity);
+			rigidbody.velocity = grindDir.normalized * mag;
 		}
-	}*/
-	
-	void OnTriggerEnter(Collider col) {
-		if(col.gameObject.tag == "Grind" && col.gameObject.transform!=lastRail){ 
-				grindRail = col.gameObject.transform;
-				grindPoints = grindRail.GetComponentsInChildren<Transform>();
-				//Debug.Log("Found rail");
-			}
-		
 	}
+
+	// Leaving Rail
 	void OnTriggerExit(Collider col) {
-		if (col.gameObject.transform==lastRail){
-			lastRail = null;
-		}
 		if(col.gameObject.transform == grindRail){ 
-				// OH NOES!!111 Find rail again if we're close enough can
-				grindPoint = nearestGrindPoint(null);
+				//grindPoint = nearestGrindPoint();
 				if( grindPoint == null ) {
 					grinding = false;
 					grindRail = null;
-					Debug.Log("Lost rail :(");
-				} else {
+					initialGrindDir = Vector3.zero;
+				}/* else {
 					float mag = Vector3.Magnitude(rigidbody.velocity);
-					rigidbody.velocity = grindDir.normalized * mag; //Vector3.zero;
-				}
+					//rigidbody.velocity = grindDir.normalized * mag;
+				}*/
 		}
-		
+		if(col.gameObject.tag == "Grind") {
+			Debug.Log("Leaving Rail: " + Time.realtimeSinceStartup);
+		}
 	}
 
 	void FixedUpdate()
@@ -193,14 +184,9 @@ public class Hover : MonoBehaviour
 			{
 				onGround = true;
 				if (!detach){
-				float hoverForce = (hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime;
-				rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
+					float hoverForce = (hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime;
+					rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
 				}
-				/*if (m_hits[i].collider.gameObject.tag=="Grind"){
-					grinding = true;
-					grindRail = m_hits[i].transform;
-					Debug.Log("Yaarrr! Ye be grindin, ye scallywag.");
-				}*/
 			}
 		}
 
@@ -208,58 +194,40 @@ public class Hover : MonoBehaviour
 		// TODO: BUGGY :(
 		//       Following rail path seems to work, but smooth out grind mechanics a bit.
 		Vector3 dir;
-		// Impulse toward rail on button press, if board is close enough
+		// Impulse toward rail on button press
 		if(Input.GetButton("Grind") && grindRail != null) {
 			if (!grinding) {
-				Debug.Log("hey girl i see u tryna grind");
-				grindPoint = nearestGrindPoint(grindPoint);
+				grindPoint = nearestGrindPoint();
 				Debug.Log ("Now grinding to "+grindPoint.position + " dir: " + grindDir.normalized);
-				rigidbody.velocity = Vector3.zero; //cancel all forces
+
+				float mag = Vector3.Magnitude(rigidbody.velocity);
+				rigidbody.velocity = grindDir.normalized * mag;
 				grinding = true;
 			}
-			/*RaycastHit[] hits;
-			hits = rigidbody.SweepTestAll(rigidbody.velocity.normalized, maxGrindDist);
-
-			foreach( RaycastHit hit in hits ) {
-				if( hit.transform.tag=="Grind"  ) {
-					Debug.Log("Avast! Be ye lookin' to grind? " + hit.point);
-					Debug.DrawLine(hit.point, transform.position,Color.green,5.0f);
-					dir = hit.point - transform.position;
-					rigidbody.AddForce(dir.normalized * grindSpeed);
-				}
-			}*/
 		}
 
 		if(grinding){
-			rigidbody.useGravity = false;
+			//rigidbody.useGravity = false;
 			m_lean = 0;
 			m_thrust = 0;
+
 			// Find nearest point on the rail in the
-			// direction of the player velocity		
-			
+			// direction of the player velocity			
 			if (grindPoint == null || !Input.GetButton("Grind")){
 				grinding = false;
-				lastRail = grindRail;
 				grindRail = null;
 			}
 			else{
-				if (grindPoint == null){Debug.Log("Couldn't find next point!");}
-				//Debug.DrawLine(grindPoint.position, transform.position,Color.red,25.0f);//,false);
-				//dir = grindPoint.position + (Vector3.up*grindOffset) - transform.position;
-				//transform.rotation += (dir.normalized - transform.rotation)*.2;
-				rigidbody.AddForce(grindDir.normalized * grindSpeed /** Vector3.Distance(grindPoint.position,transform.position)*/);
+				rigidbody.AddForce(grindDir.normalized * grindSpeed);
 				Debug.DrawLine(grindPoint.position,10000 * grindDir.normalized, Color.red,300.0f,false);
 				
 				// Did we pass the point? Hmm....
-				dir = grindPoint.position + (Vector3.up*grindOffset) - transform.position;
-				if( Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) < 0 ) {
+				dir = grindPoint.position /*+ (Vector3.up*grindOffset)*/ - transform.position;
+				if( Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) <= 0 ) {
 					float mag = Vector3.Magnitude(rigidbody.velocity);
-					grindPoint = nearestGrindPoint(null);
-					rigidbody.velocity = grindDir.normalized * mag; //Vector3.zero;
-				} /*else if (Vector3.Distance(transform.position,grindPoint.position)<grindPointDist) {
-					grindPoint = nearestGrindPoint(grindPoint);
-					Debug.Log ("Now grinding to "+grindPoint);
-				}*/
+					grindPoint = nearestGrindPoint();
+					rigidbody.velocity = grindDir.normalized * mag;
+				}
 			}
 		}
 		else{rigidbody.useGravity = true;}
@@ -316,95 +284,83 @@ public class Hover : MonoBehaviour
 		m_jump = false;
 	}
 	
-	Transform nearestGrindPoint(Transform exclude)
+	Transform nearestGrindPoint()
 	{
 		Vector3 dir, velocity;
 		Transform nearestTrans = null;
 
 		// Project velocity to XZ
-		velocity = rigidbody.velocity;
-		velocity.y = 0.0f;
-		velocity.Normalize();
+		velocity = initialGrindDir;//rigidbody.velocity;
+		//velocity.y = 0.0f;
 
 		Vector3 nearestPoint = new Vector3(Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
 		foreach( Transform point in grindPoints ) {
-			Debug.DrawRay(point.position,Vector3.up,Color.blue,500.0f,false);
-			if(point != exclude) {
-				dir = point.position - transform.position;
-				// Rail in front of where we're going?
-				if( Vector3.Dot(velocity.normalized,dir.normalized) > 0 ) {
-					// Current point closer than nearest?
-					if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(nearestPoint,transform.position)) {
-						nearestPoint = point.position;
-						nearestTrans = point;
-						
-						Debug.DrawRay(transform.position,Vector3.forward,Color.blue,50.0f,false);
-						Debug.DrawRay(transform.position,Vector3.right,Color.red,50.0f,false);
-						Debug.DrawRay(transform.position,Vector3.up,Color.green,50.0f,false);
+			Debug.DrawRay(point.position,Vector3.up,Color.blue,600.0f,false);
+			
+			dir = point.position - transform.position;
+			dir.y = 0.0f;
+			// Rail in front of where we're going?
+			if( Vector3.Dot(velocity.normalized,dir.normalized) > 0 ) {
+				// Current point closer than nearest?
+				if(Vector3.Distance(point.position,transform.position) < Vector3.Distance(nearestPoint,transform.position)) {
+					nearestPoint = point.position;
+					nearestTrans = point;
+					
+					Debug.DrawRay(transform.position,initialGrindDir,Color.green,50.0f,false);
+					/*/ DEBUG ////////////////////////////////////////////////////////////////////////
+					Debug.DrawRay(transform.position,Vector3.forward,Color.blue,50.0f,false);
+					Debug.DrawRay(transform.position,Vector3.right,Color.red,50.0f,false);
+					Debug.DrawRay(transform.position,Vector3.up,Color.green,50.0f,false);
 
-						dir = nearestTrans.position - transform.position;
-						Debug.DrawRay(transform.position,dir.normalized,Color.white,50.0f,false);
-						Debug.DrawRay(transform.position,rigidbody.velocity.normalized,Color.red,50.0f,false);
-						// Construct grind direction vector
-						/*if(point.parent != null) {
-							Debug.Log("parent 1");
-							dir = point.parent.position - transform.position;
-							// behind us
-							if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0) {
-								grindDir = point.position - point.parent.position;
-							} else if( point.childCount != 0 ) {
-								Debug.Log("child 1");
-								dir = point.GetChild(0).position - transform.position;
-
-								// behind us
-								if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0) {
-									grindDir = point.position - point.GetChild(0).position;
-								}
-							} else if( point.childCount != 0 ) {
-								Debug.Log("child 2");
-								dir = point.GetChild(0).position - transform.position;
-
-								// behind us
-								if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0) {
-									grindDir = point.position - point.GetChild(0).position;
-								} else if(point.parent != null) {
-									Debug.Log("parent 2");
-									dir = point.parent.position - transform.position;
-									// behind us
-									if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0) {
-										grindDir = point.position - point.parent.position;
-									}
-								}
-							}
-						}*/
-					}
+					dir = nearestTrans.position - transform.position;
+					Debug.DrawRay(transform.position,dir.normalized,Color.white,50.0f,false);
+					Debug.DrawRay(transform.position,rigidbody.velocity.normalized,Color.red,50.0f,false);
+					*/////////////////////////////////////////////////////////////////////////////////
 				}
-			}
+			}			
 		}
+
+		// If within rail variance distance, grind rail vector
+		// If outside rail variance, move toward projection onto rail
 
 		// Construct grind direction vector
 		if( nearestTrans != null ) {
-			Vector3 goPos = nearestTrans.position + (Vector3.up * grindOffset);
 			if( nearestTrans.childCount != 0 ) {
 				dir = nearestTrans.GetChild(0).position - transform.position;
-				if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) < 0) {
-					grindDir = goPos - nearestTrans.GetChild(0).position;
+				dir.y = 0.0f;
+				if(Vector3.Dot(velocity.normalized,dir.normalized) < 0) {
+					Debug.Log("Child -> Nearest: " + initialGrindDir.normalized);
+					grindDir = nearestTrans.position - nearestTrans.GetChild(0).position;
 					grindDir.Normalize();
-				} else if (Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0 && nearestTrans.parent == null) {
-					grindDir = goPos - transform.position;
+				} else if(Vector3.Dot(velocity.normalized,dir.normalized) > 0 && nearestTrans.parent == null) {
+					Debug.Log("Child -> Initial Dir");
+					grindDir = initialGrindDir.normalized;//nearestTrans.position - transform.position;
 					grindDir.Normalize();
 				}
-			} else if ( nearestTrans.parent != null ) {
+			} else if( nearestTrans.parent != null ) {
 				dir = nearestTrans.parent.position - transform.position;
-				if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) < 0) {
-					grindDir = goPos - nearestTrans.parent.position;
+				dir.y = 0.0f;
+				if(Vector3.Dot(velocity.normalized,dir.normalized) < 0) {
+					Debug.Log("Parent -> Nearest");
+					grindDir = nearestTrans.position - nearestTrans.parent.position;
 					grindDir.Normalize();
-				} else if(Vector3.Dot(rigidbody.velocity.normalized,dir.normalized) > 0 && nearestTrans.childCount == 0) {
-					grindDir = goPos - transform.position;
+				} else if(Vector3.Dot(velocity.normalized,dir.normalized) > 0 && nearestTrans.childCount == 0) {
+					Debug.Log("Parent -> Initial Dir");
+					grindDir = initialGrindDir.normalized;//nearestTrans.position - transform.position;
 					grindDir.Normalize();
 				}
 			}
+
+			if(Vector3.Magnitude(grindDir) != 0.0f) {
+				initialGrindDir = grindDir;
+				initialGrindDir.y = 0.0f;
+				initialGrindDir.Normalize();
+			} 
 		}
+
+		// Projection Test
+		dir = transform.position + rigidbody.velocity.normalized;
+		Debug.DrawRay(transform.position,grindDir,Color.blue,50.0f,false);
 
 		return nearestTrans;
 	}
