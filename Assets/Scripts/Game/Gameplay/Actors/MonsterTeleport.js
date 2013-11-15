@@ -8,8 +8,7 @@ var Active : boolean;
 
 function Update () {
 	if(Vector3.Magnitude(Player.position - this.transform.position) < DistanceNeededToTeleport && Active){
-		
-		var instance : GameObject = Instantiate(Enemy, Vector3(this.position.x,this.position.y,this.position.z), transform.rotation);
+		Enemy.transform.position = this.transform.position;
 		
 		Active = false;
 	}
