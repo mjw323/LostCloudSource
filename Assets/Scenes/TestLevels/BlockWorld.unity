@@ -1451,10 +1451,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_running:
     speed: 6
-    rotationDegreesPerSecond: 120
+    threshold: 1
+    rotationDegreesPerSecond: 360
   m_falling:
     gravity: 9.80000019
-    maxSpeed: 0
+    maxSpeed: 50
 --- !u!143 &623190798
 CharacterController:
   m_ObjectHideFlags: 0

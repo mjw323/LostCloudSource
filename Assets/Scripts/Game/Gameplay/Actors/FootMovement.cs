@@ -9,7 +9,14 @@ public class FootMovement : MonoBehaviour
 	public class RunningParameters
 	{
 		public float speed;
+		public float threshold;
 		public float rotationDegreesPerSecond;
+	}
+
+	[Serializable]
+	public class JumpingParameters
+	{
+		public float height;
 	}
 
 	[Serializable]
@@ -40,16 +47,69 @@ public class FootMovement : MonoBehaviour
 		m_direction = Vector3.ClampMagnitude(m_direction, 1f);
 	}
 
+	private float CalculateRunSpeed()
+	{
+		float runSpeed = m_direction.sqrMagnitude * m_running.speed;
+		if (runSpeed < m_running.threshold)
+			return 0f;
+		else
+			return runSpeed;
+	}
+
+	private float CalculateTurnAngle()
+	{
+		if (m_direction == Vector3.zero)
+			return 0f;
+		else
+		{
+			float angleSign = (Vector3.Cross(m_direction, m_transform.forward).y >= 0) ? -1f : 1f;
+			return Vector3.Angle(m_direction, m_transform.forward) * angleSign;
+		}
+	}
+
+	private void RotateTowardsMovementDirection(float angleFacingToMovement)
+	{
+		if (angleFacingToMovement != 0f)
+		{
+			m_transform.rotation = Quaternion.RotateTowards(m_transform.rotation, Quaternion.LookRotation(m_direction, m_transform.up), m_running.rotationDegreesPerSecond * Time.deltaTime);
+		}
+	}
+
+	private void UpdateAnimator(float speed, float direction)
+	{
+		m_animator.SetFloat(m_speedId, speed);
+		m_animator.SetFloat(m_directionId, direction);
+	}
+
+	private void UpdateYVelocity()
+	{
+		if (m_characterController.isGrounded)
+			m_yVelocity = 0f;
+		else
+		{
+			m_yVelocity -= m_falling.gravity * Time.deltaTime;
+			if (m_yVelocity < -m_falling.maxSpeed)
+				m_yVelocity = -m_falling.maxSpeed;
+		}
+	}
+
+	private void UpdateXZVelocity(float speed)
+	{
+		m_xzVelocity = m_transform.forward * speed;
+	}
+
+	private Vector3 CalculateFinalVelocity()
+	{
+		Vector3 velocity = m_xzVelocity;
+		velocity.y = m_yVelocity;
+		return velocity;
+	}
+
 	void Awake()
 	{
 		m_transform = GetComponent<Transform>();
 		m_characterController = GetComponent<CharacterController>();
 		m_animator = GetComponentInChildren<Animator>();
-		if (m_animator == null)
-		{
-			Debug.LogError("Animator component not found on any child object.");
-			Debug.Break();
-		}
 
 		m_speedId = Animator.StringToHash("Speed");
 		m_directionId = Animator.StringToHash("Direction");
@@ -57,33 +117,16 @@ public class FootMovement : MonoBehaviour
 
 	void Update()
 	{
-		float runSpeed = m_direction.sqrMagnitude * m_running.speed;
-		float turnAngle;
-		if (m_direction == Vector3.zero)
-			turnAngle = 0f;
-		else
-		{
-			float angleSign = (Vector3.Cross(m_direction, m_transform.forward).y >= 0) ? -1f : 1f;
-			turnAngle = Vector3.Angle(m_direction, m_transform.forward) * angleSign;
-		}
+		float runSpeed = CalculateRunSpeed();
+		float turnAngle = CalculateTurnAngle();
 
-		if (m_xzVelocity != Vector3.zero)
-		{
-			m_transform.rotation = Quaternion.RotateTowards(m_transform.rotation, Quaternion.LookRotation(m_direction, m_transform.up), m_running.rotationDegreesPerSecond * Time.deltaTime);
-		}
+		UpdateAnimator(runSpeed, turnAngle);
 
-		m_animator.SetFloat(m_speedId, runSpeed);
-		m_animator.SetFloat(m_directionId, turnAngle);
+		RotateTowardsMovementDirection(turnAngle);
 
-		if (m_characterController.isGrounded)
-			m_yVelocity = 0f;
-		else
-			m_yVelocity -= m_falling.gravity * Time.deltaTime;
+		UpdateYVelocity();
+		UpdateXZVelocity(runSpeed);
 
-		m_xzVelocity = m_transform.forward * runSpeed;
-
-		Vector3 finalVelocity = m_xzVelocity;
-		finalVelocity.y = m_yVelocity;
-		m_characterController.Move(finalVelocity * Time.deltaTime);
+		m_characterController.Move(CalculateFinalVelocity() * Time.deltaTime);
 	}
 }
