@@ -5,41 +5,6 @@ using System;
 [RequireComponent (typeof(CharacterController))]
 public class FootMovement : MonoBehaviour
 {
-	[Serializable]
-	public class RunningParameters
-	{
-		public float speed;
-		public float threshold;
-		public float rotationDegreesPerSecond;
-	}
-
-	[Serializable]
-	public class JumpingParameters
-	{
-		public float height;
-	}
-
-	[Serializable]
-	public class FallingParameters
-	{
-		public float gravity;
-		public float maxSpeed;
-	}
-
-	[SerializeField] private RunningParameters m_running;
-	[SerializeField] private FallingParameters m_falling;
-
-	[HideInInspector] Transform m_transform;
-	[HideInInspector] CharacterController m_characterController;
-	[HideInInspector] Animator m_animator;
-
-	[HideInInspector] private int m_speedId;
-	[HideInInspector] private int m_directionId;
-
-	private Vector3 m_direction;
-	private Vector3 m_xzVelocity;
-	private float m_yVelocity;
-
 	public void MoveTowards(Vector3 direction)
 	{
 		m_direction = direction;
@@ -129,4 +94,39 @@ public class FootMovement : MonoBehaviour
 
 		m_characterController.Move(CalculateFinalVelocity() * Time.deltaTime);
 	}
+
+	[Serializable]
+	public class RunningParameters
+	{
+		public float speed;
+		public float threshold;
+		public float rotationDegreesPerSecond;
+	}
+
+	[Serializable]
+	public class JumpingParameters
+	{
+		public float height;
+	}
+
+	[Serializable]
+	public class FallingParameters
+	{
+		public float gravity;
+		public float maxSpeed;
+	}
+
+	[SerializeField] private RunningParameters m_running;
+	[SerializeField] private FallingParameters m_falling;
+
+	[HideInInspector] Transform m_transform;
+	[HideInInspector] CharacterController m_characterController;
+	[HideInInspector] Animator m_animator;
+
+	[HideInInspector] private int m_speedId;
+	[HideInInspector] private int m_directionId;
+
+	private Vector3 m_direction;
+	private Vector3 m_xzVelocity;
+	private float m_yVelocity;
 }
