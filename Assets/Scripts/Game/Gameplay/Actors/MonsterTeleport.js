@@ -7,10 +7,16 @@ var DistanceNeededToReactivate : int;
 var Active : boolean;
 
 function Update () {
-	if(Vector3.Magnitude(Player.position - this.transform.position) < DistanceNeededToTeleport && Active){
-		Enemy.transform.position = this.transform.position;
+	if(Player.GetComponent(UpgradeSystem).HasPlayerGottenUpgrade){
+		if(Vector3.Magnitude(Player.position - this.transform.position) < DistanceNeededToTeleport && Active){
+			navAgent = Enemy.GetComponent(NavMeshAgent);
+			navAgent.enabled = false;
+			Enemy.transform.position = this.transform.position;
+			navAgent.enabled = true;
 		
-		Active = false;
+		
+			Active = false;
+		}
 	}
 	
 	if(Vector3.Magnitude(Player.position - this.transform.position) > DistanceNeededToReactivate ){

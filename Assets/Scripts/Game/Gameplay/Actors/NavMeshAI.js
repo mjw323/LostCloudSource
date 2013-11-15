@@ -1,34 +1,34 @@
 ﻿//Controls Monster AI movement and leaping
 
-var target : Transform;
+var Player : Transform;
 var Leaping : boolean;
 var leapDistance : float;
 
 
-leapDistance = 25.0f;
+leapDistance = 40.0f;
 
 function Update(){
 	
-	if (!Leaping && (Vector3.Magnitude(target.position - this.transform.position) < 50)){
-		GetComponent(NavMeshAgent).destination = target.position;
-	}
-	
-	if (Random.Range(1,500) == 1 || Leaping){
-		if (!Leaping){
-			Debug.Log("Leap!");
+	if (Player.GetComponent(UpgradeSystem).HasPlayerGottenUpgrade){
+		if (!Leaping && (Vector3.Magnitude(Player.position - this.transform.position) < 50)){
+			GetComponent(NavMeshAgent).destination = Player.position;
 		}
-	if (Vector3.Magnitude(target.position - this.transform.position) < 50){
-		leap();
+	
+		if (Random.Range(1,500) == 1 || Leaping){
+			if (!Leaping){
+				Debug.Log("Leap!");
+			}
+			if (Vector3.Magnitude(Player.position - this.transform.position) < 100){
+				leap();
+			}
 		}
 	}
-	
-
 }
 
 function leap(){
 	var distance : float;
-	distance = Vector3.Magnitude(target.position-this.transform.position);
-	GetComponent(NavMeshAgent).destination = target.position + (target.rigidbody.velocity * (distance/GetComponent(NavMeshAgent).speed));
+	distance = Vector3.Magnitude(Player.position-this.transform.position);
+	GetComponent(NavMeshAgent).destination = Player.position + (Player.rigidbody.velocity * (distance/GetComponent(NavMeshAgent).speed));
 	if (distance > leapDistance){
 		Leaping = true;
 		GetComponent(NavMeshAgent).speed = 200;

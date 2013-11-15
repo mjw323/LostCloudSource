@@ -30,13 +30,15 @@ public class Hover : MonoBehaviour
 	public float jumpLength = 3.0f; //how many seconds to build maximum jump
 	public float jumpForce = 20.0f; //The max force applied when jumping
 	public float glideForce = 400.0f;
+	
+	public float glideLeft = 0.0f;
 	public float glideLength = 4.0f;
+	
 	public float glideApex = 1.0f; //how many seconds after you start gliding at which it reaches its apex
 	public float glideApexForce = 600.0f; //glide power ranges from power*1 to power*(1+ApexAdd), with most power at apex time
 	
 	private float hoverMod;
 	private float steerMod;
-	private float glideLeft = 0.0f;
 	private float airTime = 0.0f;
 	private float glidePower;
 	
@@ -247,7 +249,11 @@ public class Hover : MonoBehaviour
 			glidePower = glideForce + (((glideApexForce-glideForce) * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
 			rigidbody.AddForce(transform.up * glidePower);
 			glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
+			//this.transform.GetComponentsInChildren<ParticleSystem>()[0].startLifetime = glideLeft/glideLength * 5;
+			this.transform.GetChild(1).particleSystem.startLifetime = 0.75f;//glideLeft/glideLength * 5;
+			this.transform.GetChild(1).particleSystem.startSpeed = Mathf.Pow (glideLeft/glideLength,2.0f)*3.0f;
 		}
+		else{this.transform.GetChild(1).particleSystem.startLifetime = 0.0f;}
 		
 		//transform.rotation.eulerAngles.z = Mathf.Clamp (transform.rotation.eulerAngles.z, -90.0f, 90.0f);
 		//transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
@@ -258,7 +264,8 @@ public class Hover : MonoBehaviour
 			airTime = 0;
 			glideLeft = Mathf.Clamp(glideLeft+(Time.deltaTime*3),0.0f,glideLength);
 		if (m_jump){
-			jumpPower = Mathf.Clamp(jumpPower+(Time.deltaTime)/jumpLength,0.0f,1.0f);}
+			jumpPower = Mathf.Clamp(jumpPower+(Time.deltaTime)/jumpLength,0.0f,1.0f);
+			}
 		else{
 			if (jumpPower > 0.0f){
 				detach = true; 
