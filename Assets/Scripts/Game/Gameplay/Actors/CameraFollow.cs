@@ -14,8 +14,8 @@ public class CameraFollow : MonoBehaviour
 
 	void Update()
 	{
-		xAngle = Input.GetAxis ("RightStickH")*60;
-		yAngle = Input.GetAxis ("RightStickV")*30;
+		//xAngle = Input.GetAxis ("RightStickH")*60;
+		//yAngle = Input.GetAxis ("RightStickV")*30;
 		float rotationAngle = Mathf.LerpAngle(transform.eulerAngles.y+(xAngle), target.eulerAngles.y+(yAngle), rotationDamping * Time.deltaTime);
 		Quaternion rotation = Quaternion.Euler(0, rotationAngle, 0);
 		Vector3 newPosition = target.position;
