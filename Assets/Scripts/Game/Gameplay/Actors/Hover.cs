@@ -144,6 +144,8 @@ public class Hover : MonoBehaviour
 				initialGrindDir = rigidbody.velocity;
 				initialGrindDir.y = 0.0f;
 				initialGrindDir.Normalize();
+			
+				Debug.Log("found a rail!");
 		}
 	}
 
