@@ -14,7 +14,7 @@ public class ThirdPersonCamera : MonoBehaviour
 	private Vector3 m_velocity;
 
 	void Awake()
-	{
+	{	
 		m_transform = GetComponent<Transform>();
 
 		GameObject player = GameObject.FindWithTag("Player");

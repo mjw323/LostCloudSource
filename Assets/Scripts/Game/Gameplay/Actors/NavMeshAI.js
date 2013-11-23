@@ -10,7 +10,7 @@ leapDistance = 40.0f;
 function Update(){
 	
 	if (Player.GetComponent(UpgradeSystem).HasPlayerGottenUpgrade){
-		if (!Leaping && (Vector3.Magnitude(Player.position - this.transform.position) < 50)){
+		if (!Leaping && (Vector3.Magnitude(Player.position - this.transform.position) < 100)){
 			GetComponent(NavMeshAgent).destination = Player.position;
 		}
 	
