@@ -1,132 +1,128 @@
 ﻿using UnityEngine;
-using System;
 
+/// <summary>
+/// Controller for the player character's on-foot movement behavior.
+/// <summary>
 [AddComponentMenu ("Player/FootMovement")]
+[RequireComponent (typeof(Animator))]
 [RequireComponent (typeof(CharacterController))]
 public class FootMovement : MonoBehaviour
 {
+	/// <summary>
+	/// Move towards the provided direction.
+	/// </summary>
+	/// <param name="direction">
+	/// Direction to move towards. The player will rotate towards this
+	/// direction if she is not already facing it, and run along it if
+	/// she is.
+	/// </param>
 	public void MoveTowards(Vector3 direction)
 	{
-		m_direction = direction;
-		m_direction.y = 0f;
-		m_direction = Vector3.ClampMagnitude(m_direction, 1f);
+		this.direction = direction;
 	}
 
-	private float CalculateRunSpeed()
+	/// <summary>
+	/// Causes the player to jump.
+	/// </summary>
+	/// <remarks>
+	/// Calling this method while the player is mid-air will not cause
+	/// them to jump upon landing.
+	/// </remarks>
+	public void Jump()
 	{
-		float runSpeed = m_direction.sqrMagnitude * m_running.speed;
-		if (runSpeed < m_running.threshold)
-			return 0f;
-		else
-			return runSpeed;
-	}
-
-	private float CalculateTurnAngle()
-	{
-		if (m_direction == Vector3.zero)
-			return 0f;
-		else
-		{
-			float angleSign = (Vector3.Cross(m_direction, m_transform.forward).y >= 0) ? -1f : 1f;
-			return Vector3.Angle(m_direction, m_transform.forward) * angleSign;
-		}
-	}
-
-	private void RotateTowardsMovementDirection(float angleFacingToMovement)
-	{
-		if (angleFacingToMovement != 0f)
-		{
-			m_transform.rotation = Quaternion.RotateTowards(m_transform.rotation, Quaternion.LookRotation(m_direction, m_transform.up), m_running.rotationDegreesPerSecond * Time.deltaTime);
-		}
-	}
-
-	private void UpdateAnimator(float speed, float direction)
-	{
-		m_animator.SetFloat(m_speedId, speed);
-		m_animator.SetFloat(m_directionId, direction);
-	}
-
-	private void UpdateYVelocity()
-	{
-		if (m_characterController.isGrounded)
-			m_yVelocity = 0f;
-		else
-		{
-			m_yVelocity -= m_falling.gravity * Time.deltaTime;
-			if (m_yVelocity < -m_falling.maxSpeed)
-				m_yVelocity = -m_falling.maxSpeed;
-		}
-	}
-
-	private void UpdateXZVelocity(float speed)
-	{
-		m_xzVelocity = m_transform.forward * speed;
-	}
-
-	private Vector3 CalculateFinalVelocity()
-	{
-		Vector3 velocity = m_xzVelocity;
-		velocity.y = m_yVelocity;
-		return velocity;
+		if (characterController.isGrounded)
+			shouldJump = true;
 	}
 
 	void Awake()
 	{
-		m_transform = GetComponent<Transform>();
-		m_characterController = GetComponent<CharacterController>();
-		m_animator = GetComponentInChildren<Animator>();
+		transform = GetComponent<Transform>();
+		animator = GetComponent<Animator>();
+		characterController = GetComponent<CharacterController>();
 
-		m_speedId = Animator.StringToHash("Speed");
-		m_directionId = Animator.StringToHash("Direction");
+		speedId = Animator.StringToHash("Speed");
+		directionId = Animator.StringToHash("Direction");
+		jumpId = Animator.StringToHash("Jump");
+
+		pivotLeftId = Animator.StringToHash("Base Layer.Locomotion.TurnOnSpot");
+		plantLeftId = Animator.StringToHash(
+			"Base Layer.Locomotion.PlantTurnLeft");
+		plantRightId = Animator.StringToHash(
+			"Base Layer.Locomotion.PlantTurnRight");
 	}
 
 	void Update()
 	{
-		float runSpeed = CalculateRunSpeed();
-		float turnAngle = CalculateTurnAngle();
+		float turnAngle;
+		if (direction == Vector3.zero)
+			turnAngle = 0f;
+		else
+		{
+			float angleSign;
+			if (Vector3.Cross(direction, transform.forward).y >= 0)
+				angleSign = -1f;
+			else
+				angleSign = 1f;
+			turnAngle =  Vector3.Angle(direction, transform.forward) * angleSign;
+		}
+		animator.SetFloat(directionId, turnAngle);
 
-		UpdateAnimator(runSpeed, turnAngle);
+		AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+		bool isPivoting = (animStateInfo.nameHash == pivotLeftId);
+		bool isPlanting = ((animStateInfo.nameHash == plantLeftId) ||
+			(animStateInfo.nameHash == plantRightId));
 
-		RotateTowardsMovementDirection(turnAngle);
+		// Manually rotate if we aren't in an animation-driven turn/plant
+		if (turnAngle != 0f && !(isPivoting || isPlanting))
+		{
+			Quaternion targetRotation = Quaternion.LookRotation(direction,
+				transform.up);
+			transform.rotation = Quaternion.RotateTowards(transform.rotation,
+				targetRotation, turnSpeed * Time.deltaTime);
+		}
 
-		UpdateYVelocity();
-		UpdateXZVelocity(runSpeed);
+		float runSpeed = direction.sqrMagnitude * maxSpeed;
+		if (runSpeed < minSpeed)
+			runSpeed = 0f;
+		animator.SetFloat(speedId, runSpeed);
 
-		m_characterController.Move(CalculateFinalVelocity() * Time.deltaTime);
+		// Reset the Jump animator parameter to prevent looping
+		if (jumpedLastFrame)
+		{
+			animator.SetBool(jumpId, false);
+			jumpedLastFrame = false;
+		}
+
+		if (shouldJump)
+		{
+			animator.SetBool(jumpId, true);
+			shouldJump = false;
+			jumpedLastFrame = true;
+		}
 	}
 
-	[Serializable]
-	public class RunningParameters
-	{
-		public float speed;
-		public float threshold;
-		public float rotationDegreesPerSecond;
-	}
+	[SerializeField] private float minSpeed;
+	[SerializeField] private float maxSpeed;
+	[SerializeField] private float turnSpeed; // Degrees per second
 
-	[Serializable]
-	public class JumpingParameters
-	{
-		public float height;
-	}
+	// Internal references
+	[HideInInspector] new private Transform transform;
+	[HideInInspector] private Animator animator;
+	[HideInInspector] private CharacterController characterController;
 
-	[Serializable]
-	public class FallingParameters
-	{
-		public float gravity;
-		public float maxSpeed;
-	}
+	// Animator parameter references
+	[HideInInspector] private int speedId;
+	[HideInInspector] private int directionId;
+	[HideInInspector] private int jumpId;
 
-	[SerializeField] private RunningParameters m_running;
-	[SerializeField] private FallingParameters m_falling;
+	// Animator state references
+	[HideInInspector] private int pivotLeftId;
+	// [HideInInspector] private int pivotRightId; // Not yet implemented
+	[HideInInspector] private int plantLeftId;
+	[HideInInspector] private int plantRightId;
 
-	[HideInInspector] Transform m_transform;
-	[HideInInspector] CharacterController m_characterController;
-	[HideInInspector] Animator m_animator;
-
-	[HideInInspector] private int m_speedId;
-	[HideInInspector] private int m_directionId;
-
-	private Vector3 m_direction;
-	private Vector3 m_xzVelocity;
-	private float m_yVelocity;
+	// Temporary state
+	private Vector3 direction;
+	private bool shouldJump;
+	private bool jumpedLastFrame;
 }
