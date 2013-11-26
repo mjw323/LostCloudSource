@@ -7,11 +7,14 @@
         _RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
 		_Ramp("Color Ramp", 2D) = "white" {}
 	}
-	SubShader {
-    Tags { "RenderType"="Opaque" }
-            
-        LOD 300
 
+	SubShader {
+        Tags {"RenderType"="Transparent" "Queue"="Transparent"}
+            
+        LOD 500
+        ColorMask RGB
+        Blend SrcAlpha OneMinusSrcAlpha
+        
         CGPROGRAM
         #pragma surface SurfMain ToonRamp
         #pragma target 3.0
