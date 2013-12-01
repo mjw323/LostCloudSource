@@ -862,6 +862,7 @@ GameObject:
   - 4: {fileID: 130177691}
   - 95: {fileID: 130177688}
   - 195: {fileID: 130177693}
+  - 114: {fileID: 130177689}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -882,6 +883,20 @@ Animator:
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
+--- !u!114 &130177689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 130177687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22c90e8e96cfb34ab3c56e0364d65db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 786832295}
+  Leaping: 0
+  leapDistance: 0
 --- !u!4 &130177691
 Transform:
   m_ObjectHideFlags: 0
@@ -951,15 +966,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .28242451
+      value: 183.780838
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.83209515
+      value: 20.175539
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -140.798111
+      value: 599.26709
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -989,6 +1004,10 @@ Prefab:
       propertyPath: FadeWaitTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: Sun
+      value: 
+      objectReference: {fileID: 2130321396}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
   m_RootGameObject: {fileID: 786832291}
@@ -3959,6 +3978,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
 --- !u!132 &477462779
 GUIText:
   m_ObjectHideFlags: 0
@@ -6546,6 +6568,7 @@ MonoBehaviour:
   Player: {fileID: 786832295}
   MainCamera: {fileID: 477462776}
   Enemy: {fileID: 130177687}
+  Sun: {fileID: 2130321396}
   FadeWaitTime: 3
 --- !u!4 &786832295
 Transform:
@@ -6554,7 +6577,7 @@ Transform:
   m_PrefabInternal: {fileID: 140348788}
   m_GameObject: {fileID: 786832291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .28242451, y: 2.83209515, z: -140.798111}
+  m_LocalPosition: {x: 183.780838, y: 20.175539, z: 599.26709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 665915573}
@@ -10097,6 +10120,10 @@ Prefab:
       propertyPath: heightDamping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 12400000, guid: 1f595438b0e4e814e913b10b8d0807ac, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f595438b0e4e814e913b10b8d0807ac, type: 2}
   m_RootGameObject: {fileID: 477462767}
@@ -10497,6 +10524,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e7693141d1cedc45aa01a860f5c383a, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
@@ -12122,6 +12152,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e7693141d1cedc45aa01a860f5c383a, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 

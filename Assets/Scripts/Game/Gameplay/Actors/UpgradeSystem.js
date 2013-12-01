@@ -3,6 +3,7 @@ var HasPlayerGottenUpgrade : boolean;
 var Player : Transform;
 var MainCamera : Camera;
 var Enemy : GameObject;
+var Sun : GameObject;
 var FadeWaitTime : int;
 
 
@@ -42,6 +43,7 @@ function CollisionExit()
 	{
 		yield WaitForSeconds(FadeWaitTime);
 		MainCamera.SendMessage("fadeIn");
+		Sun.active = false;
 		Player.rigidbody.isKinematic = false;
 		navAgent = Enemy.GetComponent(NavMeshAgent);
 		navAgent.enabled = true;
