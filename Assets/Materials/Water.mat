@@ -54,6 +54,18 @@ Material:
         second: 500
       data:
         first:
+          name: _FoamOffset
+        second: .530769289
+      data:
+        first:
+          name: _Reflectivity
+        second: .550000012
+      data:
+        first:
+          name: _FresnelFactor
+        second: .785017252
+      data:
+        first:
           name: _N1
         second: 1
       data:
@@ -68,35 +80,31 @@ Material:
         first:
           name: _GerstnerIntensity
         second: 1
-      data:
-        first:
-          name: _Reflectivity
-        second: .550000012
-      data:
-        first:
-          name: _FresnelFactor
-        second: .785017252
-      data:
-        first:
-          name: _FoamOffset
-        second: .530769289
     m_Colors:
-      data:
-        first:
-          name: _Foam
-        second: {r: .100000001, g: .375, b: 0, a: 0}
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _WaterColor
-        second: {r: .0818014741, g: .0857506171, b: .654411793, a: .501960814}
-      data:
-        first:
           name: _BaseColor
         second: {r: .00232482934, g: .0824110582, b: .316176474, a: 1}
+      data:
+        first:
+          name: _RefractionColor
+        second: {r: .172794104, g: .215669483, b: .5, a: 1}
+      data:
+        first:
+          name: _FoamColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Foam
+        second: {r: .100000001, g: .375, b: 0, a: 0}
+      data:
+        first:
+          name: _WaterColor
+        second: {r: .0818014741, g: .0857506171, b: .654411793, a: .501960814}
       data:
         first:
           name: _ReflectionColor
@@ -157,11 +165,3 @@ Material:
         first:
           name: _GDirectionCD
         second: {r: .100000001, g: .899999976, b: .5, a: .5}
-      data:
-        first:
-          name: _RefractionColor
-        second: {r: .172794104, g: .215669483, b: .5, a: 1}
-      data:
-        first:
-          name: _FoamColor
-        second: {r: 1, g: 1, b: 1, a: 1}

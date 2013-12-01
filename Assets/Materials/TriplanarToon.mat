@@ -21,9 +21,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _TexXZ
         second:
-          m_Texture: {fileID: 2800000, guid: 47e9475dd1b779f42ba2aa081b1c5624, type: 3}
+          m_Texture: {fileID: 2800000, guid: d8aa44bb3ab63084bb7b323f3c690dd8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -40,14 +47,11 @@ Material:
           m_Texture: {fileID: 2800000, guid: 0997c884aee66ee468e24c15cf92554a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+    m_Floats:
       data:
         first:
-          name: _Ramp
-        second:
-          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats:
+          name: _RimPower
+        second: 3
       data:
         first:
           name: _TileU
@@ -68,16 +72,12 @@ Material:
         first:
           name: _NZ
         second: 1
-      data:
-        first:
-          name: _RimPower
-        second: 3
     m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _RimColor
         second: {r: .25999999, g: .189999998, b: .159999996, a: 0}
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
