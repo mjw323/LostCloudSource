@@ -2445,7 +2445,7 @@ Transform:
   m_PrefabInternal: {fileID: 628671275}
   m_GameObject: {fileID: 569831279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 591558546}
@@ -2843,7 +2843,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 24d18e6378dc84142aa253ba1db4e517, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 24d18e6378dc84142aa253ba1db4e517, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4057,6 +4057,33 @@ Transform:
   m_Children:
   - {fileID: 103951716}
   m_Father: {fileID: 2018215574}
+--- !u!1 &1028635190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1028635191}
+  m_Layer: 0
+  m_Name: CameraRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1028635191
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1028635190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1170159390}
+  m_Father: {fileID: 0}
 --- !u!1 &1051670711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4502,10 +4529,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170159385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1028635191}
 --- !u!114 &1170159391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4517,10 +4544,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9447e8b0ad37b42bef7cb3cdf3ee6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_offset: {x: 0, y: 1, z: 0}
-  m_distanceAbove: 2
-  m_distanceAwayFrom: 3
-  m_followTime: .25
+  parentRig: {fileID: 0}
+  distanceAway: 3.5
+  distanceAwayMultipler: 2
+  distanceUp: 1.14999998
+  distanceUpMultiplier: 2.5
+  follow: {fileID: 0}
+  followXform: {fileID: 0}
+  widescreen: .200000003
+  targetingTime: .5
+  lookSpeed: 3
+  freeThreshold: -.100000001
+  camMinDistFromChar: {x: 1, y: -.5}
+  rightStickThreshold: .300000012
+  camSmoothDampTime: .100000001
+  lookDirDampTime: .100000001
 --- !u!1 &1175023134
 GameObject:
   m_ObjectHideFlags: 0
