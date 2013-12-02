@@ -77,11 +77,13 @@ public class FootMovement : MonoBehaviour
 	void OnEnable()
 	{
 		characterController.enabled = true;
+		animator.applyRootMotion = true;
 	}
 
 	void OnDisable()
 	{
 		characterController.enabled = false;
+		animator.applyRootMotion = false;
 	}
 
 	void Update()

@@ -140,6 +140,10 @@ public class Hover : MonoBehaviour
 		transform = GetComponent<Transform>();
 		renderer = GetComponentInChildren<Renderer>();
 
+		GameObject noke = GameObject.FindWithTag("Player");
+		nokeAnimator = noke.GetComponent<Animator>();
+		ridingId = Animator.StringToHash("Riding");
+
 		particleSystem = GetComponentInChildren<ParticleSystem>();
 
 		Vector3 boardDimensions = CalculateBoardDimensions();
@@ -152,12 +156,14 @@ public class Hover : MonoBehaviour
 	{
 		renderer.enabled = true;
 		rigidbody.isKinematic = false;
+		nokeAnimator.SetBool(ridingId, true);
 	}
 
 	void OnDisable()
 	{
 		rigidbody.isKinematic = true;
 		renderer.enabled = false;
+		nokeAnimator.SetBool(ridingId, false);
 	}
 	
 	void OnCollisionEnter(Collision collision) {
@@ -398,6 +404,12 @@ public class Hover : MonoBehaviour
 	[HideInInspector] new private Transform transform;
 	[HideInInspector] new private Renderer renderer;
 	[HideInInspector] new private ParticleSystem particleSystem;
+
+	// External references
+	[HideInInspector] private Animator nokeAnimator;
+
+	// Animator parameter references
+	[HideInInspector] private int ridingId;
 
 	// Temporary state
 	private bool shouldDismount;
