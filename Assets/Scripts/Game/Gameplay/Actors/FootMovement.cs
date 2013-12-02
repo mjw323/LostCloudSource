@@ -132,6 +132,7 @@ public class FootMovement : MonoBehaviour
 	[HideInInspector] new private Transform transform;
 	[HideInInspector] private Animator animator;
 	[HideInInspector] private CharacterController characterController;
+	[HideInInspector] private float speed = 0f;
 
 	// Animator parameter references
 	[HideInInspector] private int speedId;
@@ -148,4 +149,15 @@ public class FootMovement : MonoBehaviour
 	private Vector3 direction;
 	private bool shouldJump;
 	private bool jumpedLastFrame;
+	
+	public float Speed
+	{
+		get{return this.speed;}
+		set{speed = direction.sqrMagnitude * maxSpeed;}
+	}
+	
+	public Animator Animator
+	{
+		get{return this.animator;}
+	}
 }
