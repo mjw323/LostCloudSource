@@ -31,6 +31,7 @@ public class BoardController : MonoBehaviour
 	void OnEnable()
 	{
 		boardTransform.position = transform.position;
+		boardTransform.forward = transform.forward;
 		transform.parent = boardTransform;
 		boardMovement.enabled = true;
 	}
