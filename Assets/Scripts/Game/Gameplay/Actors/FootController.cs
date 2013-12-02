@@ -7,16 +7,48 @@
 [RequireComponent (typeof(FootMovement))]
 public class FootController : MonoBehaviour
 {
+	private void OnSummonBoard()
+	{
+		enabled = false;
+		boardController.enabled = true;
+	}
+
 	void Awake()
 	{
-		player = GetComponent<FootMovement>();
+		footMovement = GetComponent<FootMovement>();
+		footMovement.OnSummonBoard += OnSummonBoard;
+
+		gravity = GetComponent<Gravity>();
+
+		boardController = GetComponent<BoardController>();
 		
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
 		cameraTransform = mainCamera.GetComponent<Transform>();
 	}
 
+	void OnEnable()
+	{
+		footMovement.enabled = true;
+		gravity.enabled = true;
+	}
+
+	void OnDisable()
+	{
+		footMovement.enabled = false;
+		gravity.enabled = false;
+	}
+
+	void OnDestroy()
+	{
+		if (footMovement != null) // Possible during shutdown
+			footMovement.OnSummonBoard -= OnSummonBoard;
+	}
+
 	void Update()
 	{
+		if (Input.GetButtonDown("Fire3")) // TODO: Rename this input!
+			footMovement.SummonBoard();
+
 		float stickX = Input.GetAxis("Horizontal");
 		float stickY = Input.GetAxis("Vertical");
 		Vector3 stickDirection = new Vector3(stickX, 0f, stickY);
@@ -28,12 +60,17 @@ public class FootController : MonoBehaviour
 			cameraLook.normalized);
 		Vector3 moveDirection = stickToWorld * stickDirection;
 
-		player.MoveTowards(moveDirection);
+		footMovement.MoveTowards(moveDirection);
 
 		if (Input.GetButtonDown("Jump"))
-			player.Jump();
+			footMovement.Jump();
 	}
 
-	[HideInInspector] private FootMovement player;
+	// Internal references
+	[HideInInspector] private FootMovement footMovement;
+	[HideInInspector] private Gravity gravity;
+	[HideInInspector] private BoardController boardController;
+
+	// External references
 	[HideInInspector] private Transform cameraTransform;
 }

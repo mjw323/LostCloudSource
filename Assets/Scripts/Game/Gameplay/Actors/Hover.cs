@@ -116,16 +116,48 @@ public class Hover : MonoBehaviour
 		m_lean = lean;
 		m_jump = jump;
 		if (glide2){m_glide = 1.0f;}
-		else{m_glide = Mathf.Abs (glide);}
-		
+		else{m_glide = Mathf.Abs (glide);}	
+	}
+
+	/// <summary>
+	/// Remove Noke from her board here.
+	/// </summary>
+	public delegate void DismissedBoardHandler();
+
+	/// <summary>
+	/// Fired when Noke should get off of her board.
+	/// </summary>
+	public event DismissedBoardHandler OnDismissBoard;
+
+	public void DismissBoard()
+	{
+		if (true) // Under what conditions should this be allowed?
+			shouldDismount = true;
 	}
 
 	void Awake()
 	{
+		transform = GetComponent<Transform>();
+		renderer = GetComponentInChildren<Renderer>();
+
+		particleSystem = GetComponentInChildren<ParticleSystem>();
+
 		Vector3 boardDimensions = CalculateBoardDimensions();
 		CreateSensors(CalculateSensorPositions(boardDimensions));
 		CreateThruster(boardDimensions);
 		m_hits = new RaycastHit[m_sensors.Length];
+	}
+
+	void OnEnable()
+	{
+		renderer.enabled = true;
+		rigidbody.isKinematic = false;
+	}
+
+	void OnDisable()
+	{
+		rigidbody.isKinematic = true;
+		renderer.enabled = false;
 	}
 	
 	void OnCollisionEnter(Collision collision) {
@@ -166,6 +198,13 @@ public class Hover : MonoBehaviour
 			grindRail = null;
 			initialGrindDir = Vector3.zero;
 		}
+	}
+
+	void Update()
+	{
+		if (shouldDismount)
+			OnDismissBoard();
+		shouldDismount = false; // Reset to avoid boarding at unexpected time
 	}
 
 	void FixedUpdate()
@@ -246,16 +285,15 @@ public class Hover : MonoBehaviour
 		clampVector.x = Mathf.Clamp (clampVector.x,-currentClamp,currentClamp);
 		
 		transform.localEulerAngles = clampVector;
-		
 		if (!onGround && m_glide>0.5f && glideLeft > 0){
 			glidePower = glideForce + (((glideApexForce-glideForce) * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
 			rigidbody.AddForce(transform.up * glidePower);
 			glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
 			//this.transform.GetComponentsInChildren<ParticleSystem>()[0].startLifetime = glideLeft/glideLength * 5;
-			this.transform.GetChild(1).particleSystem.startLifetime = 0.75f;//glideLeft/glideLength * 5;
-			this.transform.GetChild(1).particleSystem.startSpeed = Mathf.Pow (glideLeft/glideLength,2.0f)*3.0f;
+			particleSystem.startLifetime = 0.75f;//glideLeft/glideLength * 5;
+			particleSystem.startSpeed = Mathf.Pow (glideLeft/glideLength,2.0f)*3.0f;
 		}
-		else{this.transform.GetChild(1).particleSystem.startLifetime = 0.0f;}
+		else{particleSystem.startLifetime = 0.0f;}
 		
 		//transform.rotation.eulerAngles.z = Mathf.Clamp (transform.rotation.eulerAngles.z, -90.0f, 90.0f);
 		//transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
@@ -355,4 +393,12 @@ public class Hover : MonoBehaviour
 
 		return nearestTrans;
 	}
+
+	// Internal references
+	[HideInInspector] new private Transform transform;
+	[HideInInspector] new private Renderer renderer;
+	[HideInInspector] new private ParticleSystem particleSystem;
+
+	// Temporary state
+	private bool shouldDismount;
 }

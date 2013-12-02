@@ -40,7 +40,7 @@ public class FootMovement : MonoBehaviour
 	public delegate void SummonedBoardHandler();
 
 	/// <summary>
-	/// Fired when Noke should cease being on-foot and get on her board.
+	/// Fired when Noke should get on her board.
 	/// </summary>
 	public event SummonedBoardHandler OnSummonBoard;
 
@@ -54,7 +54,7 @@ public class FootMovement : MonoBehaviour
 	public void SummonBoard()
 	{
 		if (characterController.isGrounded)
-			OnSummonBoard();
+			shouldBoard = true;
 	}
 
 	void Awake()
@@ -74,8 +74,26 @@ public class FootMovement : MonoBehaviour
 			"Base Layer.Locomotion.PlantTurnRight");
 	}
 
+	void OnEnable()
+	{
+		characterController.enabled = true;
+	}
+
+	void OnDisable()
+	{
+		characterController.enabled = false;
+	}
+
 	void Update()
 	{
+		if (shouldBoard)
+		{
+			OnSummonBoard();
+			shouldBoard = false; // Reset to avoid boarding at unexpected time
+			return;
+		}
+		shouldBoard = false; // See above
+
 		float turnAngle;
 		if (direction == Vector3.zero)
 			turnAngle = 0f;
@@ -149,6 +167,7 @@ public class FootMovement : MonoBehaviour
 	private Vector3 direction;
 	private bool shouldJump;
 	private bool jumpedLastFrame;
+	private bool shouldBoard;
 	
 	public float Speed
 	{
