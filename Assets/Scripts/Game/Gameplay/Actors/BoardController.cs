@@ -26,6 +26,8 @@ public class BoardController : MonoBehaviour
 
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
 		cameraTransform = mainCamera.GetComponent<Transform>();
+
+		oldParent = transform.parent.GetComponent<Transform>();
 	}
 
 	void OnEnable()
@@ -33,12 +35,13 @@ public class BoardController : MonoBehaviour
 		boardTransform.position = transform.position;
 		boardTransform.forward = transform.forward;
 		transform.parent = boardTransform;
+		transform.parent.Translate(0f, 0.25f, 0f); // Prevent fall-through
 		boardMovement.enabled = true;
 	}
 
 	void OnDisable()
 	{
-		transform.parent = null;
+		transform.parent = oldParent;
 		boardMovement.enabled = false;
 	}
 
@@ -69,4 +72,5 @@ public class BoardController : MonoBehaviour
 	[HideInInspector] private Transform boardTransform;
 	[HideInInspector] private Hover boardMovement;
 	[HideInInspector] private Transform cameraTransform;
+	[HideInInspector] private Transform oldParent;
 }
