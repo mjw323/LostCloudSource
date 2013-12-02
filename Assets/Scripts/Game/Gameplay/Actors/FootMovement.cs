@@ -34,6 +34,29 @@ public class FootMovement : MonoBehaviour
 			shouldJump = true;
 	}
 
+	/// <summary>
+	/// Place Noke on her board here.
+	/// </summary>
+	public delegate void SummonedBoardHandler();
+
+	/// <summary>
+	/// Fired when Noke should cease being on-foot and get on her board.
+	/// </summary>
+	public event SummonedBoardHandler OnSummonBoard;
+
+	/// <summary>
+	/// Summons Noke's board and places her on it.
+	/// </summary>
+	/// <remarks>
+	/// Disables the set of scripts pertaining to on-foot movement and
+	/// enables the one for board-riding.
+	/// </remarks>
+	public void SummonBoard()
+	{
+		if (characterController.isGrounded)
+			OnSummonBoard();
+	}
+
 	void Awake()
 	{
 		transform = GetComponent<Transform>();

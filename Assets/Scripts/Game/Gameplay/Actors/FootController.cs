@@ -1,19 +1,15 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Maps controller input to player intent and forwards it along to the Player
-/// state machine.
+/// Controller for Noke in the on-foot state.
 /// </summary>
-[AddComponentMenu ("Player/PlayerController")]
-[RequireComponent (typeof(Player))]
-public class PlayerController : MonoBehaviour
+[AddComponentMenu ("Player/FootController")]
+[RequireComponent (typeof(FootMovement))]
+public class FootController : MonoBehaviour
 {
-	[HideInInspector] private Player m_player;
-	[HideInInspector] private ThirdPersonCamera m_camera;
-
 	void Awake()
 	{
-		player = GetComponent<Player>();
+		player = GetComponent<FootMovement>();
 		
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
 		cameraTransform = mainCamera.GetComponent<Transform>();
@@ -38,6 +34,6 @@ public class PlayerController : MonoBehaviour
 			player.Jump();
 	}
 
-	[HideInInspector] private Player player;
+	[HideInInspector] private FootMovement player;
 	[HideInInspector] private Transform cameraTransform;
 }
