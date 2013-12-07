@@ -240,7 +240,13 @@ public class Hover : MonoBehaviour
 
 				float mag = Vector3.Magnitude(rigidbody.velocity);
 				rigidbody.velocity = grindDir.normalized * mag;
-				grinding = true;
+
+				// FIXME!!!!!!!!!!!
+				if( Vector3.Magnitude(grindPoint.position - transform.position) < 1.0f ) {
+					grinding = true;
+				} else {
+					transform.position = grindPoint.position + 2.0f * Vector3.up;
+				}
 			}
 		}
 

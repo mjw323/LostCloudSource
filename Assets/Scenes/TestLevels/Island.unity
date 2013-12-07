@@ -15081,7 +15081,6 @@ GameObject:
   - 54: {fileID: 786832297}
   - 114: {fileID: 786832293}
   - 65: {fileID: 786832298}
-  - 136: {fileID: 786832294}
   - 65: {fileID: 786832300}
   - 135: {fileID: 786832299}
   - 114: {fileID: 786832292}
@@ -15138,20 +15137,6 @@ MonoBehaviour:
   glideApexForce: 7000
   grindHeight: .5
   grindSpeed: 10000
---- !u!136 &786832294
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13600000, guid: 7f022c18f196d2a4e84f90c212e7ce9d,
-    type: 2}
-  m_PrefabInternal: {fileID: 2079666559}
-  m_GameObject: {fileID: 786832291}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.51999998
-  m_Height: 4.34000015
-  m_Direction: 2
-  m_Center: {x: 0, y: -.460000008, z: .119999997}
 --- !u!4 &786832295
 Transform:
   m_ObjectHideFlags: 0
@@ -18493,7 +18478,7 @@ Transform:
   m_PrefabInternal: {fileID: 1244653165}
   m_GameObject: {fileID: 982616548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.16733789, y: 2.53037024, z: -130.58461}
+  m_LocalPosition: {x: 438.732391, y: 22.9498959, z: 224.433228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1652347810}
@@ -22166,15 +22151,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.16733789
+      value: 438.732391
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.53037024
+      value: 22.9498959
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -130.58461
+      value: 224.433228
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalRotation.x
@@ -37924,7 +37909,16 @@ Prefab:
       propertyPath: Sun
       value: 
       objectReference: {fileID: 2130321396}
-    m_RemovedComponents: []
+    - target: {fileID: 13500000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13600000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 13600000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7f022c18f196d2a4e84f90c212e7ce9d, type: 2}
   m_RootGameObject: {fileID: 786832291}
   m_IsPrefabParent: 0
