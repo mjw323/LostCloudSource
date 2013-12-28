@@ -14,9 +14,9 @@ Shader "LostCloud/Terrain" {
         _Y("Y-axis Blend Weight", Range(0,1)) = 1
         _Z("Z-axis Blend Weight", Range(0,1)) = 1
         _Range("Blend Height Offset", Float) = 1
-        _Tex1a ("Ground Low", 2D) = "white" {}
+        _Tex1a ("Ground High", 2D) = "white" {}
         _Scale1("Texture Scaling", Range(1,20)) = 1
-        _Tex1b ("Ground High", 2D) = "white" {}
+        _Tex1b ("Ground Low", 2D) = "white" {}
         _Scale2("Texture Scaling", Range(1,20)) = 1
         _Tex2 ("Wall 1", 2D) = "white" {}
         _Scale3("Texture Scaling", Range(1,20)) = 1
