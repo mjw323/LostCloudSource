@@ -255,9 +255,14 @@ public class Hover : MonoBehaviour
                                         if( Vector3.Magnitude(grindPoint.position - transform.position) < 1.0f && Vector3.Dot(dir,rigidbody.velocity) > 0) { // Near
                                                 grinding = true;
                                         } else { // Far 
-                                                transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,1.50f);
+                                                transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,0.5f);
                                         }
                                 }
+				else{
+						grindRail = null; 
+					rigidbody.AddForce(grindDir.normalized * jumpForce/2, ForceMode.Impulse);
+						Debug.Log ("Natural grind death here");
+				}
                         } else {
                                 //rigidbody.useGravity = false;
                                 m_lean = 0;
@@ -278,7 +283,7 @@ public class Hover : MonoBehaviour
 
                                         // Move along rail
                                         //rigidbody.AddForce(fixedDir.normalized * grindSpeed);
-                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,1.50f);
+                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,0.5f);
 
                                         // Update grind dir if we passed the grind point
                                         dir = grindPoint.position - transform.position;
@@ -296,6 +301,12 @@ public class Hover : MonoBehaviour
                         }
                 } else {
                         rigidbody.useGravity = true;
+						if (grindRail!=null){
+							grindRail = null;
+							rigidbody.AddForce(grindDir.normalized * jumpForce, ForceMode.Impulse);
+							rigidbody.AddForce(transform.up/2, ForceMode.Impulse);
+							Debug.Log ("End of grind by button release");
+						}
                 }
 
                 clampVector = transform.rotation.eulerAngles;
@@ -416,7 +427,7 @@ public class Hover : MonoBehaviour
                         }
                 }
 
-                return nearestTrans;
+			return nearestTrans;
         }
 
         // Internal references
