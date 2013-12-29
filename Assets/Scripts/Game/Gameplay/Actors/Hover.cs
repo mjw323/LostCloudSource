@@ -263,7 +263,9 @@ public class Hover : MonoBehaviour
 					rigidbody.AddForce(grindDir.normalized * jumpForce/2, ForceMode.Impulse);
 						Debug.Log ("Natural grind death here");
 				}
-                        } else {
+                        }/* 
+							//the "grinding" bool is never really used meaningfully, so this never comes up
+							else {
                                 //rigidbody.useGravity = false;
                                 m_lean = 0;
                                 m_thrust = 0;
@@ -298,7 +300,7 @@ public class Hover : MonoBehaviour
                                                 }
                                         }
                                 }
-                        }
+                        }*/
                 } else {
                         rigidbody.useGravity = true;
 						if (grindRail!=null){
