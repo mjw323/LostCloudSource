@@ -236,13 +236,16 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
     clipAnimations:
-    - name: Natasha_JumpRunning001_x2d
+    - serializedVersion: 16
+      name: Natasha_JumpRunning001_x2d
       takeName: Natasha_JumpRunning001_x2d
       firstFrame: 146
       lastFrame: 191
@@ -251,6 +254,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
@@ -262,7 +266,17 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
+      events:
+      - time: .350332528
+        functionName: LiftOffRunning
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -294,8 +308,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftUpLeg
@@ -304,8 +316,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightUpLeg
@@ -314,8 +324,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftLeg
@@ -324,8 +332,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightLeg
@@ -334,8 +340,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftFoot
@@ -344,8 +348,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightFoot
@@ -354,8 +356,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:Spine
@@ -364,8 +364,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:Head
@@ -374,8 +372,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftShoulder
@@ -384,8 +380,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightShoulder
@@ -394,8 +388,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftArm
@@ -404,8 +396,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightArm
@@ -414,8 +404,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftForeArm
@@ -424,8 +412,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightForeArm
@@ -434,8 +420,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftHand
@@ -444,8 +428,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightHand
@@ -454,8 +436,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:LeftToeBase
@@ -464,8 +444,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     - boneName: Natasha_01:Solving:RightToeBase
@@ -474,8 +452,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
-        preQ: {x: 0, y: 0, z: 0, w: 0}
-        postQ: {x: 0, y: 0, z: 0, w: 0}
         length: 0
         modified: 0
     skeleton:
@@ -1039,7 +1015,6 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    handles: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -1049,6 +1024,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  additionalBone: 1
   animationType: 3
   userData: 

@@ -18,8 +18,6 @@ public class FootController : MonoBehaviour
 		footMovement = GetComponent<FootMovement>();
 		footMovement.OnSummonBoard += OnSummonBoard;
 
-		gravity = GetComponent<Gravity>();
-
 		boardController = GetComponent<BoardController>();
 		
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
@@ -29,13 +27,11 @@ public class FootController : MonoBehaviour
 	void OnEnable()
 	{
 		footMovement.enabled = true;
-		gravity.enabled = true;
 	}
 
 	void OnDisable()
 	{
 		footMovement.enabled = false;
-		gravity.enabled = false;
 	}
 
 	void OnDestroy()
@@ -68,7 +64,6 @@ public class FootController : MonoBehaviour
 
 	// Internal references
 	[HideInInspector] private FootMovement footMovement;
-	[HideInInspector] private Gravity gravity;
 	[HideInInspector] private BoardController boardController;
 
 	// External references

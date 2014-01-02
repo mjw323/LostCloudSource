@@ -20153,6 +20153,9 @@ MonoBehaviour:
   minSpeed: 1
   maxSpeed: 6
   turnSpeed: 360
+  gravity: 9.80000019
+  maxFallSpeed: 50
+  jumpForce: 5
 --- !u!114 &982616552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31355,6 +31358,18 @@ Prefab:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 1531251608}
+    - target: {fileID: 11400002, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: gravity
+      value: 9.80000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: maxFallSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aab4641853f477448c0488366f61e50, type: 2}
   m_RootGameObject: {fileID: 982616548}
