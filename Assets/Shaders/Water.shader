@@ -12,6 +12,10 @@ Shader "LostCloud/Water" {
 		_FoamOffset ("Foam Distance Offset", Range(0.0,1.0)) = 0.55
 		_Reflectivity ("Water Reflectivity", Range(0.1,1.0)) = 0.5
 		_FresnelFactor ("Fresnel Reflection/Refraction scale", Range(0.0,1)) = 0.25
+		_NormalMap ("Ripple NormalMap", 2D) = "black" {}
+		_RippleScale ("Ripple Size", Range(0.1,1000.0)) = 10.0
+		_RippleSpeed ("Ripple Animation Speed", Range(0.0,1.0)) = 0.1
+		_FlowMap ("Flow Map (NOT IMPLEMENTED)", 2D) = "black" {}
 	} 
 
 
@@ -25,7 +29,12 @@ Shader "LostCloud/Water" {
 			float4 normal : TEXCOORD0;
 			float4 viewDir : TEXCOORD1;
 			float4 screenPos : TEXCOORD2;
+			float4 worldPos : TEXCOORD3;
 		};
+	
+		// Flow/Ripple Textures
+		sampler2D _NormalMap;
+		sampler2D _FlowMap;
 
 		// Auto-Gen'ed Textures
 		sampler2D _ReflectionTex;
@@ -41,11 +50,14 @@ Shader "LostCloud/Water" {
 		uniform float _FoamOffset;
 		uniform float _Reflectivity;
 		uniform float _FresnelFactor;
+		uniform float _RippleScale;
+		uniform float _RippleSpeed;
 
 		v2f vert(appdata_full v)
 		{		
 			v2f o = (v2f)0;
 
+			o.worldPos = mul(_Object2World,v.vertex);
 			o.position = mul(UNITY_MATRIX_MVP,v.vertex);
 
 			// Copy of screen space position for use in fragment shader
@@ -62,7 +74,11 @@ Shader "LostCloud/Water" {
 			// Screen space position for sampling reflection/refraction textures
 			float4 screenPos = ComputeScreenPos(IN.screenPos);
 			screenPos.xy = screenPos.xy / screenPos.w;
-
+			float4 foamPos = screenPos;
+			
+			// Add some variance to screen position to simulate ripples
+			screenPos += float4(0.05 * UnpackNormal(tex2D(_NormalMap,float2(_SinTime*_RippleSpeed) + (IN.worldPos.xz/_RippleScale))),0.0);
+			
 			// View space depth
 			float depth = LinearEyeDepth(pow(tex2D(_CameraDepthTexture,screenPos.xy).r,_FresnelFactor));
 			depth = depth * _ProjectionParams.w * (_ProjectionParams.z * 0.005);
@@ -76,10 +92,15 @@ Shader "LostCloud/Water" {
 			// Blended reflection/refraction color based on view angle and depth below 
 			// lake surface
 			half4 refColor = (1 - F) * lerp(_RefractionColor,tex2D(_ReflectionTex,screenPos.xy),depth) + F * lerp(_RefractionColor,tex2D(_RefractionTex,screenPos.xy),1 - depth);
-
+			
+			// DEBUG: Draw some gridlines :)
+			//if(fmod(sign(IN.worldPos.x) * IN.worldPos.x,10.0) < 0.1 || fmod(sign(IN.worldPos.z) * IN.worldPos.z,10.0) < 0.1) {
+			//	refColor = half4(1.0,0.0,0.0,1.0);
+			//}
+	
 			// Final color
-			float foamFactor = LinearEyeDepth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, screenPos.xy)));
-			foamFactor = saturate(foamFactor - IN.screenPos.w);
+			float foamFactor = LinearEyeDepth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, foamPos.xy)));
+			foamFactor = saturate(foamFactor - foamPos.w);
 			float4 foam = max(0.0,1 - (foamFactor + _FoamOffset)) * _FoamColor;
 
 			half4 final = foam + (depth * _BaseColor + refColor) * _Reflectivity;
