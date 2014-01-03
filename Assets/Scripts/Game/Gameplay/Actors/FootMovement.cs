@@ -57,7 +57,7 @@ public class FootMovement : MonoBehaviour
 			shouldBoard = true;
 	}
 
-	void Awake()
+	private void Awake()
 	{
 		transform = GetComponent<Transform>();
 		animator = GetComponent<Animator>();
@@ -74,7 +74,7 @@ public class FootMovement : MonoBehaviour
 			"Base Layer.Locomotion.PlantTurnRight");
 	}
 
-	void OnEnable()
+	private void OnEnable()
 	{
 		characterController.enabled = true;
 		animator.applyRootMotion = true;
@@ -84,13 +84,13 @@ public class FootMovement : MonoBehaviour
 		transform.rotation = Quaternion.Euler(eulerAngles.x, eulerAngles.y, 0f);
 	}
 
-	void OnDisable()
+	private void OnDisable()
 	{
 		characterController.enabled = false;
 		animator.applyRootMotion = false;
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (shouldBoard)
 		{
@@ -146,11 +146,41 @@ public class FootMovement : MonoBehaviour
 			shouldJump = false;
 			jumpedLastFrame = true;
 		}
+
+		if (shouldLiftOff)
+			shouldLiftOff = false;
+		else if (characterController.isGrounded)
+			velocity.y = -gravity * Time.deltaTime;
+		else
+		{
+			velocity.y -= gravity * Time.deltaTime;
+			if (velocity.y < -maxFallSpeed)
+				velocity.y = -maxFallSpeed;
+		}
+		
+		characterController.Move(velocity * Time.deltaTime);
+	}
+
+	// Called when Noke's feet leave the ground in her jump animation.
+	private void LiftOffIdle()
+	{
+		velocity.y = jumpForce;
+		shouldLiftOff = true;
+	}
+
+	// Same deal, but when running.
+	private void LiftOffRunning()
+	{
+		velocity.y = jumpForce;
+		shouldLiftOff = true;
 	}
 
 	[SerializeField] private float minSpeed;
 	[SerializeField] private float maxSpeed;
 	[SerializeField] private float turnSpeed; // Degrees per second
+	[SerializeField] private float gravity;
+	[SerializeField] private float maxFallSpeed;
+	[SerializeField] private float jumpForce;
 
 	// Internal references
 	[HideInInspector] new private Transform transform;
@@ -171,10 +201,12 @@ public class FootMovement : MonoBehaviour
 
 	// Temporary state
 	private Vector3 direction;
+	private Vector3 velocity;
 	private bool shouldJump;
 	private bool jumpedLastFrame;
 	private bool shouldBoard;
-	
+	private bool shouldLiftOff;
+
 	public float Speed
 	{
 		get{return this.speed;}
