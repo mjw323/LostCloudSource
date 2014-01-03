@@ -10,6 +10,8 @@ public class Hover : MonoBehaviour
                 public float hoverDamping;
         }
         public HoverProperties hoverProperties;
+	
+		public GameObject boardObj;
 
         public float thrusterScale = 1.0f;
 
@@ -142,7 +144,7 @@ public class Hover : MonoBehaviour
         void Awake()
         {
                 transform = GetComponent<Transform>();
-                renderer = GetComponentInChildren<Renderer>();
+                renderer = boardObj.GetComponent<Renderer>();//GetComponentInChildren<Renderer>();
 
                 GameObject noke = GameObject.FindWithTag("Player");
                 nokeAnimator = noke.GetComponent<Animator>();
@@ -150,6 +152,9 @@ public class Hover : MonoBehaviour
 
                 particleSystem = this.transform.GetComponentsInChildren<ParticleSystem>()[0];
 				particleSystem.startLifetime = 0.0f;
+		
+				grindParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[1];
+				grindParticles.startLifetime = 0.0f;
 
                 Vector3 boardDimensions = CalculateBoardDimensions();
                 CreateSensors(CalculateSensorPositions(boardDimensions));
@@ -244,6 +249,7 @@ public class Hover : MonoBehaviour
                 Vector3 dir;
                 // Impulse toward rail on button press
                 if(Input.GetButton("Grind") && grindRail != null) {
+						grindParticles.startLifetime = 0.55f;
                         if (!grinding) {
                                 grindPoint = nearestGrindPoint();
                                 if(grindPoint != null) {
@@ -310,6 +316,7 @@ public class Hover : MonoBehaviour
                         }*/
                 } else {
                         rigidbody.useGravity = true;
+						grindParticles.startLifetime = 0.0f;
 						if (grindRail!=null){
 							grindRail = null;
 							rigidbody.AddForce(grindDir.normalized * jumpForce, ForceMode.Impulse);
@@ -334,8 +341,8 @@ public class Hover : MonoBehaviour
                         rigidbody.AddForce(transform.up * glidePower);
                         glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
              
-                        particleSystem.startLifetime = 0.33f+(Mathf.Pow(glideLeft/glideLength,2.0f) * 2.66f);
-                        particleSystem.startSpeed = 0.5f + (Mathf.Pow (glideLeft/glideLength,2.0f)*2.5f);
+                        particleSystem.startLifetime = 0.55f;//0.33f+(Mathf.Pow(glideLeft/glideLength,2.0f) * 2.66f);
+                        particleSystem.startSpeed = 2.5f+(Mathf.Pow (glideLeft/glideLength,2.0f)*3.0f);//0.5f + (Mathf.Pow (glideLeft/glideLength,2.0f)*2.5f);
                 }
                 else{particleSystem.startLifetime = 0.0f;}
 
@@ -443,6 +450,7 @@ public class Hover : MonoBehaviour
         [HideInInspector] new private Transform transform;
         [HideInInspector] new private Renderer renderer;
         [HideInInspector] new private ParticleSystem particleSystem;
+		[HideInInspector] new private ParticleSystem grindParticles;
 
         // External references
         [HideInInspector] private Animator nokeAnimator;
