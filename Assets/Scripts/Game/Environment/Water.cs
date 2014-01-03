@@ -65,22 +65,14 @@ public class Water : MonoBehaviour {
 		GameObject go = GameObject.FindWithTag("MainCamera");
 		Camera cam = go.GetComponent<Camera>();
 		if( cam != null ) {
-			Render(transform,cam);
+			RenderReflection(cam, reflectionCamera);
+			waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
 		}
-	}
-	
-	public void Render(Transform tr, Camera currentCam) 
-	{						
-		RenderReflection(currentCam, reflectionCamera);
-		
-		if(reflectionCamera && waterMaterial) {
-			waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);			
-		} 	
 	}	
 	
 	private void RenderReflection(Camera cam, Camera reflectCamera) 
 	{
-		if(!reflectCamera)
+		if (!reflectCamera)
 			return;
 			
 		if(waterMaterial && !waterMaterial.HasProperty(reflectionSampler)) {
@@ -106,8 +98,7 @@ public class Water : MonoBehaviour {
 							
 		GL.SetRevertBackfacing(true);		
 							
-		Transform reflectiveSurface = transform;
-			
+		Transform reflectiveSurface = transform;			
 		Vector3 eulerA = cam.transform.eulerAngles;
 					
 		reflectCamera.transform.eulerAngles = new Vector3(-eulerA.x, eulerA.y, eulerA.z);
@@ -136,9 +127,9 @@ public class Water : MonoBehaviour {
 		Vector3 euler = cam.transform.eulerAngles;
 		reflectCamera.transform.eulerAngles = new Vector3(-euler.x, euler.y, euler.z);	
 														
-		reflectCamera.Render();	
+		reflectCamera.Render();
 		
-		GL.SetRevertBackfacing(false);					
+		GL.SetRevertBackfacing(false);
 	}
 		
 	static Matrix4x4 CalculateObliqueMatrix(Matrix4x4 projection, Vector4 clipPlane) 
