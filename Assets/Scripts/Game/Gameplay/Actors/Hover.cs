@@ -158,6 +158,11 @@ public class Hover : MonoBehaviour
 		
 				grindParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[2];
 				grindParticles.startLifetime = 0.0f;
+		
+				waterParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[3];
+				waterParticles.startLifetime = 0.0f;
+		
+				splashParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[4];
 
                 Vector3 boardDimensions = CalculateBoardDimensions();
                 CreateSensors(CalculateSensorPositions(boardDimensions));
@@ -186,6 +191,7 @@ public class Hover : MonoBehaviour
         void OnCollisionEnter(Collision collision) {
                 detach = false;
                 grinding = false;
+				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
 
         // Nearing rail
@@ -240,6 +246,8 @@ public class Hover : MonoBehaviour
 
                 hoverMod = 1;
                 if (detach){hoverMod = 0.5f;}
+		
+				bool waterSpray = false;
 
                 for (int i = 0; i < m_sensors.Length; i++)
                 {
@@ -249,9 +257,13 @@ public class Hover : MonoBehaviour
                                 if (!detach && !grinding){
                                         float hoverForce = (hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime;
                                         rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
+										if (m_hits[i].transform.tag == "Water"){waterSpray = true;}
                                 }
                         }
                 }
+		
+				if (waterSpray){waterParticles.startLifetime = 0.55f;}
+				else{waterParticles.startLifetime = 0.0f;}
 
                 Vector3 dir;
                 // Impulse toward rail on button press
@@ -392,9 +404,9 @@ public class Hover : MonoBehaviour
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 				//rigidbody.AddTorque(transform.up*(1-Vector3.Dot (moveDir,transform.forward)*Vector3.Magnitude(inputDir)));
 				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), m_thruster.position);
-				Debug.Log (Vector3.Magnitude(rigidbody.velocity));
+				//Debug.Log (Vector3.Magnitude(rigidbody.velocity));
 				theCamera.fieldOfView = cameraFOV 
-											+ ((15*jumpPower) 
+											+ (//(15*jumpPower) 
 											+ (30 * Math.Max (0,Vector3.Dot (Vector3.Normalize (rigidbody.velocity),cameraDir)))
 											)*Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20);
 				/*
@@ -484,6 +496,8 @@ public class Hover : MonoBehaviour
         [HideInInspector] new private ParticleSystem hoverParticlesA;
 		[HideInInspector] new private ParticleSystem hoverParticlesB;
 		[HideInInspector] new private ParticleSystem grindParticles;
+		[HideInInspector] new private ParticleSystem waterParticles;
+		[HideInInspector] new private ParticleSystem splashParticles;
 		[HideInInspector] new private Vector3 cameraDir;
 		[HideInInspector] new private Camera theCamera;
 		[HideInInspector] new private float cameraFOV;

@@ -63,6 +63,10 @@ public class BoardController : MonoBehaviour
 			Input.GetAxis("Glide"),
 			Input.GetButton("Glide"));
 	}
+	
+	void Bail(){ //call externally to make noke bail
+		boardMovement.DismissBoard();
+	}
 
 	// Internal references
 	[HideInInspector] new private Transform transform;

@@ -8,14 +8,21 @@ var WaterTime : float; //frames you're allowed to spend on water
 var WaterTimeMax : float; //frames you're allowed to spend on water
 var Respawning : boolean;
 
+	var footC;
+	var boardC;
+
 function Start(){
 	SpawnPoint = Player.position;
 	WaterTime = 0;
 	Respawning = false;
+	
+	footC = gameObject.GetComponent("FootController");
+	boardC = gameObject.GetComponent("BoardController");
 }
 
 function Update(){
-	if (!Respawning){
+	Debug.Log(footC.enabled);
+	if ((!Respawning) && (footC.enabled)){
 	var hit : RaycastHit;
 	var touchingWater : boolean;
 	touchingWater = false;
@@ -59,3 +66,4 @@ function Respawn()
 		Respawning = false;
 		//Player.rigidbody.isKinematic = false;
 	}
+	
