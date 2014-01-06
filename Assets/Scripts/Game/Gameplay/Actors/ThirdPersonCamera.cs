@@ -211,7 +211,7 @@ public class ThirdPersonCamera : MonoBehaviour
 	void LateUpdate()
 	{		
 		// Pull values from controller/keyboard
-		float rightX = Input.GetAxis("RightStickX");
+		float rightX = -Input.GetAxis("RightStickX");
 		float rightY = Input.GetAxis("RightStickY");
 		float leftX = Input.GetAxis("Horizontal");
 		float leftY = Input.GetAxis("Vertical");	
@@ -332,7 +332,7 @@ public class ThirdPersonCamera : MonoBehaviour
 				
 			
 				// Rotating around character
-				print ("Rotating");
+				//print ("Rotating");
 				parentRig.RotateAround(characterOffset, followXform.up, freeRotationDegreePerSecond * (Mathf.Abs(rightX) > rightStickThreshold ? rightX : 0f));
 								
 				// Still need to track camera behind player even if they aren't using the right stick; achieve this by saving distanceAwayFree every frame

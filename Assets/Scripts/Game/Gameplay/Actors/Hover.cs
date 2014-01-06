@@ -105,7 +105,7 @@ public class Hover : MonoBehaviour
         void CreateThruster(Vector3 boardDimensions)
         {
                 Vector3 thrusterPosition = transform.position;
-                thrusterPosition.z = transform.position.z - boardDimensions.z / 2;
+                thrusterPosition.z = transform.position.z + boardDimensions.z / 2;
                 GameObject thruster = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 thruster.name = "Thruster";
                 thruster.transform.parent = transform;
@@ -150,16 +150,23 @@ public class Hover : MonoBehaviour
                 nokeAnimator = noke.GetComponent<Animator>();
                 ridingId = Animator.StringToHash("Riding");
 
-                particleSystem = this.transform.GetComponentsInChildren<ParticleSystem>()[0];
-				particleSystem.startLifetime = 0.0f;
+                hoverParticlesA = this.transform.GetComponentsInChildren<ParticleSystem>()[0];
+				hoverParticlesA.startLifetime = 0.0f;
 		
-				grindParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[1];
+				hoverParticlesB = this.transform.GetComponentsInChildren<ParticleSystem>()[1];
+				hoverParticlesB.startLifetime = 0.0f;
+		
+				grindParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[2];
 				grindParticles.startLifetime = 0.0f;
 
                 Vector3 boardDimensions = CalculateBoardDimensions();
                 CreateSensors(CalculateSensorPositions(boardDimensions));
                 CreateThruster(boardDimensions);
                 m_hits = new RaycastHit[m_sensors.Length];
+		
+				GameObject cam = GameObject.FindWithTag("MainCamera");
+				theCamera = cam.GetComponent<Camera>();
+				cameraFOV = theCamera.fieldOfView;
         }
 
         void OnEnable()
@@ -274,7 +281,7 @@ public class Hover : MonoBehaviour
 				else{
 						grindRail = null; 
 					rigidbody.AddForce(grindDir.normalized * jumpForce/2, ForceMode.Impulse);
-						Debug.Log ("Natural grind death here");
+						Debug.Log ("Reached end of rail");
 				}
                         }/* 
 							//the "grinding" bool is never really used meaningfully, so this never comes up
@@ -341,45 +348,70 @@ public class Hover : MonoBehaviour
                         rigidbody.AddForce(transform.up * glidePower);
                         glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
              
-                        particleSystem.startLifetime = 0.55f;//0.33f+(Mathf.Pow(glideLeft/glideLength,2.0f) * 2.66f);
-                        particleSystem.startSpeed = 2.5f+(Mathf.Pow (glideLeft/glideLength,2.0f)*3.0f);//0.5f + (Mathf.Pow (glideLeft/glideLength,2.0f)*2.5f);
+                        hoverParticlesA.startLifetime = 0.55f;//0.33f+(Mathf.Pow(glideLeft/glideLength,2.0f) * 2.66f);
+                        hoverParticlesA.startSpeed = 2.5f+(Mathf.Pow (glideLeft/glideLength,2.0f)*3.0f);//0.5f + (Mathf.Pow (glideLeft/glideLength,2.0f)*2.5f);
                 }
-                else{particleSystem.startLifetime = 0.0f;}
+                else{hoverParticlesA.startLifetime = 0.0f;}
 
                 //transform.rotation.eulerAngles.z = Mathf.Clamp (transform.rotation.eulerAngles.z, -90.0f, 90.0f);
                 //transform.rotation.eulerAngles.x = Mathf.Clamp (transform.rotation.eulerAngles.x, -90.0f, 90.0f);
-
+		
+		
+				///////////////////////////////////JUMP////////////////////////////////////////
                 if (!onGround && detach){detach = false;}
 
                 if (onGround){
                         airTime = 0;
                         glideLeft = Mathf.Clamp(glideLeft+(Time.deltaTime*3),0.0f,glideLength);
-                if (m_jump){
-                        jumpPower = Mathf.Clamp(jumpPower+(Time.deltaTime)/jumpLength,0.0f,1.0f);
-                        }
-                else{
+                	if (m_jump){
+							Debug.Log ("on ground and jump is held");
+                        	jumpPower = Mathf.Clamp(jumpPower+(Time.deltaTime)/jumpLength,0.0f,1.0f);
+                        	}
+                	else{
                         if (jumpPower > 0.0f){
+								Debug.Log ("on ground and jump was released");
                                 detach = true; 
                                 rigidbody.AddForce(transform.up * jumpForce * Mathf.Sqrt(jumpPower), ForceMode.Impulse);
                                 jumpPower = 0.0f;
-                        }
-                        }
+                        		}
+                      	}
                 }
                 else{
                                 jumpPower = 0.0f;
                                 airTime += (Time.deltaTime);
                 }
-
+				
+				////////////////////////////////MOVE + STEER///////////////////////////////
+				GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+				cameraDir = Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
+				cameraDir.y = 0;
+				
+				Vector3 inputDir = new Vector3(m_lean,0,m_thrust);
+				float angleSign = Math.Sign (Vector3.Cross(Vector3.forward,inputDir).y);
+				Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
+				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
+				//rigidbody.AddTorque(transform.up*(1-Vector3.Dot (moveDir,transform.forward)*Vector3.Magnitude(inputDir)));
+				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), m_thruster.position);
+				Debug.Log (Vector3.Magnitude(rigidbody.velocity));
+				theCamera.fieldOfView = cameraFOV 
+											+ ((15*jumpPower) 
+											+ (30 * Math.Max (0,Vector3.Dot (Vector3.Normalize (rigidbody.velocity),cameraDir)))
+											)*Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20);
+				/*
                 steerMod = 1;
-                if (!onGround){steerMod = 0.35f;}
+                if (!onGround){steerMod = 0.66f;}
 
                 rigidbody.AddForceAtPosition(m_thruster.forward * m_thrust * thrustPower * (1 + (0.25f * jumpPower)), m_thruster.position);
-                rigidbody.AddTorque(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/1)));
+                rigidbody.AddTorque(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/2)));
                 //transform.Rotate(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/1)));
+                */
 
-                m_thrust = 0;
-                m_lean = 0;
-                m_jump = false;
+                //m_thrust = 0;
+                //m_lean = 0;
+                //m_jump = false;
+		
+				hoverParticlesB.startLifetime = hoverParticlesA.startLifetime;
+				hoverParticlesB.startSpeed = hoverParticlesA.startSpeed;
         }
 
         Transform nearestGrindPoint()
@@ -449,8 +481,12 @@ public class Hover : MonoBehaviour
         // Internal references
         [HideInInspector] new private Transform transform;
         [HideInInspector] new private Renderer renderer;
-        [HideInInspector] new private ParticleSystem particleSystem;
+        [HideInInspector] new private ParticleSystem hoverParticlesA;
+		[HideInInspector] new private ParticleSystem hoverParticlesB;
 		[HideInInspector] new private ParticleSystem grindParticles;
+		[HideInInspector] new private Vector3 cameraDir;
+		[HideInInspector] new private Camera theCamera;
+		[HideInInspector] new private float cameraFOV;
 
         // External references
         [HideInInspector] private Animator nokeAnimator;

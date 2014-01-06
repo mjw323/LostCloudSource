@@ -26,6 +26,9 @@ ModelImporter:
     100040: rail_0 9
     100042: //RootNode
     100044: railBindW4A6curve6
+    100046: rail_0 21
+    100048: rail_0 22
+    100050: railBindW3A6curve7
     400000: rail_0
     400002: rail_0 1
     400004: rail_0 10
@@ -49,6 +52,11 @@ ModelImporter:
     400040: rail_0 9
     400042: //RootNode
     400044: railBindW4A6curve6
+    400046: rail_0 21
+    400048: rail_0 22
+    400050: railBindW3A6curve7
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: W3A6_rail5
     9500000: //RootNode
     13700000: //RootNode
@@ -59,11 +67,13 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -91,7 +101,6 @@ ModelImporter:
   humanDescription:
     human: []
     skeleton: []
-    handles: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -101,6 +110,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  additionalBone: 1
   animationType: 2
   userData: 
