@@ -11,13 +11,18 @@ public class Water : MonoBehaviour {
 	public LayerMask reflectionMask;
 	public bool reflectSkybox = false;
 	public Color clearColor = Color.grey;
-	public System.String reflectionSampler = "_ReflectionTex";
+	private System.String reflectionSampler = "_ReflectionTex";
 
 	// Clip height
 	public float clipPlaneOffset = 0.07f;
 		
 	private Vector3 oldpos = Vector3.zero;
 	private Camera reflectionCamera;
+
+	// Player Uniforms
+	private System.String boardPosition = "_BoardPosition";
+	private System.String boardVelocity = "_BoardVelocity";
+
 
 	public void Awake() {
 		GameObject go = GameObject.FindWithTag("MainCamera");
@@ -68,6 +73,11 @@ public class Water : MonoBehaviour {
 			RenderReflection(cam, reflectionCamera);
 			waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
 		}
+
+		// Update position/velocity
+		go = GameObject.FindWithTag("Board");
+		waterMaterial.SetVector(boardPosition,go.transform.position);
+		waterMaterial.SetVector(boardVelocity,go.transform.forward);
 	}	
 	
 	private void RenderReflection(Camera cam, Camera reflectCamera) 

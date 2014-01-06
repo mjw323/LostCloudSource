@@ -14,10 +14,9 @@ Shader "LostCloud/Water" {
 		_FresnelFactor ("Fresnel Reflection/Refraction scale", Range(0.0,1)) = 0.25
 		_NormalMap ("Ripple NormalMap", 2D) = "black" {}
 		_RippleScale ("Ripple Size", Range(0.1,1000.0)) = 10.0
-		_RippleSpeed ("Ripple Animation Speed", Range(0.0,1.0)) = 0.1
+		_RippleSpeed ("Ripple Animation Speed", Range(0.0,0.1)) = 0.1
 		_FlowMap ("Flow Map (NOT IMPLEMENTED)", 2D) = "black" {}
-	} 
-
+	}
 
 	CGINCLUDE
 		
@@ -40,6 +39,14 @@ Shader "LostCloud/Water" {
 		sampler2D _ReflectionTex;
 		sampler2D _RefractionTex;
 		sampler2D _CameraDepthTexture;
+
+		// Hoverboard
+		uniform float4 _BoardPosition;
+		uniform float4 _BoardVelocity;
+		
+		// Sun info
+		uniform float4 _SunDirection;
+		uniform float4 _SunColor;
 
 		// Colors to use
 		uniform float4 _BaseColor;
@@ -76,9 +83,18 @@ Shader "LostCloud/Water" {
 			screenPos.xy = screenPos.xy / screenPos.w;
 			float4 foamPos = screenPos;
 			
+			// Waves
+			float2 fromBoard = IN.worldPos.xz - _BoardPosition.xz;
+			float d = length(fromBoard);
+			float2 offset = _Time.x * normalize(fromBoard * dot(normalize(fromBoard),normalize(_BoardVelocity.xz))) * 5.0 * max(0.0,1.0 - ((d*d)/100.0)) + float2(_Time.xz*_RippleSpeed);
+
+			//if(d>10.0) {
+			//	offset = float2(0.0);
+			//}			
+
 			// Add some variance to screen position to simulate ripples
-			screenPos += float4(0.05 * UnpackNormal(tex2D(_NormalMap,float2(_SinTime*_RippleSpeed) + (IN.worldPos.xz/_RippleScale))),0.0);
-			
+			screenPos += float4(0.05 * UnpackNormal(tex2D(_NormalMap,float2(_Time.xz*_RippleSpeed) + ((offset + IN.worldPos.xz)/_RippleScale))),0.0);
+
 			// View space depth
 			float depth = LinearEyeDepth(pow(tex2D(_CameraDepthTexture,screenPos.xy).r,_FresnelFactor));
 			depth = depth * _ProjectionParams.w * (_ProjectionParams.z * 0.005);
@@ -97,7 +113,7 @@ Shader "LostCloud/Water" {
 			//if(fmod(sign(IN.worldPos.x) * IN.worldPos.x,10.0) < 0.1 || fmod(sign(IN.worldPos.z) * IN.worldPos.z,10.0) < 0.1) {
 			//	refColor = half4(1.0,0.0,0.0,1.0);
 			//}
-	
+			
 			// Final color
 			float foamFactor = LinearEyeDepth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, foamPos.xy)));
 			foamFactor = saturate(foamFactor - foamPos.w);

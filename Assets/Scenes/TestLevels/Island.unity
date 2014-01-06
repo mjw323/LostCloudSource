@@ -719,7 +719,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   reflectSkybox: 1
   clearColor: {r: .241349488, g: .523386002, b: .911764681, a: 1}
-  reflectionSampler: _ReflectionTex
   clipPlaneOffset: .0700000003
 --- !u!64 &20862551
 MeshCollider:
@@ -3106,7 +3105,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   reflectSkybox: 1
   clearColor: {r: .241349488, g: .523386002, b: .911764681, a: 1}
-  reflectionSampler: _ReflectionTex
   clipPlaneOffset: .0700000003
 --- !u!64 &126062017
 MeshCollider:
@@ -5411,7 +5409,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   reflectSkybox: 1
   clearColor: {r: .241349488, g: .523386002, b: .911764681, a: 1}
-  reflectionSampler: _ReflectionTex
   clipPlaneOffset: .0700000003
 --- !u!64 &306550464
 MeshCollider:
@@ -5983,7 +5980,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   reflectSkybox: 1
   clearColor: {r: 0, g: 0, b: 0, a: 1}
-  reflectionSampler: _ReflectionTex
   clipPlaneOffset: .699999988
 --- !u!23 &338371145
 Renderer:
@@ -7694,7 +7690,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   reflectSkybox: 1
   clearColor: {r: .241349488, g: .523386002, b: .911764681, a: 1}
-  reflectionSampler: _ReflectionTex
   clipPlaneOffset: .0700000003
 --- !u!64 &409559776
 MeshCollider:
@@ -12321,7 +12316,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   reflectSkybox: 1
   clearColor: {r: .241349488, g: .523386002, b: .911764681, a: 1}
-  reflectionSampler: _ReflectionTex
   clipPlaneOffset: .0700000003
 --- !u!64 &636510508
 MeshCollider:
@@ -30824,7 +30818,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   reflectSkybox: 1
   clearColor: {r: .241349488, g: .523386002, b: .911764681, a: 1}
-  reflectionSampler: _ReflectionTex
   clipPlaneOffset: .0700000003
 --- !u!64 &1639630467
 MeshCollider:
@@ -40888,6 +40881,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2130321398}
   - 108: {fileID: 2130321397}
+  - 123: {fileID: 2130321399}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -40941,6 +40935,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!123 &2130321399
+LensFlare:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2130321396}
+  m_Enabled: 1
+  m_Flare: {fileID: 12100000, guid: 09ebe82dbd1113c3d000dc0b8d76c639, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Brightness: 1
+  m_FadeSpeed: 3
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 6
+  m_Directional: 1
 --- !u!1 &2130811845
 GameObject:
   m_ObjectHideFlags: 0
