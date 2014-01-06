@@ -22,16 +22,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Ramp
+          name: _Tex1a
         second:
-          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
+          m_Texture: {fileID: 2800000, guid: 38b334e6159bd5d48ade95e95c299d21, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Tex1
+          name: _Tex1b
         second:
-          m_Texture: {fileID: 2800000, guid: 38b334e6159bd5d48ade95e95c299d21, type: 3}
+          m_Texture: {fileID: 2800000, guid: 444ccc14a9d3e794e84395274022d768, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -50,27 +50,19 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Tex1a
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Tex1
         second:
           m_Texture: {fileID: 2800000, guid: 38b334e6159bd5d48ade95e95c299d21, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Tex1b
-        second:
-          m_Texture: {fileID: 2800000, guid: 444ccc14a9d3e794e84395274022d768, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _RimPower
-        second: 3
-      data:
-        first:
-          name: _Scale
-        second: 3.03571463
       data:
         first:
           name: _X
@@ -86,7 +78,7 @@ Material:
       data:
         first:
           name: _Range
-        second: 11.3000002
+        second: 4
       data:
         first:
           name: _Scale1
@@ -103,6 +95,14 @@ Material:
         first:
           name: _Scale4
         second: 9.14285755
+      data:
+        first:
+          name: _RimPower
+        second: 3
+      data:
+        first:
+          name: _Scale
+        second: 3.03571463
     m_Colors:
       data:
         first:

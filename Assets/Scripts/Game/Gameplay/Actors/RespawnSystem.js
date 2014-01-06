@@ -19,8 +19,8 @@ function Update(){
 	var hit : RaycastHit;
 	var touchingWater : boolean;
 	touchingWater = false;
-		if (Physics.Raycast (Player.position, -Vector3.up, hit)) {
-		if (hit.distance<=FootDist){
+		if (Physics.Raycast (Player.position, -Vector3.up, hit,FootDist,~1000000000)) {
+		//if (hit.distance<=FootDist){
 			if ((hit.transform.tag!="Grind") && (hit.transform.tag!="Water") && (hit.transform.tag!="NoRespawn") && (hit.transform.tag!="Respawn")){
 				SpawnPoint = Player.position;
 				//Debug.Log(hit.transform.tag);
@@ -28,7 +28,7 @@ function Update(){
 			if ((hit.transform.tag=="Water") && (!WaterUpgrade)){
 				touchingWater = true;
 			}
-			}
+			//}
 		}
 	if (touchingWater){
 		if (WaterTime<WaterTimeMax){WaterTime += 1;}

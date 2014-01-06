@@ -29,6 +29,20 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _NormalMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 17836c47d9568da429cd8b510b01b3b1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FlowMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ReflectionTex
         second:
           m_Texture: {fileID: 0}
@@ -46,20 +60,6 @@ Material:
           name: _Foam
         second:
           m_Texture: {fileID: 2800000, guid: 4cc23652293f2e84184400fd2136d320, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _NormalMap
-        second:
-          m_Texture: {fileID: 2800000, guid: 17836c47d9568da429cd8b510b01b3b1, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _FlowMap
-        second:
-          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -81,6 +81,14 @@ Material:
         second: .785017252
       data:
         first:
+          name: _RippleScale
+        second: 45.7107468
+      data:
+        first:
+          name: _RippleSpeed
+        second: .0714285746
+      data:
+        first:
           name: _N1
         second: 1
       data:
@@ -95,23 +103,11 @@ Material:
         first:
           name: _GerstnerIntensity
         second: 1
-      data:
-        first:
-          name: _RippleScale
-        second: 45.7107468
-      data:
-        first:
-          name: _RippleSpeed
-        second: .0178571437
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Foam
-        second: {r: .100000001, g: .375, b: 0, a: 0}
       data:
         first:
           name: _BaseColor
@@ -124,6 +120,10 @@ Material:
         first:
           name: _FoamColor
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Foam
+        second: {r: .100000001, g: .375, b: 0, a: 0}
       data:
         first:
           name: _WaterColor
