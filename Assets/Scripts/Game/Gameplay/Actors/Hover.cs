@@ -58,7 +58,7 @@ public class Hover : MonoBehaviour
         private Vector3 grindDir;
         private Vector3 initialGrindDir = Vector3.zero;
         public float grindHeight = 1.0f;
-        public float grindSpeed = 10000;
+        public float grindSpeed = 0.4f;
 	
 		private bool doing180 = false;
 		public float spinAmount = 0.0f;
@@ -264,6 +264,9 @@ public class Hover : MonoBehaviour
                 onGround = false;
 				Transform activeThruster = m_thruster;
 				if (doing180){activeThruster = b_thruster;}
+				GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+				cameraDir = Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
+				cameraDir.y = 0;
 
                 hoverMod = 1;
                 if (detach){hoverMod = 0.5f;}
@@ -298,8 +301,6 @@ public class Hover : MonoBehaviour
                         } 
 							else {
                                 rigidbody.useGravity = false;
-                                m_lean = 0;
-                                m_thrust = 0;
 								float mag = Vector3.Magnitude(rigidbody.velocity);
                                 rigidbody.velocity = grindDir.normalized * mag;
 
@@ -322,8 +323,14 @@ public class Hover : MonoBehaviour
 
                                         // Move along rail
                                         //rigidbody.AddForce(fixedDir.normalized * grindSpeed);
-                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,0.5f);
-										transform.rotation = Quaternion.LookRotation(Vector3.Slerp (transform.forward,grindDir,0.2f));
+										rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
+										spinAmount += rigidbody.angularVelocity.y;
+					
+										Vector3 spinAxis = Vector3.Cross (grindDir,Vector3.forward);
+										float camSign = 1.0f;//Mathf.Sign(Vector3.Cross(cameraDir,grindDir).y);
+                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,grindSpeed);
+										transform.rotation = Quaternion.LookRotation(Vector3.Slerp (transform.forward,
+											Quaternion.AngleAxis (spinAmount*camSign,spinAxis) * grindDir,0.2f));
 
                                         // Update grind dir if we passed the grind point
                                         /*dir = grindPoint.position - transform.position;
@@ -338,11 +345,13 @@ public class Hover : MonoBehaviour
                                                 }
                                         }*/
                                 }
+							m_lean = 0; ////////////eliminate input during grinding
+                         m_thrust = 0;
                         }
                 }
 				if (grinding){grindParticles.startLifetime = 0.55f;}
 					else{grindParticles.startLifetime = 0f;}
-
+				///////////////////////////////////ANGLE CLAMPING//////////////////////////////////
                 clampVector = transform.rotation.eulerAngles;
 				
                 if (clampVector.z > 180) { clampVector.z = - 180 + (clampVector.z-180);}
@@ -392,16 +401,14 @@ public class Hover : MonoBehaviour
                 }
 				
 				////////////////////////////////MOVE + STEER///////////////////////////////
-				GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-				cameraDir = Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
-				cameraDir.y = 0;
 				
 				Vector3 inputDir = new Vector3(m_lean,0,m_thrust);
 				float angleSign = Math.Sign (Vector3.Cross(Vector3.forward,inputDir).y);
 				Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
-		//Debug.Log (onGround);		
+		/////////////////////////////FLIPS////////////////////////////////
+	if (!grinding){
 		if (!onGround){
 					Debug.Log (flipAmount);
 					rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
@@ -416,6 +423,7 @@ public class Hover : MonoBehaviour
 					spinAmount = 0f;
 					flipAmount = 0f;
 				}
+	}
 				//Debug.Log (Vector3.Magnitude(rigidbody.velocity));
 				theCamera.fieldOfView = cameraFOV 
 											+ (//(15*jumpPower) 
