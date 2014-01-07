@@ -20,6 +20,7 @@ public class Water : MonoBehaviour {
 	private Camera reflectionCamera;
 
 	// Player Uniforms
+	private System.String boardDirection = "_BoardDirection";
 	private System.String boardPosition = "_BoardPosition";
 	private System.String boardVelocity = "_BoardVelocity";
 
@@ -76,8 +77,9 @@ public class Water : MonoBehaviour {
 
 		// Update position/velocity
 		go = GameObject.FindWithTag("Board");
+		waterMaterial.SetVector(boardDirection,go.transform.forward);
 		waterMaterial.SetVector(boardPosition,go.transform.position);
-		waterMaterial.SetVector(boardVelocity,go.transform.forward);
+		waterMaterial.SetVector(boardVelocity,go.rigidbody.velocity);
 	}	
 	
 	private void RenderReflection(Camera cam, Camera reflectCamera) 

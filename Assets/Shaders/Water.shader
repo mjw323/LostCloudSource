@@ -42,6 +42,7 @@ Shader "LostCloud/Water" {
 
 		// Hoverboard
 		uniform float4 _BoardPosition;
+		uniform float4 _BoardDirection;
 		uniform float4 _BoardVelocity;
 		
 		// Sun info
@@ -84,16 +85,14 @@ Shader "LostCloud/Water" {
 			float4 foamPos = screenPos;
 			
 			// Waves
-			float2 fromBoard = IN.worldPos.xz - _BoardPosition.xz;
-			float d = length(fromBoard);
-			float2 offset = _Time.x * normalize(fromBoard * dot(normalize(fromBoard),normalize(_BoardVelocity.xz))) * 5.0 * max(0.0,1.0 - ((d*d)/100.0)) + float2(_Time.xz*_RippleSpeed);
-
-			//if(d>10.0) {
-			//	offset = float2(0.0);
-			//}			
+			float2 fromBoard = normalize(IN.worldPos.xz - _BoardPosition.xz);
+			float d = distance(IN.worldPos.xz,_BoardPosition.xz);
+			float phi = dot(fromBoard,normalize(_BoardVelocity.xz));
+			float2 offset = saturate(-0.9 - phi) * _Time.x * 100.0 * saturate(length(_BoardVelocity) - 2.0) * saturate(length(_BoardVelocity) - 2.0) * float2(sin(phi), cos(phi)) * 1.0 / (d*d*d);
 
 			// Add some variance to screen position to simulate ripples
-			screenPos += float4(0.05 * UnpackNormal(tex2D(_NormalMap,float2(_Time.xz*_RippleSpeed) + ((offset + IN.worldPos.xz)/_RippleScale))),0.0);
+			float4 waveMap = tex2D(_NormalMap,float2(_Time.xz*_RippleSpeed) + ((offset + IN.worldPos.xz)/_RippleScale));
+			screenPos += float4(0.05 * UnpackNormal(waveMap),0.0);
 
 			// View space depth
 			float depth = LinearEyeDepth(pow(tex2D(_CameraDepthTexture,screenPos.xy).r,_FresnelFactor));
@@ -110,9 +109,16 @@ Shader "LostCloud/Water" {
 			half4 refColor = (1 - F) * lerp(_RefractionColor,tex2D(_ReflectionTex,screenPos.xy),depth) + F * lerp(_RefractionColor,tex2D(_RefractionTex,screenPos.xy),1 - depth);
 			
 			// DEBUG: Draw some gridlines :)
-			//if(fmod(sign(IN.worldPos.x) * IN.worldPos.x,10.0) < 0.1 || fmod(sign(IN.worldPos.z) * IN.worldPos.z,10.0) < 0.1) {
-			//	refColor = half4(1.0,0.0,0.0,1.0);
-			//}
+			half4 lines = half4(0.0);
+			if(fmod(sign(IN.worldPos.x) * IN.worldPos.x,10.0) < 0.1 || fmod(sign(IN.worldPos.z) * IN.worldPos.z,10.0) < 0.1) {
+				lines = half4(1.0,0.0,0.0,1.0);
+			}
+
+			// DEBUG: Draw some Circles :)
+			half4 circles = half4(0.0);
+			if(fmod(d,2.0) < 0.1 || fmod(d,2.0) < 0.1) {
+				circles = half4(0.0,1.0,0.0,1.0);
+			}
 			
 			// Final color
 			float foamFactor = LinearEyeDepth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, foamPos.xy)));
