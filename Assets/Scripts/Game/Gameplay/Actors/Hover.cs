@@ -62,6 +62,8 @@ public class Hover : MonoBehaviour
 	
 		private bool doing180 = false;
 		public float spinAmount = 0.0f;
+		public float flipAmount = 0.0f;
+		public float spinBoost = 4000f;
 
         // Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
         Vector3 CalculateBoardDimensions()
@@ -340,7 +342,7 @@ public class Hover : MonoBehaviour
 					else{grindParticles.startLifetime = 0f;}
 
                 clampVector = transform.rotation.eulerAngles;
-
+				
                 if (clampVector.z > 180) { clampVector.z = - 180 + (clampVector.z-180);}
                 if (clampVector.x > 180) { clampVector.x = - 180 + (clampVector.x-180);}
 
@@ -349,7 +351,7 @@ public class Hover : MonoBehaviour
                 clampVector.z = Mathf.Clamp (clampVector.z,-currentClamp,currentClamp);
                 clampVector.x = Mathf.Clamp (clampVector.x,-currentClamp,currentClamp);
 
-                transform.localEulerAngles = clampVector;
+                if (flipAmount == 0f){transform.localEulerAngles = clampVector;}
                 if (!onGround && m_glide>0.5f && glideLeft > 0){
                         glidePower = glideForce + (((glideApexForce-glideForce) * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
                         rigidbody.AddForce(transform.up * glidePower);
@@ -400,11 +402,17 @@ public class Hover : MonoBehaviour
 		//Debug.Log (onGround);		
 		if (!onGround){
 					Debug.Log (spinAmount);
-					rigidbody.AddTorque(transform.up* m_lean * steerPower);
+					rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
+					rigidbody.AddTorque(transform.right* Math.Min (Mathf.Sign (m_thrust)*Mathf.Pow (m_thrust,2.0f),0) * steerPower);
 					spinAmount += rigidbody.angularVelocity.y;
+					flipAmount += rigidbody.angularVelocity.x;
+				
 				}
 		else{
+					if (Math.Abs(spinAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse);}
+					if (Math.Abs(flipAmount)>=270f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse);}
 					spinAmount = 0f;
+					flipAmount = 0f;
 				}
 				//Debug.Log (Vector3.Magnitude(rigidbody.velocity));
 				theCamera.fieldOfView = cameraFOV 

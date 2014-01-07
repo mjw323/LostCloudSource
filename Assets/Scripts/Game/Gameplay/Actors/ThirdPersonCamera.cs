@@ -219,7 +219,8 @@ public class ThirdPersonCamera : MonoBehaviour
 	
 	void LateUpdate()
 	{	/////////CORRECT CAMERA FOLLOW TRANSFORM TO ACCOMODATE FOR BOARD SPINNING///////
-		followXform.Rotate(0,- hoverBoard.spinAmount,0);
+		followXform.rotation = followXform.parent.rotation;
+		followXform.Rotate(- hoverBoard.flipAmount,- hoverBoard.spinAmount, 0);
 		// Pull values from controller/keyboard
 		float rightX = -Input.GetAxis("RightStickX");
 		float rightY = Input.GetAxis("RightStickY");
