@@ -21,7 +21,6 @@ function Start(){
 }
 
 function Update(){
-	Debug.Log(footC.enabled);
 	if ((!Respawning) && (footC.enabled)){
 	var hit : RaycastHit;
 	var touchingWater : boolean;
