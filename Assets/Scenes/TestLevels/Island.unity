@@ -4257,7 +4257,7 @@ GameObject:
   - 54: {fileID: 182807036}
   m_Layer: 0
   m_Name: rail_W3lake_1
-  m_TagString: Untagged
+  m_TagString: Grind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4301,7 +4301,7 @@ MeshCollider:
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: d7154caba3798fe4fa938151b2048308, type: 3}
 --- !u!95 &182807038
 Animator:
   serializedVersion: 2
@@ -24680,7 +24680,7 @@ Transform:
   m_PrefabInternal: {fileID: 1648421501}
   m_GameObject: {fileID: 982616548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.04120994, y: 3.82631731, z: -119.247253}
+  m_LocalPosition: {x: 392.627899, y: 37.2650757, z: 468.580383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1652347810}
@@ -32244,6 +32244,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c941e260f1d544d4298a7ed5639c8810, type: 2}
+    - target: {fileID: 100030, guid: d7154caba3798fe4fa938151b2048308, type: 3}
+      propertyPath: m_TagString
+      value: Grind
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7154caba3798fe4fa938151b2048308, type: 3}
   m_RootGameObject: {fileID: 182807034}
@@ -35260,7 +35264,7 @@ GameObject:
   - 54: {fileID: 1477178882}
   m_Layer: 0
   m_Name: rail_W1A3_1
-  m_TagString: Untagged
+  m_TagString: Grind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35306,7 +35310,7 @@ MeshCollider:
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 3b710442d3442284b875d0a50132b856, type: 3}
 --- !u!95 &1477178884
 Animator:
   serializedVersion: 2
@@ -36000,11 +36004,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400026, guid: 446d1d8216faa4e4e9906ed292cc4e15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: 446d1d8216faa4e4e9906ed292cc4e15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.14916611
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: 446d1d8216faa4e4e9906ed292cc4e15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36030,6 +36034,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c941e260f1d544d4298a7ed5639c8810, type: 2}
+    - target: {fileID: 100026, guid: 446d1d8216faa4e4e9906ed292cc4e15, type: 3}
+      propertyPath: m_TagString
+      value: Grind
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 446d1d8216faa4e4e9906ed292cc4e15, type: 3}
   m_RootGameObject: {fileID: 1859280893}
@@ -37604,8 +37612,8 @@ Light:
   m_Type: 0
   m_Color: {r: .984313726, g: .866666675, b: .725490212, a: 1}
   m_Intensity: .5
-  m_Range: 254.399994
-  m_SpotAngle: 98
+  m_Range: 777
+  m_SpotAngle: 82.4000015
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -37635,7 +37643,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1574911828}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -17.2518539, y: 115.508171, z: 870.602051}
+  m_LocalPosition: {x: -17.2518539, y: 126.183838, z: 870.602051}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39144,15 +39152,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.04120994
+      value: 392.627899
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.82631731
+      value: 37.2650757
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -119.247253
+      value: 468.580383
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
       propertyPath: m_LocalRotation.x
@@ -45395,7 +45403,7 @@ GameObject:
   - 54: {fileID: 1859280895}
   m_Layer: 0
   m_Name: rail_W3lake_2
-  m_TagString: Untagged
+  m_TagString: Grind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45407,7 +45415,7 @@ Transform:
   m_PrefabInternal: {fileID: 1509190362}
   m_GameObject: {fileID: 1859280893}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.14916611, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459130241}
@@ -45439,7 +45447,7 @@ MeshCollider:
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 446d1d8216faa4e4e9906ed292cc4e15, type: 3}
 --- !u!95 &1859280897
 Animator:
   serializedVersion: 2
