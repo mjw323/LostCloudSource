@@ -24,6 +24,7 @@ public class Hover : MonoBehaviour
         [HideInInspector] Transform[] m_sensors;
         RaycastHit[] m_hits;
         Transform m_thruster;
+		Transform b_thruster;
         float m_thrust;
         float m_lean;
         float m_glide;
@@ -58,6 +59,9 @@ public class Hover : MonoBehaviour
         private Vector3 initialGrindDir = Vector3.zero;
         public float grindHeight = 1.0f;
         public float grindSpeed = 10000;
+	
+		private bool doing180 = false;
+		public float spinAmount = 0.0f;
 
         // Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
         Vector3 CalculateBoardDimensions()
@@ -114,6 +118,17 @@ public class Hover : MonoBehaviour
                 Destroy(thruster.GetComponent<MeshRenderer>());
                 Destroy(thruster.GetComponent<Collider>());
                 m_thruster = thruster.transform;
+		
+				thrusterPosition = transform.position;
+                thrusterPosition.z = transform.position.z - boardDimensions.z / 2;
+                thruster = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                thruster.name = "Thruster2";
+                thruster.transform.parent = transform;
+                thruster.transform.localPosition = transform.InverseTransformPoint(thrusterPosition);
+                thruster.transform.localScale *= thrusterScale;
+                Destroy(thruster.GetComponent<MeshRenderer>());
+                Destroy(thruster.GetComponent<Collider>());
+                b_thruster = thruster.transform;
         }
 
         public void Move(float thrust, float lean, bool jump, float glide, bool glide2)
@@ -243,6 +258,8 @@ public class Hover : MonoBehaviour
         void FixedUpdate()
         {
                 onGround = false;
+				Transform activeThruster = m_thruster;
+				if (doing180){activeThruster = b_thruster;}
 
                 hoverMod = 1;
                 if (detach){hoverMod = 0.5f;}
@@ -379,8 +396,16 @@ public class Hover : MonoBehaviour
 				float angleSign = Math.Sign (Vector3.Cross(Vector3.forward,inputDir).y);
 				Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
-				//rigidbody.AddTorque(transform.up*(1-Vector3.Dot (moveDir,transform.forward)*Vector3.Magnitude(inputDir)));
-				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), m_thruster.position);
+				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
+		//Debug.Log (onGround);		
+		if (!onGround){
+					Debug.Log (spinAmount);
+					rigidbody.AddTorque(transform.up* m_lean * steerPower);
+					spinAmount += rigidbody.angularVelocity.y;
+				}
+		else{
+					spinAmount = 0f;
+				}
 				//Debug.Log (Vector3.Magnitude(rigidbody.velocity));
 				theCamera.fieldOfView = cameraFOV 
 											+ (//(15*jumpPower) 

@@ -169,10 +169,19 @@ public class ThirdPersonCamera : MonoBehaviour
 		}
 		
 		follow = GameObject.FindWithTag("Player").GetComponent<FootMovement>();
-		followXform = GameObject.FindWithTag("Player").transform;
+
+                
+                followXform = GameObject.CreatePrimitive(PrimitiveType.Sphere).transform;
+                followXform.parent = GameObject.FindWithTag("Player").transform;
+				followXform.position = followXform.parent.position;
+                Destroy(followXform.GetComponent<MeshRenderer>());
+                Destroy(followXform.GetComponent<Collider>());
+		//followXform = GameObject.FindWithTag("Player").transform;
 		
 		lookDir = followXform.forward;
 		curLookDir = followXform.forward;
+		
+		hoverBoard = GameObject.FindWithTag ("Board").GetComponent<Hover>();
 		/*
 		barEffect = GetComponent<BarsEffect>();
 		if (barEffect == null)
@@ -209,7 +218,8 @@ public class ThirdPersonCamera : MonoBehaviour
 	}
 	
 	void LateUpdate()
-	{		
+	{	/////////CORRECT CAMERA FOLLOW TRANSFORM TO ACCOMODATE FOR BOARD SPINNING///////
+		followXform.Rotate(0,- hoverBoard.spinAmount,0);
 		// Pull values from controller/keyboard
 		float rightX = -Input.GetAxis("RightStickX");
 		float rightY = Input.GetAxis("RightStickY");
@@ -392,4 +402,6 @@ public class ThirdPersonCamera : MonoBehaviour
 	}
 	
 	#endregion Methods
+	
+[HideInInspector] private Hover hoverBoard;
 }
