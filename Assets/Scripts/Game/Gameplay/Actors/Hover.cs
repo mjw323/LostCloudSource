@@ -385,6 +385,7 @@ public class Hover : MonoBehaviour
                                 detach = true; 
                                 rigidbody.AddForce(transform.up * jumpForce * Mathf.Sqrt(jumpPower), ForceMode.Impulse);
                                 jumpPower = 0.0f;
+								if (waterSpray){splashParticles.Emit (30);}
                         		}
                       	}
                 }
