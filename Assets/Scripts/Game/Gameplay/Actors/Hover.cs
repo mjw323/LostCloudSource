@@ -196,6 +196,8 @@ public class Hover : MonoBehaviour
                 renderer.enabled = true;
                 rigidbody.isKinematic = false;
                 nokeAnimator.SetBool(ridingId, true);
+				spinAmount = 0f;
+				flipAmount = 0f;
         }
 
         void OnDisable()
@@ -219,7 +221,7 @@ public class Hover : MonoBehaviour
                                 // Skipping the first two transforms fixes this on the current build. (Uses: joint1 .. jointN)
                                 grindPoints = grindRail.GetChild(0).GetChild(0).GetComponentsInChildren<Transform>();
 
-                                initialGrindDir = transform.forward;//rigidbody.velocity;
+                                initialGrindDir = rigidbody.velocity;
                                 initialGrindDir.y = 0.0f;
                                 initialGrindDir.Normalize();
 
@@ -401,16 +403,16 @@ public class Hover : MonoBehaviour
 				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
 		//Debug.Log (onGround);		
 		if (!onGround){
-					Debug.Log (spinAmount);
+					Debug.Log (flipAmount);
 					rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
-					rigidbody.AddTorque(transform.right* Math.Min (Mathf.Sign (m_thrust)*Mathf.Pow (m_thrust,2.0f),0) * steerPower);
+					rigidbody.AddTorque(transform.right* Math.Min (Mathf.Sign (m_thrust)*Mathf.Abs (Mathf.Pow (m_thrust,3.0f)),0) * steerPower);
 					spinAmount += rigidbody.angularVelocity.y;
 					flipAmount += rigidbody.angularVelocity.x;
 				
 				}
 		else{
 					if (Math.Abs(spinAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse);}
-					if (Math.Abs(flipAmount)>=270f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse);}
+					if (Math.Abs(flipAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse);}
 					spinAmount = 0f;
 					flipAmount = 0f;
 				}
