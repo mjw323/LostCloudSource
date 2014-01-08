@@ -21,7 +21,7 @@ function Start(){
 }
 
 function Update(){
-	if ((!Respawning) && (footC.enabled)){
+	if ((!Respawning)){
 	var hit : RaycastHit;
 	var touchingWater : boolean;
 	touchingWater = false;
@@ -36,7 +36,7 @@ function Update(){
 			}
 			//}
 		}
-	if (touchingWater){
+	if (touchingWater && footC.enabled){
 		if (WaterTime<WaterTimeMax){WaterTime += 1;}
 		else{WaterTime = 0; Respawn();}
 	}
@@ -47,7 +47,6 @@ function Update(){
 }
 
 function OnTriggerEnter (other : Collider) {
-	Debug.Log(other.transform);
 		if(other.transform.tag == "Respawn"){
 			Respawn();
 		}

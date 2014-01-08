@@ -363,8 +363,10 @@ public class Hover : MonoBehaviour
                 clampVector.z = Mathf.Clamp (clampVector.z,-currentClamp,currentClamp);
                 clampVector.x = Mathf.Clamp (clampVector.x,-currentClamp,currentClamp);
 
-                if (flipAmount == 0f){transform.localEulerAngles = clampVector;}
-                if (!onGround && m_glide>0.5f && glideLeft > 0){
+                if (flipAmount == 0){transform.localEulerAngles = clampVector;}
+		
+				/////////////////////////////////GLIDE///////////////////////////////////////////
+                if (!onGround && m_glide>0.5f && glideLeft > 0 && (transform.rotation.x<90 || transform.rotation.x>270)){
                         glidePower = glideForce + (((glideApexForce-glideForce) * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
                         rigidbody.AddForce(transform.up * glidePower);
                         glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
@@ -413,20 +415,23 @@ public class Hover : MonoBehaviour
 		if (!onGround){
 					Debug.Log (flipAmount);
 					rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
-					rigidbody.AddTorque(transform.right* Math.Min (Mathf.Sign (m_thrust)*Mathf.Abs (Mathf.Pow (m_thrust,3.0f)),0) * steerPower);
 					spinAmount += rigidbody.angularVelocity.y;
+				if (m_thrust<-0.5f || (m_thrust>0f && flipAmount > 0f)){
+					rigidbody.AddTorque(transform.right* Math.Min (Mathf.Pow (m_thrust,3.0f),0) * steerPower);
+				}
+				
 					flipAmount += rigidbody.angularVelocity.x;
+				
 				
 				}
 		else{
 					if (Math.Abs(spinAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.0f);}
-					if (Math.Abs(flipAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.25f);}
+					if (Math.Abs(flipAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost*1.25f, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.25f);}
 					spinAmount = 0f;
 					flipAmount = 0f;
 				}
 	}
 				//Debug.Log (Vector3.Magnitude(rigidbody.velocity));
-				Debug.Log (Vector3.Magnitude(rigidbody.velocity)/20);
 				theCamera.fieldOfView = cameraFOV 
 											+ (//(15*jumpPower) 
 											+ (30 * Math.Max (0,Vector3.Dot (Vector3.Normalize (rigidbody.velocity),cameraDir)))
