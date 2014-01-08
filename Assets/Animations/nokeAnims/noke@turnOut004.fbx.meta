@@ -1,0 +1,2019 @@
+fileFormatVersion: 2
+guid: e7850b7cbd394484395aee9049007a8e
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: bandanna
+    100002: belt
+    100004: body
+    100006: buckles_btm
+    100008: buckles_top
+    100010: cloth
+    100012: cloth 1
+    100014: eyebrowRing
+    100016: hair
+    100018: jacket
+    100020: jacket 1
+    100022: L_arm
+    100024: L_earring
+    100026: L_eye
+    100028: L_eyelashes
+    100030: //RootNode
+    100032: Noke_Ctrl:ChestEndEffector
+    100034: Noke_Ctrl:ChestOriginEffector
+    100036: Noke_Ctrl:Head
+    100038: Noke_Ctrl:HeadEffector
+    100040: Noke_Ctrl:Hips
+    100042: Noke_Ctrl:HipsEffector
+    100044: Noke_Ctrl:LeftAnkleEffector
+    100046: Noke_Ctrl:LeftArm
+    100048: Noke_Ctrl:LeftElbowEffector
+    100050: Noke_Ctrl:LeftFingerBase
+    100052: Noke_Ctrl:LeftFoot
+    100054: Noke_Ctrl:LeftFootEffector
+    100056: Noke_Ctrl:LeftForeArm
+    100058: Noke_Ctrl:LeftHand
+    100060: Noke_Ctrl:LeftHandEffector
+    100062: Noke_Ctrl:LeftHandIndex1
+    100064: Noke_Ctrl:LeftHandIndex2
+    100066: Noke_Ctrl:LeftHandIndex3
+    100068: Noke_Ctrl:LeftHandIndex4
+    100070: Noke_Ctrl:LeftHandIndexEffector
+    100072: Noke_Ctrl:LeftHandMiddle1
+    100074: Noke_Ctrl:LeftHandMiddle2
+    100076: Noke_Ctrl:LeftHandMiddle3
+    100078: Noke_Ctrl:LeftHandMiddle4
+    100080: Noke_Ctrl:LeftHandMiddleEffector
+    100082: Noke_Ctrl:LeftHandPinky1
+    100084: Noke_Ctrl:LeftHandPinky2
+    100086: Noke_Ctrl:LeftHandPinky3
+    100088: Noke_Ctrl:LeftHandPinky4
+    100090: Noke_Ctrl:LeftHandPinkyEffector
+    100092: Noke_Ctrl:LeftHandRing1
+    100094: Noke_Ctrl:LeftHandRing2
+    100096: Noke_Ctrl:LeftHandRing3
+    100098: Noke_Ctrl:LeftHandRing4
+    100100: Noke_Ctrl:LeftHandRingEffector
+    100102: Noke_Ctrl:LeftHandThumb1
+    100104: Noke_Ctrl:LeftHandThumb2
+    100106: Noke_Ctrl:LeftHandThumb3
+    100108: Noke_Ctrl:LeftHandThumb4
+    100110: Noke_Ctrl:LeftHandThumbEffector
+    100112: Noke_Ctrl:LeftHipEffector
+    100114: Noke_Ctrl:LeftKneeEffector
+    100116: Noke_Ctrl:LeftLeg
+    100118: Noke_Ctrl:LeftShoulder
+    100120: Noke_Ctrl:LeftShoulderEffector
+    100122: Noke_Ctrl:LeftToeBase
+    100124: Noke_Ctrl:LeftUpLeg
+    100126: Noke_Ctrl:LeftWristEffector
+    100128: Noke_Ctrl:Neck
+    100130: Noke_Ctrl:Reference
+    100132: Noke_Ctrl:RightAnkleEffector
+    100134: Noke_Ctrl:RightArm
+    100136: Noke_Ctrl:RightElbowEffector
+    100138: Noke_Ctrl:RightFingerBase
+    100140: Noke_Ctrl:RightFoot
+    100142: Noke_Ctrl:RightFootEffector
+    100144: Noke_Ctrl:RightForeArm
+    100146: Noke_Ctrl:RightHand
+    100148: Noke_Ctrl:RightHandEffector
+    100150: Noke_Ctrl:RightHandIndex1
+    100152: Noke_Ctrl:RightHandIndex2
+    100154: Noke_Ctrl:RightHandIndex3
+    100156: Noke_Ctrl:RightHandIndex4
+    100158: Noke_Ctrl:RightHandIndexEffector
+    100160: Noke_Ctrl:RightHandMiddle1
+    100162: Noke_Ctrl:RightHandMiddle2
+    100164: Noke_Ctrl:RightHandMiddle3
+    100166: Noke_Ctrl:RightHandMiddle4
+    100168: Noke_Ctrl:RightHandMiddleEffector
+    100170: Noke_Ctrl:RightHandPinky1
+    100172: Noke_Ctrl:RightHandPinky2
+    100174: Noke_Ctrl:RightHandPinky3
+    100176: Noke_Ctrl:RightHandPinky4
+    100178: Noke_Ctrl:RightHandPinkyEffector
+    100180: Noke_Ctrl:RightHandRing1
+    100182: Noke_Ctrl:RightHandRing2
+    100184: Noke_Ctrl:RightHandRing3
+    100186: Noke_Ctrl:RightHandRing4
+    100188: Noke_Ctrl:RightHandRingEffector
+    100190: Noke_Ctrl:RightHandThumb1
+    100192: Noke_Ctrl:RightHandThumb2
+    100194: Noke_Ctrl:RightHandThumb3
+    100196: Noke_Ctrl:RightHandThumb4
+    100198: Noke_Ctrl:RightHandThumbEffector
+    100200: Noke_Ctrl:RightHipEffector
+    100202: Noke_Ctrl:RightKneeEffector
+    100204: Noke_Ctrl:RightLeg
+    100206: Noke_Ctrl:RightShoulder
+    100208: Noke_Ctrl:RightShoulderEffector
+    100210: Noke_Ctrl:RightToeBase
+    100212: Noke_Ctrl:RightUpLeg
+    100214: Noke_Ctrl:RightWristEffector
+    100216: Noke_Ctrl:Spine
+    100218: Noke_Ctrl:Spine1
+    100220: Noke_Ctrl:Spine2
+    100222: Noke_Ctrl:Spine3
+    100224: Noke_Ctrl:Spine4
+    100226: Noke_Ctrl:Spine5
+    100228: Noke_Ctrl:Spine6
+    100230: noke_geo
+    100232: noke_head
+    100234: noke_headEnd
+    100236: noke_jaw
+    100238: noke_jawEnd
+    100240: noke_L_ankle
+    100242: noke_L_ball
+    100244: noke_L_clavicle
+    100246: noke_L_elbow
+    100248: noke_L_eyeBall
+    100250: noke_L_hand
+    100252: noke_L_HandIndex1
+    100254: noke_L_HandIndex2
+    100256: noke_L_HandIndex3
+    100258: noke_L_HandIndex4
+    100260: noke_L_HandMiddle1
+    100262: noke_L_HandMiddle2
+    100264: noke_L_HandMiddle3
+    100266: noke_L_HandMiddle4
+    100268: noke_L_HandPinky1
+    100270: noke_L_HandPinky2
+    100272: noke_L_HandPinky3
+    100274: noke_L_HandPinky4
+    100276: noke_L_HandRing1
+    100278: noke_L_HandRing2
+    100280: noke_L_HandRing3
+    100282: noke_L_HandRing4
+    100284: noke_L_HandThumb1
+    100286: noke_L_HandThumb2
+    100288: noke_L_HandThumb3
+    100290: noke_L_HandThumb4
+    100292: noke_L_knee
+    100294: noke_L_lidBtm
+    100296: noke_L_lidBtm_blink
+    100298: noke_L_lidTop
+    100300: noke_L_lidTop_blink
+    100302: noke_L_shoulder
+    100304: noke_L_toe
+    100306: noke_L_upLeg
+    100308: noke_L_wrist
+    100310: noke_neck1
+    100312: noke_node
+    100314: noke_pelvis
+    100316: noke_R_ankle
+    100318: noke_R_ball
+    100320: noke_R_clavicle
+    100322: noke_R_elbow
+    100324: noke_R_eyeBall
+    100326: noke_R_hand
+    100328: noke_R_HandIndex1
+    100330: noke_R_HandIndex2
+    100332: noke_R_HandIndex3
+    100334: noke_R_HandIndex4
+    100336: noke_R_HandMiddle1
+    100338: noke_R_HandMiddle2
+    100340: noke_R_HandMiddle3
+    100342: noke_R_HandMiddle4
+    100344: noke_R_HandPinky1
+    100346: noke_R_HandPinky2
+    100348: noke_R_HandPinky3
+    100350: noke_R_HandPinky4
+    100352: noke_R_HandRing1
+    100354: noke_R_HandRing2
+    100356: noke_R_HandRing3
+    100358: noke_R_HandRing4
+    100360: noke_R_HandThumb1
+    100362: noke_R_HandThumb2
+    100364: noke_R_HandThumb3
+    100366: noke_R_HandThumb4
+    100368: noke_R_knee
+    100370: noke_R_lidBtm
+    100372: noke_R_lidBtm_blink
+    100374: noke_R_lidTop
+    100376: noke_R_lidTop_blink
+    100378: noke_R_shoulder
+    100380: noke_R_toe
+    100382: noke_R_upReg
+    100384: noke_R_wrist
+    100386: noke_root
+    100388: noke_spine1
+    100390: noke_spine2
+    100392: noke_spine3
+    100394: noke_spine4
+    100396: noke_spine5
+    100398: noke_spine6
+    100400: noke_spine7
+    100402: piercings
+    100404: R_arm
+    100406: R_earring
+    100408: R_eye
+    100410: R_eyelashes
+    100412: ring1
+    100414: ring2
+    100416: ring3
+    100418: ring4
+    100420: strap
+    100422: strap 1
+    400000: bandanna
+    400002: belt
+    400004: body
+    400006: buckles_btm
+    400008: buckles_top
+    400010: cloth
+    400012: cloth 1
+    400014: eyebrowRing
+    400016: hair
+    400018: jacket
+    400020: jacket 1
+    400022: L_arm
+    400024: L_earring
+    400026: L_eye
+    400028: L_eyelashes
+    400030: //RootNode
+    400032: Noke_Ctrl:ChestEndEffector
+    400034: Noke_Ctrl:ChestOriginEffector
+    400036: Noke_Ctrl:Head
+    400038: Noke_Ctrl:HeadEffector
+    400040: Noke_Ctrl:Hips
+    400042: Noke_Ctrl:HipsEffector
+    400044: Noke_Ctrl:LeftAnkleEffector
+    400046: Noke_Ctrl:LeftArm
+    400048: Noke_Ctrl:LeftElbowEffector
+    400050: Noke_Ctrl:LeftFingerBase
+    400052: Noke_Ctrl:LeftFoot
+    400054: Noke_Ctrl:LeftFootEffector
+    400056: Noke_Ctrl:LeftForeArm
+    400058: Noke_Ctrl:LeftHand
+    400060: Noke_Ctrl:LeftHandEffector
+    400062: Noke_Ctrl:LeftHandIndex1
+    400064: Noke_Ctrl:LeftHandIndex2
+    400066: Noke_Ctrl:LeftHandIndex3
+    400068: Noke_Ctrl:LeftHandIndex4
+    400070: Noke_Ctrl:LeftHandIndexEffector
+    400072: Noke_Ctrl:LeftHandMiddle1
+    400074: Noke_Ctrl:LeftHandMiddle2
+    400076: Noke_Ctrl:LeftHandMiddle3
+    400078: Noke_Ctrl:LeftHandMiddle4
+    400080: Noke_Ctrl:LeftHandMiddleEffector
+    400082: Noke_Ctrl:LeftHandPinky1
+    400084: Noke_Ctrl:LeftHandPinky2
+    400086: Noke_Ctrl:LeftHandPinky3
+    400088: Noke_Ctrl:LeftHandPinky4
+    400090: Noke_Ctrl:LeftHandPinkyEffector
+    400092: Noke_Ctrl:LeftHandRing1
+    400094: Noke_Ctrl:LeftHandRing2
+    400096: Noke_Ctrl:LeftHandRing3
+    400098: Noke_Ctrl:LeftHandRing4
+    400100: Noke_Ctrl:LeftHandRingEffector
+    400102: Noke_Ctrl:LeftHandThumb1
+    400104: Noke_Ctrl:LeftHandThumb2
+    400106: Noke_Ctrl:LeftHandThumb3
+    400108: Noke_Ctrl:LeftHandThumb4
+    400110: Noke_Ctrl:LeftHandThumbEffector
+    400112: Noke_Ctrl:LeftHipEffector
+    400114: Noke_Ctrl:LeftKneeEffector
+    400116: Noke_Ctrl:LeftLeg
+    400118: Noke_Ctrl:LeftShoulder
+    400120: Noke_Ctrl:LeftShoulderEffector
+    400122: Noke_Ctrl:LeftToeBase
+    400124: Noke_Ctrl:LeftUpLeg
+    400126: Noke_Ctrl:LeftWristEffector
+    400128: Noke_Ctrl:Neck
+    400130: Noke_Ctrl:Reference
+    400132: Noke_Ctrl:RightAnkleEffector
+    400134: Noke_Ctrl:RightArm
+    400136: Noke_Ctrl:RightElbowEffector
+    400138: Noke_Ctrl:RightFingerBase
+    400140: Noke_Ctrl:RightFoot
+    400142: Noke_Ctrl:RightFootEffector
+    400144: Noke_Ctrl:RightForeArm
+    400146: Noke_Ctrl:RightHand
+    400148: Noke_Ctrl:RightHandEffector
+    400150: Noke_Ctrl:RightHandIndex1
+    400152: Noke_Ctrl:RightHandIndex2
+    400154: Noke_Ctrl:RightHandIndex3
+    400156: Noke_Ctrl:RightHandIndex4
+    400158: Noke_Ctrl:RightHandIndexEffector
+    400160: Noke_Ctrl:RightHandMiddle1
+    400162: Noke_Ctrl:RightHandMiddle2
+    400164: Noke_Ctrl:RightHandMiddle3
+    400166: Noke_Ctrl:RightHandMiddle4
+    400168: Noke_Ctrl:RightHandMiddleEffector
+    400170: Noke_Ctrl:RightHandPinky1
+    400172: Noke_Ctrl:RightHandPinky2
+    400174: Noke_Ctrl:RightHandPinky3
+    400176: Noke_Ctrl:RightHandPinky4
+    400178: Noke_Ctrl:RightHandPinkyEffector
+    400180: Noke_Ctrl:RightHandRing1
+    400182: Noke_Ctrl:RightHandRing2
+    400184: Noke_Ctrl:RightHandRing3
+    400186: Noke_Ctrl:RightHandRing4
+    400188: Noke_Ctrl:RightHandRingEffector
+    400190: Noke_Ctrl:RightHandThumb1
+    400192: Noke_Ctrl:RightHandThumb2
+    400194: Noke_Ctrl:RightHandThumb3
+    400196: Noke_Ctrl:RightHandThumb4
+    400198: Noke_Ctrl:RightHandThumbEffector
+    400200: Noke_Ctrl:RightHipEffector
+    400202: Noke_Ctrl:RightKneeEffector
+    400204: Noke_Ctrl:RightLeg
+    400206: Noke_Ctrl:RightShoulder
+    400208: Noke_Ctrl:RightShoulderEffector
+    400210: Noke_Ctrl:RightToeBase
+    400212: Noke_Ctrl:RightUpLeg
+    400214: Noke_Ctrl:RightWristEffector
+    400216: Noke_Ctrl:Spine
+    400218: Noke_Ctrl:Spine1
+    400220: Noke_Ctrl:Spine2
+    400222: Noke_Ctrl:Spine3
+    400224: Noke_Ctrl:Spine4
+    400226: Noke_Ctrl:Spine5
+    400228: Noke_Ctrl:Spine6
+    400230: noke_geo
+    400232: noke_head
+    400234: noke_headEnd
+    400236: noke_jaw
+    400238: noke_jawEnd
+    400240: noke_L_ankle
+    400242: noke_L_ball
+    400244: noke_L_clavicle
+    400246: noke_L_elbow
+    400248: noke_L_eyeBall
+    400250: noke_L_hand
+    400252: noke_L_HandIndex1
+    400254: noke_L_HandIndex2
+    400256: noke_L_HandIndex3
+    400258: noke_L_HandIndex4
+    400260: noke_L_HandMiddle1
+    400262: noke_L_HandMiddle2
+    400264: noke_L_HandMiddle3
+    400266: noke_L_HandMiddle4
+    400268: noke_L_HandPinky1
+    400270: noke_L_HandPinky2
+    400272: noke_L_HandPinky3
+    400274: noke_L_HandPinky4
+    400276: noke_L_HandRing1
+    400278: noke_L_HandRing2
+    400280: noke_L_HandRing3
+    400282: noke_L_HandRing4
+    400284: noke_L_HandThumb1
+    400286: noke_L_HandThumb2
+    400288: noke_L_HandThumb3
+    400290: noke_L_HandThumb4
+    400292: noke_L_knee
+    400294: noke_L_lidBtm
+    400296: noke_L_lidBtm_blink
+    400298: noke_L_lidTop
+    400300: noke_L_lidTop_blink
+    400302: noke_L_shoulder
+    400304: noke_L_toe
+    400306: noke_L_upLeg
+    400308: noke_L_wrist
+    400310: noke_neck1
+    400312: noke_node
+    400314: noke_pelvis
+    400316: noke_R_ankle
+    400318: noke_R_ball
+    400320: noke_R_clavicle
+    400322: noke_R_elbow
+    400324: noke_R_eyeBall
+    400326: noke_R_hand
+    400328: noke_R_HandIndex1
+    400330: noke_R_HandIndex2
+    400332: noke_R_HandIndex3
+    400334: noke_R_HandIndex4
+    400336: noke_R_HandMiddle1
+    400338: noke_R_HandMiddle2
+    400340: noke_R_HandMiddle3
+    400342: noke_R_HandMiddle4
+    400344: noke_R_HandPinky1
+    400346: noke_R_HandPinky2
+    400348: noke_R_HandPinky3
+    400350: noke_R_HandPinky4
+    400352: noke_R_HandRing1
+    400354: noke_R_HandRing2
+    400356: noke_R_HandRing3
+    400358: noke_R_HandRing4
+    400360: noke_R_HandThumb1
+    400362: noke_R_HandThumb2
+    400364: noke_R_HandThumb3
+    400366: noke_R_HandThumb4
+    400368: noke_R_knee
+    400370: noke_R_lidBtm
+    400372: noke_R_lidBtm_blink
+    400374: noke_R_lidTop
+    400376: noke_R_lidTop_blink
+    400378: noke_R_shoulder
+    400380: noke_R_toe
+    400382: noke_R_upReg
+    400384: noke_R_wrist
+    400386: noke_root
+    400388: noke_spine1
+    400390: noke_spine2
+    400392: noke_spine3
+    400394: noke_spine4
+    400396: noke_spine5
+    400398: noke_spine6
+    400400: noke_spine7
+    400402: piercings
+    400404: R_arm
+    400406: R_earring
+    400408: R_eye
+    400410: R_eyelashes
+    400412: ring1
+    400414: ring2
+    400416: ring3
+    400418: ring4
+    400420: strap
+    400422: strap 1
+    4300000: body
+    4300002: L_arm
+    4300004: R_arm
+    4300006: L_eye
+    4300008: R_eye
+    4300010: L_eyelashes
+    4300012: R_eyelashes
+    4300014: L_earring
+    4300016: eyebrowRing
+    4300018: R_earring
+    4300020: jacket 1
+    4300022: cloth
+    4300024: ring1
+    4300026: ring2
+    4300028: strap
+    4300030: cloth 1
+    4300032: ring3
+    4300034: ring4
+    4300036: strap 1
+    4300038: belt
+    4300040: bandanna
+    4300042: hair
+    7400000: prannoy_wideTurn005_x2d
+    9500000: //RootNode
+    13700000: bandanna
+    13700002: belt
+    13700004: body
+    13700006: cloth
+    13700008: cloth 1
+    13700010: eyebrowRing
+    13700012: hair
+    13700014: jacket 1
+    13700016: L_arm
+    13700018: L_earring
+    13700020: L_eye
+    13700022: L_eyelashes
+    13700024: R_arm
+    13700026: R_earring
+    13700028: R_eye
+    13700030: R_eyelashes
+    13700032: ring1
+    13700034: ring2
+    13700036: ring3
+    13700038: ring4
+    13700040: strap
+    13700042: strap 1
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 1
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: noke_root
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_upLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_upReg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_knee
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_knee
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_ankle
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_ankle
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_spine3
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_spine5
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_neck1
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_shoulder
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_shoulder
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_elbow
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_elbow
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_wrist
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_wrist
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_toe
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_toe
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_eyeBall
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_eyeBall
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_jaw
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandRing1
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandRing2
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandRing3
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandPinky1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandPinky2
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_L_HandPinky3
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandRing1
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandRing2
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandRing3
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandPinky1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandPinky2
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: noke_R_HandPinky3
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: noke@turnOut004(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Reference
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:ChestEndEffector
+      position: {x: 6.15509129, y: 1.08710587, z: -2.0450089}
+      rotation: {x: -.212000132, y: .912446797, z: -.289371878, w: -.196877435}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:ChestOriginEffector
+      position: {x: 6.32888269, y: .749422312, z: -1.91608679}
+      rotation: {x: -.163144067, y: .956584632, z: -.130331486, w: -.203331366}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:HeadEffector
+      position: {x: 6.08329248, y: 1.25738215, z: -2.07032871}
+      rotation: {x: .0300224908, y: -.728812277, z: .10895063, w: .675323009}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Hips
+      position: {x: 6.32888269, y: .749422312, z: -1.91608679}
+      rotation: {x: -.158833355, y: .958993673, z: -.116837434, w: -.203597933}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftUpLeg
+      position: {x: -.0909088701, y: 3.81147487e-08, z: -4.712995e-05}
+      rotation: {x: -.138869539, y: -.0421575718, z: .0247721821, w: .989102781}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftLeg
+      position: {x: -.0164554995, y: -.432295114, z: .0431899168}
+      rotation: {x: .252908379, y: -.123210832, z: .061152745, w: .957662165}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftFoot
+      position: {x: -.0217448417, y: -.372888744, z: -.0388548598}
+      rotation: {x: -.221802354, y: -.0705313385, z: .0991850793, w: .967466474}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftToeBase
+      position: {x: -.0109836729, y: -.037454538, z: .107374094}
+      rotation: {x: -.0462935418, y: 5.85730995e-05, z: .00711483788, w: .998902559}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightUpLeg
+      position: {x: .0909088328, y: -4.9761843e-07, z: -4.7298141e-05}
+      rotation: {x: -.335177958, y: -.107867733, z: .174960896, w: .91946125}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightLeg
+      position: {x: .0164564401, y: -.43229425, z: .0431902073}
+      rotation: {x: .453080297, y: .109931096, z: -.0920087323, w: .87986809}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightFoot
+      position: {x: .0217441116, y: -.372888744, z: -.0388548449}
+      rotation: {x: -.264193743, y: .0369860753, z: .0482081771, w: .96255374}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightToeBase
+      position: {x: .0109838378, y: -.0374544412, z: .107373461}
+      rotation: {x: -.229594558, y: -.0384121165, z: -.0152255725, w: .972408891}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Spine
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: .0141421827, y: .00187448424, z: -.0017380619, w: .999896765}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Spine1
+      position: {x: -2.55891621e-07, y: .102321811, z: .0205815434}
+      rotation: {x: .0282818433, y: .00374799012, z: -.00347620761, w: .99958694}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Spine2
+      position: {x: 9.1016922e-08, y: .082960546, z: -.0106262797}
+      rotation: {x: .0282821022, y: .00374801387, z: -.0034761976, w: .99958694}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Spine3
+      position: {x: -3.8809884e-07, y: .0673379302, z: -.038292259}
+      rotation: {x: .0282819718, y: .00374807185, z: -.00347623415, w: .99958694}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Spine4
+      position: {x: -1.05980988e-07, y: .075167805, z: -.0127890594}
+      rotation: {x: .0282819513, y: .0037480325, z: -.00347605255, w: .99958694}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Spine5
+      position: {x: -1.63963975e-07, y: .0730797052, z: .0184190478}
+      rotation: {x: .0282817613, y: .00374803366, z: -.00347623718, w: .99958694}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Spine6
+      position: {x: -1.06646326e-07, y: .0421422422, z: .0227068253}
+      rotation: {x: .0282820445, y: .00374805811, z: -.00347619201, w: .99958694}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftShoulder
+      position: {x: -.0434891917, y: -.0317286067, z: .0275099557}
+      rotation: {x: .00983307324, y: .0330146812, z: .0296375863, w: .998966932}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftArm
+      position: {x: -.103053145, y: .00279906322, z: -.048024606}
+      rotation: {x: .0795448869, y: .17243576, z: .423085958, w: .885966599}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftForeArm
+      position: {x: -.221711949, y: -.0026687514, z: -.00116548268}
+      rotation: {x: -.0706835911, y: .154142797, z: .119732708, w: .978216708}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHand
+      position: {x: -.226410493, y: -.00359272375, z: .0380830504}
+      rotation: {x: .0933284312, y: .0182899144, z: -.0136473151, w: .995373845}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftFingerBase
+      position: {x: -.0365858562, y: .0050483821, z: .00796381105}
+      rotation: {x: 2.40419354e-07, y: -7.18626211e-07, z: 3.54946195e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandIndex1
+      position: {x: -.0541479662, y: -.0228032861, z: .0308687724}
+      rotation: {x: .170472175, y: .000283946603, z: .776886463, w: .606124341}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandIndex2
+      position: {x: -.0392611697, y: -.00962285139, z: .0011645098}
+      rotation: {x: .0180036202, y: .0055829105, z: .841586471, w: .539793372}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandIndex3
+      position: {x: -.0314643495, y: -.0096972594, z: .000736600836}
+      rotation: {x: .0316760875, y: .0124116465, z: .742664635, w: .668798804}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandIndex4
+      position: {x: -.0171337631, y: -.0078090406, z: .00080423936}
+      rotation: {x: 5.82022857e-08, y: -9.23046599e-08, z: 8.68204424e-08, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandMiddle1
+      position: {x: -.0556892045, y: -.00878143776, z: .001615113}
+      rotation: {x: .0343423337, y: -.0559935756, z: .744396627, w: .664499044}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandMiddle2
+      position: {x: -.0418585576, y: -.0072688465, z: -.00220193621}
+      rotation: {x: -.138948336, y: -.0328663215, z: .853876531, w: .500507772}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandMiddle3
+      position: {x: -.0332710743, y: -.00788715389, z: -.00571949547}
+      rotation: {x: -.0808284134, y: -.0497099571, z: .81328088, w: .574081838}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandMiddle4
+      position: {x: -.0219959989, y: -.00748434011, z: -.00310534239}
+      rotation: {x: 3.55415324e-08, y: -1.76599713e-07, z: 1.61320472e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandPinky1
+      position: {x: -.0187993981, y: .00229835324, z: -.0410686024}
+      rotation: {x: -.341505855, y: .0712490752, z: .537501454, w: .767717063}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandPinky2
+      position: {x: -.0362384245, y: .00365721923, z: -.0208033361}
+      rotation: {x: -.475024611, y: .00471034553, z: .603328109, w: .640565872}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandPinky3
+      position: {x: -.0194463078, y: .000190683786, z: -.0153141627}
+      rotation: {x: -.488167793, y: -.0587099902, z: .638672233, w: .591897905}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandPinky4
+      position: {x: -.0172974747, y: -.00180417649, z: -.0136889005}
+      rotation: {x: -1.16427978e-08, y: -7.79450673e-08, z: 2.76051338e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandRing1
+      position: {x: -.0481035076, y: -.000786094344, z: -.0223454498}
+      rotation: {x: -.121109821, y: .0337753966, z: .719439209, w: .683080435}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandRing2
+      position: {x: -.0348058157, y: .000764399592, z: -.0106246378}
+      rotation: {x: -.333972543, y: -.0677493885, z: .636821449, w: .691614628}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandRing3
+      position: {x: -.0207891166, y: -.00421866169, z: -.0113519626}
+      rotation: {x: -.287357986, y: -.111384943, z: .653191686, w: .691635311}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandRing4
+      position: {x: -.0213440694, y: -.00827843323, z: -.0108040906}
+      rotation: {x: -1.35124854e-08, y: -9.22410095e-08, z: 2.13229484e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandThumb1
+      position: {x: -.0260678157, y: -.0176273342, z: .0330512524}
+      rotation: {x: .117282152, y: -.499842435, z: .231912851, w: .826207578}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandThumb2
+      position: {x: -.000893840566, y: -.00822141767, z: .0216732882}
+      rotation: {x: .000822816219, y: -.00396598177, z: -.000825973344, w: .999991477}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandThumb3
+      position: {x: -.0208162908, y: -.00933585968, z: .0240703262}
+      rotation: {x: -.0283177048, y: -.507775486, z: -.131688699, w: .850893795}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandThumb4
+      position: {x: -.0235555861, y: -.00571969431, z: .0193522722}
+      rotation: {x: 1.64449659e-07, y: -5.31197024e-08, z: 6.11722299e-08, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Neck
+      position: {x: 2.58681951e-07, y: .0510958657, z: -.00803528633}
+      rotation: {x: -.175635934, y: .338665962, z: -.0577112809, w: .922565341}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:Head
+      position: {x: -4.61364067e-08, y: .0964190587, z: .00357078994}
+      rotation: {x: -.0949211344, y: .160199612, z: .00632559229, w: .982489705}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightShoulder
+      position: {x: .0434890687, y: -.0317264721, z: .0275099743}
+      rotation: {x: -.0140580432, y: -.00260590273, z: -.0595441088, w: .998123288}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightArm
+      position: {x: .103052944, y: .00280011538, z: -.0480245054}
+      rotation: {x: .141978353, y: -.0221653767, z: -.400235146, w: .905076087}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightForeArm
+      position: {x: .221718475, y: -.00267131836, z: -.00116522715}
+      rotation: {x: -.00726930797, y: -.288445562, z: -.0677586943, w: .955068111}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHand
+      position: {x: .226407155, y: -.00359106436, z: .03808254}
+      rotation: {x: -.270481437, y: -.156905159, z: .00369549217, w: .949845731}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightFingerBase
+      position: {x: .0365853235, y: .00504827686, z: .00796393119}
+      rotation: {x: -1.19836795e-06, y: 5.89238198e-07, z: 1.22483459e-06, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandIndex1
+      position: {x: .0541478209, y: -.0228024889, z: .0308688749}
+      rotation: {x: .18395333, y: .187679157, z: -.61235851, w: .745623767}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandIndex2
+      position: {x: .0392618589, y: -.00962328818, z: .00116462447}
+      rotation: {x: .0169365015, y: -.00527364062, z: -.791085243, w: .611448705}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandIndex3
+      position: {x: .0314641148, y: -.00969648175, z: .000736654154}
+      rotation: {x: .0256463587, y: -.0031501241, z: -.566949069, w: .823347509}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandIndex4
+      position: {x: .0171343014, y: -.00780990859, z: .00080408412}
+      rotation: {x: 1.13447396e-09, y: 5.31162755e-07, z: -2.10001314e-08, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandMiddle1
+      position: {x: .0556891114, y: -.00878163893, z: .00161541218}
+      rotation: {x: .120293953, y: .0718604624, z: -.630153418, w: .763722539}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandMiddle2
+      position: {x: .0418583527, y: -.00726818899, z: -.00220214622}
+      rotation: {x: -.125418976, y: .029684864, z: -.770777643, w: .623931766}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandMiddle3
+      position: {x: .0332713015, y: -.00788837206, z: -.00571930455}
+      rotation: {x: -.058238361, y: .118518718, z: -.682449698, w: .718904734}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandMiddle4
+      position: {x: .0219961964, y: -.00748340786, z: -.0031056162}
+      rotation: {x: -1.82888712e-07, y: 1.12090405e-07, z: -7.58873284e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandPinky1
+      position: {x: .0187992845, y: .00229806569, z: -.0410686284}
+      rotation: {x: -.103954285, y: -.0384928286, z: -.331332296, w: .936979592}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandPinky2
+      position: {x: .036238648, y: .0036573105, z: -.0208034962}
+      rotation: {x: -.504324079, y: -.00502454862, z: -.640527427, w: .579099953}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandPinky3
+      position: {x: .0194458961, y: .000190887833, z: -.0153140873}
+      rotation: {x: -.3965123, y: .1222196, z: -.51835984, w: .747759044}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandPinky4
+      position: {x: .0172974169, y: -.00180466217, z: -.013689124}
+      rotation: {x: -4.3488658e-08, y: 1.91206109e-08, z: -9.16724957e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandRing1
+      position: {x: .0481037609, y: -.00078659784, z: -.0223455857}
+      rotation: {x: -.0516180955, y: .076278545, z: -.557495773, w: .825054944}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandRing2
+      position: {x: .0348046683, y: .000764472526, z: -.0106247207}
+      rotation: {x: -.2736637, y: .055514615, z: -.521829784, w: .806052089}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandRing3
+      position: {x: .0207894742, y: -.00421772152, z: -.011352187}
+      rotation: {x: -.23900491, y: .183622777, z: -.609966397, w: .732871294}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandRing4
+      position: {x: .0213439707, y: -.00827871356, z: -.010803869}
+      rotation: {x: 5.15848306e-08, y: -1.73211419e-07, z: 6.66197991e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandThumb1
+      position: {x: .0260672923, y: -.0176276993, z: .0330514908}
+      rotation: {x: .253594995, y: .521604955, z: -.138942689, w: .802691042}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandThumb2
+      position: {x: .000894285564, y: -.00822079182, z: .0216730163}
+      rotation: {x: .00771399727, y: .0401914418, z: .00891976338, w: .999122441}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandThumb3
+      position: {x: .0208164528, y: -.00933703501, z: .0240703914}
+      rotation: {x: .0283154286, y: .537188113, z: .124216504, w: .833784997}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandThumb4
+      position: {x: .0235557817, y: -.00571906334, z: .0193529613}
+      rotation: {x: -3.06470241e-07, y: -2.11654651e-07, z: -4.57650231e-07, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:HipsEffector
+      position: {x: 6.32889986, y: .749435723, z: -1.91604483}
+      rotation: {x: -.158833355, y: .958993673, z: -.116837434, w: -.203597933}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftAnkleEffector
+      position: {x: 6.58743763, y: .0467085652, z: -1.83963621}
+      rotation: {x: 6.4015448e-17, y: .998916686, z: -6.4015448e-17, w: .0465349481}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftElbowEffector
+      position: {x: 6.46324158, y: 1.01297188, z: -2.10049796}
+      rotation: {x: .44272095, y: .77036494, z: -.385221064, w: -.249280408}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftFootEffector
+      position: {x: 6.608356, y: .00925401412, z: -1.9455241}
+      rotation: {x: .00495293178, y: .997823119, z: .0465744287, w: .0464253463}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandEffector
+      position: {x: 6.55560207, y: .765713692, z: -2.14033508}
+      rotation: {x: .413940012, y: .732331634, z: -.443837196, w: -.308792204}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandIndexEffector
+      position: {x: 6.54291487, y: .718374074, z: -2.13212347}
+      rotation: {x: -.141201481, y: -.764245093, z: .26854077, w: .569102407}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandMiddleEffector
+      position: {x: 6.56879759, y: .721785784, z: -2.12923193}
+      rotation: {x: -.182588309, y: -.723298788, z: .396761537, w: .534865081}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandPinkyEffector
+      position: {x: 6.58599281, y: .760867536, z: -2.11118674}
+      rotation: {x: .115698673, y: -.663499296, z: .364899635, w: .642830312}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandRingEffector
+      position: {x: 6.58548927, y: .739991605, z: -2.12799668}
+      rotation: {x: .0967020914, y: -.636013031, z: .161600947, w: .748345733}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHandThumbEffector
+      position: {x: 6.54987955, y: .725675881, z: -2.08419943}
+      rotation: {x: .244046107, y: -.48833859, z: .755337238, w: -.362536281}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftHipEffector
+      position: {x: 6.4076848, y: .772805393, z: -1.95491874}
+      rotation: {x: -.109998211, y: .977286339, z: .0192632265, w: -.180113196}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftKneeEffector
+      position: {x: 6.49723005, y: .354859203, z: -2.03440356}
+      rotation: {x: -.0887560695, y: .969700575, z: -.226177678, w: -.025433844}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftShoulderEffector
+      position: {x: 6.29055262, y: 1.15117455, z: -2.08489823}
+      rotation: {x: .263840079, y: .817787945, z: -.46967712, w: -.202520818}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:LeftWristEffector
+      position: {x: 6.54338264, y: .799735308, z: -2.12935162}
+      rotation: {x: .413940191, y: .732331634, z: -.4438366, w: -.3087928}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightAnkleEffector
+      position: {x: 6.24540377, y: .049205631, z: -1.87008131}
+      rotation: {x: .0222094953, y: .963763058, z: -.00613131188, w: -.265762985}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightElbowEffector
+      position: {x: 6.03641891, y: .906802475, z: -1.78236032}
+      rotation: {x: .731449962, y: -.676888347, z: .0579400025, w: .0587033741}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightFootEffector
+      position: {x: 6.17946815, y: .0122955209, z: -1.95577073}
+      rotation: {x: .0677049682, y: .949126124, z: .218505904, w: -.216404274}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandEffector
+      position: {x: 6.04849863, y: .642617762, z: -1.79173565}
+      rotation: {x: .68547529, y: -.670525551, z: -.242603168, w: .147182882}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandIndexEffector
+      position: {x: 6.0606885, y: .62439549, z: -1.83530402}
+      rotation: {x: .149677977, y: .987038493, z: .0240517948, w: -.0526595935}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandMiddleEffector
+      position: {x: 6.06597567, y: .613150001, z: -1.80338311}
+      rotation: {x: .0236607883, y: .987217546, z: .135404766, w: -.0806679428}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandPinkyEffector
+      position: {x: 6.08477879, y: .619365573, z: -1.76644075}
+      rotation: {x: .207001522, y: .947126329, z: -.200807855, w: .140635446}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandRingEffector
+      position: {x: 6.07959986, y: .611474395, z: -1.78494644}
+      rotation: {x: .335930735, y: .935062528, z: -.0279137734, w: .1096792}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHandThumbEffector
+      position: {x: 6.09736633, y: .619277716, z: -1.80776572}
+      rotation: {x: .427607685, y: -.295955867, z: .762809217, w: .384296656}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightHipEffector
+      position: {x: 6.25011444, y: .726066053, z: -1.8771708}
+      rotation: {x: .0773838609, y: .970670104, z: .195517361, w: -.116551369}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightKneeEffector
+      position: {x: 6.14119196, y: .3508946, z: -2.06795025}
+      rotation: {x: -.0955232084, y: .936954081, z: -.248531491, w: -.226328433}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightShoulderEffector
+      position: {x: 6.04990244, y: 1.06810486, z: -1.93391001}
+      rotation: {x: -.636433601, y: .678682745, z: -.275218338, w: -.242068008}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Noke_Ctrl:RightWristEffector
+      position: {x: 6.05761814, y: .67816788, z: -1.78276825}
+      rotation: {x: .685476065, y: -.670525193, z: -.242602944, w: .147181317}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_node
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_geo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: bandanna
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: belt
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: body
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: hair
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jacket
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: buckles_btm
+      position: {x: -.0574808381, y: 1.17061472, z: .164042756}
+      rotation: {x: .0251968708, y: -.0566540696, z: -.0428243987, w: .997156739}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: cloth 1
+      position: {x: .142039299, y: -1.16912889, z: -.116256304}
+      rotation: {x: -.0251968708, y: .0566540696, z: .0428243987, w: .997156739}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ring3
+      position: {x: .142039299, y: -1.16912889, z: -.116256304}
+      rotation: {x: -.0251968708, y: .0566540696, z: .0428243987, w: .997156739}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ring4
+      position: {x: .142039299, y: -1.16912889, z: -.116256304}
+      rotation: {x: -.0251968708, y: .0566540696, z: .0428243987, w: .997156739}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: strap 1
+      position: {x: .142039299, y: -1.16912889, z: -.116256304}
+      rotation: {x: -.0251968708, y: .0566540696, z: .0428243987, w: .997156739}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: buckles_top
+      position: {x: -.0420943014, y: 1.23290312, z: .137765497}
+      rotation: {x: 0, y: -.0639578849, z: -0, w: .99795264}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: cloth
+      position: {x: -.0241636224, y: -1.23290312, z: -.142011911}
+      rotation: {x: 6.50232717e-17, y: .99795264, z: -6.50232717e-17, w: .0639578849}
+      scale: {x: 1, y: 1, z: -1}
+      transformModified: 1
+    - name: ring1
+      position: {x: -.0241636224, y: -1.23290312, z: -.142011911}
+      rotation: {x: 6.50232717e-17, y: .99795264, z: -6.50232717e-17, w: .0639578849}
+      scale: {x: 1, y: 1, z: -1}
+      transformModified: 1
+    - name: ring2
+      position: {x: -.0241636224, y: -1.23290312, z: -.142011911}
+      rotation: {x: 6.50232717e-17, y: .99795264, z: -6.50232717e-17, w: .0639578849}
+      scale: {x: 1, y: 1, z: -1}
+      transformModified: 1
+    - name: strap
+      position: {x: -.0241636224, y: -1.23290312, z: -.142011911}
+      rotation: {x: 6.50232717e-17, y: .99795264, z: -6.50232717e-17, w: .0639578849}
+      scale: {x: 1, y: 1, z: -1}
+      transformModified: 1
+    - name: jacket 1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: L_arm
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: L_eye
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: L_eyelashes
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: piercings
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: eyebrowRing
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: L_earring
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: R_earring
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: R_arm
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: R_eye
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: R_eyelashes
+      position: {x: 1.7763568e-17, y: 0, z: 0}
+      rotation: {x: 6.12323426e-17, y: 1, z: -6.12323426e-17, w: -6.12323426e-17}
+      scale: {x: 1, y: 1, z: -1}
+      transformModified: 1
+    - name: noke_root
+      position: {x: -1.2800659e-07, y: .863636374, z: .0333334208}
+      rotation: {x: -1.45519152e-09, y: -7.41153829e-18, z: 5.09317033e-09, w: 1}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_pelvis
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_L_upLeg
+      position: {x: -.0909090191, y: -2.37492415e-07, z: -4.71994281e-05}
+      rotation: {x: .484401375, y: .515126467, z: .464456528, w: .533179283}
+      scale: {x: .99999994, y: 1, z: .999999881}
+      transformModified: 1
+    - name: noke_L_knee
+      position: {x: -.434758216, y: -1.38887998e-07, z: -1.23823067e-08}
+      rotation: {x: -2.09312457e-05, y: -.0101004625, z: .101398796, w: .994794607}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: noke_L_ankle
+      position: {x: -.375537097, y: 3.99003808e-09, z: 3.98767355e-07}
+      rotation: {x: -.0156099973, y: .024582617, z: -.620260596, w: .78385514}
+      scale: {x: .999999821, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: noke_L_ball
+      position: {x: -.113719061, y: 1.97766568e-08, z: -.0109841852}
+      rotation: {x: -7.86435272e-09, y: 5.51348356e-10, z: -.146146342, w: .989262998}
+      scale: {x: .999999881, y: .999999821, z: .999999702}
+      transformModified: 1
+    - name: noke_L_toe
+      position: {x: -.0545266978, y: -.000427532854, z: -.00673627574}
+      rotation: {x: -2.22044578e-16, y: 6.59194855e-17, z: -2.32371562e-08, w: 1}
+      scale: {x: .999999881, y: .99999994, z: 1}
+      transformModified: 1
+    - name: noke_R_upReg
+      position: {x: .0909090266, y: -1.20135184e-07, z: -4.73149121e-05}
+      rotation: {x: .533179343, y: -.464456558, z: .515126526, w: -.484401375}
+      scale: {x: 1, y: 1, z: .999999702}
+      transformModified: 1
+    - name: noke_R_knee
+      position: {x: .434757948, y: 1.2125966e-08, z: 6.00413387e-07}
+      rotation: {x: 2.0837957e-05, y: .0101005193, z: -.101398908, w: -.994794607}
+      scale: {x: 1.00000012, y: .99999994, z: 1.00000012}
+      transformModified: 1
+    - name: noke_R_ankle
+      position: {x: .375537544, y: -1.71871378e-07, z: -5.17772946e-07}
+      rotation: {x: .0156100923, y: -.0245826188, z: .620260596, w: -.783855081}
+      scale: {x: .999999821, y: .999999821, z: .999999881}
+      transformModified: 1
+    - name: noke_R_ball
+      position: {x: .113718376, y: 7.4484177e-08, z: .0109836943}
+      rotation: {x: 6.49293597e-09, y: -1.09994325e-09, z: -.146146372, w: .989263058}
+      scale: {x: 1.00000012, y: .999999821, z: .999999881}
+      transformModified: 1
+    - name: noke_R_toe
+      position: {x: .0545270629, y: .000427621882, z: .00673723966}
+      rotation: {x: 3.29198802e-09, y: -6.9607313e-11, z: -2.73807945e-08, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_spine1
+      position: {x: -1.71139334e-08, y: 8.89901814e-16, z: -2.4586916e-07}
+      rotation: {x: .569621742, y: -.418964297, z: -.569621742, w: .418964297}
+      scale: {x: .99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_spine2
+      position: {x: -.103808008, y: -.0108318832, z: -1.31183029e-07}
+      rotation: {x: -6.79042031e-08, y: 4.99444361e-08, z: .21328038, w: .976991117}
+      scale: {x: .999999166, y: .999999821, z: 1}
+      transformModified: 1
+    - name: noke_spine3
+      position: {x: -.0836377367, y: 1.0472138e-07, z: -2.43522294e-07}
+      rotation: {x: 4.2385409e-08, y: -7.28622283e-08, z: .193600073, w: .981080592}
+      scale: {x: .999999285, y: .999999642, z: .999999344}
+      transformModified: 1
+    - name: noke_spine4
+      position: {x: -.0774643421, y: 1.86089864e-07, z: 2.02551277e-07}
+      rotation: {x: 0, y: 0, z: -.173385009, w: .984854162}
+      scale: {x: 1.00000083, y: 1.00000024, z: 1.00000036}
+      transformModified: 1
+    - name: noke_spine5
+      position: {x: -.0762477294, y: -1.25704375e-07, z: 3.82173255e-07}
+      rotation: {x: 0, y: 0, z: -.206221387, w: .978505373}
+      scale: {x: .999999762, y: .999999762, z: 1.00000024}
+      transformModified: 1
+    - name: noke_spine6
+      position: {x: -.0753657073, y: -1.22531887e-07, z: -4.77681567e-07}
+      rotation: {x: -9.28316446e-09, y: -4.61981493e-08, z: -.0358730219, w: .999356389}
+      scale: {x: .999999881, y: 1.00000048, z: 1.00000024}
+      transformModified: 1
+    - name: noke_L_clavicle
+      position: {x: -.0256230757, y: .0444259308, z: .0434894711}
+      rotation: {x: .0154832555, y: .790718615, z: .186814085, w: .582773387}
+      scale: {x: .999998987, y: .999998987, z: 1.00000155}
+      transformModified: 1
+    - name: noke_L_shoulder
+      position: {x: -.110199936, y: -.000935668591, z: -.0280918591}
+      rotation: {x: .00251172646, y: -.152043402, z: -.160101205, w: .975317419}
+      scale: {x: 1.0000006, y: 1.0000006, z: .999999702}
+      transformModified: 1
+    - name: noke_L_elbow
+      position: {x: -.221131369, y: .00035756189, z: .0162951928}
+      rotation: {x: -.00152051204, y: .02956081, z: -.0379956774, w: .998839498}
+      scale: {x: 1.00000048, y: .999999762, z: .999999881}
+      transformModified: 1
+    - name: noke_L_wrist
+      position: {x: -.229619786, y: 2.09393427e-08, z: -1.20335315e-07}
+      rotation: {x: -.00254591205, y: .0173299499, z: .0121508623, w: .999772727}
+      scale: {x: 1.00000012, y: 1, z: 1.00000024}
+      transformModified: 1
+    - name: noke_L_hand
+      position: {x: -.0370443687, y: .00264924485, z: -.00693295244}
+      rotation: {x: -.374827057, y: .739515662, z: -.184034795, w: .527970314}
+      scale: {x: 1.00000012, y: 1.00000048, z: 1}
+      transformModified: 1
+    - name: noke_L_HandIndex1
+      position: {x: -.0203862954, y: .0231309794, z: -.0587727427}
+      rotation: {x: .321960002, y: -.717330277, z: .229823992, w: .573550344}
+      scale: {x: .999999344, y: .999999762, z: .999999881}
+      transformModified: 1
+    - name: noke_L_HandIndex2
+      position: {x: -.0404400788, y: -4.9706972e-07, z: 3.27236158e-08}
+      rotation: {x: -.000618480379, y: .0293375421, z: .00272179744, w: .999565661}
+      scale: {x: .99999994, y: .999999702, z: .999999285}
+      transformModified: 1
+    - name: noke_L_HandIndex3
+      position: {x: -.0329331681, y: -8.98647414e-08, z: 2.70634928e-07}
+      rotation: {x: -.00190031505, y: .0397624373, z: -.00696785841, w: .999183118}
+      scale: {x: 1, y: 1, z: .999999881}
+      transformModified: 1
+    - name: noke_L_HandIndex4
+      position: {x: -.018847093, y: 1.50900927e-08, z: 6.55339818e-08}
+      rotation: {x: -.696527779, y: -.153944254, z: -.121658146, w: .690180838}
+      scale: {x: .999999881, y: 1.00000024, z: 1}
+      transformModified: 1
+    - name: noke_L_HandMiddle1
+      position: {x: .00977308862, y: .0119637018, z: -.0542434156}
+      rotation: {x: .303096443, y: -.740843832, z: .242946655, w: .547959745}
+      scale: {x: .999999166, y: .999999583, z: .999999642}
+      transformModified: 1
+    - name: noke_L_HandMiddle2
+      position: {x: -.0425417759, y: 5.76263858e-07, z: 2.80649203e-07}
+      rotation: {x: .00358430995, y: .0195348077, z: .0353530124, w: .999177516}
+      scale: {x: 1.00000024, y: .999999881, z: .999999881}
+      transformModified: 1
+    - name: noke_L_HandMiddle3
+      position: {x: -.0346683338, y: -2.24758367e-07, z: 3.03890488e-07}
+      rotation: {x: .00724419672, y: .0386033803, z: -.0142033324, w: .999127388}
+      scale: {x: .999999762, y: .99999994, z: .999999523}
+      transformModified: 1
+    - name: noke_L_HandMiddle4
+      position: {x: -.0234412346, y: -2.34675088e-08, z: 2.10983853e-08}
+      rotation: {x: -.710871756, y: -.058005996, z: -.148797572, w: .684949577}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_L_HandPinky1
+      position: {x: .0361473374, y: -.0219459534, z: -.0160332974}
+      rotation: {x: .303508997, y: -.782701552, z: .212232962, w: .500217795}
+      scale: {x: .999999583, y: .999999583, z: .999999821}
+      transformModified: 1
+    - name: noke_L_HandPinky2
+      position: {x: -.0419444032, y: 1.36324971e-07, z: -2.11508421e-07}
+      rotation: {x: .0268505272, y: .0185285248, z: .03485737, w: .998859704}
+      scale: {x: 1.00000012, y: 1.00000024, z: 1}
+      transformModified: 1
+    - name: noke_L_HandPinky3
+      position: {x: -.0247541107, y: 3.07206335e-07, z: -2.35106768e-07}
+      rotation: {x: .0357365198, y: .0413716175, z: -.000916022866, w: .998504102}
+      scale: {x: .999999881, y: .999999821, z: 1.00000012}
+      transformModified: 1
+    - name: noke_L_HandPinky4
+      position: {x: -.0221324805, y: 1.29815767e-08, z: 7.67900801e-08}
+      rotation: {x: -.682538271, y: .205512881, z: -.25623861, w: .652876496}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_L_HandRing1
+      position: {x: .029612178, y: -.00204646331, z: -.0439635068}
+      rotation: {x: .30396381, y: -.780510902, z: .225805253, w: .497414082}
+      scale: {x: .999999225, y: .999999702, z: .999999881}
+      transformModified: 1
+    - name: noke_L_HandRing2
+      position: {x: -.0363994911, y: -3.92862745e-07, z: 1.12580608e-07}
+      rotation: {x: .044531446, y: .0269741882, z: .0246507898, w: .998339534}
+      scale: {x: 1.00000024, y: .999999642, z: .99999994}
+      transformModified: 1
+    - name: noke_L_HandRing3
+      position: {x: -.0240591075, y: 4.7246823e-07, z: -1.06598952e-06}
+      rotation: {x: .038349025, y: .0373512134, z: -.0131849963, w: .998479068}
+      scale: {x: 1.00000024, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: noke_L_HandRing4
+      position: {x: -.0253145136, y: 2.89761513e-08, z: -3.93176052e-08}
+      rotation: {x: -.712446153, y: .0347368978, z: -.267699063, w: .647727609}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_L_HandThumb1
+      position: {x: -.0354149006, y: -9.2391133e-08, z: 3.01705001e-07}
+      rotation: {x: .186018705, y: -.382655352, z: -.343139261, w: .837393224}
+      scale: {x: .999999583, y: .999999881, z: .999999166}
+      transformModified: 1
+    - name: noke_L_HandThumb2
+      position: {x: -.0231974684, y: -1.92901339e-07, z: 1.26825299e-07}
+      rotation: {x: .440912604, y: -.022826897, z: .0155577948, w: .897124827}
+      scale: {x: 1, y: 1.00000036, z: 1}
+      transformModified: 1
+    - name: noke_L_HandThumb3
+      position: {x: -.0331638604, y: -4.41606396e-09, z: -3.30614455e-07}
+      rotation: {x: .0602619685, y: -.026493201, z: .0283406228, w: .997428477}
+      scale: {x: 1.00000012, y: .999999881, z: .999999523}
+      transformModified: 1
+    - name: noke_L_HandThumb4
+      position: {x: -.0310177226, y: 1.44296934e-07, z: 1.16582029e-07}
+      rotation: {x: -.64749831, y: -.298659414, z: .168088406, w: .680657625}
+      scale: {x: .999999523, y: 1.00000024, z: 1.00000012}
+      transformModified: 1
+    - name: noke_R_clavicle
+      position: {x: -.0256251581, y: .0444253907, z: -.0434889533}
+      rotation: {x: -.79071784, y: .0154832881, z: .582774401, w: -.186814517}
+      scale: {x: .999998629, y: .999999166, z: 1.00000143}
+      transformModified: 1
+    - name: noke_R_shoulder
+      position: {x: .110200472, y: .000935647637, z: .0280907955}
+      rotation: {x: .00251157722, y: -.152048036, z: -.160101116, w: .975316763}
+      scale: {x: 1, y: .99999994, z: .999998808}
+      transformModified: 1
+    - name: noke_R_elbow
+      position: {x: .2211373, y: -.000357479934, z: -.0162981693}
+      rotation: {x: -.00152032916, y: .0295658819, z: -.0379944742, w: .998839378}
+      scale: {x: 1.00000072, y: 1, z: 1.0000006}
+      transformModified: 1
+    - name: noke_R_wrist
+      position: {x: .229615495, y: -7.09605729e-07, z: 1.60896138e-06}
+      rotation: {x: -.00254608318, y: .0173300803, z: .012150785, w: .999772727}
+      scale: {x: .999999821, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_R_hand
+      position: {x: .0370448604, y: -.00264961994, z: .00693308515}
+      rotation: {x: -.374827087, y: .739515603, z: -.184034571, w: .527970433}
+      scale: {x: 1.00000012, y: .999999881, z: .999999821}
+      transformModified: 1
+    - name: noke_R_HandIndex1
+      position: {x: .0203859136, y: -.0231303722, z: .058772672}
+      rotation: {x: .321959168, y: -.717329264, z: .229824707, w: .573551893}
+      scale: {x: .999999881, y: .999999702, z: .999999523}
+      transformModified: 1
+    - name: noke_R_HandIndex2
+      position: {x: .0404407308, y: 2.19527138e-07, z: -1.06284581e-07}
+      rotation: {x: -.000618452614, y: .0293376055, z: .00272176717, w: .999565721}
+      scale: {x: 1.00000012, y: 1, z: 1.0000006}
+      transformModified: 1
+    - name: noke_R_HandIndex3
+      position: {x: .0329325348, y: -1.63836987e-07, z: 6.57048759e-07}
+      rotation: {x: .00190033787, y: -.0397336222, z: .00696655083, w: -.999184191}
+      scale: {x: 1, y: 1.00000024, z: .999999642}
+      transformModified: 1
+    - name: noke_R_HandIndex4
+      position: {x: .0188473575, y: -3.57323877e-08, z: -6.64960623e-07}
+      rotation: {x: -.696527779, y: -.153944224, z: -.121658035, w: .690180838}
+      scale: {x: 1.00000012, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: noke_R_HandMiddle1
+      position: {x: -.00977247488, y: -.0119635286, z: .054243844}
+      rotation: {x: .303099275, y: -.740842283, z: .242944866, w: .547961056}
+      scale: {x: .99999994, y: .999999881, z: .999999523}
+      transformModified: 1
+    - name: noke_R_HandMiddle2
+      position: {x: .0425416678, y: 1.40031531e-07, z: 3.79242266e-07}
+      rotation: {x: .00358456583, y: .0195346531, z: .035363175, w: .999177158}
+      scale: {x: 1, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: noke_R_HandMiddle3
+      position: {x: .0346679017, y: -1.89033145e-07, z: -4.32158828e-07}
+      rotation: {x: .00724402815, y: .0386252329, z: -.0142112141, w: .999126494}
+      scale: {x: .99999994, y: .99999994, z: 1}
+      transformModified: 1
+    - name: noke_R_HandMiddle4
+      position: {x: .0234412737, y: 2.24696297e-08, z: 8.9348822e-07}
+      rotation: {x: -.710871935, y: -.0580055043, z: -.148797184, w: .684949517}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_R_HandPinky1
+      position: {x: -.0361477733, y: .0219460763, z: .0160333831}
+      rotation: {x: .303509384, y: -.782702148, z: .212230384, w: .500217676}
+      scale: {x: 1.00000048, y: 1, z: .99999994}
+      transformModified: 1
+    - name: noke_R_HandPinky2
+      position: {x: .041944813, y: -3.17070288e-07, z: -2.16274998e-07}
+      rotation: {x: .0268503353, y: .0185263231, z: .0348486938, w: .998860121}
+      scale: {x: .999999881, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: noke_R_HandPinky3
+      position: {x: .0247530714, y: -4.13494483e-08, z: -5.55053106e-08}
+      rotation: {x: .0357364938, y: .0413722582, z: -.000916037941, w: .998504162}
+      scale: {x: .999999881, y: .999999762, z: .999999881}
+      transformModified: 1
+    - name: noke_R_HandPinky4
+      position: {x: .0221323222, y: 1.51225606e-07, z: -3.91696432e-07}
+      rotation: {x: -.682538152, y: .205513388, z: -.256238192, w: .652876675}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_R_HandRing1
+      position: {x: -.0296125058, y: .00204655132, z: .0439641923}
+      rotation: {x: .303964585, y: -.780507207, z: .225806579, w: .49741888}
+      scale: {x: .999999821, y: .999999821, z: .999999404}
+      transformModified: 1
+    - name: noke_R_HandRing2
+      position: {x: .0363985039, y: 1.97576654e-07, z: 3.60312725e-07}
+      rotation: {x: .0445317328, y: .0269596204, z: .0246382579, w: .99834013}
+      scale: {x: .999999821, y: .999999881, z: 1.00000024}
+      transformModified: 1
+    - name: noke_R_HandRing3
+      position: {x: .0240599103, y: -7.27465093e-08, z: 5.06337301e-07}
+      rotation: {x: .038349621, y: .0373565406, z: -.0131827388, w: .99847883}
+      scale: {x: 1.00000036, y: 1.00000012, z: .999999642}
+      transformModified: 1
+    - name: noke_R_HandRing4
+      position: {x: .0253143385, y: 3.23921405e-08, z: -3.16223918e-07}
+      rotation: {x: -.712446034, y: .0347364768, z: -.267699838, w: .64772743}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_R_HandThumb1
+      position: {x: .0354147665, y: 3.38718053e-07, z: 4.81869229e-08}
+      rotation: {x: -.186016634, y: .382650435, z: .343133777, w: -.837398171}
+      scale: {x: .99999994, y: .999999404, z: .999999881}
+      transformModified: 1
+    - name: noke_R_HandThumb2
+      position: {x: .0231969059, y: -1.35306436e-07, z: 4.11222594e-08}
+      rotation: {x: .440911919, y: -.0228383727, z: .0155485505, w: .897125125}
+      scale: {x: .999999642, y: 1.0000006, z: 1}
+      transformModified: 1
+    - name: noke_R_HandThumb3
+      position: {x: .0331643187, y: 1.46708729e-07, z: -3.22031298e-07}
+      rotation: {x: .0602625348, y: -.0264758728, z: .0283443853, w: .997428715}
+      scale: {x: 1.00000048, y: 1.00000024, z: 1.00000024}
+      transformModified: 1
+    - name: noke_R_HandThumb4
+      position: {x: .0310179405, y: -6.58256113e-07, z: 8.99092925e-07}
+      rotation: {x: -.64749831, y: -.298659384, z: .168088615, w: .680657566}
+      scale: {x: .999999702, y: .999999881, z: .99999994}
+      transformModified: 1
+    - name: noke_spine7
+      position: {x: -.0471350886, y: .00836077239, z: 1.68796277e-07}
+      rotation: {x: 5.27795478e-08, y: 1.85874782e-08, z: .241542757, w: .97039026}
+      scale: {x: 1.00000226, y: .999998808, z: 1.00000036}
+      transformModified: 1
+    - name: noke_neck1
+      position: {x: -.0517186895, y: .00068579847, z: -6.33279811e-08}
+      rotation: {x: -.99408716, y: .108585671, z: 2.90732203e-08, w: -3.0514002e-08}
+      scale: {x: .999999404, y: .999999642, z: .999999285}
+      transformModified: 1
+    - name: noke_head
+      position: {x: -.0964789391, y: .00109258306, z: -2.47162632e-07}
+      rotation: {x: -.998640537, y: -.0521263629, z: -4.50506157e-08, w: 1.38162211e-08}
+      scale: {x: 1.00000024, y: .999999583, z: .999999881}
+      transformModified: 1
+    - name: noke_headEnd
+      position: {x: -.14398253, y: -.00167540077, z: -3.23696952e-07}
+      rotation: {x: 1.98231955e-08, y: -1.45134171e-08, z: -.0829098895, w: .996557117}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: noke_jaw
+      position: {x: -.000878963328, y: .0512396544, z: -1.85070533e-07}
+      rotation: {x: .422081053, y: -.906558096, z: 1.59508602e-08, w: -2.06119068e-08}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: noke_jawEnd
+      position: {x: -.0839830488, y: 2.34219002e-07, z: -1.02864917e-08}
+      rotation: {x: -.422081053, y: .906558156, z: -1.59508726e-08, w: -2.06119228e-08}
+      scale: {x: .999999881, y: .999999404, z: .999999702}
+      transformModified: 1
+    - name: noke_L_eyeBall
+      position: {x: -.0423558764, y: .0830804259, z: .0426868945}
+      rotation: {x: .536669672, y: -.460419059, z: -.536669612, w: -.460419089}
+      scale: {x: 1.00000024, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_L_lidBtm_blink
+      position: {x: -.0423559509, y: .0830803439, z: .0426872298}
+      rotation: {x: .536669672, y: -.460419089, z: -.536669672, w: -.460419089}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_L_lidBtm
+      position: {x: -.00457404368, y: -.0136984363, z: .0186816528}
+      rotation: {x: 7.36767873e-08, y: 2.23105587e-08, z: -3.00653795e-08, w: 1}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: noke_L_lidTop_blink
+      position: {x: -.0423559509, y: .0830803439, z: .0426872298}
+      rotation: {x: .50000006, y: -.5, z: -.50000006, w: -.5}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_L_lidTop
+      position: {x: -.00165243703, y: .0113497078, z: .0216747709}
+      rotation: {x: 5.98688601e-08, y: -2.38020981e-08, z: -9.64205142e-08, w: 1}
+      scale: {x: 1.00000024, y: 1.00000012, z: .999999881}
+      transformModified: 1
+    - name: noke_R_eyeBall
+      position: {x: -.0423562415, y: .0830803961, z: -.0426673107}
+      rotation: {x: .536669672, y: -.460419059, z: -.536669612, w: -.460419089}
+      scale: {x: 1.00000024, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: noke_R_lidBtm_blink
+      position: {x: -.0423559509, y: .0830803588, z: -.0426670872}
+      rotation: {x: .536669672, y: -.460419089, z: -.536669672, w: -.460419089}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_R_lidBtm
+      position: {x: .00459466409, y: -.0137016242, z: .0186818726}
+      rotation: {x: 1, y: -3.00653795e-08, z: -2.23105587e-08, w: -7.36767873e-08}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: noke_R_lidTop_blink
+      position: {x: -.0423559509, y: .0830803588, z: -.0426670872}
+      rotation: {x: .5, y: -.5, z: -.5, w: -.5}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: noke_R_lidTop
+      position: {x: .00167296827, y: .0113489479, z: .0216748342}
+      rotation: {x: 1, y: -7.83438878e-08, z: 3.329151e-08, w: 1.15360033e-08}
+      scale: {x: 1, y: 1.00000036, z: 1.00000048}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  userData: 
