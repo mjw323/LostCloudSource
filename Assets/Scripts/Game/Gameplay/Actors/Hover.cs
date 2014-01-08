@@ -189,6 +189,7 @@ public class Hover : MonoBehaviour
 				GameObject cam = GameObject.FindWithTag("MainCamera");
 				theCamera = cam.GetComponent<Camera>();
 				cameraFOV = theCamera.fieldOfView;
+				whoosh = cam.GetComponent("CameraWhoosh") as CameraWhoosh;
         }
 
         void OnEnable()
@@ -418,17 +419,19 @@ public class Hover : MonoBehaviour
 				
 				}
 		else{
-					if (Math.Abs(spinAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse);}
-					if (Math.Abs(flipAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse);}
+					if (Math.Abs(spinAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.0f);}
+					if (Math.Abs(flipAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.25f);}
 					spinAmount = 0f;
 					flipAmount = 0f;
 				}
 	}
 				//Debug.Log (Vector3.Magnitude(rigidbody.velocity));
+				Debug.Log (Vector3.Magnitude(rigidbody.velocity)/20);
 				theCamera.fieldOfView = cameraFOV 
 											+ (//(15*jumpPower) 
 											+ (30 * Math.Max (0,Vector3.Dot (Vector3.Normalize (rigidbody.velocity),cameraDir)))
 											)*Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20);
+				whoosh.setSpeed(Mathf.Pow (Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20),6.0f));
 				/*
                 steerMod = 1;
                 if (!onGround){steerMod = 0.66f;}
@@ -538,6 +541,7 @@ public class Hover : MonoBehaviour
 		[HideInInspector] new private Vector3 cameraDir;
 		[HideInInspector] new private Camera theCamera;
 		[HideInInspector] new private float cameraFOV;
+		[HideInInspector] new private CameraWhoosh whoosh;
 
         // External references
         [HideInInspector] private Animator nokeAnimator;
