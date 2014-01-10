@@ -7,13 +7,21 @@ using System.Collections;
 [AddComponentMenu ("Player/BoardController")]
 public class BoardController : MonoBehaviour
 {
+	/// <summary>
+	/// Force Noke to dismount her hoverboard.
+	/// </summary>
+	public void DismissBoard()
+	{
+		boardMovement.DismissBoard();
+	}
+
 	private void OnDismissBoard()
 	{
 		enabled = false;
 		footController.enabled = true;
 	}
 
-	void Awake()
+	private void Awake()
 	{
 		transform = GetComponent<Transform>();
 
@@ -27,10 +35,10 @@ public class BoardController : MonoBehaviour
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
 		cameraTransform = mainCamera.GetComponent<Transform>();
 
-		oldParent = transform.parent.GetComponent<Transform>();
+		oldParent = transform.parent;
 	}
 
-	void OnEnable()
+	private void OnEnable()
 	{
 		boardTransform.position = transform.position;
 		boardTransform.forward = transform.forward;
@@ -39,19 +47,19 @@ public class BoardController : MonoBehaviour
 		boardMovement.enabled = true;
 	}
 
-	void OnDisable()
+	private void OnDisable()
 	{
 		transform.parent = oldParent;
 		boardMovement.enabled = false;
 	}
 
-	void OnDestroy()
+	private void OnDestroy()
 	{
 		if (boardMovement != null) // Possible during shutdown
 			boardMovement.OnDismissBoard -= OnDismissBoard;
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (Input.GetButtonDown("Fire3")) // TODO: Rename this input!
 			boardMovement.DismissBoard();
@@ -62,10 +70,6 @@ public class BoardController : MonoBehaviour
 			Input.GetButton("Jump"),
 			Input.GetAxis("Glide"),
 			Input.GetButton("Glide"));
-	}
-	
-	void Bail(){ //call externally to make noke bail
-		boardMovement.DismissBoard();
 	}
 
 	// Internal references
