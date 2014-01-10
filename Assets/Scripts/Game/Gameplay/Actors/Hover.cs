@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using ConditionalAttribute = System.Diagnostics.ConditionalAttribute;
 
 public class Hover : MonoBehaviour
 {
@@ -166,6 +167,8 @@ public class Hover : MonoBehaviour
                 GameObject noke = GameObject.FindWithTag("Player");
                 nokeAnimator = noke.GetComponent<Animator>();
                 ridingId = Animator.StringToHash("Riding");
+
+                CheckParticleSystems();
 
                 hoverParticlesA = this.transform.GetComponentsInChildren<ParticleSystem>()[0];
 				hoverParticlesA.startLifetime = 0.0f;
@@ -533,6 +536,40 @@ public class Hover : MonoBehaviour
                 }
 
 			return nearestTrans;
+        }
+
+        // Checks for and reports any unassigned particle systems.
+        [ConditionalAttribute("DEBUG")]
+        private void CheckParticleSystems()
+        {
+            bool haveMissingParticleSystem = false;
+            if (hoverParticlesA == null)
+            {
+                Debug.LogError("HoverA particles unassigned.");
+                haveMissingParticleSystem = true;
+            }
+            if (hoverParticlesB == null)
+            {
+                Debug.LogError("HoverB particles unassigned.");
+                haveMissingParticleSystem = true;
+            }
+            if (grindParticles == null)
+            {
+                Debug.LogError("Grind particles unassigned.");
+                haveMissingParticleSystem = true;
+            }
+            if (waterParticles == null)
+            {
+                Debug.LogError("Water particles unassigned.");
+                haveMissingParticleSystem = true;
+            }
+            if (splashParticles == null)
+            {
+                Debug.LogError("Splash particles unassigned.");
+                haveMissingParticleSystem = true;
+            }
+            if (haveMissingParticleSystem)
+                Debug.Break();
         }
 
         // Internal references
