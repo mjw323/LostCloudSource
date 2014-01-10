@@ -9,6 +9,7 @@ Material:
   m_Name: terrain_W4A1_water
   m_Shader: {fileID: 4800000, guid: ed9bdc6cdcf552a4b8c2400195272292, type: 3}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -109,6 +110,10 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
+          name: _Foam
+        second: {r: .100000001, g: .375, b: 0, a: 0}
+      data:
+        first:
           name: _BaseColor
         second: {r: .00232482934, g: .0824110582, b: .316176474, a: 1}
       data:
@@ -119,10 +124,6 @@ Material:
         first:
           name: _FoamColor
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Foam
-        second: {r: .100000001, g: .375, b: 0, a: 0}
       data:
         first:
           name: _WaterColor

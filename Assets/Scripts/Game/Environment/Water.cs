@@ -17,7 +17,9 @@ public class Water : MonoBehaviour {
 	public float clipPlaneOffset = 0.07f;
 		
 	private Vector3 oldpos = Vector3.zero;
+	private GameObject board;
 	private Camera reflectionCamera;
+	private Camera mainCamera;
 
 	// Player Uniforms
 	private System.String boardDirection = "_BoardDirection";
@@ -27,11 +29,12 @@ public class Water : MonoBehaviour {
 
 	public void Awake() {
 		GameObject go = GameObject.FindWithTag("MainCamera");
-		Camera cam = go.GetComponent<Camera>();
-		if( cam != null ) {
-			cam.depthTextureMode |= DepthTextureMode.Depth;
-			reflectionCamera = SetupReflectionCamera(cam);
+		mainCamera = go.GetComponent<Camera>();
+		if( mainCamera != null ) {
+			mainCamera.depthTextureMode |= DepthTextureMode.Depth;
+			reflectionCamera = SetupReflectionCamera(mainCamera);
 		}
+		board = GameObject.FindWithTag("Board");
 	}	
 	
 	private Camera SetupReflectionCamera(Camera cam) 
@@ -68,28 +71,22 @@ public class Water : MonoBehaviour {
 	
 	public void Update()
 	{
-		GameObject go = GameObject.FindWithTag("MainCamera");
-		Camera cam = go.GetComponent<Camera>();
-		if( cam != null ) {
-			RenderReflection(cam, reflectionCamera);
-			waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
-		}
-
-		// Update position/velocity
-		go = GameObject.FindWithTag("Board");
-		waterMaterial.SetVector(boardDirection,go.transform.forward);
-		waterMaterial.SetVector(boardPosition,go.transform.position);
-		waterMaterial.SetVector(boardVelocity,go.rigidbody.velocity);
+		RenderReflection(mainCamera, reflectionCamera);
+		
+		waterMaterial.SetVector(boardDirection,board.transform.forward);
+		waterMaterial.SetVector(boardPosition,board.transform.position);
+		waterMaterial.SetVector(boardVelocity,board.rigidbody.velocity);
+		waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
 	}	
 	
 	private void RenderReflection(Camera cam, Camera reflectCamera) 
 	{
-		if (!reflectCamera)
-			return;
+		//if (!reflectCamera)
+		//	return;
 			
-		if(waterMaterial && !waterMaterial.HasProperty(reflectionSampler)) {
-			return;
-		}
+		//if(waterMaterial && !waterMaterial.HasProperty(reflectionSampler)) {
+		//	return;
+		//}
 		
 		reflectCamera.cullingMask = reflectionMask & ~(1<<LayerMask.NameToLayer("Water"));
 		reflectCamera.depthTextureMode = DepthTextureMode.None;			
