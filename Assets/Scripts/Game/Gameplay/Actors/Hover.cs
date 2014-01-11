@@ -56,10 +56,12 @@ public class Hover : MonoBehaviour
         private Transform grindRail = null;
         private Transform[] grindPoints;
         private Transform grindPoint = null;
+        //private Transform PgrindPoint = null;
         private Vector3 grindDir;
         private Vector3 initialGrindDir = Vector3.zero;
         public float grindHeight = 1.0f;
         public float grindSpeed = 0.4f;
+        private bool grindJump = false;
 	
 		private bool doing180 = false;
 		public float spinAmount = 0.0f;
@@ -224,7 +226,7 @@ public class Hover : MonoBehaviour
                                 // BUG: There seems to bug a bug that causes grinding to break if the transform isnt actually a bone.
                                 // Skipping the first two transforms fixes this on the current build. (Uses: joint1 .. jointN)
                                 grindPoints = grindRail.GetChild(0).GetChild(0).GetComponentsInChildren<Transform>();
-
+                                //PgrindPoint = null;
                                 initialGrindDir = rigidbody.velocity;
                                 initialGrindDir.y = 0.0f;
                                 initialGrindDir.Normalize();
@@ -269,7 +271,7 @@ public class Hover : MonoBehaviour
 				Transform activeThruster = m_thruster;
 				if (doing180){activeThruster = b_thruster;}
 				GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-				cameraDir = Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
+				cameraDir = camera.transform.forward;//Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
 				cameraDir.y = 0;
 
                 hoverMod = 1;
@@ -296,11 +298,14 @@ public class Hover : MonoBehaviour
                 Vector3 dir;
                 // Impulse toward rail on button press
                 if( grindRail != null) {
+                    //Transform Pcand = grindPoint;
 					grindPoint = nearestGrindPoint();
+                    //if (grindPoint!=Pcand){PgrindPoint = Pcand;}
 					if (grindPoint != null){Debug.DrawRay(grindPoint.position,Vector3.up,Color.red,600.0f,false);}
                         if (!grinding) {
                                 if(grindPoint != null && Input.GetButton("Grind")) {
 										grinding = true;
+                                        grindJump = m_jump;
                                 }
                         } 
 							else {
@@ -310,12 +315,12 @@ public class Hover : MonoBehaviour
 
                                 // Find nearest point on the rail in the
                                 // direction of the player velocity
-                                if (grindPoint == null || !Input.GetButton("Grind")){
+                                if (grindPoint == null || m_jump!=grindJump){
 										rigidbody.useGravity = true;
                                         grinding = false;
                                         grindRail = null;
 										grindPoint = null;
-										rigidbody.AddForce((grindDir.normalized + (Vector3.up/2)) * jumpForce, ForceMode.Impulse);
+										rigidbody.AddForce((Quaternion.AngleAxis (90f*m_lean,Vector3.up) *grindDir.normalized + (Vector3.up/2)) * jumpForce, ForceMode.Impulse);
 										Debug.Log ("Reached end of rail");
                                 }
                                 else{
@@ -324,17 +329,25 @@ public class Hover : MonoBehaviour
                                         dir = grindPoint.position - transform.position;
                                         dir.y = 0.0f;
                                         //fixedDir = grindDir + dir + grindHeight * Vector3.up;
-
+                                        float camSign = 1.0f;//Mathf.Sign(Vector3.Cross(cameraDir,grindDir).y);
+                                        Vector3 TrueGrindDir = Vector3.Normalize((grindPoint.position + (2f*Vector3.up)) - transform.position);
+                                        /*if (PgrindPoint!=null){
+                                            TrueGrindDir = Vector3.Normalize(grindPoint.position - PgrindPoint.position);
+                                        }
+                                        else{
+                                            TrueGrindDir = Vector3.Normalize((grindPoint.position + (2f*Vector3.up)) - transform.position);
+                                        }*/
+                                        Vector3 spinAxis = Vector3.Cross(TrueGrindDir,Vector3.right);//Vector3.Cross (grindDir,Vector3.forward);
                                         // Move along rail
                                         //rigidbody.AddForce(fixedDir.normalized * grindSpeed);
-										rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
-										spinAmount += rigidbody.angularVelocity.y;
-					
-										Vector3 spinAxis = Vector3.Cross (grindDir,Vector3.forward);
-										float camSign = 1.0f;//Mathf.Sign(Vector3.Cross(cameraDir,grindDir).y);
-                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,grindSpeed);
+
+										//rigidbody.AddTorque(Vector3.up* Mathf.Sign (m_lean)*Mathf.Pow(m_lean,2f) * steerPower);
+										spinAmount += Mathf.Sign (m_lean)*Mathf.Pow(m_lean,2f) * steerPower/1000;//rigidbody.angularVelocity.y;
+
+
 										transform.rotation = Quaternion.LookRotation(Vector3.Slerp (transform.forward,
-											Quaternion.AngleAxis (spinAmount*camSign,spinAxis) * grindDir,0.2f));
+											Quaternion.AngleAxis (spinAmount*camSign,spinAxis) * TrueGrindDir,0.2f));
+                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,grindSpeed);
 
                                         // Update grind dir if we passed the grind point
                                         /*dir = grindPoint.position - transform.position;
@@ -366,7 +379,9 @@ public class Hover : MonoBehaviour
                 clampVector.z = Mathf.Clamp (clampVector.z,-currentClamp,currentClamp);
                 clampVector.x = Mathf.Clamp (clampVector.x,-currentClamp,currentClamp);
 
-                if (flipAmount == 0){transform.localEulerAngles = clampVector;}
+                if (flipAmount == 0){
+                    transform.localEulerAngles = clampVector;
+                }
 		
 				/////////////////////////////////GLIDE///////////////////////////////////////////
                 if (!onGround && m_glide>0.5f && glideLeft > 0 && (transform.rotation.x<90 || transform.rotation.x>270)){
@@ -410,7 +425,9 @@ public class Hover : MonoBehaviour
 				
 				Vector3 inputDir = new Vector3(m_lean,0,m_thrust);
 				float angleSign = Math.Sign (Vector3.Cross(Vector3.forward,inputDir).y);
-				Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
+				//Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
+                Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,cameraDir.normalized);
+                Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
 		/////////////////////////////FLIPS////////////////////////////////
@@ -419,6 +436,7 @@ public class Hover : MonoBehaviour
 					Debug.Log (flipAmount);
 					rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
 					spinAmount += rigidbody.angularVelocity.y;
+                
 				if (m_thrust<-0.5f || (m_thrust>0f && flipAmount > 0f)){
 					rigidbody.AddTorque(transform.right* Math.Min (Mathf.Pow (m_thrust,3.0f),0) * steerPower);
 				}
