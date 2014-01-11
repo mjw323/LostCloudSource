@@ -219,7 +219,8 @@ public class Hover : MonoBehaviour
         void OnCollisionEnter(Collision collision) {
                 detach = false;
                 grinding = false;
-                if ((transform.rotation.x>bailAngle && transform.rotation.x<360f-bailAngle) || (transform.rotation.z>bailAngle && transform.rotation.z<360f-bailAngle)){DismissBoard();}
+                Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
+                if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){DismissBoard();}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
 
@@ -305,9 +306,10 @@ public class Hover : MonoBehaviour
                 currentClamp = angleClamp + ((airAngleClamp-angleClamp) * Mathf.Clamp (airTime/0.5f,0.0f,1.0f));
 
                 clampVector.z = Mathf.Clamp (clampVector.z%360,-currentClamp,currentClamp)+(float)Math.Truncate(clampVector.z/360)*360f;
-                clampVector.x = Mathf.Clamp (clampVector.x%360,-currentClamp,currentClamp)+(float)Math.Truncate(clampVector.x/360)*360f;
-                //Debug.Log("flipAmt: "+flipAmount+", thrust: "+m_thrust+", angle: "+transform.rotation.eulerAngles+", clamped to: "+clampVector);
+                if (flipAmount%360 == 0){clampVector.x = Mathf.Clamp (clampVector.x%360,-currentClamp,currentClamp)+(float)Math.Truncate(clampVector.x/360)*360f;}
                 
+                //Debug.Log(", angle: "+transform.rotation.eulerAngles+", clamped to: "+clampVector);
+                //Debug.Log(Mathf.Abs((transform.rotation.eulerAngles.x%180)-90f));
                 if (flipAmount%360 == 0){transform.localEulerAngles = clampVector;}
 		
 				if (waterSpray){waterParticles.startLifetime = 0.55f;}
@@ -449,10 +451,10 @@ public class Hover : MonoBehaviour
                     spinTimes = Math.Truncate(spinAmount/360)+Mathf.Sign(m_lean);
                 }
                 else{
-                    if (Math.Truncate(spinAmount/360)!=spinTimes && Math.Abs(spinAmount%360)>90 && Math.Abs(spinAmount%360)<300){
+                    if (Math.Truncate(spinAmount/360)!=spinTimes && Math.Abs(spinAmount%360)>90 && Math.Abs(spinAmount%360)<270){
                         rigidbody.AddRelativeTorque(Vector3.up* Mathf.Sign (spinAmount) * steerPower * 2);
                         spinAmount += localAngularVelocity.y;
-                        Debug.Log("spin floor("+spinAmount/360+") going to "+spinTimes);
+                        //Debug.Log("spin floor("+spinAmount/360+") going to "+spinTimes);
                     }
                 localAngularVelocity = transform.InverseTransformDirection(rigidbody.angularVelocity);
                 rigidbody.angularVelocity = transform.TransformDirection(flipSpeedX,localAngularVelocity.y,flipSpeedZ);
@@ -475,10 +477,10 @@ public class Hover : MonoBehaviour
                     if (Math.Truncate((flipAmount+localAngularVelocity.x)/360)!=flipTimes && flipAmount%360!=0){
                         rigidbody.AddRelativeTorque(Vector3.right * -steerPower * 2);
                         flipAmount += localAngularVelocity.x;
-                        Debug.Log("flip floor("+flipAmount/360+") going to "+flipTimes+", angle "+transform.rotation.eulerAngles.x);
+                        //Debug.Log("flip floor("+flipAmount/360+") going to "+flipTimes+", angle "+transform.rotation.eulerAngles.x);
                     }
                     else{
-                        Debug.Log("at flip rest! angle: "+transform.rotation.eulerAngles.x+", velocity: "+localAngularVelocity.x);
+                        //Debug.Log("at flip rest! angle: "+transform.rotation.eulerAngles.x+", velocity: "+localAngularVelocity.x);
                         //rigidbody.angularVelocity = transform.TransformDirection(new Vector3(0,localAngularVelocity.y,localAngularVelocity.z));
                         flipAmount = (float)flipTimes*360f;
                         rigidbody.AddRelativeTorque(-Vector3.right*(((flipAmount-transform.rotation.eulerAngles.x)*1000/360f)));
