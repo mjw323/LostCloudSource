@@ -26,7 +26,7 @@ public class Water : MonoBehaviour {
 	private System.String boardVelocity = "_BoardVelocity";
 	private System.String reflectionSampler = "_ReflectionTex";
 	private System.String waveMapSampler = "_waveMapTexture";
-
+ 
 	// Waves
 	public int waveRadius = 1;
 	public int waveIntensity = 64;

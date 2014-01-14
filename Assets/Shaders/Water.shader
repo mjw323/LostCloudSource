@@ -92,13 +92,13 @@ Shader "LostCloud/Water" {
 			// Board Waves
 			float tx = (waveMapMax.x - IN.worldPos.x) * (1.0/waveMapSize.x);
 			float tz = (waveMapMax.z - IN.worldPos.z) * (1.0/waveMapSize.z);
-			float4 wake = tex2D(_waveMapTexture,float2(tx,tz));
+			float4 offset = tex2D(_waveMapTexture,float2(tx,tz));
 
-			// Wind Waves
+			// Waves
 			//float2 fromBoard = normalize(IN.worldPos.xz - _BoardPosition.xz);
 			//float d = distance(IN.worldPos.xz,_BoardPosition.xz);
 			//float phi = dot(fromBoard,normalize(_BoardVelocity.xz));
-			float2 offset = wake.xy;//saturate(-0.9 - phi) * _Time.x * 100.0 * saturate(length(_BoardVelocity) - 2.0) * saturate(length(_BoardVelocity) - 2.0) * float2(sin(phi), cos(phi)) * 1.0 / (d*d*d);
+			//float2 offset = saturate(-0.9 - phi) * _Time.x * 100.0 * saturate(length(_BoardVelocity) - 2.0) * saturate(length(_BoardVelocity) - 2.0) * float2(sin(phi), cos(phi)) * 1.0 / (d*d*d);
 
 			//offset += wake.xy;
 
