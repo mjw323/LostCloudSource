@@ -14,6 +14,7 @@ Shader "LostCloud/Terrain" {
         _Y("Y-axis Blend Weight", Range(0,1)) = 1
         _Z("Z-axis Blend Weight", Range(0,1)) = 1
         _Range("Blend Height Offset", Float) = 1
+        _HeightRamp("Height color gradient", 2D) = "white" {}
         _Tex1a ("Ground High", 2D) = "white" {}
         _Scale1("Texture Scaling", Range(1,20)) = 1
         _Tex1b ("Ground Low", 2D) = "white" {}
@@ -58,7 +59,8 @@ Shader "LostCloud/Terrain" {
         sampler2D _Tex1a;
         sampler2D _Tex1b;
         sampler2D _Tex2;
-        sampler2D _Tex3;       
+        sampler2D _Tex3;
+        sampler2D _HeightRamp;       
         sampler2D _Ramp;
 
         float _RimPower;
@@ -69,7 +71,7 @@ Shader "LostCloud/Terrain" {
             half3 ramp = tex2D( _Ramp, float2(diff)).rgb;
 
             half4 c;
-            c.rgb = s.Albedo * _LightColor0.rgb * ramp * ( atten * 2 );
+            c.rgb = s.Albedo * diff * _LightColor0.rgb * ramp * ( atten * 1.5 );
             c.a = s.Alpha;
             
             return c;
@@ -84,7 +86,7 @@ Shader "LostCloud/Terrain" {
 
             half4 ca = tex2D(_Tex1a, IN.worldPos.xz * scale1);
             half4 cb = tex2D(_Tex1b, IN.worldPos.xz * scale2);
-            half4 c1 = lerp(ca,cb,saturate(_Range - IN.worldPos.yyy)); 
+            half4 c1 = lerp(ca,cb,saturate(_Range - IN.worldPos.yyy)) * tex2D(_HeightRamp,float2(saturate(1.0 - ((_Range - max(-IN.worldPos.y,IN.worldPos.y))/_Range)))); 
             half4 c2 = tex2D(_Tex2, IN.worldPos.xy * scale3);
             half4 c3 = tex2D(_Tex3, IN.worldPos.yz * scale4);
 			
