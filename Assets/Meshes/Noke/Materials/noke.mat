@@ -9,6 +9,7 @@ Material:
   m_Name: noke
   m_Shader: {fileID: 4800000, guid: 10215ef6bc6747b4391e9314f47f2ae8, type: 3}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -51,7 +52,7 @@ Material:
       data:
         first:
           name: _RimPower
-        second: 3.43269229
+        second: 8
       data:
         first:
           name: _Scale
@@ -64,4 +65,4 @@ Material:
       data:
         first:
           name: _RimColor
-        second: {r: 1, g: 1, b: 1, a: 0}
+        second: {r: .352941155, g: .343491226, b: .290657431, a: 0}
