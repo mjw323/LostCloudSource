@@ -56,15 +56,20 @@ public class Hover : MonoBehaviour
         private Transform grindRail = null;
         private Transform[] grindPoints;
         private Transform grindPoint = null;
+        //private Transform PgrindPoint = null;
         private Vector3 grindDir;
         private Vector3 initialGrindDir = Vector3.zero;
         public float grindHeight = 1.0f;
         public float grindSpeed = 0.4f;
+        private bool grindJump = false;
 	
 		private bool doing180 = false;
 		public float spinAmount = 0.0f;
 		public float flipAmount = 0.0f;
 		public float spinBoost = 4000f;
+        private double flipTimes = 0;
+        private double spinTimes = 0;
+        public float bailAngle = 60.0f;
 
         // Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
         Vector3 CalculateBoardDimensions()
@@ -214,6 +219,8 @@ public class Hover : MonoBehaviour
         void OnCollisionEnter(Collision collision) {
                 detach = false;
                 grinding = false;
+                Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
+                if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){DismissBoard();}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
 
@@ -224,7 +231,7 @@ public class Hover : MonoBehaviour
                                 // BUG: There seems to bug a bug that causes grinding to break if the transform isnt actually a bone.
                                 // Skipping the first two transforms fixes this on the current build. (Uses: joint1 .. jointN)
                                 grindPoints = grindRail.GetChild(0).GetChild(0).GetComponentsInChildren<Transform>();
-
+                                //PgrindPoint = null;
                                 initialGrindDir = rigidbody.velocity;
                                 initialGrindDir.y = 0.0f;
                                 initialGrindDir.Normalize();
@@ -269,7 +276,7 @@ public class Hover : MonoBehaviour
 				Transform activeThruster = m_thruster;
 				if (doing180){activeThruster = b_thruster;}
 				GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-				cameraDir = Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
+				cameraDir = camera.transform.forward;//Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
 				cameraDir.y = 0;
 
                 hoverMod = 1;
@@ -281,26 +288,45 @@ public class Hover : MonoBehaviour
                 {
                         if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*(hoverMod)))
                         {
-                                onGround = true;
+                                if (Vector3.Dot(m_sensors[i].up,Vector3.up)>.25){onGround = true;}
                                 if (!detach && !grinding){
-                                        float hoverForce = (hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime;
+                                        float hoverForce = ((hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime)+ Mathf.Max(0,-rigidbody.velocity.y*1000f);;
                                         rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
 										if (m_hits[i].transform.tag == "Water"){waterSpray = true;}
                                 }
                         }
                 }
+
+                ///////////////////////////////////ANGLE CLAMPING//////////////////////////////////
+                clampVector = transform.rotation.eulerAngles;
+                
+                if (clampVector.z%360 > 180) { clampVector.z = - 180 + (clampVector.z%360-180);}
+                if (flipAmount%360 == 0){if (clampVector.x%360 > 180) { clampVector.x = - 180 + (clampVector.x%360-180);}}
+
+                currentClamp = angleClamp + ((airAngleClamp-angleClamp) * Mathf.Clamp (airTime/0.5f,0.0f,1.0f));
+
+                clampVector.z = Mathf.Clamp (clampVector.z%360,-currentClamp,currentClamp)+(float)Math.Truncate(clampVector.z/360)*360f;
+                if (flipAmount%360 == 0){clampVector.x = Mathf.Clamp (clampVector.x%360,-currentClamp,currentClamp)+(float)Math.Truncate(clampVector.x/360)*360f;}
+                
+                //Debug.Log(", angle: "+transform.rotation.eulerAngles+", clamped to: "+clampVector);
+                //Debug.Log(Mathf.Abs((transform.rotation.eulerAngles.x%180)-90f));
+                if (flipAmount%360 == 0){transform.localEulerAngles = clampVector;}
 		
 				if (waterSpray){waterParticles.startLifetime = 0.55f;}
 				else{waterParticles.startLifetime = 0.0f;}
 
+                ///////////////////////////////////GRINDING/////////////////////////////////
                 Vector3 dir;
                 // Impulse toward rail on button press
                 if( grindRail != null) {
+                    //Transform Pcand = grindPoint;
 					grindPoint = nearestGrindPoint();
+                    //if (grindPoint!=Pcand){PgrindPoint = Pcand;}
 					if (grindPoint != null){Debug.DrawRay(grindPoint.position,Vector3.up,Color.red,600.0f,false);}
                         if (!grinding) {
                                 if(grindPoint != null && Input.GetButton("Grind")) {
 										grinding = true;
+                                        grindJump = m_jump;
                                 }
                         } 
 							else {
@@ -310,13 +336,13 @@ public class Hover : MonoBehaviour
 
                                 // Find nearest point on the rail in the
                                 // direction of the player velocity
-                                if (grindPoint == null || !Input.GetButton("Grind")){
+                                if (grindPoint == null || m_jump!=grindJump){
 										rigidbody.useGravity = true;
                                         grinding = false;
                                         grindRail = null;
 										grindPoint = null;
-										rigidbody.AddForce((grindDir.normalized + (Vector3.up/2)) * jumpForce, ForceMode.Impulse);
-										Debug.Log ("Reached end of rail");
+										rigidbody.AddForce((Quaternion.AngleAxis (90f*m_lean,Vector3.up) *grindDir.normalized + (Vector3.up/2)) * jumpForce, ForceMode.Impulse);
+										//Debug.Log ("Reached end of rail");
                                 }
                                 else{
                                         // Move toward rail
@@ -324,17 +350,25 @@ public class Hover : MonoBehaviour
                                         dir = grindPoint.position - transform.position;
                                         dir.y = 0.0f;
                                         //fixedDir = grindDir + dir + grindHeight * Vector3.up;
-
+                                        float camSign = 1.0f;//Mathf.Sign(Vector3.Cross(cameraDir,grindDir).y);
+                                        Vector3 TrueGrindDir = Vector3.Normalize((grindPoint.position + (2f*Vector3.up)) - transform.position);
+                                        /*if (PgrindPoint!=null){
+                                            TrueGrindDir = Vector3.Normalize(grindPoint.position - PgrindPoint.position);
+                                        }
+                                        else{
+                                            TrueGrindDir = Vector3.Normalize((grindPoint.position + (2f*Vector3.up)) - transform.position);
+                                        }*/
+                                        Vector3 spinAxis = Vector3.Cross(TrueGrindDir,Vector3.right);//Vector3.Cross (grindDir,Vector3.forward);
                                         // Move along rail
                                         //rigidbody.AddForce(fixedDir.normalized * grindSpeed);
-										rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
-										spinAmount += rigidbody.angularVelocity.y;
-					
-										Vector3 spinAxis = Vector3.Cross (grindDir,Vector3.forward);
-										float camSign = 1.0f;//Mathf.Sign(Vector3.Cross(cameraDir,grindDir).y);
-                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,grindSpeed);
+
+										//rigidbody.AddTorque(Vector3.up* Mathf.Sign (m_lean)*Mathf.Pow(m_lean,2f) * steerPower);
+										spinAmount += Mathf.Sign (m_lean)*Mathf.Pow(m_lean,2f) * steerPower/1000;//rigidbody.angularVelocity.y;
+
+
 										transform.rotation = Quaternion.LookRotation(Vector3.Slerp (transform.forward,
-											Quaternion.AngleAxis (spinAmount*camSign,spinAxis) * grindDir,0.2f));
+											Quaternion.AngleAxis (spinAmount*camSign,spinAxis) * TrueGrindDir,0.2f));
+                                        transform.position = Vector3.MoveTowards(transform.position,grindPoint.position + 2.0f * Vector3.up,grindSpeed);
 
                                         // Update grind dir if we passed the grind point
                                         /*dir = grindPoint.position - transform.position;
@@ -355,18 +389,7 @@ public class Hover : MonoBehaviour
                 }
 				if (grinding){grindParticles.startLifetime = 0.55f;}
 					else{grindParticles.startLifetime = 0f;}
-				///////////////////////////////////ANGLE CLAMPING//////////////////////////////////
-                clampVector = transform.rotation.eulerAngles;
-				
-                if (clampVector.z > 180) { clampVector.z = - 180 + (clampVector.z-180);}
-                if (clampVector.x > 180) { clampVector.x = - 180 + (clampVector.x-180);}
-
-                currentClamp = angleClamp + ((airAngleClamp-angleClamp) * Mathf.Clamp (airTime/0.5f,0.0f,1.0f));
-
-                clampVector.z = Mathf.Clamp (clampVector.z,-currentClamp,currentClamp);
-                clampVector.x = Mathf.Clamp (clampVector.x,-currentClamp,currentClamp);
-
-                if (flipAmount == 0){transform.localEulerAngles = clampVector;}
+                
 		
 				/////////////////////////////////GLIDE///////////////////////////////////////////
                 if (!onGround && m_glide>0.5f && glideLeft > 0 && (transform.rotation.x<90 || transform.rotation.x>270)){
@@ -410,28 +433,73 @@ public class Hover : MonoBehaviour
 				
 				Vector3 inputDir = new Vector3(m_lean,0,m_thrust);
 				float angleSign = Math.Sign (Vector3.Cross(Vector3.forward,inputDir).y);
-				Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
+				//Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
+                Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,cameraDir.normalized);
+                Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
 		/////////////////////////////FLIPS////////////////////////////////
 	if (!grinding){
 		if (!onGround){
-					Debug.Log (flipAmount);
-					rigidbody.AddTorque(transform.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
-					spinAmount += rigidbody.angularVelocity.y;
-				if (m_thrust<-0.5f || (m_thrust>0f && flipAmount > 0f)){
-					rigidbody.AddTorque(transform.right* Math.Min (Mathf.Pow (m_thrust,3.0f),0) * steerPower);
+					//Debug.Log (flipAmount);
+                Vector3 localAngularVelocity = transform.InverseTransformDirection(rigidbody.angularVelocity);
+                float flipSpeedX = localAngularVelocity.x;
+                float flipSpeedZ = localAngularVelocity.z;
+                if (Math.Abs(m_lean)>.1 /*&& flipAmount%360==0*/){
+					rigidbody.AddRelativeTorque(Vector3.up* Mathf.Sign (m_lean)*(m_lean*m_lean) * steerPower);
+                    spinAmount += localAngularVelocity.y;
+                    spinTimes = Math.Truncate(spinAmount/360)+Mathf.Sign(m_lean);
+                }
+                else{
+                    if (Math.Truncate(spinAmount/360)!=spinTimes && Math.Abs(spinAmount%360)>90 && Math.Abs(spinAmount%360)<270){
+                        rigidbody.AddRelativeTorque(Vector3.up* Mathf.Sign (spinAmount) * steerPower * 2);
+                        spinAmount += localAngularVelocity.y;
+                        //Debug.Log("spin floor("+spinAmount/360+") going to "+spinTimes);
+                    }
+                localAngularVelocity = transform.InverseTransformDirection(rigidbody.angularVelocity);
+                rigidbody.angularVelocity = transform.TransformDirection(flipSpeedX,localAngularVelocity.y,flipSpeedZ);
+                    /*else{
+                        //Debug.Log("at spin rest!");
+                        //rigidbody.angularVelocity = transform.TransformDirection(new Vector3(localAngularVelocity.x,0,localAngularVelocity.z));
+                        rigidbody.AddTorque(transform.up*((((float)spinTimes*360f)-transform.rotation.eulerAngles.y)*100f));
+                        spinAmount = (float)spinTimes*180f;
+                    }*/
+                    
+                }
+					
+                localAngularVelocity = transform.InverseTransformDirection(rigidbody.angularVelocity);
+				if (m_thrust<-0.75f){
+					rigidbody.AddRelativeTorque(Vector3.right* Math.Min (Mathf.Pow (m_thrust,3.0f),0) * steerPower);
+                    flipAmount += localAngularVelocity.x;
+                    flipTimes = Math.Truncate(flipAmount/360)+Mathf.Sign(flipAmount);
 				}
+                else{
+                    if (Math.Truncate((flipAmount+localAngularVelocity.x)/360)!=flipTimes && flipAmount%360!=0){
+                        rigidbody.AddRelativeTorque(Vector3.right * -steerPower * 2);
+                        flipAmount += localAngularVelocity.x;
+                        //Debug.Log("flip floor("+flipAmount/360+") going to "+flipTimes+", angle "+transform.rotation.eulerAngles.x);
+                    }
+                    else{
+                        //Debug.Log("at flip rest! angle: "+transform.rotation.eulerAngles.x+", velocity: "+localAngularVelocity.x);
+                        //rigidbody.angularVelocity = transform.TransformDirection(new Vector3(0,localAngularVelocity.y,localAngularVelocity.z));
+                        flipAmount = (float)flipTimes*360f;
+                        rigidbody.AddRelativeTorque(-Vector3.right*(((flipAmount-transform.rotation.eulerAngles.x)*1000/360f)));
+                        
+                    }
+                    
+                }
 				
-					flipAmount += rigidbody.angularVelocity.x;
+					
 				
 				
 				}
 		else{
-					if (Math.Abs(spinAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.0f);}
-					if (Math.Abs(flipAmount)>=180f){rigidbody.AddForceAtPosition(cameraDir * spinBoost*1.25f, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.25f);}
+					if (Math.Abs(spinAmount)>=270f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.0f);}
+					if (Math.Abs(flipAmount)>=270f){rigidbody.AddForceAtPosition(cameraDir * spinBoost*1.25f, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.25f);}
 					spinAmount = 0f;
 					flipAmount = 0f;
+                    flipTimes = 0f;
+                    spinTimes = 0f;
 				}
 	}
 				//Debug.Log (Vector3.Magnitude(rigidbody.velocity));

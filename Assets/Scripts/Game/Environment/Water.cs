@@ -11,7 +11,6 @@ public class Water : MonoBehaviour {
 	public LayerMask reflectionMask;
 	public bool reflectSkybox = false;
 	public Color clearColor = Color.grey;
-	private System.String reflectionSampler = "_ReflectionTex";
 
 	// Clip height
 	public float clipPlaneOffset = 0.07f;
@@ -21,11 +20,30 @@ public class Water : MonoBehaviour {
 	private Camera reflectionCamera;
 	private Camera mainCamera;
 
-	// Player Uniforms
+	// Uniforms
 	private System.String boardDirection = "_BoardDirection";
 	private System.String boardPosition = "_BoardPosition";
 	private System.String boardVelocity = "_BoardVelocity";
+	private System.String reflectionSampler = "_ReflectionTex";
+	private System.String waveMapSampler = "_waveMapTexture";
 
+	// Waves
+	public int waveRadius = 1;
+	public int waveIntensity = 64;
+	public float waveDampening = 1.0f/32.0f;
+	private int[] waveStateBuffer;
+	private Color[] waveColorMap;
+	public Texture2D waveMapTexture;
+	private int width  = 128;
+	private int height = 128;
+	private int halfW;
+	private int halfH;
+	private int oldIdx;
+	private int newIdx;
+
+	//public ComputeShader waveShader;
+	//private int kID;
+	//private RenderTexture waveTexture;
 
 	public void Awake() {
 		GameObject go = GameObject.FindWithTag("MainCamera");
@@ -35,6 +53,33 @@ public class Water : MonoBehaviour {
 			reflectionCamera = SetupReflectionCamera(mainCamera);
 		}
 		board = GameObject.FindWithTag("Board");
+
+		waveMapTexture = new Texture2D(width,height);
+		waveColorMap = new Color[width*height];
+		for(int v = 0; v < height; v++) {
+			for(int u = 0; u < width; u++) {
+				waveColorMap[(v*width) + u] = Color.red;
+			}
+		}
+
+		waveStateBuffer = new int[width * (height + 2) * 2];
+
+		waveMapTexture.SetPixels(waveColorMap);
+		waveMapTexture.Apply();
+
+		if(waveDampening <= 0.0f || waveDampening > 1.0f )
+			waveDampening = 1.0f / 32.0f;
+
+		waveDampening = 1.0f/waveDampening;
+
+		oldIdx = width;
+		newIdx = width * (height+3);		
+
+		halfW = width / 2;
+		halfH = height / 2;
+
+		waterMaterial.SetVector("waveMapMax",renderer.bounds.max);
+		waterMaterial.SetVector("waveMapSize",renderer.bounds.size);
 	}	
 	
 	private Camera SetupReflectionCamera(Camera cam) 
@@ -61,7 +106,7 @@ public class Water : MonoBehaviour {
 		reflectCamera.enabled = false;		
 		
 		if(!reflectCamera.targetTexture) {
-			RenderTexture rt = new RenderTexture(Mathf.FloorToInt(reflectCamera.pixelWidth), Mathf.FloorToInt(reflectCamera.pixelHeight), 24);//new RenderTexture(Mathf.FloorToInt(reflectCamera.pixelWidth*0.5F), Mathf.FloorToInt(reflectCamera.pixelHeight*0.5F), 24);	
+			RenderTexture rt = new RenderTexture(Mathf.FloorToInt(reflectCamera.pixelWidth), Mathf.FloorToInt(reflectCamera.pixelHeight), 24);
 			rt.hideFlags = HideFlags.DontSave;
 			reflectCamera.targetTexture = rt;
 		}
@@ -70,24 +115,87 @@ public class Water : MonoBehaviour {
 	}
 	
 	public void Update()
-	{
+	{		
 		RenderReflection(mainCamera, reflectionCamera);
-		
+
 		waterMaterial.SetVector(boardDirection,board.transform.forward);
 		waterMaterial.SetVector(boardPosition,board.transform.position);
 		waterMaterial.SetVector(boardVelocity,board.rigidbody.velocity);
 		waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
-	}	
-	
-	private void RenderReflection(Camera cam, Camera reflectCamera) 
-	{
-		//if (!reflectCamera)
-		//	return;
-			
-		//if(waterMaterial && !waterMaterial.HasProperty(reflectionSampler)) {
-		//	return;
+
+		// I am broken :'(
+		//if(board.transform.position.x > renderer.bounds.min.x && board.transform.position.x < renderer.bounds.max.x
+		//	&& board.transform.position.z > renderer.bounds.min.z && board.transform.position.z < renderer.bounds.max.z ) {
+		//	UpdateWake();
+		//	CreateWake();
 		//}
-		
+
+		// Copy color buffer to texture
+		//waveMapTexture.SetPixels(waveColorMap);
+		//waveMapTexture.Apply();		
+		//waterMaterial.SetTexture(waveMapSampler,waveMapTexture);
+	}	
+
+	private void CreateWake() {
+		// Map (x,z) |-> (u,v)
+		float x = (renderer.bounds.max.x - board.transform.position.x) / renderer.bounds.size.x,
+			  z = (renderer.bounds.max.z - board.transform.position.z) / renderer.bounds.size.z;
+
+		x *= width;
+		z *= height;
+
+		// Create new wake trail
+		for(int v = (int)z-waveRadius; v < (int)z+waveRadius; v++) {
+			for(int u = (int)x-waveRadius; u < (int)x+waveRadius; u++) {
+				if(u < width && u >= 0 && v < height && v >= 0)
+					waveStateBuffer[(v*width)+u] += waveIntensity;
+			}
+		}
+	}
+
+	// Update Wake based on player position
+	private void UpdateWake() {
+		// Swap States
+		int i = oldIdx;
+		oldIdx = newIdx;
+		newIdx = i;
+		int idx = oldIdx;
+		i = 0;
+
+		// Update existing wakes
+		for (int v = 0; v < height; v++) {
+		  for (int u = 0; u < width; u++) {
+		  	// Sum neighboring pixels and halve
+		    int data = (waveStateBuffer[idx - width] +
+		    	    	waveStateBuffer[idx + width] +
+		    	    	waveStateBuffer[idx - 1] +
+		    	    	waveStateBuffer[idx + 1]) / 2;
+
+		    // Subtract current state and dampen (data * 1/2^5)
+		    data -= waveStateBuffer[newIdx + i];
+		    data -= data >> 5;
+
+		    // Update state buffer
+		    waveStateBuffer[newIdx+i]=data;
+
+		    data = (1024 - data);
+		    float r = ((u - halfW)*data/1024) + halfW;
+		    float g = ((v - halfH)*data/1024) + halfH;
+
+		    // Map |-> [0,1]
+			r *= (1.0f/width);
+			g *= (1.0f/height);
+
+		    waveColorMap[i] = new Color(r,g,0.0f,1.0f);
+
+		    idx++;
+		    i++;
+		  }
+		}
+	}
+
+	private void RenderReflection(Camera cam, Camera reflectCamera) 
+	{		
 		reflectCamera.cullingMask = reflectionMask & ~(1<<LayerMask.NameToLayer("Water"));
 		reflectCamera.depthTextureMode = DepthTextureMode.None;			
 		reflectCamera.renderingPath = RenderingPath.Forward;		

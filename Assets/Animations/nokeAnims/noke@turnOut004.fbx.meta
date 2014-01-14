@@ -449,7 +449,7 @@ ModelImporter:
     4300038: belt
     4300040: bandanna
     4300042: hair
-    7400000: prannoy_wideTurn005_x2d
+    7400000: turnOut004
     9500000: //RootNode
     13700000: bandanna
     13700002: belt
@@ -487,7 +487,457 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: turnOut004
+      takeName: prannoy_wideTurn005_x2d
+      firstFrame: 84
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Noke_Ctrl:Reference
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:ChestEndEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:ChestOriginEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:HeadEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:LeftUpLeg
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:LeftUpLeg/Noke_Ctrl:LeftLeg
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:LeftUpLeg/Noke_Ctrl:LeftLeg/Noke_Ctrl:LeftFoot
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:LeftUpLeg/Noke_Ctrl:LeftLeg/Noke_Ctrl:LeftFoot/Noke_Ctrl:LeftToeBase
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:RightUpLeg
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:RightUpLeg/Noke_Ctrl:RightLeg
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:RightUpLeg/Noke_Ctrl:RightLeg/Noke_Ctrl:RightFoot
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:RightUpLeg/Noke_Ctrl:RightLeg/Noke_Ctrl:RightFoot/Noke_Ctrl:RightToeBase
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandIndex1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandIndex1/Noke_Ctrl:LeftHandIndex2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandIndex1/Noke_Ctrl:LeftHandIndex2/Noke_Ctrl:LeftHandIndex3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandIndex1/Noke_Ctrl:LeftHandIndex2/Noke_Ctrl:LeftHandIndex3/Noke_Ctrl:LeftHandIndex4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandMiddle1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandMiddle1/Noke_Ctrl:LeftHandMiddle2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandMiddle1/Noke_Ctrl:LeftHandMiddle2/Noke_Ctrl:LeftHandMiddle3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandMiddle1/Noke_Ctrl:LeftHandMiddle2/Noke_Ctrl:LeftHandMiddle3/Noke_Ctrl:LeftHandMiddle4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandPinky1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandPinky1/Noke_Ctrl:LeftHandPinky2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandPinky1/Noke_Ctrl:LeftHandPinky2/Noke_Ctrl:LeftHandPinky3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandPinky1/Noke_Ctrl:LeftHandPinky2/Noke_Ctrl:LeftHandPinky3/Noke_Ctrl:LeftHandPinky4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandRing1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandRing1/Noke_Ctrl:LeftHandRing2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandRing1/Noke_Ctrl:LeftHandRing2/Noke_Ctrl:LeftHandRing3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftFingerBase/Noke_Ctrl:LeftHandRing1/Noke_Ctrl:LeftHandRing2/Noke_Ctrl:LeftHandRing3/Noke_Ctrl:LeftHandRing4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftHandThumb1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftHandThumb1/Noke_Ctrl:LeftHandThumb2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftHandThumb1/Noke_Ctrl:LeftHandThumb2/Noke_Ctrl:LeftHandThumb3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:LeftShoulder/Noke_Ctrl:LeftArm/Noke_Ctrl:LeftForeArm/Noke_Ctrl:LeftHand/Noke_Ctrl:LeftHandThumb1/Noke_Ctrl:LeftHandThumb2/Noke_Ctrl:LeftHandThumb3/Noke_Ctrl:LeftHandThumb4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:Neck
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:Neck/Noke_Ctrl:Head
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandIndex1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandIndex1/Noke_Ctrl:RightHandIndex2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandIndex1/Noke_Ctrl:RightHandIndex2/Noke_Ctrl:RightHandIndex3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandIndex1/Noke_Ctrl:RightHandIndex2/Noke_Ctrl:RightHandIndex3/Noke_Ctrl:RightHandIndex4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandMiddle1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandMiddle1/Noke_Ctrl:RightHandMiddle2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandMiddle1/Noke_Ctrl:RightHandMiddle2/Noke_Ctrl:RightHandMiddle3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandMiddle1/Noke_Ctrl:RightHandMiddle2/Noke_Ctrl:RightHandMiddle3/Noke_Ctrl:RightHandMiddle4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandPinky1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandPinky1/Noke_Ctrl:RightHandPinky2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandPinky1/Noke_Ctrl:RightHandPinky2/Noke_Ctrl:RightHandPinky3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandPinky1/Noke_Ctrl:RightHandPinky2/Noke_Ctrl:RightHandPinky3/Noke_Ctrl:RightHandPinky4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandRing1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandRing1/Noke_Ctrl:RightHandRing2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandRing1/Noke_Ctrl:RightHandRing2/Noke_Ctrl:RightHandRing3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightFingerBase/Noke_Ctrl:RightHandRing1/Noke_Ctrl:RightHandRing2/Noke_Ctrl:RightHandRing3/Noke_Ctrl:RightHandRing4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightHandThumb1
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightHandThumb1/Noke_Ctrl:RightHandThumb2
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightHandThumb1/Noke_Ctrl:RightHandThumb2/Noke_Ctrl:RightHandThumb3
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:Hips/Noke_Ctrl:Spine/Noke_Ctrl:Spine1/Noke_Ctrl:Spine2/Noke_Ctrl:Spine3/Noke_Ctrl:Spine4/Noke_Ctrl:Spine5/Noke_Ctrl:Spine6/Noke_Ctrl:RightShoulder/Noke_Ctrl:RightArm/Noke_Ctrl:RightForeArm/Noke_Ctrl:RightHand/Noke_Ctrl:RightHandThumb1/Noke_Ctrl:RightHandThumb2/Noke_Ctrl:RightHandThumb3/Noke_Ctrl:RightHandThumb4
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:HipsEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftAnkleEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftElbowEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftFootEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftHandEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftHandIndexEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftHandMiddleEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftHandPinkyEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftHandRingEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftHandThumbEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftHipEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftKneeEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftShoulderEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:LeftWristEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightAnkleEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightElbowEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightFootEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightHandEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightHandIndexEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightHandMiddleEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightHandPinkyEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightHandRingEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightHandThumbEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightHipEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightKneeEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightShoulderEffector
+        weight: 0
+      - path: Noke_Ctrl:Reference/Noke_Ctrl:RightWristEffector
+        weight: 0
+      - path: noke_node
+        weight: 1
+      - path: noke_node/noke_geo
+        weight: 0
+      - path: noke_node/noke_geo/bandanna
+        weight: 0
+      - path: noke_node/noke_geo/belt
+        weight: 0
+      - path: noke_node/noke_geo/body
+        weight: 0
+      - path: noke_node/noke_geo/hair
+        weight: 0
+      - path: noke_node/noke_geo/jacket
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_btm
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_btm/cloth 1
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_btm/ring3
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_btm/ring4
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_btm/strap 1
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_top
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_top/cloth
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_top/ring1
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_top/ring2
+        weight: 0
+      - path: noke_node/noke_geo/jacket/buckles_top/strap
+        weight: 0
+      - path: noke_node/noke_geo/jacket/jacket 1
+        weight: 0
+      - path: noke_node/noke_geo/L_arm
+        weight: 0
+      - path: noke_node/noke_geo/L_eye
+        weight: 0
+      - path: noke_node/noke_geo/L_eyelashes
+        weight: 0
+      - path: noke_node/noke_geo/piercings
+        weight: 0
+      - path: noke_node/noke_geo/piercings/eyebrowRing
+        weight: 0
+      - path: noke_node/noke_geo/piercings/L_earring
+        weight: 0
+      - path: noke_node/noke_geo/piercings/R_earring
+        weight: 0
+      - path: noke_node/noke_geo/R_arm
+        weight: 0
+      - path: noke_node/noke_geo/R_eye
+        weight: 0
+      - path: noke_node/noke_geo/R_eyelashes
+        weight: 0
+      - path: noke_node/noke_root
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_L_upLeg
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_L_upLeg/noke_L_knee
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_L_upLeg/noke_L_knee/noke_L_ankle
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_L_upLeg/noke_L_knee/noke_L_ankle/noke_L_ball
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_L_upLeg/noke_L_knee/noke_L_ankle/noke_L_ball/noke_L_toe
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_R_upReg
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_R_upReg/noke_R_knee
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_R_upReg/noke_R_knee/noke_R_ankle
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_R_upReg/noke_R_knee/noke_R_ankle/noke_R_ball
+        weight: 1
+      - path: noke_node/noke_root/noke_pelvis/noke_R_upReg/noke_R_knee/noke_R_ankle/noke_R_ball/noke_R_toe
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandIndex1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandIndex1/noke_L_HandIndex2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandIndex1/noke_L_HandIndex2/noke_L_HandIndex3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandIndex1/noke_L_HandIndex2/noke_L_HandIndex3/noke_L_HandIndex4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandMiddle1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandMiddle1/noke_L_HandMiddle2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandMiddle1/noke_L_HandMiddle2/noke_L_HandMiddle3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandMiddle1/noke_L_HandMiddle2/noke_L_HandMiddle3/noke_L_HandMiddle4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandPinky1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandPinky1/noke_L_HandPinky2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandPinky1/noke_L_HandPinky2/noke_L_HandPinky3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandPinky1/noke_L_HandPinky2/noke_L_HandPinky3/noke_L_HandPinky4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandRing1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandRing1/noke_L_HandRing2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandRing1/noke_L_HandRing2/noke_L_HandRing3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandRing1/noke_L_HandRing2/noke_L_HandRing3/noke_L_HandRing4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandThumb1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandThumb1/noke_L_HandThumb2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandThumb1/noke_L_HandThumb2/noke_L_HandThumb3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_L_clavicle/noke_L_shoulder/noke_L_elbow/noke_L_wrist/noke_L_hand/noke_L_HandThumb1/noke_L_HandThumb2/noke_L_HandThumb3/noke_L_HandThumb4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandIndex1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandIndex1/noke_R_HandIndex2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandIndex1/noke_R_HandIndex2/noke_R_HandIndex3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandIndex1/noke_R_HandIndex2/noke_R_HandIndex3/noke_R_HandIndex4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandMiddle1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandMiddle1/noke_R_HandMiddle2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandMiddle1/noke_R_HandMiddle2/noke_R_HandMiddle3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandMiddle1/noke_R_HandMiddle2/noke_R_HandMiddle3/noke_R_HandMiddle4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandPinky1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandPinky1/noke_R_HandPinky2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandPinky1/noke_R_HandPinky2/noke_R_HandPinky3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandPinky1/noke_R_HandPinky2/noke_R_HandPinky3/noke_R_HandPinky4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandRing1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandRing1/noke_R_HandRing2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandRing1/noke_R_HandRing2/noke_R_HandRing3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandRing1/noke_R_HandRing2/noke_R_HandRing3/noke_R_HandRing4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandThumb1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandThumb1/noke_R_HandThumb2
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandThumb1/noke_R_HandThumb2/noke_R_HandThumb3
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_R_clavicle/noke_R_shoulder/noke_R_elbow/noke_R_wrist/noke_R_hand/noke_R_HandThumb1/noke_R_HandThumb2/noke_R_HandThumb3/noke_R_HandThumb4
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_headEnd
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_jaw
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_jaw/noke_jawEnd
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_L_eyeBall
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_L_lidBtm_blink
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_L_lidBtm_blink/noke_L_lidBtm
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_L_lidTop_blink
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_L_lidTop_blink/noke_L_lidTop
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_R_eyeBall
+        weight: 1
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_R_lidBtm_blink
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_R_lidBtm_blink/noke_R_lidBtm
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_R_lidTop_blink
+        weight: 0
+      - path: noke_node/noke_root/noke_spine1/noke_spine2/noke_spine3/noke_spine4/noke_spine5/noke_spine6/noke_spine7/noke_neck1/noke_head/noke_R_lidTop_blink/noke_R_lidTop
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
