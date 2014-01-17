@@ -29,7 +29,7 @@ public class BoardController : MonoBehaviour
 
 		GameObject board = GameObject.FindWithTag("Board");
 		boardTransform = board.GetComponent<Transform>();
-		boardMovement = board.GetComponent<Hover>();
+		boardMovement = board.GetComponent<Hoverboard>();
 		boardMovement.OnDismissBoard += OnDismissBoard;
 
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
@@ -64,12 +64,12 @@ public class BoardController : MonoBehaviour
 		if (Input.GetButtonDown("Fire3")) // TODO: Rename this input!
 			boardMovement.DismissBoard();
 
-		boardMovement.Move(
+		/*boardMovement.Move(
 			Input.GetAxis("Vertical"),
 			Input.GetAxis("Horizontal"),
 			Input.GetButton("Jump"),
 			Input.GetAxis("Glide"),
-			Input.GetButton("Glide"));
+			Input.GetButton("Glide"));*/
 	}
 
 	// Internal references
@@ -78,7 +78,7 @@ public class BoardController : MonoBehaviour
 
 	// External references
 	[HideInInspector] private Transform boardTransform;
-	[HideInInspector] private Hover boardMovement;
+	[HideInInspector] private Hoverboard boardMovement;
 	[HideInInspector] private Transform cameraTransform;
 	[HideInInspector] private Transform oldParent;
 }
