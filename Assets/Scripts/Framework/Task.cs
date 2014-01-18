@@ -1,60 +1,66 @@
 ﻿using System.Collections;
 
 /// <summary>
-/// Improved coroutine type that provides pause, resume, and stop semantics.
+/// Coroutine wrapper that provides pause, resume, delayed start, and stop
+/// semantics.
 /// </summary>
+/// <remarks>
+/// This class relies on the existence of a single instance of the TaskManager
+/// behaviour and will create one automatically the first time that a Task is
+/// instantiated.
+/// </remarks>
 public class Task
 {
 	/// <summary>
-	/// Creates a new Task object for a coroutine.
+	/// Creates a new Task object.
 	/// </summary>
 	/// <param name="coroutine">
-	/// Coroutine for the Task object.
+	/// Coroutine to be executed by the Task.
 	/// </param>
 	/// <param name="autoStart">
-	/// If autoStart is true (default) the task begins immediately upon
+	/// If autoStart is true (default) the task begins executing after
 	/// construction.
 	/// </param>
 	public Task(IEnumerator coroutine, bool autoStart = true)
 	{
-		m_task = TaskManager.CreateTask(coroutine);
-		m_task.Finished += TaskFinished;
+		task = TaskManager.CreateTask(coroutine);
+		task.Finished += TaskFinished;
 		if (autoStart)
 			Start();
 	}
 	
 	public void Start()
 	{
-		m_task.Start();
+		task.Start();
 	}
 
 	public void Stop()
 	{
-		m_task.Stop();
+		task.Stop();
 	}
 
 	public void Pause()
 	{
-		m_task.Pause();
+		task.Pause();
 	}
 
 	public void Resume()
 	{
-		m_task.Resume();
+		task.Resume();
 	}
 
 	public bool IsRunning
 	{
-		get { return m_task.IsRunning; }
+		get { return task.IsRunning; }
 	}
 
 	public bool IsPaused
 	{
-		get { return m_task.IsPaused; }
+		get { return task.IsPaused; }
 	}
 
 	/// <summary>
-	/// Delegate for the subscribers to the Finished event.
+	/// Delegate for responding to the end of a task's execution.
 	/// </summary>
 	public delegate void FinishedEventHandler();
 
@@ -70,5 +76,5 @@ public class Task
 			Finished();
 	}
 
-	private TaskManager.TaskState m_task;
+	private TaskManager.TaskState task;
 }

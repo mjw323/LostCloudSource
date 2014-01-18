@@ -7,38 +7,38 @@ public class TaskManager : MonoBehaviour
 	{
 		public TaskState(IEnumerator coroutine)
 		{
-			m_coroutine = coroutine;
+			this.coroutine = coroutine;
 		}
 
 		public void Start()
 		{
-			m_isRunning = true;
-			s_instance.StartCoroutine(CoroutineWrapper());
+			isRunning = true;
+			instance.StartCoroutine(CoroutineWrapper());
 		}
 
 		public void Stop()
 		{
-			m_isRunning = false;
+			isRunning = false;
 		}
 
 		public void Pause()
 		{
-			m_isPaused = true;
+			isPaused = true;
 		}
 
 		public void Resume()
 		{
-			m_isPaused = false;
+			isPaused = false;
 		}
 
 		public bool IsRunning
 		{
-			get { return m_isRunning; }
+			get { return isRunning; }
 		}
 
 		public bool IsPaused
 		{
-			get { return m_isPaused; }
+			get { return isPaused; }
 		}
 
 		public delegate void FinishedEventHandler();
@@ -47,16 +47,16 @@ public class TaskManager : MonoBehaviour
 		private IEnumerator CoroutineWrapper()
 		{
 			yield return null;
-			while (m_isRunning)
+			while (isRunning)
 			{
-				if (m_isPaused)
+				if (isPaused)
 					yield return null;
 				else
 				{
-					if (m_coroutine != null && m_coroutine.MoveNext())
-						yield return m_coroutine.Current;
+					if (coroutine != null && coroutine.MoveNext())
+						yield return coroutine.Current;
 					else
-						m_isRunning = false;
+						isRunning = false;
 				}
 			}
 
@@ -64,20 +64,20 @@ public class TaskManager : MonoBehaviour
 				Finished();
 		}
 
-		private IEnumerator m_coroutine;
-		private bool m_isRunning;
-		private bool m_isPaused;
+		private IEnumerator coroutine;
+		private bool isRunning;
+		private bool isPaused;
 	}
-
-	private static TaskManager s_instance;
 
 	public static TaskState CreateTask(IEnumerator coroutine)
 	{
-		if (s_instance == null)
+		if (instance == null)
 		{
 			GameObject go = new GameObject("TaskManager");
-			s_instance = go.AddComponent<TaskManager>();
+			instance = go.AddComponent<TaskManager>();
 		}
 		return new TaskState(coroutine);
 	}
+
+	private static TaskManager instance;
 }
