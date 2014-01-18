@@ -1,0 +1,567 @@
+fileFormatVersion: 2
+guid: b2fb21eb03ae4624e93cb84b3af0ed26
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: bed
+    100002: bedBase
+    100004: //RootNode
+    100006: engine
+    100008: fence
+    100010: frontBumper
+    100012: frontDeco
+    100014: frontGrp1
+    100016: group1
+    100018: group2
+    100020: group5
+    100022: group6
+    100024: hoverPlateArm_A
+    100026: hoverPlateArm_A 1
+    100028: hoverPlateArm_A 2
+    100030: hoverPlateArm_A 3
+    100032: hoverPlateArm_A1
+    100034: hoverPlateArm_A1 1
+    100036: hoverPlateArm_A1 2
+    100038: hoverPlateArm_A1 3
+    100040: hoverPlateArm_A2
+    100042: hoverPlateArm_A2 1
+    100044: hoverPlateArm_A2 2
+    100046: hoverPlateArm_A2 3
+    100048: hoverPlateArm_B
+    100050: hoverPlateArm_B 1
+    100052: hoverPlateArm_B 10
+    100054: hoverPlateArm_B 11
+    100056: hoverPlateArm_B 2
+    100058: hoverPlateArm_B 3
+    100060: hoverPlateArm_B 4
+    100062: hoverPlateArm_B 5
+    100064: hoverPlateArm_B 6
+    100066: hoverPlateArm_B 7
+    100068: hoverPlateArm_B 8
+    100070: hoverPlateArm_B 9
+    100072: hoverPlateArm_C
+    100074: hoverPlateArm_C 1
+    100076: hoverPlateArm_C 10
+    100078: hoverPlateArm_C 11
+    100080: hoverPlateArm_C 2
+    100082: hoverPlateArm_C 3
+    100084: hoverPlateArm_C 4
+    100086: hoverPlateArm_C 5
+    100088: hoverPlateArm_C 6
+    100090: hoverPlateArm_C 7
+    100092: hoverPlateArm_C 8
+    100094: hoverPlateArm_C 9
+    100096: hoverPlateArm_D
+    100098: hoverPlateArm_D 1
+    100100: hoverPlateArm_D 10
+    100102: hoverPlateArm_D 11
+    100104: hoverPlateArm_D 2
+    100106: hoverPlateArm_D 3
+    100108: hoverPlateArm_D 4
+    100110: hoverPlateArm_D 5
+    100112: hoverPlateArm_D 6
+    100114: hoverPlateArm_D 7
+    100116: hoverPlateArm_D 8
+    100118: hoverPlateArm_D 9
+    100120: L_frontHoverPlates
+    100122: L_gasTank
+    100124: L_headlight
+    100126: L_headlight1
+    100128: L_innerPiston
+    100130: L_outerPiston
+    100132: L_rearHoverPlates1
+    100134: polySurface13
+    100136: polySurface23
+    100138: polySurface24
+    100140: polySurface25
+    100142: polySurface26
+    100144: polySurface27
+    100146: R_frontHoverPlates1
+    100148: R_gasTank
+    100150: R_innerPiston
+    100152: R_outerPiston
+    100154: R_rearHoverPlates2
+    100156: stepRailing
+    100158: steps
+    100160: transform2
+    100162: group7
+    100164: polySurface28
+    100166: transform10
+    100168: transform11
+    100170: transform12
+    100172: transform13
+    100174: transform14
+    100176: transform15
+    100178: transform16
+    100180: transform17
+    100182: transform18
+    100184: transform19
+    100186: transform20
+    100188: transform21
+    100190: transform22
+    100192: transform23
+    100194: transform24
+    100196: transform25
+    100198: transform26
+    100200: transform27
+    100202: transform28
+    100204: transform29
+    100206: transform3
+    100208: transform30
+    100210: transform31
+    100212: transform32
+    100214: transform33
+    100216: transform34
+    100218: transform35
+    100220: transform36
+    100222: transform37
+    100224: transform38
+    100226: transform39
+    100228: transform4
+    100230: transform40
+    100232: transform41
+    100234: transform42
+    100236: transform43
+    100238: transform44
+    100240: transform45
+    100242: transform46
+    100244: transform47
+    100246: transform48
+    100248: transform49
+    100250: transform5
+    100252: transform50
+    100254: transform51
+    100256: transform52
+    100258: transform53
+    100260: transform54
+    100262: transform55
+    100264: transform56
+    100266: transform57
+    100268: transform58
+    100270: transform59
+    100272: transform6
+    100274: transform60
+    100276: transform61
+    100278: transform62
+    100280: transform63
+    100282: transform64
+    100284: transform65
+    100286: transform66
+    100288: transform67
+    100290: transform68
+    100292: transform69
+    100294: transform7
+    100296: transform70
+    100298: transform8
+    100300: transform9
+    400000: bed
+    400002: bedBase
+    400004: //RootNode
+    400006: engine
+    400008: fence
+    400010: frontBumper
+    400012: frontDeco
+    400014: frontGrp1
+    400016: group1
+    400018: group2
+    400020: group5
+    400022: group6
+    400024: hoverPlateArm_A
+    400026: hoverPlateArm_A 1
+    400028: hoverPlateArm_A 2
+    400030: hoverPlateArm_A 3
+    400032: hoverPlateArm_A1
+    400034: hoverPlateArm_A1 1
+    400036: hoverPlateArm_A1 2
+    400038: hoverPlateArm_A1 3
+    400040: hoverPlateArm_A2
+    400042: hoverPlateArm_A2 1
+    400044: hoverPlateArm_A2 2
+    400046: hoverPlateArm_A2 3
+    400048: hoverPlateArm_B
+    400050: hoverPlateArm_B 1
+    400052: hoverPlateArm_B 10
+    400054: hoverPlateArm_B 11
+    400056: hoverPlateArm_B 2
+    400058: hoverPlateArm_B 3
+    400060: hoverPlateArm_B 4
+    400062: hoverPlateArm_B 5
+    400064: hoverPlateArm_B 6
+    400066: hoverPlateArm_B 7
+    400068: hoverPlateArm_B 8
+    400070: hoverPlateArm_B 9
+    400072: hoverPlateArm_C
+    400074: hoverPlateArm_C 1
+    400076: hoverPlateArm_C 10
+    400078: hoverPlateArm_C 11
+    400080: hoverPlateArm_C 2
+    400082: hoverPlateArm_C 3
+    400084: hoverPlateArm_C 4
+    400086: hoverPlateArm_C 5
+    400088: hoverPlateArm_C 6
+    400090: hoverPlateArm_C 7
+    400092: hoverPlateArm_C 8
+    400094: hoverPlateArm_C 9
+    400096: hoverPlateArm_D
+    400098: hoverPlateArm_D 1
+    400100: hoverPlateArm_D 10
+    400102: hoverPlateArm_D 11
+    400104: hoverPlateArm_D 2
+    400106: hoverPlateArm_D 3
+    400108: hoverPlateArm_D 4
+    400110: hoverPlateArm_D 5
+    400112: hoverPlateArm_D 6
+    400114: hoverPlateArm_D 7
+    400116: hoverPlateArm_D 8
+    400118: hoverPlateArm_D 9
+    400120: L_frontHoverPlates
+    400122: L_gasTank
+    400124: L_headlight
+    400126: L_headlight1
+    400128: L_innerPiston
+    400130: L_outerPiston
+    400132: L_rearHoverPlates1
+    400134: polySurface13
+    400136: polySurface23
+    400138: polySurface24
+    400140: polySurface25
+    400142: polySurface26
+    400144: polySurface27
+    400146: R_frontHoverPlates1
+    400148: R_gasTank
+    400150: R_innerPiston
+    400152: R_outerPiston
+    400154: R_rearHoverPlates2
+    400156: stepRailing
+    400158: steps
+    400160: transform2
+    400162: group7
+    400164: polySurface28
+    400166: transform10
+    400168: transform11
+    400170: transform12
+    400172: transform13
+    400174: transform14
+    400176: transform15
+    400178: transform16
+    400180: transform17
+    400182: transform18
+    400184: transform19
+    400186: transform20
+    400188: transform21
+    400190: transform22
+    400192: transform23
+    400194: transform24
+    400196: transform25
+    400198: transform26
+    400200: transform27
+    400202: transform28
+    400204: transform29
+    400206: transform3
+    400208: transform30
+    400210: transform31
+    400212: transform32
+    400214: transform33
+    400216: transform34
+    400218: transform35
+    400220: transform36
+    400222: transform37
+    400224: transform38
+    400226: transform39
+    400228: transform4
+    400230: transform40
+    400232: transform41
+    400234: transform42
+    400236: transform43
+    400238: transform44
+    400240: transform45
+    400242: transform46
+    400244: transform47
+    400246: transform48
+    400248: transform49
+    400250: transform5
+    400252: transform50
+    400254: transform51
+    400256: transform52
+    400258: transform53
+    400260: transform54
+    400262: transform55
+    400264: transform56
+    400266: transform57
+    400268: transform58
+    400270: transform59
+    400272: transform6
+    400274: transform60
+    400276: transform61
+    400278: transform62
+    400280: transform63
+    400282: transform64
+    400284: transform65
+    400286: transform66
+    400288: transform67
+    400290: transform68
+    400292: transform69
+    400294: transform7
+    400296: transform70
+    400298: transform8
+    400300: transform9
+    2300000: bedBase
+    2300002: engine
+    2300004: fence
+    2300006: frontBumper
+    2300008: hoverPlateArm_A
+    2300010: hoverPlateArm_A 1
+    2300012: hoverPlateArm_A 2
+    2300014: hoverPlateArm_A 3
+    2300016: hoverPlateArm_A1
+    2300018: hoverPlateArm_A1 1
+    2300020: hoverPlateArm_A1 2
+    2300022: hoverPlateArm_A1 3
+    2300024: hoverPlateArm_A2
+    2300026: hoverPlateArm_A2 1
+    2300028: hoverPlateArm_A2 2
+    2300030: hoverPlateArm_A2 3
+    2300032: hoverPlateArm_B
+    2300034: hoverPlateArm_B 1
+    2300036: hoverPlateArm_B 10
+    2300038: hoverPlateArm_B 11
+    2300040: hoverPlateArm_B 2
+    2300042: hoverPlateArm_B 3
+    2300044: hoverPlateArm_B 4
+    2300046: hoverPlateArm_B 5
+    2300048: hoverPlateArm_B 6
+    2300050: hoverPlateArm_B 7
+    2300052: hoverPlateArm_B 8
+    2300054: hoverPlateArm_B 9
+    2300056: hoverPlateArm_C
+    2300058: hoverPlateArm_C 1
+    2300060: hoverPlateArm_C 10
+    2300062: hoverPlateArm_C 11
+    2300064: hoverPlateArm_C 2
+    2300066: hoverPlateArm_C 3
+    2300068: hoverPlateArm_C 4
+    2300070: hoverPlateArm_C 5
+    2300072: hoverPlateArm_C 6
+    2300074: hoverPlateArm_C 7
+    2300076: hoverPlateArm_C 8
+    2300078: hoverPlateArm_C 9
+    2300080: hoverPlateArm_D
+    2300082: hoverPlateArm_D 1
+    2300084: hoverPlateArm_D 10
+    2300086: hoverPlateArm_D 11
+    2300088: hoverPlateArm_D 2
+    2300090: hoverPlateArm_D 3
+    2300092: hoverPlateArm_D 4
+    2300094: hoverPlateArm_D 5
+    2300096: hoverPlateArm_D 6
+    2300098: hoverPlateArm_D 7
+    2300100: hoverPlateArm_D 8
+    2300102: hoverPlateArm_D 9
+    2300104: L_gasTank
+    2300106: L_headlight
+    2300108: L_headlight1
+    2300110: L_innerPiston
+    2300112: L_outerPiston
+    2300114: polySurface13
+    2300116: polySurface23
+    2300118: polySurface24
+    2300120: polySurface25
+    2300122: polySurface26
+    2300124: polySurface27
+    2300126: R_gasTank
+    2300128: R_innerPiston
+    2300130: R_outerPiston
+    2300132: stepRailing
+    2300134: steps
+    2300136: polySurface28
+    3300000: bedBase
+    3300002: engine
+    3300004: fence
+    3300006: frontBumper
+    3300008: hoverPlateArm_A
+    3300010: hoverPlateArm_A 1
+    3300012: hoverPlateArm_A 2
+    3300014: hoverPlateArm_A 3
+    3300016: hoverPlateArm_A1
+    3300018: hoverPlateArm_A1 1
+    3300020: hoverPlateArm_A1 2
+    3300022: hoverPlateArm_A1 3
+    3300024: hoverPlateArm_A2
+    3300026: hoverPlateArm_A2 1
+    3300028: hoverPlateArm_A2 2
+    3300030: hoverPlateArm_A2 3
+    3300032: hoverPlateArm_B
+    3300034: hoverPlateArm_B 1
+    3300036: hoverPlateArm_B 10
+    3300038: hoverPlateArm_B 11
+    3300040: hoverPlateArm_B 2
+    3300042: hoverPlateArm_B 3
+    3300044: hoverPlateArm_B 4
+    3300046: hoverPlateArm_B 5
+    3300048: hoverPlateArm_B 6
+    3300050: hoverPlateArm_B 7
+    3300052: hoverPlateArm_B 8
+    3300054: hoverPlateArm_B 9
+    3300056: hoverPlateArm_C
+    3300058: hoverPlateArm_C 1
+    3300060: hoverPlateArm_C 10
+    3300062: hoverPlateArm_C 11
+    3300064: hoverPlateArm_C 2
+    3300066: hoverPlateArm_C 3
+    3300068: hoverPlateArm_C 4
+    3300070: hoverPlateArm_C 5
+    3300072: hoverPlateArm_C 6
+    3300074: hoverPlateArm_C 7
+    3300076: hoverPlateArm_C 8
+    3300078: hoverPlateArm_C 9
+    3300080: hoverPlateArm_D
+    3300082: hoverPlateArm_D 1
+    3300084: hoverPlateArm_D 10
+    3300086: hoverPlateArm_D 11
+    3300088: hoverPlateArm_D 2
+    3300090: hoverPlateArm_D 3
+    3300092: hoverPlateArm_D 4
+    3300094: hoverPlateArm_D 5
+    3300096: hoverPlateArm_D 6
+    3300098: hoverPlateArm_D 7
+    3300100: hoverPlateArm_D 8
+    3300102: hoverPlateArm_D 9
+    3300104: L_gasTank
+    3300106: L_headlight
+    3300108: L_headlight1
+    3300110: L_innerPiston
+    3300112: L_outerPiston
+    3300114: polySurface13
+    3300116: polySurface23
+    3300118: polySurface24
+    3300120: polySurface25
+    3300122: polySurface26
+    3300124: polySurface27
+    3300126: R_gasTank
+    3300128: R_innerPiston
+    3300130: R_outerPiston
+    3300132: stepRailing
+    3300134: steps
+    3300136: polySurface28
+    4300000: bedBase
+    4300002: steps
+    4300004: stepRailing
+    4300006: frontBumper
+    4300008: L_headlight
+    4300010: L_headlight1
+    4300012: engine
+    4300014: polySurface13
+    4300016: L_gasTank
+    4300018: R_gasTank
+    4300020: L_innerPiston
+    4300022: L_outerPiston
+    4300024: R_innerPiston
+    4300026: R_outerPiston
+    4300028: fence
+    4300030: hoverPlateArm_A
+    4300032: hoverPlateArm_B
+    4300034: hoverPlateArm_C
+    4300036: hoverPlateArm_D
+    4300038: hoverPlateArm_A1
+    4300040: hoverPlateArm_B
+    4300042: hoverPlateArm_C
+    4300044: hoverPlateArm_D
+    4300046: hoverPlateArm_A2
+    4300048: hoverPlateArm_B
+    4300050: hoverPlateArm_C
+    4300052: hoverPlateArm_D
+    4300054: hoverPlateArm_A
+    4300056: hoverPlateArm_B
+    4300058: hoverPlateArm_C
+    4300060: hoverPlateArm_D
+    4300062: hoverPlateArm_A1
+    4300064: hoverPlateArm_B
+    4300066: hoverPlateArm_C
+    4300068: hoverPlateArm_D
+    4300070: hoverPlateArm_A2
+    4300072: hoverPlateArm_B
+    4300074: hoverPlateArm_C
+    4300076: hoverPlateArm_D
+    4300078: hoverPlateArm_A
+    4300080: hoverPlateArm_B
+    4300082: hoverPlateArm_C
+    4300084: hoverPlateArm_D
+    4300086: hoverPlateArm_A1
+    4300088: hoverPlateArm_B
+    4300090: hoverPlateArm_C
+    4300092: hoverPlateArm_D
+    4300094: hoverPlateArm_A2
+    4300096: hoverPlateArm_B
+    4300098: hoverPlateArm_C
+    4300100: hoverPlateArm_D
+    4300102: hoverPlateArm_A
+    4300104: hoverPlateArm_B
+    4300106: hoverPlateArm_C
+    4300108: hoverPlateArm_D
+    4300110: hoverPlateArm_A1
+    4300112: hoverPlateArm_B
+    4300114: hoverPlateArm_C
+    4300116: hoverPlateArm_D
+    4300118: hoverPlateArm_A2
+    4300120: hoverPlateArm_B
+    4300122: hoverPlateArm_C
+    4300124: hoverPlateArm_D
+    4300126: polySurface23
+    4300128: polySurface24
+    4300130: polySurface25
+    4300132: polySurface26
+    4300134: polySurface27
+    4300136: polySurface28
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
