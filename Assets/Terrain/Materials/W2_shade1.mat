@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: W2_shade
+  m_Name: W2_shade1
   m_Shader: {fileID: 4800000, guid: 04f0969134c8fb34a9489ceaf0c71bd6, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -59,7 +59,7 @@ Material:
         first:
           name: _Ramp
         second:
-          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -98,7 +98,7 @@ Material:
       data:
         first:
           name: _RimPower
-        second: 3
+        second: 5.14285707
     m_Colors:
       data:
         first:

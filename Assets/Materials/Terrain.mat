@@ -22,6 +22,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _HeightRamp
+        second:
+          m_Texture: {fileID: 2800000, guid: 2afbeed060d45b545b144b70e9c8378f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Tex1a
         second:
           m_Texture: {fileID: 2800000, guid: f2ea92116644543d29b3164dc0441a36, type: 3}
@@ -62,13 +69,6 @@ Material:
           m_Texture: {fileID: 2800000, guid: 38b334e6159bd5d48ade95e95c299d21, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _HeightRamp
-        second:
-          m_Texture: {fileID: 2800000, guid: 2afbeed060d45b545b144b70e9c8378f, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -89,11 +89,11 @@ Material:
       data:
         first:
           name: _Scale1
-        second: 11.5178566
+        second: 20
       data:
         first:
           name: _Scale2
-        second: 17.9642849
+        second: 20
       data:
         first:
           name: _Scale3
@@ -101,7 +101,7 @@ Material:
       data:
         first:
           name: _Scale4
-        second: 16.2678566
+        second: 19.6607132
       data:
         first:
           name: _RimPower
