@@ -21,6 +21,13 @@ public class Hover : MonoBehaviour
         public float angleClamp = 50.0f;
         public float airAngleClamp = 10.0f;
         private float currentClamp;
+		
+	public bool canGlide = true;
+	public bool canGrind = true;
+	public bool canWater = true;
+	public float maxWaterTime = 1.0f;
+	private float waterTime = 1.0f;
+	public float drownWiggle = 10.0f;
 
         [HideInInspector] Transform[] m_sensors;
         RaycastHit[] m_hits;
@@ -186,6 +193,9 @@ public class Hover : MonoBehaviour
 		
 				waterParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[3];
 				waterParticles.startLifetime = 0.0f;
+				
+				drownParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[5];
+				drownParticles.startLifetime = 0.0f;
 		
 				splashParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[4];
 
@@ -220,13 +230,15 @@ public class Hover : MonoBehaviour
                 detach = false;
                 grinding = false;
                 Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
-                if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){DismissBoard();}
+                if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){
+					DismissBoard();
+		}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
 
         // Nearing rail
         void OnTriggerEnter(Collider col) {
-                if(col.gameObject.tag == "Grind" && grindRail==null){ 
+                if(col.gameObject.tag == "Grind" && grindRail==null && canGrind){ 
                                 grindRail = col.gameObject.transform;
                                 // BUG: There seems to bug a bug that causes grinding to break if the transform isnt actually a bone.
                                 // Skipping the first two transforms fixes this on the current build. (Uses: joint1 .. jointN)
@@ -283,7 +295,6 @@ public class Hover : MonoBehaviour
                 if (detach){hoverMod = 0.5f;}
 		
 				bool waterSpray = false;
-
                 for (int i = 0; i < m_sensors.Length; i++)
                 {
                         if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*(hoverMod)))
@@ -296,6 +307,28 @@ public class Hover : MonoBehaviour
                                 }
                         }
                 }
+				////////////////////////////////BOARD DROWNING//////////////////////////////////////////////
+				if (!canWater && waterSpray) {
+					waterTime -= Time.deltaTime;
+					drownParticles.startLifetime = 0.05f;
+			Vector3 myRotation = transform.InverseTransformDirection(this.transform.rotation.eulerAngles);
+			Debug.Log ("actual: "+this.transform.rotation.eulerAngles+", rotated: "+myRotation);
+			this.transform.rotation = Quaternion.LookRotation(
+				transform.TransformDirection (
+				new Vector3(myRotation.x + ((Mathf.Sin ((waterTime)*Mathf.PI*8) - Mathf.Sin ((waterTime+Time.deltaTime)*Mathf.PI*8))*drownWiggle),
+			            myRotation.y,myRotation.z)
+				));
+			Debug.Log ("new: "+this.transform.rotation.eulerAngles);
+					if (waterTime <=0 ){
+						waterTime = maxWaterTime;
+						drownParticles.startLifetime = 0.0f;
+						DismissBoard();
+						}
+				} else {
+					waterTime = maxWaterTime;
+					drownParticles.startLifetime = 0.0f;
+				}
+				
 
                 ///////////////////////////////////ANGLE CLAMPING//////////////////////////////////
                 clampVector = transform.rotation.eulerAngles;
@@ -392,7 +425,7 @@ public class Hover : MonoBehaviour
                 
 		
 				/////////////////////////////////GLIDE///////////////////////////////////////////
-                if (!onGround && m_glide>0.5f && glideLeft > 0 && (transform.rotation.x<90 || transform.rotation.x>270)){
+                if (!onGround && m_glide>0.5f && glideLeft > 0 && (transform.rotation.x<90 || transform.rotation.x>270) && canGlide){
                         glidePower = glideForce + (((glideApexForce-glideForce) * Mathf.Pow (Mathf.Clamp(1 - (Mathf.Abs ((glideLength - glideApex)-glideLeft))/(glideLength-glideApex),0,1.0f),4.0f)));
                         rigidbody.AddForce(transform.up * glidePower);
                         glideLeft = Mathf.Clamp(glideLeft-(Time.deltaTime),0.0f,glideLength);
@@ -648,6 +681,7 @@ public class Hover : MonoBehaviour
 		[HideInInspector] new private ParticleSystem grindParticles;
 		[HideInInspector] new private ParticleSystem waterParticles;
 		[HideInInspector] new private ParticleSystem splashParticles;
+		[HideInInspector] new private ParticleSystem drownParticles;
 		[HideInInspector] new private Vector3 cameraDir;
 		[HideInInspector] new private Camera theCamera;
 		[HideInInspector] new private float cameraFOV;
