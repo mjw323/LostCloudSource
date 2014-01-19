@@ -16,9 +16,18 @@ public class FootMovement : MonoBehaviour
 	/// direction if she is not already facing it, and run along it if
 	/// she is.
 	/// </param>
+	private Vector3 prevDir;
+	//public float angleChange = 0f;
 	public void MoveTowards(Vector3 direction)
 	{
+		if (Vector3.Magnitude (prevDir) > 0f && Vector3.Magnitude (direction) > 0f) {
+						animator.SetFloat (angleChangeId, Vector3.Angle (prevDir, direction));
+						Debug.Log ("prev: " + prevDir + ", cur: " + direction + ", diff: " + Vector3.Angle (prevDir, direction));
+				}
 		this.direction = direction;
+		if (Vector3.Magnitude (direction) > 0f) {
+						prevDir = direction;
+				}
 	}
 
 	/// <summary>
@@ -66,12 +75,14 @@ public class FootMovement : MonoBehaviour
 		speedId = Animator.StringToHash("Speed");
 		directionId = Animator.StringToHash("Direction");
 		jumpId = Animator.StringToHash("Jump");
+		angleChangeId = Animator.StringToHash("AngleChange");
 
 		pivotLeftId = Animator.StringToHash("Base Layer.Locomotion.TurnOnSpot");
 		plantLeftId = Animator.StringToHash(
 			"Base Layer.Locomotion.PlantTurnLeft");
 		plantRightId = Animator.StringToHash(
 			"Base Layer.Locomotion.PlantTurnRight");
+		Debug.Log ("awake");
 	}
 
 	private void OnEnable()
@@ -192,6 +203,7 @@ public class FootMovement : MonoBehaviour
 	[HideInInspector] private int speedId;
 	[HideInInspector] private int directionId;
 	[HideInInspector] private int jumpId;
+	[HideInInspector] private int angleChangeId;
 
 	// Animator state references
 	[HideInInspector] private int pivotLeftId;
@@ -206,6 +218,8 @@ public class FootMovement : MonoBehaviour
 	private bool jumpedLastFrame;
 	private bool shouldBoard;
 	private bool shouldLiftOff;
+
+
 
 	public float Speed
 	{

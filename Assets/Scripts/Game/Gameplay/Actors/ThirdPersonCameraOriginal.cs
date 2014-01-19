@@ -1,39 +1,76 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections;
 
-/// <summary>
-/// Camera controller that orbits around the player.
-/// </summary>
 [AddComponentMenu ("Camera-Control/ThirdPersonCameraOriginal")]
 public class ThirdPersonCameraOriginal : MonoBehaviour
 {
-	void Awake()
-	{	
-		transform = GetComponent<Transform>();
-
-		GameObject player = GameObject.FindWithTag("Player");
-		target = player.GetComponent<Transform>();
-	}
-
-	void LateUpdate()
+	public void Enable()
 	{
-		Vector3 targetOffset = target.position + offset;
-		Vector3 lookDirection = targetOffset - transform.position;
-		lookDirection.y = 0f;
-		lookDirection = lookDirection.normalized;
-
-		Vector3 targetPosition = target.position + (Vector3.up * distanceAbove) - (lookDirection * distanceAwayFrom);
-		transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, followTime);
-		transform.LookAt(targetOffset);
+		followTask.Resume();
+		lookTask.Resume();
 	}
 
-	[SerializeField] private Vector3 offset;
-	[SerializeField] private float distanceAbove;
-	[SerializeField] private float distanceAwayFrom;
-	[SerializeField] private float followTime;
+	public void Disable()
+	{
+		followTask.Pause();
+		lookTask.Pause();
+	}
+
+	[Serializable]
+	public class FollowParameters
+	{
+		public float distanceAbove;
+		public float distanceAway;
+		public float time;
+	}
+
+	[Serializable]
+	public class LookParameters
+	{
+
+	}
+
+	private void Awake()
+	{
+		GameObject player = GameObject.FindWithTag("Player");
+		focus = player.GetComponent<Transform>();
+		transform = GetComponent<Transform>();
+		followTask = new Task(Follow());
+		lookTask = new Task(Look());
+	}
+
+	private IEnumerator Follow()
+	{
+		while (true)
+		{
+			Vector3 aboveOffset = focus.up * follow.distanceAbove;
+			Vector3 awayOffset = -transform.forward * follow.distanceAway;
+			Vector3 targetPosition = focus.position + aboveOffset + awayOffset;
+			transform.position = Vector3.SmoothDamp(transform.position,
+				targetPosition, ref velocity, follow.time);
+			yield return null;
+		}
+	}
+
+	private IEnumerator Look()
+	{
+		while (true)
+		{
+			
+			yield return null;
+		}
+	}
+
+	[HideInInspector] private Transform focus;
 
 	[HideInInspector] new private Transform transform;
 
-	[HideInInspector] private Transform target;
+	[SerializeField] private FollowParameters follow;
+	[SerializeField] private LookParameters look;
+
+	[HideInInspector] private Task followTask;
+	[HideInInspector] private Task lookTask;
 
 	private Vector3 velocity;
 }
