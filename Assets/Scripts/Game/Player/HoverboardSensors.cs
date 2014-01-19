@@ -51,7 +51,7 @@ public class HoverboardSensors
 		GameObject sensor = new GameObject();
 		sensor.name = name;
 		sensor.transform.parent = hostTransform;
-		sensor.transform.localPosition = hostTransform.InverseTransformPoint(offset);
+		sensor.transform.localPosition = offset;
 		return sensor.transform;
 	}
 

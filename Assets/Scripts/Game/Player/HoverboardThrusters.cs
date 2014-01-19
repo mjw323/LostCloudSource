@@ -28,7 +28,7 @@ public class HoverboardThrusters
 		GameObject thruster = new GameObject();
 		thruster.name = name;
 		thruster.transform.parent = hostTransform;
-		thruster.transform.localPosition = hostTransform.InverseTransformPoint(offset);
+		thruster.transform.localPosition = offset;
 		return thruster.transform;
 	}
 
