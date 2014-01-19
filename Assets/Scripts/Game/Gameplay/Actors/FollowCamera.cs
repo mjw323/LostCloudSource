@@ -2,8 +2,8 @@
 using System;
 using System.Collections;
 
-[AddComponentMenu ("Camera-Control/ThirdPersonCameraOriginal")]
-public class ThirdPersonCameraOriginal : MonoBehaviour
+[AddComponentMenu ("Camera-Control/FollowCamera")]
+public class FollowCamera : MonoBehaviour
 {
 	public void Enable()
 	{
@@ -28,7 +28,8 @@ public class ThirdPersonCameraOriginal : MonoBehaviour
 	[Serializable]
 	public class LookParameters
 	{
-
+		public float distanceAbove;
+		public float speed;
 	}
 
 	private void Awake()
@@ -45,7 +46,10 @@ public class ThirdPersonCameraOriginal : MonoBehaviour
 		while (true)
 		{
 			Vector3 aboveOffset = focus.up * follow.distanceAbove;
-			Vector3 awayOffset = -transform.forward * follow.distanceAway;
+			Vector3 lookDirection = focus.position - transform.position;
+			lookDirection.y = 0;
+			lookDirection.Normalize();
+			Vector3 awayOffset = -lookDirection * follow.distanceAway;
 			Vector3 targetPosition = focus.position + aboveOffset + awayOffset;
 			transform.position = Vector3.SmoothDamp(transform.position,
 				targetPosition, ref velocity, follow.time);
@@ -57,7 +61,12 @@ public class ThirdPersonCameraOriginal : MonoBehaviour
 	{
 		while (true)
 		{
-			
+			Vector3 aboveOffset = focus.up * look.distanceAbove;
+			Vector3 lookPosition = focus.position + aboveOffset;
+			Quaternion rotation = Quaternion.LookRotation(lookPosition -
+				transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation,
+				rotation, Time.deltaTime * look.speed);
 			yield return null;
 		}
 	}
