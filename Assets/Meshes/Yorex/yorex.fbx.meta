@@ -1261,13 +1261,17 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw
+    - mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw
+    - mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+    - mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -1290,7 +1294,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 0
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -1302,7 +1306,7 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: yorex_posed_01:root
+    rootMotionBoneName: root
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   userData: 
