@@ -22,6 +22,48 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ground
+        second:
+          m_Texture: {fileID: 2800000, guid: 8bf80e21d2ed45b43818405c0a18733e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Wall1
+        second:
+          m_Texture: {fileID: 2800000, guid: 3bb2ddda8187b45bdba9337de280ac7f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Wall2
+        second:
+          m_Texture: {fileID: 2800000, guid: 3bb2ddda8187b45bdba9337de280ac7f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Tex2
+        second:
+          m_Texture: {fileID: 2800000, guid: 3bb2ddda8187b45bdba9337de280ac7f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Tex3
+        second:
+          m_Texture: {fileID: 2800000, guid: 87230e5f905d545cabff41d4d345f67c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _HeightRamp
         second:
           m_Texture: {fileID: 2800000, guid: 2afbeed060d45b545b144b70e9c8378f, type: 3}
@@ -41,27 +83,6 @@ Material:
           m_Texture: {fileID: 2800000, guid: 45f567f890c544b40b294c9d56d1b8d1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Tex2
-        second:
-          m_Texture: {fileID: 2800000, guid: 3bb2ddda8187b45bdba9337de280ac7f, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Tex3
-        second:
-          m_Texture: {fileID: 2800000, guid: 87230e5f905d545cabff41d4d345f67c, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Ramp
-        second:
-          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -77,12 +98,12 @@ Material:
         second: 1
       data:
         first:
-          name: _Range
-        second: 1
+          name: _RimPower
+        second: 8
       data:
         first:
           name: _Scale1
-        second: 20
+        second: .715250075
       data:
         first:
           name: _Scale2
@@ -93,12 +114,12 @@ Material:
         second: 20
       data:
         first:
-          name: _Scale4
-        second: 20
+          name: _Range
+        second: 1
       data:
         first:
-          name: _RimPower
-        second: 8
+          name: _Scale4
+        second: 20
     m_Colors:
       data:
         first:

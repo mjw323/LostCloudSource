@@ -14,6 +14,13 @@ Shader "LostCloud/Terrain" {
         _Y("Y-axis Blend Weight", Range(0,1)) = 1
         _Z("Z-axis Blend Weight", Range(0,1)) = 1
 
+        _Scale1("Ground Tex Scale", Range(0.001,20)) = 1
+        _Ground( "Ground Texture", 2D ) = "gray" {}
+        _Scale2("Wall 1 Tex Scale", Range(0.001,20)) = 1
+        _Wall1( "Wall 1 Tex", 2D ) = "gray" {}
+        _Scale3("Wall 2 Tex Scale", Range(0.001,20)) = 1
+        _Wall2( "Wall 2 Tex", 2D ) = "gray" {}
+
         _RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
         _RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
         _Ramp( "Ramp", 2D ) = "gray" {}
@@ -47,7 +54,6 @@ Shader "LostCloud/Terrain" {
 
         float _Ymax;
         float _invRange;
-        float _TexWidth;
 		float _HeightOffset;
 		
         sampler2D _Ground;
@@ -72,10 +78,8 @@ Shader "LostCloud/Terrain" {
         void SurfMain(Input IN, inout SurfaceOutput o)
         {
             float height = 1.0 - (_Ymax - ((_HeightOffset + IN.worldPos.y) * _Scale1)) * _invRange;
-            float2 uv = half2(sign(IN.worldPos.x) * fmod(IN.worldPos.x,_TexWidth)/1024.0,sign(IN.worldPos.z) * fmod(IN.worldPos.z,_TexWidth)/1024.0);
 
             half4 c1 = tex2D(_Ground, float2(height,sqrt(IN.worldPos.x + IN.worldPos.z)));
-
             half4 c2 = tex2D(_Wall1, IN.worldPos.xy * _Scale2);
             half4 c3 = tex2D(_Wall2, IN.worldPos.yz * _Scale3);
 			
