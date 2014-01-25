@@ -18,6 +18,11 @@ public class MenuScript : MonoBehaviour {
 		Application.LoadLevel(sceneName);
 	}
 
+	public void LoadCredits()
+	{
+		
+	}
+
 	public void QuitGame()
 	{
 		Application.Quit();
