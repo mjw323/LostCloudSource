@@ -526,11 +526,13 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 0
   meshes:
@@ -549,7 +551,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 33
     splitTangentsAcrossUV: 1
     normalImportMode: 1
     tangentImportMode: 1
@@ -563,8 +565,6 @@ ModelImporter:
         min: {x: -40, y: -40, z: -40}
         max: {x: 40, y: 40, z: 40}
         value: {x: .148439765, y: 0, z: .0742198825}
-        preQ: {x: -.486402094, y: -.513237715, z: .486402065, w: .513237774}
-        postQ: {x: -.486402094, y: -.513237715, z: .486402065, w: .513237774}
         length: .185549781
         modified: 1
     - boneName: noke_L_upLeg
@@ -573,8 +573,6 @@ ModelImporter:
         min: {x: -60.0000038, y: -60.0000038, z: -90}
         max: {x: 60.0000038, y: 60.0000038, z: 50}
         value: {x: .347806394, y: 0, z: .173903197}
-        preQ: {x: .617201865, y: -.32865712, z: .641021967, w: -.316444397}
-        postQ: {x: 1.34110451e-07, y: .00189071905, z: .999998152, w: -8.94069743e-08}
         length: .434758127
         modified: 1
     - boneName: noke_R_upReg
@@ -583,8 +581,6 @@ ModelImporter:
         min: {x: -60.0000038, y: -60.0000038, z: -90}
         max: {x: 60.0000038, y: 60.0000038, z: 50}
         value: {x: .347805828, y: 0, z: .173902914}
-        preQ: {x: .641022384, y: -.316444129, z: .617201507, w: -.32865724}
-        postQ: {x: -.00189074862, y: -4.7683713e-07, z: 2.98023206e-08, w: .999998152}
         length: .434757441
         modified: 1
     - boneName: noke_L_knee
@@ -593,8 +589,6 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .300429404, y: 0, z: .150214702}
-        preQ: {x: .00564086065, y: .0330210365, z: -.696896732, w: .716388583}
-        postQ: {x: 2.98023206e-08, y: .00301672495, z: -.99999541, w: -4.470348e-08}
         length: .375536889
         modified: 1
     - boneName: noke_R_knee
@@ -603,8 +597,6 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .300429791, y: 0, z: .150214896}
-        preQ: {x: -.0330203734, y: .0056401249, z: -.716388524, w: -.696896911}
-        postQ: {x: .00301671005, y: 9.5367426e-07, z: -2.23517404e-07, w: .99999541}
         length: .375537395
         modified: 1
     - boneName: noke_L_ankle
@@ -613,8 +605,6 @@ ModelImporter:
         min: {x: 0, y: -30.0000019, z: -50}
         max: {x: 0, y: 30.0000019, z: 50}
         value: {x: .0467627868, y: 0, z: .0233813934}
-        preQ: {x: -.0290810186, y: .00150844466, z: -.998233855, w: -.0517798848}
-        postQ: {x: 3.7252903e-09, y: -1.11758716e-07, z: -.815279186, w: .579067945}
         length: .0584535003
         modified: 1
     - boneName: noke_R_ankle
@@ -623,8 +613,6 @@ ModelImporter:
         min: {x: 0, y: -30.0000019, z: -50}
         max: {x: 0, y: 30.0000019, z: 50}
         value: {x: .0467626676, y: 0, z: .0233813338}
-        preQ: {x: .00150851905, y: .0290809572, z: -.0517798811, w: .998233855}
-        postQ: {x: 2.98023259e-08, y: -2.98023259e-08, z: -.579068005, w: -.815279186}
         length: .0584533513
         modified: 1
     - boneName: noke_spine3
@@ -633,8 +621,6 @@ ModelImporter:
         min: {x: -40, y: -40, z: -40}
         max: {x: 40, y: 40, z: 40}
         value: {x: .121107444, y: 0, z: .0605537221}
-        preQ: {x: -1.49011612e-08, y: -0, z: .994131029, w: -.108182214}
-        postQ: {x: -0, y: 1.49011612e-08, z: .996266663, w: .0863283426}
         length: .151384339
         modified: 1
     - boneName: noke_spine5
@@ -643,8 +629,6 @@ ModelImporter:
         min: {x: -40, y: -40, z: -40}
         max: {x: 40, y: 40, z: 40}
         value: {x: .1356626, y: 0, z: .0678313002}
-        preQ: {x: -1.49011603e-08, y: 2.98023206e-08, z: .983399808, w: .181451246}
-        postQ: {x: -2.98023224e-08, y: 2.98023224e-08, z: .999681175, w: -.0252470244}
         length: .169578314
         modified: 1
     - boneName: noke_neck1
@@ -653,8 +637,6 @@ ModelImporter:
         min: {x: -40, y: -40, z: -40}
         max: {x: 40, y: 40, z: 40}
         value: {x: .0771873668, y: 0, z: .0385936834}
-        preQ: {x: -2.98023224e-08, y: 7.4505806e-08, z: .994686306, w: .102951698}
-        postQ: {x: -.00566576468, y: -.999983907, z: 8.94069814e-08, w: 8.94069814e-08}
         length: .0964842439
         modified: 1
     - boneName: noke_head
@@ -663,8 +645,6 @@ ModelImporter:
         min: {x: -40, y: -40, z: -40}
         max: {x: 40, y: 40, z: 40}
         value: {x: .0771873668, y: 0, z: .0385936834}
-        preQ: {x: -.0241724122, y: -.999707758, z: 1.1920929e-07, w: 2.98023224e-08}
-        postQ: {x: 5.96046448e-08, y: -1.49011612e-07, z: -.997088671, w: .0762504488}
         length: .0964842439
         modified: 1
     - boneName: noke_L_clavicle
@@ -673,8 +653,6 @@ ModelImporter:
         min: {x: 0, y: -15.000001, z: -15.000001}
         max: {x: 0, y: 15.000001, z: 30.0000019}
         value: {x: .0909822211, y: 0, z: .0454911105}
-        preQ: {x: .334846348, y: .476778567, z: .480896562, w: -.655208826}
-        postQ: {x: -.0858996585, y: .740831196, z: .660043299, w: .0901842415}
         length: .113727808
         modified: 1
     - boneName: noke_R_clavicle
@@ -683,8 +661,6 @@ ModelImporter:
         min: {x: 0, y: -15.000001, z: -15.000001}
         max: {x: 0, y: 15.000001, z: 30.0000019}
         value: {x: .090982236, y: 0, z: .045491118}
-        preQ: {x: -.655208945, y: .480896652, z: .476778299, w: .334846199}
-        postQ: {x: .66004312, y: -.0901833326, z: .0859004334, w: .740831375}
         length: .11372783
         modified: 1
     - boneName: noke_L_shoulder
@@ -693,8 +669,6 @@ ModelImporter:
         min: {x: -90, y: -100, z: -60.0000038}
         max: {x: 90, y: 100, z: 100}
         value: {x: .177385241, y: 0, z: .0886926204}
-        preQ: {x: .435761303, y: .587153196, z: .669734359, w: .129688233}
-        postQ: {x: .025493335, y: .73537761, z: .67665863, w: -.026512919}
         length: .221731618
         modified: 1
     - boneName: noke_R_shoulder
@@ -703,8 +677,6 @@ ModelImporter:
         min: {x: -90, y: -100, z: -60.0000038}
         max: {x: 90, y: 100, z: 100}
         value: {x: .177390292, y: 0, z: .0886951461}
-        preQ: {x: .669734359, y: -.129687607, z: -.435760558, w: .587153792}
-        postQ: {x: .676657975, y: .0265166573, z: -.0254976228, w: .735377848}
         length: .221737936
         modified: 1
     - boneName: noke_L_elbow
@@ -713,8 +685,6 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .183695942, y: 0, z: .0918479711}
-        preQ: {x: .6698578, y: .741394758, z: -.0401384644, w: .00362767}
-        postQ: {x: -9.16421357e-07, y: .999178112, z: -.0405320488, w: -5.01051488e-07}
         length: .229619995
         modified: 1
     - boneName: noke_R_elbow
@@ -723,8 +693,6 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .183690473, y: 0, z: .0918452367}
-        preQ: {x: -.0401464365, y: -.00362786325, z: -.669858754, w: .741393507}
-        postQ: {x: -.0405328572, y: -5.88595867e-06, z: -1.77323818e-06, w: .999178171}
         length: .22961317
         modified: 1
     - boneName: noke_L_wrist
@@ -733,8 +701,6 @@ ModelImporter:
         min: {x: 0, y: -40, z: -80}
         max: {x: 0, y: 40, z: 80}
         value: {x: .0918479711, y: 0, z: .0459239855}
-        preQ: {x: -2.91038361e-07, y: .735670149, z: .677339911, w: -1.00148213e-06}
-        postQ: {x: -.00279985485, y: .733778477, z: .679058969, w: .0209784191}
         length: .114809997
         modified: 1
     - boneName: noke_R_wrist
@@ -743,8 +709,6 @@ ModelImporter:
         min: {x: 0, y: -40, z: -80}
         max: {x: 0, y: 40, z: 80}
         value: {x: .0918452367, y: 0, z: .0459226184}
-        preQ: {x: .677339554, y: -5.41600775e-06, z: 2.90758953e-06, w: .735670507}
-        postQ: {x: .679058731, y: -.0209848117, z: .00280253286, w: .733778536}
         length: .114806585
         modified: 1
     - boneName: noke_L_toe
@@ -753,8 +717,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -50}
         max: {x: 0, y: 0, z: 50}
         value: {x: .0670750216, y: 0, z: .0335375108}
-        preQ: {x: -5.96046448e-08, y: 5.30853903e-08, z: .999776483, w: .021139849}
-        postQ: {x: -5.96046448e-08, y: 5.12227452e-08, z: .999776483, w: .0211398154}
         length: .0838438123
         modified: 1
     - boneName: noke_R_toe
@@ -763,8 +725,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -50}
         max: {x: 0, y: 0, z: 50}
         value: {x: .067074962, y: 0, z: .033537481}
-        preQ: {x: -3.25962901e-08, y: -5.96046448e-08, z: -.0211398154, w: .999776483}
-        postQ: {x: -4.74974549e-08, y: -5.96046448e-08, z: -.0211397819, w: .999776483}
         length: .0838437378
         modified: 1
     - boneName: noke_L_eyeBall
@@ -773,8 +733,6 @@ ModelImporter:
         min: {x: 0, y: -20, z: -10}
         max: {x: 0, y: 20, z: 15.000001}
         value: {x: .0799999759, y: 0, z: .0399999879}
-        preQ: {x: -.651130915, y: -.758965373, z: 5.96046519e-08, w: -8.94069814e-08}
-        postQ: {x: .707106829, y: -3.16101421e-08, z: .707106709, w: -1.05367128e-08}
         length: .100000001
         modified: 1
     - boneName: noke_R_eyeBall
@@ -783,8 +741,6 @@ ModelImporter:
         min: {x: 0, y: -20, z: -10}
         max: {x: 0, y: 20, z: 15.000001}
         value: {x: .0799999759, y: 0, z: .0399999879}
-        preQ: {x: -.651130915, y: -.758965373, z: 5.96046519e-08, w: -8.94069814e-08}
-        postQ: {x: .707106829, y: -3.16101421e-08, z: .707106709, w: -1.05367128e-08}
         length: .100000001
         modified: 1
     - boneName: noke_jaw
@@ -793,8 +749,6 @@ ModelImporter:
         min: {x: 0, y: -10, z: -10}
         max: {x: 0, y: 10, z: 10}
         value: {x: .0799999759, y: 0, z: .0399999879}
-        preQ: {x: -.716541648, y: -.697544217, z: 5.93647087e-08, w: -8.16264745e-08}
-        postQ: {x: 1.1920929e-07, y: -0, z: .910632849, w: .413216114}
         length: .100000001
         modified: 1
     - boneName: noke_L_HandThumb1
@@ -803,8 +757,6 @@ ModelImporter:
         min: {x: 0, y: -25, z: -20}
         max: {x: 0, y: 25, z: 20}
         value: {x: .0185525548, y: 0, z: .00927627739}
-        preQ: {x: .117846057, y: .64181459, z: .660680294, w: .371063113}
-        postQ: {x: -6.13704324e-05, y: .805815399, z: .592166901, w: 6.83069229e-05}
         length: .0231907032
         modified: 1
     - boneName: noke_L_HandThumb2
@@ -813,8 +765,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -40}
         max: {x: 0, y: 0, z: 35}
         value: {x: .0265333317, y: 0, z: .0132666659}
-        preQ: {x: -.176098555, y: .799202144, z: .558623552, w: .134925857}
-        postQ: {x: 5.12599945e-06, y: .984883785, z: .173215955, w: 1.46478415e-05}
         length: .033166673
         modified: 1
     - boneName: noke_L_HandThumb3
@@ -823,8 +773,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -40}
         max: {x: 0, y: 0, z: 35}
         value: {x: .019899996, y: 0, z: .009949998}
-        preQ: {x: -.192194492, y: .969127357, z: .150697559, w: .0338172354}
-        postQ: {x: .0325010419, y: .992789745, z: .11341843, w: -.0211745203}
         length: .0248750038
         modified: 1
     - boneName: noke_L_HandIndex1
@@ -833,8 +781,6 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0323640481, y: 0, z: .016182024}
-        preQ: {x: -.53593421, y: .330962211, z: .758725822, w: .166052327}
-        postQ: {x: -4.52250242e-06, y: .729688346, z: .683779836, w: -5.71949786e-05}
         length: .0404550768
         modified: 1
     - boneName: noke_L_HandIndex2
@@ -843,8 +789,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0263491198, y: 0, z: .0131745599}
-        preQ: {x: .245431334, y: .672224939, z: .657476485, w: -.23579973}
-        postQ: {x: 1.49309644e-05, y: .728088439, z: .685483158, w: 4.57941242e-05}
         length: .0329364091
         modified: 1
     - boneName: noke_L_HandIndex3
@@ -853,8 +797,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .019761838, y: 0, z: .00988091901}
-        preQ: {x: .227719828, y: .677776158, z: .665448904, w: -.214338183}
-        postQ: {x: -.0323130861, y: .726188958, z: .686308861, w: .0241957698}
         length: .0247023068
         modified: 1
     - boneName: noke_L_HandMiddle1
@@ -863,8 +805,6 @@ ModelImporter:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
         value: {x: .0340332389, y: 0, z: .0170166194}
-        preQ: {x: -.590198755, y: .342653215, z: .710438073, w: .171848014}
-        postQ: {x: -7.84918757e-06, y: .732195258, z: .681094646, w: 4.27295709e-05}
         length: .0425415672
         modified: 1
     - boneName: noke_L_HandMiddle2
@@ -873,8 +813,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0277381316, y: 0, z: .0138690658}
-        preQ: {x: .214757025, y: .655731559, z: .680340171, w: -.247047886}
-        postQ: {x: -7.86781311e-06, y: .73281461, z: .680428326, w: -4.28202329e-05}
         length: .0346726738
         modified: 1
     - boneName: noke_L_HandMiddle3
@@ -883,8 +821,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0208035968, y: 0, z: .0104017984}
-        preQ: {x: .225350037, y: .654868722, z: .69033581, w: -.209286273}
-        postQ: {x: -.0366895199, y: .737105727, z: .674524426, w: .018592881}
         length: .0260045044
         modified: 1
     - boneName: noke_L_HandRing1
@@ -893,8 +829,6 @@ ModelImporter:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
         value: {x: .0291067231, y: 0, z: .0145533616}
-        preQ: {x: -.659335017, y: .343282372, z: .635760188, w: .207950488}
-        postQ: {x: -3.9733477e-05, y: .733570695, z: .679613054, w: 8.56540501e-05}
         length: .0363834128
         modified: 1
     - boneName: noke_L_HandRing2
@@ -903,8 +837,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0192600507, y: 0, z: .00963002536}
-        preQ: {x: .225606546, y: .652649999, z: .680755556, w: -.24437964}
-        postQ: {x: .000155422837, y: .760504305, z: .649332941, w: 4.89398262e-05}
         length: .0240750723
         modified: 1
     - boneName: noke_L_HandRing3
@@ -913,8 +845,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0144450394, y: 0, z: .00722251972}
-        preQ: {x: .233983487, y: .682853281, z: .6626634, w: -.199600145}
-        postQ: {x: -.0342665873, y: .784242451, z: .619187355, w: .0199160967}
         length: .0180563033
         modified: 1
     - boneName: noke_L_HandPinky1
@@ -923,8 +853,6 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .033552032, y: 0, z: .016776016}
-        preQ: {x: -.676062226, y: .355869174, z: .611561418, w: .205643967}
-        postQ: {x: 5.60255066e-05, y: .725464284, z: .68825978, w: 4.41924094e-05}
         length: .0419400595
         modified: 1
     - boneName: noke_L_HandPinky2
@@ -933,8 +861,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0197914727, y: 0, z: .00989573635}
-        preQ: {x: .211609989, y: .648236156, z: .688181102, w: -.247826234}
-        postQ: {x: -.000348228059, y: .741993487, z: .670406938, w: -.000157249277}
         length: .0247393493
         modified: 1
     - boneName: noke_L_HandPinky3
@@ -943,8 +869,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0148436064, y: 0, z: .0074218032}
-        preQ: {x: .227634609, y: .663284421, z: .682455182, w: -.20613353}
-        postQ: {x: -.0286608506, y: .764852047, z: .642875373, w: .0298519339}
         length: .0185545124
         modified: 1
     - boneName: noke_R_HandThumb1
@@ -953,8 +877,6 @@ ModelImporter:
         min: {x: 0, y: -25, z: -20}
         max: {x: 0, y: 25, z: 20}
         value: {x: .0185547899, y: 0, z: .00927739497}
-        preQ: {x: -.66068697, y: .371082515, z: .117905319, w: -.641785681}
-        postQ: {x: -.592249513, y: -6.92903923e-05, z: .000252164871, w: -.805754483}
         length: .0231934953
         modified: 1
     - boneName: noke_R_HandThumb2
@@ -963,8 +885,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -40}
         max: {x: 0, y: 0, z: 35}
         value: {x: .0265353676, y: 0, z: .0132676838}
-        preQ: {x: .558754206, y: -.134772122, z: .175790116, w: .799204588}
-        postQ: {x: -.173320204, y: -7.78734684e-05, z: -.000111475587, w: -.984865487}
         length: .0331692174
         modified: 1
     - boneName: noke_R_HandThumb3
@@ -973,8 +893,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -40}
         max: {x: 0, y: 0, z: 35}
         value: {x: .0199015234, y: 0, z: .00995076168}
-        preQ: {x: .150829986, y: -.0337493829, z: .192308232, w: .969086587}
-        postQ: {x: -.11353635, y: -.0212115925, z: .0324778222, w: -.992776155}
         length: .0248769131
         modified: 1
     - boneName: noke_R_HandIndex1
@@ -983,8 +901,6 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0323702395, y: 0, z: .0161851197}
-        preQ: {x: -.758716464, y: .166072443, z: -.535949886, w: -.330948412}
-        postQ: {x: .68377763, y: 5.77591745e-05, z: 3.10391188e-05, w: .729690433}
         length: .040462818
         modified: 1
     - boneName: noke_R_HandIndex2
@@ -993,8 +909,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .026336886, y: 0, z: .013168443}
-        preQ: {x: -.657471478, y: -.235821858, z: .245433792, w: -.672221363}
-        postQ: {x: .685482025, y: -2.17699271e-05, z: -1.69202685e-05, w: .728089452}
         length: .0329211168
         modified: 1
     - boneName: noke_R_HandIndex3
@@ -1003,8 +917,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0197526626, y: 0, z: .00987633131}
-        preQ: {x: -.665443838, y: -.214360371, z: .227722287, w: -.677773237}
-        postQ: {x: -.686307192, y: .0241796579, z: -.0323117226, w: -.726191103}
         length: .0246908367
         modified: 1
     - boneName: noke_R_HandMiddle1
@@ -1013,8 +925,6 @@ ModelImporter:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
         value: {x: .0340386108, y: 0, z: .0170193054}
-        preQ: {x: -.710470617, y: .171846792, z: -.590158582, w: -.342655659}
-        postQ: {x: .681097567, y: 1.53880246e-05, z: -4.53740358e-05, w: .732192516}
         length: .0425482802
         modified: 1
     - boneName: noke_R_HandMiddle2
@@ -1023,8 +933,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0277323332, y: 0, z: .0138661666}
-        preQ: {x: -.680318415, y: -.247082934, z: .214746833, w: -.655744195}
-        postQ: {x: .680424154, y: 2.87619205e-05, z: 4.97773326e-05, w: .732818484}
         length: .0346654244
         modified: 1
     - boneName: noke_R_HandMiddle3
@@ -1033,8 +941,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0207992475, y: 0, z: .0103996238}
-        preQ: {x: -.69032985, y: -.209275305, z: .225311801, w: -.65489161}
-        postQ: {x: .674519718, y: -.0185966156, z: .0367063172, w: .737109184}
         length: .0259990692
         modified: 1
     - boneName: noke_R_HandRing1
@@ -1043,8 +949,6 @@ ModelImporter:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
         value: {x: .0291119181, y: 0, z: .014555959}
-        preQ: {x: -.635764778, y: .207945064, z: -.65933013, w: -.343286514}
-        postQ: {x: .679618895, y: -5.54987491e-05, z: -1.29884575e-05, w: .733565331}
         length: .036389906
         modified: 1
     - boneName: noke_R_HandRing2
@@ -1053,8 +957,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0192600004, y: 0, z: .00963000022}
-        preQ: {x: -.680755615, y: -.244410068, z: .225640431, w: -.652626753}
-        postQ: {x: .649341941, y: -8.75778424e-05, z: -.000140158445, w: .760496497}
         length: .0240750089
         modified: 1
     - boneName: noke_R_HandRing3
@@ -1063,8 +965,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0144450022, y: 0, z: .0072225011}
-        preQ: {x: -.662689269, y: -.199566185, z: .233963132, w: -.682845056}
-        postQ: {x: .619198203, y: -.0199213363, z: .0342558362, w: .784234166}
         length: .0180562567
         modified: 1
     - boneName: noke_R_HandPinky1
@@ -1073,8 +973,6 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0335525386, y: 0, z: .0167762693}
-        preQ: {x: -.611562967, y: .205662787, z: -.67606312, w: -.355853826}
-        postQ: {x: .688248873, y: -6.36840778e-05, z: -4.53626308e-05, w: .725474596}
         length: .0419406928
         modified: 1
     - boneName: noke_R_HandPinky2
@@ -1083,8 +981,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0197967589, y: 0, z: .00989837945}
-        preQ: {x: -.688165724, y: -.24782075, z: .211640477, w: -.64824456}
-        postQ: {x: .6704036, y: .000145522325, z: .000267768279, w: .741996467}
         length: .0247459579
         modified: 1
     - boneName: noke_R_HandPinky3
@@ -1093,8 +989,6 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .014847572, y: 0, z: .00742378598}
-        preQ: {x: -.682445168, y: -.20611836, z: .227713332, w: -.663272321}
-        postQ: {x: .64287436, y: -.0298909023, z: .0286113564, w: .764853179}
         length: .0185594689
         modified: 1
     skeleton:
@@ -1528,7 +1422,6 @@ ModelImporter:
       rotation: {x: .99999994, y: -7.99616107e-09, z: -4.64382133e-08, w: -1.23877285e-07}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    handles: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -1538,6 +1431,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  additionalBone: 1
   animationType: 3
   userData: 

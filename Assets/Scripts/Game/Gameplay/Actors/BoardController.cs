@@ -29,7 +29,7 @@ public class BoardController : MonoBehaviour
 
 		GameObject board = GameObject.FindWithTag("Board");
 		boardTransform = board.GetComponent<Transform>();
-		boardMovement = board.GetComponent<Hoverboard>();
+		boardMovement = board.GetComponent<Hover>();
 		boardMovement.OnDismissBoard += OnDismissBoard;
 
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
@@ -78,7 +78,7 @@ public class BoardController : MonoBehaviour
 
 	// External references
 	[HideInInspector] private Transform boardTransform;
-	[HideInInspector] private Hoverboard boardMovement;
+	[HideInInspector] private Hover boardMovement;
 	[HideInInspector] private Transform cameraTransform;
 	[HideInInspector] private Transform oldParent;
 }
