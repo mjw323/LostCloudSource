@@ -10,20 +10,20 @@
 Shader "LostCloud/Terrain" {
 	Properties
     {
-        _X("X-axis Blend Weight", Range(0,1)) = 1
-        _Y("Y-axis Blend Weight", Range(0,1)) = 1
-        _Z("Z-axis Blend Weight", Range(0,1)) = 1
+        //_X("X-axis Blend Weight", Range(0,1)) = 1
+        //_Y("Y-axis Blend Weight", Range(0,1)) = 1
+        //_Z("Z-axis Blend Weight", Range(0,1)) = 1
 
-        _Scale1("Ground Tex Scale", Range(0.001,20)) = 1
-        _Ground( "Ground Texture", 2D ) = "gray" {}
-        _Scale2("Wall 1 Tex Scale", Range(0.001,20)) = 1
-        _Wall1( "Wall 1 Tex", 2D ) = "gray" {}
-        _Scale3("Wall 2 Tex Scale", Range(0.001,20)) = 1
-        _Wall2( "Wall 2 Tex", 2D ) = "gray" {}
+        //_Scale1("Ground Tex Scale", Range(0.001,20)) = 1
+        //_Ground( "Ground Texture", 2D ) = "gray" {}
+        //_Scale2("Wall 1 Tex Scale", Range(0.001,20)) = 1
+        //_Wall1( "Wall 1 Tex", 2D ) = "gray" {}
+        //_Scale3("Wall 2 Tex Scale", Range(0.001,20)) = 1
+        //_Wall2( "Wall 2 Tex", 2D ) = "gray" {}
 
-        _RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
-        _RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
-        _Ramp( "Ramp", 2D ) = "gray" {}
+        //_RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
+        //_RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
+        //_Ramp( "Ramp", 2D ) = "gray" {}
     }
 
     SubShader
@@ -50,15 +50,13 @@ Shader "LostCloud/Terrain" {
 
         float _Scale1;
         float _Scale2;
-        float _Scale3;
 
         float _Ymax;
         float _invRange;
 		float _HeightOffset;
 		
         sampler2D _Ground;
-        sampler2D _Wall1;
-        sampler2D _Wall2;
+        sampler2D _Wall;
         sampler2D _Ramp;
 
         float _RimPower;
@@ -79,12 +77,11 @@ Shader "LostCloud/Terrain" {
         {
             float height = 1.0 - (_Ymax - ((_HeightOffset + IN.worldPos.y) * _Scale1)) * _invRange;
 
-            half4 c1 = tex2D(_Ground, float2(height,sqrt(IN.worldPos.x + IN.worldPos.z)));
-            half4 c2 = tex2D(_Wall1, IN.worldPos.xy * _Scale2);
-            half4 c3 = tex2D(_Wall2, IN.worldPos.yz * _Scale3);
+            half4 c1 = tex2D(_Ground, float2(height,sqrt(IN.worldPos.x + IN.worldPos.y + IN.worldPos.z)));
+            half4 c2 = tex2D(_Wall, IN.worldPos.xy * _Scale2);
 			
             half3 projnormal = TransformBasisProject(IN.worldNormal,_X, _Y, _Z);
-            half4 blendedColor = TriNormalBlend(projnormal,c1,c2,c3);
+            half4 blendedColor = TriNormalBlend(projnormal,c1,c2,c2);
 
             o.Albedo = blendedColor.rgb;
             o.Alpha = blendedColor.a;
