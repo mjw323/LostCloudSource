@@ -8,22 +8,8 @@
 //
 //*************************************************
 Shader "LostCloud/Terrain" {
-	Properties
-    {
-        //_X("X-axis Blend Weight", Range(0,1)) = 1
-        //_Y("Y-axis Blend Weight", Range(0,1)) = 1
-        //_Z("Z-axis Blend Weight", Range(0,1)) = 1
-
-        //_Scale1("Ground Tex Scale", Range(0.001,20)) = 1
-        //_Ground( "Ground Texture", 2D ) = "gray" {}
-        //_Scale2("Wall 1 Tex Scale", Range(0.001,20)) = 1
-        //_Wall1( "Wall 1 Tex", 2D ) = "gray" {}
-        //_Scale3("Wall 2 Tex Scale", Range(0.001,20)) = 1
-        //_Wall2( "Wall 2 Tex", 2D ) = "gray" {}
-
-        //_RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
-        //_RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
-        //_Ramp( "Ramp", 2D ) = "gray" {}
+    Properties {
+        _Mix ("Mix Color",COLOR) = (1.0,1.0,1.0,1.0)
     }
 
     SubShader
@@ -48,19 +34,28 @@ Shader "LostCloud/Terrain" {
         half _Y;
         half _Z;
 
+        float _BlendScale;
+        float _Scale0;
         float _Scale1;
         float _Scale2;
+        float _Scale3;
+        float _Scale4;
 
         float _Ymax;
         float _invRange;
 		float _HeightOffset;
 		
-        sampler2D _Ground;
+        sampler2D _Ground0;
+        sampler2D _Ground1;
+        sampler2D _Ground2;
+        sampler2D _Ground3;
         sampler2D _Wall;
         sampler2D _Ramp;
 
         float _RimPower;
         float4 _RimColor;
+
+        float4 _Mix;
 
         half4 LightingTerrain( SurfaceOutput s, half3 lightDir, half atten ) {
             half diff = dot( s.Normal, lightDir ) * 0.5 + 0.5;
@@ -75,10 +70,27 @@ Shader "LostCloud/Terrain" {
 
         void SurfMain(Input IN, inout SurfaceOutput o)
         {
-            float height = 1.0 - (_Ymax - ((_HeightOffset + IN.worldPos.y) * _Scale1)) * _invRange;
+            float height = 1.0 - IN.worldPos.y/_Ymax * _BlendScale + _HeightOffset;
 
-            half4 c1 = tex2D(_Ground, float2(height,sqrt(IN.worldPos.x + IN.worldPos.y + IN.worldPos.z)));
-            half4 c2 = tex2D(_Wall, IN.worldPos.xy * _Scale2);
+            // Wrap height
+            if(height > 1.0)
+                height = fmod(height,1.0);
+            else if(height < 0.0)
+                height = 1.0 + fmod(height,1.0);
+
+            float4 weights = float4( saturate( 1.0f - abs(height - 0) * 4.0 ),
+                                     saturate( 1.0f - abs(height - 0.30) * 4.0),
+                                     saturate( 1.0f - abs(height - 0.60) * 4.0),
+                                     saturate( 1.0f - abs(height - 0.90) * 4.0));
+
+            half4 c1 = tex2D(_Ground0, IN.worldPos.xz * _Scale0) * weights.x +
+                       tex2D(_Ground1, IN.worldPos.xz * _Scale1) * weights.y +
+                       tex2D(_Ground2, IN.worldPos.xz * _Scale2) * weights.z +
+                       tex2D(_Ground3, IN.worldPos.xz * _Scale3) * weights.w;
+            
+            c1 *= _Mix;
+
+            half4 c2 = tex2D(_Wall, IN.worldPos.xy * _Scale4);
 			
             half3 projnormal = TransformBasisProject(IN.worldNormal,_X, _Y, _Z);
             half4 blendedColor = TriNormalBlend(projnormal,c1,c2,c2);
