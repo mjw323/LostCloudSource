@@ -8,8 +8,24 @@
 //
 //*************************************************
 Shader "LostCloud/Terrain" {
-    Properties {
-        _Mix ("Mix Color",COLOR) = (1.0,1.0,1.0,1.0)
+    Properties
+    {
+        _X("X-axis Blend Weight", Range(0,1)) = 1
+        _Y("Y-axis Blend Weight", Range(0,1)) = 1
+        _Z("Z-axis Blend Weight", Range(0,1)) = 1
+        _Range("Blend Height Offset", Float) = 1
+        _HeightRamp("Height color gradient", 2D) = "white" {}
+        _Tex1a ("Ground High", 2D) = "white" {}
+        _Scale1("Texture Scaling", Range(1,20)) = 1
+        _Tex1b ("Ground Low", 2D) = "white" {}
+        _Scale2("Texture Scaling", Range(1,20)) = 1
+        _Tex2 ("Wall 1", 2D) = "white" {}
+        _Scale3("Texture Scaling", Range(1,20)) = 1
+        _Tex3 ("Wall 2", 2D) = "white" {}
+        _Scale4("Texture Scaling", Range(1,20)) = 1
+        _RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
+        _RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
+        _Ramp( "Ramp", 2D ) = "gray" {}
     }
 
     SubShader
@@ -21,8 +37,8 @@ Shader "LostCloud/Terrain" {
         CGPROGRAM
         #pragma surface SurfMain Terrain
         #pragma target 3.0
-		#include "LostCloud.cginc"
-		
+        #include "LostCloud.cginc"
+        
         struct Input
         {
             float3 worldPos;
@@ -34,28 +50,21 @@ Shader "LostCloud/Terrain" {
         half _Y;
         half _Z;
 
-        float _BlendScale;
-        float _Scale0;
         float _Scale1;
         float _Scale2;
         float _Scale3;
         float _Scale4;
-
-        float _Ymax;
-        float _invRange;
-		float _HeightOffset;
-		
-        sampler2D _Ground0;
-        sampler2D _Ground1;
-        sampler2D _Ground2;
-        sampler2D _Ground3;
-        sampler2D _Wall;
+        float _Range;
+        
+        sampler2D _Tex1a;
+        sampler2D _Tex1b;
+        sampler2D _Tex2;
+        sampler2D _Tex3;
+        sampler2D _HeightRamp;       
         sampler2D _Ramp;
 
         float _RimPower;
         float4 _RimColor;
-
-        float4 _Mix;
 
         half4 LightingTerrain( SurfaceOutput s, half3 lightDir, half atten ) {
             half diff = dot( s.Normal, lightDir ) * 0.5 + 0.5;
@@ -70,31 +79,22 @@ Shader "LostCloud/Terrain" {
 
         void SurfMain(Input IN, inout SurfaceOutput o)
         {
-            float height = (_Ymax - (IN.worldPos.y + _HeightOffset) * _BlendScale) * _invRange;
+            half scale1 = 1.0 / _Scale1;
+            half scale2 = 1.0 / _Scale2;
+            half scale3 = 1.0 / _Scale3;
+            half scale4 = 1.0 / _Scale4;
 
-            // Wrap height
-            if(height < 0.0)
-               height = -height;
+            half4 blendColor = tex2D(_HeightRamp,float2(saturate(1.0 - ((_Range - max(-IN.worldPos.y,IN.worldPos.y))/_Range))));
+
+            half4 ca = tex2D(_Tex1a, IN.worldPos.xz * scale1);
+            half4 cb = tex2D(_Tex1b, IN.worldPos.xz * scale2);
+
+            half4 c1 = lerp(ca,cb,saturate(_Range - IN.worldPos.yyy)) * blendColor; 
+            half4 c2 = tex2D(_Tex2, IN.worldPos.xy * scale3);
+            half4 c3 = tex2D(_Tex3, IN.worldPos.yz * scale4);
             
-            if(height > 1.0)
-               height = 1.0 - fmod(height,1.0);
-
-            float4 weights = float4( saturate( 1.0f - abs(height - 0) * 4.0 ),
-                                     saturate( 1.0f - abs(height - 0.30) * 4.0),
-                                     saturate( 1.0f - abs(height - 0.60) * 4.0),
-                                     saturate( 1.0f - abs(height - 0.90) * 4.0));
-
-            half4 c1 = tex2D(_Ground0, IN.worldPos.xz * _Scale0) * weights.w +
-                       tex2D(_Ground1, IN.worldPos.xz * _Scale1) * weights.z +
-                       tex2D(_Ground2, IN.worldPos.xz * _Scale2) * weights.y +
-                       tex2D(_Ground3, IN.worldPos.xz * _Scale3) * weights.x;
-            
-            c1 *= _Mix;
-
-            half4 c2 = tex2D(_Wall, IN.worldPos.xy * _Scale4);
-			
             half3 projnormal = TransformBasisProject(IN.worldNormal,_X, _Y, _Z);
-            half4 blendedColor = TriNormalBlend(projnormal,c1,c2,c2);
+            half4 blendedColor = TriNormalBlend(projnormal,c1,c2,c3);
 
             o.Albedo = blendedColor.rgb;
             o.Alpha = blendedColor.a;
