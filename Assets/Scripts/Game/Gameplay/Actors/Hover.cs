@@ -299,7 +299,7 @@ public class Hover : MonoBehaviour
                 {
                         if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*(hoverMod)))
                         {
-                                if (Vector3.Dot(m_sensors[i].up,Vector3.up)>.25){onGround = true;}
+                                if (Vector3.Dot(m_sensors[i].up,Vector3.up)>.5){onGround = true;}
                                 if (!detach && !grinding){
                                         float hoverForce = ((hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime)+ Mathf.Max(0,-rigidbody.velocity.y*1000f);;
                                         rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);

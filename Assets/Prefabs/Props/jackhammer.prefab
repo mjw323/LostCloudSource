@@ -618,7 +618,6 @@ GameObject:
   - 4: {fileID: 400072}
   - 33: {fileID: 3300068}
   - 23: {fileID: 2300068}
-  - 95: {fileID: 9500000}
   - 64: {fileID: 6400000}
   m_Layer: 0
   m_Name: jackhammer
@@ -1062,8 +1061,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100072}
-  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 275.253326, y: 6.79560518, z: 430.372803}
+  m_LocalRotation: {x: .126348153, y: .975661814, z: -.0861211643, w: -.157173023}
+  m_LocalPosition: {x: 340.93866, y: 21.4855824, z: 357.613647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400070}
@@ -2063,20 +2062,6 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: f135b7710efc74b488f3b3de0bca0375, type: 3}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100072}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f135b7710efc74b488f3b3de0bca0375, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_ApplyRootMotion: 1
-  m_AnimatePhysics: 0
-  m_HasTransformHierarchy: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
