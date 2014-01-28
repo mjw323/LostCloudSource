@@ -2,7 +2,7 @@
 using System.Collections;
 
 [ExecuteInEditMode,System.Serializable]
-public class Terrain : MonoBehaviour {
+public class TerrainAdvanced : MonoBehaviour {
 	// Terrain shader
 	public Material terrainMaterial;
 
@@ -55,7 +55,7 @@ public class Terrain : MonoBehaviour {
 	void Awake() {
 		// Search for material and create if needed
 		if(renderer.sharedMaterial.name != gameObject.name) {
-			renderer.material = new Material(Shader.Find("LostCloud/Terrain"));
+            renderer.material = new Material(Shader.Find("LostCloud/TerrainAdvanced"));
 			renderer.material.name = gameObject.name;
 		}
 	}

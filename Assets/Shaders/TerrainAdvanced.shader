@@ -1,5 +1,5 @@
 //*************************************************
-// Terrain.cg
+// TerrainAdvanced.cg
 //
 // Main Terrain shader for LostCloud
 //
@@ -7,7 +7,7 @@
 // ks347@drexel.edu
 //
 //*************************************************
-Shader "LostCloud/Terrain" {
+Shader "LostCloud/TerrainAdvanced" {
     Properties {
         _Mix ("Mix Color",COLOR) = (1.0,1.0,1.0,1.0)
     }

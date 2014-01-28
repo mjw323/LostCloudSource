@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Terrain)),CanEditMultipleObjects]
+[CustomEditor(typeof(TerrainAdvanced)),CanEditMultipleObjects]
 public class TerrainEditor : Editor {
 	SerializedProperty offset;
 	SerializedProperty xaxis;
@@ -60,8 +60,8 @@ public class TerrainEditor : Editor {
 		serializedObject.Update();
 
 		// Offset Slider
-		EditorGUILayout.Slider(offset,0.0f,25.0f,new GUIContent("Blend Height Offset"));
-		EditorGUILayout.Slider(blendScale,0.0001f,10.0f,new GUIContent("Blend Scale"));
+		EditorGUILayout.Slider(offset,0.0f,100.0f,new GUIContent("Blend Height Offset"));
+		EditorGUILayout.Slider(blendScale,0.0001f,20.0f,new GUIContent("Blend Scale"));
 
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
