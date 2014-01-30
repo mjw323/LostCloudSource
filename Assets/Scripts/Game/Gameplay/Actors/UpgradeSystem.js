@@ -49,12 +49,13 @@ function CollisionExit()
 		
 		//Set Render Settings and Fog
 		RenderSettings.fog = enabled;
-		RenderSettings.fogColor = new Color(13,13,25,255);
+		RenderSettings.fogColor = new Color(.051,.051,.098);
 		RenderSettings.fogMode = FogMode.ExponentialSquared;
 		RenderSettings.fogDensity = .0035;
 		RenderSettings.fogStartDistance = 0;
 		RenderSettings.fogEndDistance = 1200;
-		RenderSettings.ambientLight = new Color(19,19,23,255);
+		RenderSettings.ambientLight = new Color(.075,.075,.09);
+		MainCamera.Skybox.material = "Night1 Skybox";
 		
 		Player.rigidbody.isKinematic = false;
 		navAgent = Enemy.GetComponent(NavMeshAgent);
