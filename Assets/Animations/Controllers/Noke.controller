@@ -56,6 +56,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Lean
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -116,24 +122,58 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - m_Motion: {fileID: 7400000, guid: d904b9d3c2947c946860c56b40744f2b, type: 3}
-    m_Threshold: -90
+    m_Threshold: -1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
   - m_Motion: {fileID: 7400000, guid: e7850b7cbd394484395aee9049007a8e, type: 3}
-    m_Threshold: 90
+    m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  m_BlendParameter: Direction
+  m_BlendParameter: Lean
   m_BlendParameterY: Speed
-  m_MinThreshold: -90
-  m_MaxThreshold: 90
-  m_UseAutomaticThresholds: 1
+  m_MinThreshold: -1
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 0
+  m_BlendType: 0
+--- !u!206 &20638792
+BlendTree:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Blend Tree
+  m_Childs:
+  - m_Motion: {fileID: 7400000, guid: d904b9d3c2947c946860c56b40744f2b, type: 3}
+    m_Threshold: -1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: c09f9686cf1979542bc5bb69a9ded4e5, type: 3}
+    m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: e7850b7cbd394484395aee9049007a8e, type: 3}
+    m_Threshold: 1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  m_BlendParameter: Lean
+  m_BlendParameterY: Speed
+  m_MinThreshold: -1
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 0
   m_BlendType: 0
 --- !u!206 &20653978
 BlendTree:
@@ -601,7 +641,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Lean
     m_EventTreshold: 0
     m_ExitTime: .886148036
   m_Atomic: 1
@@ -619,7 +659,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: Direction
+    m_ConditionEvent: Speed
     m_EventTreshold: 2
     m_ExitTime: .772727132
   m_Atomic: 1
@@ -787,7 +827,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: Direction
+    m_ConditionEvent: Speed
     m_EventTreshold: 1
     m_ExitTime: .949084103
   m_Atomic: 1
@@ -853,7 +893,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Lean
     m_EventTreshold: 0
     m_ExitTime: .886148036
   m_Atomic: 1
@@ -970,7 +1010,7 @@ State:
   - {fileID: 20621950}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 540, y: 12, z: 0}
+  m_Position: {x: 528, y: 12, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -983,10 +1023,10 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: c09f9686cf1979542bc5bb69a9ded4e5, type: 3}
+  - {fileID: 20638792}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 228, y: 12, z: 0}
+  m_Position: {x: 288, y: 12, z: 0}
   m_IKOnFeet: 1
   m_Mirror: 0
   m_Tag: 
@@ -1034,7 +1074,7 @@ State:
   - {fileID: 7400000, guid: da596380719078c46877c005bd586853, type: 3}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 288, y: 144, z: 0}
+  m_Position: {x: 288, y: 120, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -1220,8 +1260,8 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions: {}
   m_MotionSetCount: 2
-  m_AnyStatePosition: {x: 168, y: -168, z: 0}
-  m_ParentStateMachinePosition: {x: 456, y: -192, z: 0}
+  m_AnyStatePosition: {x: 300, y: -96, z: 0}
+  m_ParentStateMachinePosition: {x: 516, y: -144, z: 0}
 --- !u!1107 &110739360
 StateMachine:
   serializedVersion: 2
