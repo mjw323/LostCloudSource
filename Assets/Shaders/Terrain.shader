@@ -33,6 +33,7 @@ Shader "LostCloud/Terrain" {
         Tags { "RenderType"="Opaque" }
             
         LOD 300
+        Cull Back
 
         CGPROGRAM
         #pragma surface SurfMain Terrain

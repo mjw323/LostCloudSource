@@ -32,6 +32,7 @@ public class Terrain : MonoBehaviour {
 	private System.String RimPower = "_RimPower";
 	private System.String RimColor = "_RimColor";
 
+	public bool EnableTriplanar = true;
 	public float xWeight = 1.0f;
 	public float yWeight = 1.0f;
 	public float zWeight = 1.0f;

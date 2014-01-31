@@ -4,6 +4,9 @@ using UnityEditor;
 [CustomEditor(typeof(TerrainAdvanced)),CanEditMultipleObjects]
 public class TerrainEditor : Editor {
 	SerializedProperty offset;
+	SerializedProperty bumpmap;
+	SerializedProperty hgradient;
+	SerializedProperty triplanar;
 	SerializedProperty xaxis;
 	SerializedProperty yaxis;
 	SerializedProperty zaxis;
@@ -31,8 +34,10 @@ public class TerrainEditor : Editor {
 	void OnEnable() {
 		// Floats
 		offset = serializedObject.FindProperty("BlendHeightOffset");
-		blendScale = serializedObject.FindProperty("BlendScale");
 
+		bumpmap = serializedObject.FindProperty("EnableBumpMap");
+		hgradient = serializedObject.FindProperty("EnableHGradient");
+		triplanar = serializedObject.FindProperty("EnableTriplanar");
 		xaxis = serializedObject.FindProperty("xWeight");
 		yaxis = serializedObject.FindProperty("yWeight");
 		zaxis = serializedObject.FindProperty("zWeight");
@@ -42,9 +47,6 @@ public class TerrainEditor : Editor {
 		groundscale2 = serializedObject.FindProperty("groundScale2");
 		groundscale3 = serializedObject.FindProperty("groundScale3");
 		wall1scale = serializedObject.FindProperty("wallScale");
-		rimpower = serializedObject.FindProperty("rimPower");
-
-		rimColor = serializedObject.FindProperty("rimColor");
 
 		// Textures
 		ground0 = serializedObject.FindProperty("groundTexture0");
@@ -59,17 +61,29 @@ public class TerrainEditor : Editor {
 	public override void OnInspectorGUI() {
 		serializedObject.Update();
 
+		EditorGUILayout.PropertyField(bumpmap,new GUIContent("Normal Mapping"));
+		EditorGUILayout.PropertyField(hgradient,new GUIContent("Height Color Gradient"));
+		EditorGUILayout.PropertyField(triplanar,new GUIContent("Triplanar Texturing"));
+
+		EditorGUILayout.Space();
+		EditorGUILayout.Space();
+		EditorGUILayout.Space();
+
 		// Offset Slider
 		EditorGUILayout.Slider(offset,0.0f,100.0f,new GUIContent("Blend Height Offset"));
-		EditorGUILayout.Slider(blendScale,0.0001f,20.0f,new GUIContent("Blend Scale"));
 
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
 
 		// Axis Sliders
-		EditorGUILayout.Slider(xaxis,0.0f,1.0f,new GUIContent("X-Axis Blend Weight"));
-		EditorGUILayout.Slider(yaxis,0.0f,1.0f,new GUIContent("Y-Axis Blend Weight"));
-		EditorGUILayout.Slider(zaxis,0.0f,1.0f,new GUIContent("Z-Axis Blend Weight"));
+		if(triplanar.boolValue == true) {
+			EditorGUILayout.Slider(xaxis,0.0f,1.0f,new GUIContent("X-Axis Blend Weight"));
+			EditorGUILayout.Slider(yaxis,0.0f,1.0f,new GUIContent("Y-Axis Blend Weight"));
+			EditorGUILayout.Slider(zaxis,0.0f,1.0f,new GUIContent("Z-Axis Blend Weight"));
+
+			EditorGUILayout.Space();
+			EditorGUILayout.Space();
+		}
 
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
@@ -109,17 +123,20 @@ public class TerrainEditor : Editor {
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
 
-		EditorGUILayout.Slider(wall1scale,0.001f,5.0f,new GUIContent("Wall Scale"));
-		EditorGUILayout.PropertyField(wall1,new GUIContent("Wall Texture"));
+		if(triplanar.boolValue == true) {
+			EditorGUILayout.Slider(wall1scale,0.001f,5.0f,new GUIContent("Wall Scale"));
+			EditorGUILayout.PropertyField(wall1,new GUIContent("Wall Texture"));
+
+			EditorGUILayout.Space();
+			EditorGUILayout.Space();
+		}
 
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
-		EditorGUILayout.Space();
-		EditorGUILayout.Space();
 
-		EditorGUILayout.Slider(rimpower,0.0f,100.0f,new GUIContent("Rim Power"));
-		EditorGUILayout.PropertyField(rimColor,new GUIContent("Rim Color"));
-		EditorGUILayout.PropertyField(ramp,new GUIContent("Ramp Texture"));
+		if(hgradient.boolValue == true) {
+			EditorGUILayout.PropertyField(ramp,new GUIContent("Height Gradient"));
+		}
 
 		serializedObject.ApplyModifiedProperties();
 	}
