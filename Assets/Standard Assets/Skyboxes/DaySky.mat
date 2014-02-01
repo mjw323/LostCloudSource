@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Clouds3 Skybox
+  m_Name: DaySky
   m_Shader: {fileID: 104, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -38,14 +38,14 @@ Material:
         first:
           name: _LeftTex
         second:
-          m_Texture: {fileID: 2800000, guid: 16dd8248d31591f4fbea40ca5d506411, type: 3}
+          m_Texture: {fileID: 2800000, guid: 4bca5ab3360774ad09058c8318cca095, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _RightTex
         second:
-          m_Texture: {fileID: 2800000, guid: 5861c55756febc148902667397405ff9, type: 3}
+          m_Texture: {fileID: 2800000, guid: 5eee7cb2be23b4e8fb85b74d73d8c7fb, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:

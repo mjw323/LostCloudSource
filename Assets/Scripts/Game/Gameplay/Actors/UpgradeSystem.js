@@ -1,5 +1,9 @@
 ﻿
-var HasPlayerGottenUpgrade : boolean;
+var HasPlayerGottenNextUpgrade : boolean;
+var HasPlayerGottenUpgrade01 : boolean;
+var	HasPlayerGottenUpgrade02 : boolean;
+var	HasPlayerGottenUpgrade03 : boolean;
+var	HasPlayerGottenUpgrade04 : boolean;
 var Player : Transform;
 var MainCamera : Camera;
 var Enemy : GameObject;
@@ -16,6 +20,7 @@ function Start(){
 	HasPlayerGottenUpgrade02 = false;
 	HasPlayerGottenUpgrade03 = false;
 	HasPlayerGottenUpgrade04 = false;
+	HasPlayerGottenNextUpgrade = false;
 	
 }
 
@@ -40,6 +45,7 @@ function OnCollisionEnter(collision : Collision){
 	
 	
 	if(collision.gameObject.tag == "Upgrade"){
+		HasPlayerGottenNextUpgrade = true;
 		Player.rigidbody.isKinematic = true;
 		navAgent = Enemy.GetComponent(NavMeshAgent);
 		navAgent.speed = 0;
@@ -54,7 +60,7 @@ function OnCollisionEnter(collision : Collision){
 }
 
 function OnTriggerEnter (other : Collider) {
-		if(other.gameObject.name == "StartSphere" && HasPlayerGottenUpgrade == true){
+		if(other.gameObject.name == "StartSphere" && HasPlayerGottenNextUpgrade == true){
 			Player.rigidbody.isKinematic = true;
 			navAgent = Enemy.GetComponent(NavMeshAgent);
 			navAgent.speed = 0;
@@ -91,8 +97,10 @@ function DayTime()
 	{
 		yield WaitForSeconds(FadeWaitTime);
 		MainCamera.SendMessage("fadeIn");
-		Sun.active = false;
-		Moon.active = true;
+		Sun.active = true;
+		Moon.active = false;
+		HasPlayerGottenNextUpgrade = false;
+		
 		
 		//Set Render Settings and Fog
 		RenderSettings.fog = enabled;
