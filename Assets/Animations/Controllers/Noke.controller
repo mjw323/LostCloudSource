@@ -514,6 +514,24 @@ Transition:
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
+--- !u!1101 &110103981
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110215284}
+  m_DstState: {fileID: 110223276}
+  m_TransitionDuration: 1.87500179
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: BoardJump
+    m_EventTreshold: 0
+    m_ExitTime: 0
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
 --- !u!1101 &110111455
 Transition:
   m_ObjectHideFlags: 3
@@ -1073,7 +1091,7 @@ State:
   - {fileID: 7400002, guid: da596380719078c46877c005bd586853, type: 3}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 168, y: 204, z: 0}
+  m_Position: {x: 576, y: 0, z: 0}
   m_IKOnFeet: 1
   m_Mirror: 0
   m_Tag: 
@@ -1280,7 +1298,7 @@ State:
   - {fileID: 7400004, guid: da596380719078c46877c005bd586853, type: 3}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 576, y: -12, z: 0}
+  m_Position: {x: 576, y: -120, z: 0}
   m_IKOnFeet: 1
   m_Mirror: 0
   m_Tag: 
@@ -1320,6 +1338,17 @@ StateMachine:
   - {x: -12, y: 216, z: 0}
   m_OrderedTransitions:
     data:
+      first: {fileID: 0}
+      second:
+      - {fileID: 110111455}
+    data:
+      first: {fileID: 110200000}
+      second:
+      - {fileID: 110100000}
+      - {fileID: 110179970}
+      - {fileID: 110126417}
+      - {fileID: 110177939}
+    data:
       first: {fileID: 110256108}
       second:
       - {fileID: 110122545}
@@ -1337,17 +1366,7 @@ StateMachine:
       first: {fileID: 110215284}
       second:
       - {fileID: 110159184}
-    data:
-      first: {fileID: 0}
-      second:
-      - {fileID: 110111455}
-    data:
-      first: {fileID: 110200000}
-      second:
-      - {fileID: 110100000}
-      - {fileID: 110179970}
-      - {fileID: 110126417}
-      - {fileID: 110177939}
+      - {fileID: 110103981}
     data:
       first: {fileID: 110203199}
       second:
@@ -1362,9 +1381,6 @@ StateMachine:
       - {fileID: 110165518}
       - {fileID: 110188142}
       - {fileID: 110183409}
-    data:
-      first: {fileID: 0}
-      second: []
     data:
       first: {fileID: 110223276}
       second:
