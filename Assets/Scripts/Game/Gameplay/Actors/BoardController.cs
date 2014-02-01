@@ -26,6 +26,10 @@ public class BoardController : MonoBehaviour
 		transform = GetComponent<Transform>();
 
 		footController = GetComponent<FootController>();
+		animator = GetComponent<Animator>();
+
+
+		leanId = Animator.StringToHash("Lean");
 
 		GameObject board = GameObject.FindWithTag("Board");
 		boardTransform = board.GetComponent<Transform>();
@@ -63,6 +67,7 @@ public class BoardController : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Fire3")) // TODO: Rename this input!
 			boardMovement.DismissBoard();
+		animator.SetFloat(leanId, boardMovement.Lean());
 
 		/*boardMovement.Move(
 			Input.GetAxis("Vertical"),
@@ -75,10 +80,28 @@ public class BoardController : MonoBehaviour
 	// Internal references
 	[HideInInspector] new private Transform transform;
 	[HideInInspector] private FootController footController;
+	[HideInInspector] private Animator animator;
 
 	// External references
 	[HideInInspector] private Transform boardTransform;
 	[HideInInspector] private Hover boardMovement;
 	[HideInInspector] private Transform cameraTransform;
 	[HideInInspector] private Transform oldParent;
+
+	// Animator parameter references
+	//[HideInInspector] private int speedId;
+	//[HideInInspector] private int directionId;
+	//[HideInInspector] private int jumpId;
+	[HideInInspector] private int leanId;
+
+	// Animator state references
+	/*[HideInInspector] private int pivotLeftId;
+	// [HideInInspector] private int pivotRightId; // Not yet implemented
+	[HideInInspector] private int plantLeftId;
+	[HideInInspector] private int plantRightId;*/
+	/*
+	public Animator Animator
+	{
+		get{return this.animator;}
+	}*/
 }

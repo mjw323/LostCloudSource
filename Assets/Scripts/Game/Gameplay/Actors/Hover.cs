@@ -673,6 +673,10 @@ public class Hover : MonoBehaviour
                 Debug.Break();
         }
 
+        public float Lean(){
+            return m_lean;
+        }
+
         // Internal references
         [HideInInspector] new private Transform transform;
         [HideInInspector] new private Renderer renderer;

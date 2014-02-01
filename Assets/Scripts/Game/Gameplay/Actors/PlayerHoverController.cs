@@ -4,6 +4,10 @@ using System.Collections;
 public class PlayerHoverController : MonoBehaviour {
 	[SerializeField] Hover m_hover;
 
+	void Awake(){
+		m_hover = GameObject.FindWithTag("Board").GetComponent<Hover>();
+	}
+
 	void Update()
 	{
 		m_hover.Move(
