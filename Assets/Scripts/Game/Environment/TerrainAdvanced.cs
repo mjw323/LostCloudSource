@@ -92,10 +92,10 @@ public class TerrainAdvanced : MonoBehaviour {
 		terrainMaterial.SetTexture(Ground1,groundTexture1);
 		terrainMaterial.SetTexture(Ground2,groundTexture2);
 		terrainMaterial.SetTexture(Ground3,groundTexture3);
-		terrainMaterial.SetTexture(Ground0,groundBump0);
-		terrainMaterial.SetTexture(Ground1,groundBump1);
-		terrainMaterial.SetTexture(Ground2,groundBump2);
-		terrainMaterial.SetTexture(Ground3,groundBump3);
+		terrainMaterial.SetTexture(Ground0Bump,groundBump0);
+		terrainMaterial.SetTexture(Ground1Bump,groundBump1);
+		terrainMaterial.SetTexture(Ground2Bump,groundBump2);
+		terrainMaterial.SetTexture(Ground3Bump,groundBump3);
 		terrainMaterial.SetTexture(Wall,wallTexture);
 		
 		if(EnableHGradient) {

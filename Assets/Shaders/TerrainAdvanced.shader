@@ -18,7 +18,7 @@ Shader "LostCloud/TerrainAdvanced" {
         #pragma multi_compile TRIPLANAR_ON TRIPLANAR_OFF
         #pragma multi_compile BUMPMAP_ON BUMPMAP_OFF
         #pragma multi_compile HGRAD_ON HGRAD_OFF
-        #pragma surface SurfMain Terrain
+        #pragma surface SurfMain Terrain vertex:vert
         #pragma target 3.0
 		#include "LostCloud.cginc"
 		
@@ -27,6 +27,8 @@ Shader "LostCloud/TerrainAdvanced" {
             float3 worldPos;
             float3 viewDir;
             float3 worldNormal;
+            fixed3 norm;
+            INTERNAL_DATA
         };
 
         
@@ -78,7 +80,7 @@ Shader "LostCloud/TerrainAdvanced" {
                y = _Ymax - fmod(_Ymin,y);
             
             if(y > _Ymax)
-               y = _Ymin + fmod(y,_Ymax);//1.0 - fmod(height,1.0);
+               y = _Ymin + fmod(y,_Ymax);
 
             float height = 1.0 - (_Ymax - y) * _invRange;
 
@@ -88,31 +90,50 @@ Shader "LostCloud/TerrainAdvanced" {
                                      saturate( 1.0f - abs(height - 0.90) * 4.0));
 
             half4 c1 = tex2D(_Ground0, IN.worldPos.xz * _Scale0) * weights.x +
-                       tex2D(_Ground1, IN.worldPos.xz * _Scale1) * weights.y +
-                       tex2D(_Ground2, IN.worldPos.xz * _Scale2) * weights.z +
-                       tex2D(_Ground3, IN.worldPos.xz * _Scale3) * weights.w;
+                        tex2D(_Ground1, IN.worldPos.xz * _Scale1) * weights.y +
+                        tex2D(_Ground2, IN.worldPos.xz * _Scale2) * weights.z +
+                        tex2D(_Ground3, IN.worldPos.xz * _Scale3) * weights.w;
         
+            half3 projnormal = TransformBasisProject(IN.worldNormal,_X, _Y, _Z);
+            
+            fixed3 n;
         #ifdef BUMPMAP_ON
-            // TODO
+            fixed3 n1 = UnpackNormal(tex2D(_Ground0Bump, IN.worldPos.xz * _Scale0));
+            #ifdef HGRAD_ON
+                //TODO: n1 = UnpackNormal(tex2D(_Ground0Bump, IN.worldPos.xz * nscale) tex2D(_Ground0Bump, IN.worldPos.xz * nscale) tex2D(_Ground0Bump, IN.worldPos.xz * nscale));
+            #endif
+            fixed3 n2 = UnpackNormal(tex2D(_Ground3Bump, IN.worldPos.xy * _Scale3));
+            fixed3 n3 = UnpackNormal(tex2D(_Ground3Bump, IN.worldPos.zy * _Scale3));
+            
+            fixed3 nWNormal = normalize(IN.norm * fixed3(_X, _Y, _Z));
+            projnormal = saturate(pow(nWNormal*1.5, 4));
+            n = (1 - projnormal.x) * ((1 - projnormal.z) * n1 + (projnormal.z) * n2) + (projnormal.x) * n3;
         #endif
 
 
-        // Modulate height colors
+            // Modulate height colors
+            half4 heightRamp;
         #ifdef HGRAD_ON
-            half4 heightRamp = tex2D(_Ramp, float2(1.0 - (_Ymax - IN.worldPos.y) * _invRange,0.0));
+            heightRamp = tex2D(_Ramp, float2(1.0 - (_Ymax - IN.worldPos.y) * _invRange,0.0));
             c1 = c1 * heightRamp + c1;
         #endif
 
             half4 blendedColor = c1;
-            half3 projnormal = TransformBasisProject(IN.worldNormal,_X, _Y, _Z);
 
+            half4 c2;
         #ifdef TRIPLANAR_ON 
-            half4 c2 = tex2D(_Wall, IN.worldPos.xy * _Scale4);
+            c2 = tex2D(_Wall, IN.worldPos.xy * _Scale4);
             blendedColor = TriNormalBlend(projnormal,c1,c2,c2);
         #endif
 
             o.Albedo = blendedColor.rgb;
-            o.Alpha = blendedColor.a;
+            o.Alpha = blendedColor.a;            
+            o.Normal = n;
+        }
+
+        void vert(inout appdata_full v, out Input o) {
+            UNITY_INITIALIZE_OUTPUT(Input,o);
+            o.norm = normalize(v.normal);
         }
 
         ENDCG
