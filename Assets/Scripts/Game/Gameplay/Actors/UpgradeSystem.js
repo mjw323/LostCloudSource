@@ -1,9 +1,6 @@
-﻿
+﻿/*
+var DebugUpgrades : boolean;
 var HasPlayerGottenNextUpgrade : boolean;
-var HasPlayerGottenUpgrade01 : boolean;
-var	HasPlayerGottenUpgrade02 : boolean;
-var	HasPlayerGottenUpgrade03 : boolean;
-var	HasPlayerGottenUpgrade04 : boolean;
 var Player : Transform;
 var MainCamera : Camera;
 var Enemy : GameObject;
@@ -16,11 +13,17 @@ var FadeWaitTime : int;
 
 
 function Start(){
-	HasPlayerGottenUpgrade01 = false;
-	HasPlayerGottenUpgrade02 = false;
-	HasPlayerGottenUpgrade03 = false;
-	HasPlayerGottenUpgrade04 = false;
 	HasPlayerGottenNextUpgrade = false;
+	
+	//Player.gameObject.GetComponent(Hover.cs).CanGlide = false;
+	//Player.gameObject.GetComponent(Hover.cs).CanGrind = false;
+	//Player.gameObject.GetComponent(Hover.cs).CanWater = false;
+		
+	if(DebugUpgrades == true){
+		//Player.gameObject.GetComponent(Hover);
+		//Player.gameObject.GetComponent(Hover).CanGrind = true;
+		//Player.gameObject.GetComponent(Hover).CanWater = true;
+	}
 	
 }
 
@@ -28,19 +31,19 @@ function Start(){
 function OnCollisionEnter(collision : Collision){
 	
 	if(collision.gameObject.name == "Upgrade01"){
-		HasPlayerGottenUpgrade01 = true;
+		//Player.gameObject.GetComponent(Hover).CanGlide = true;
 	}
 	
 	if(collision.gameObject.name == "Upgrade02"){
-		HasPlayerGottenUpgrade02 = true;
+		//Player.gameObject.GetComponent(Hover).CanGrind = true;
 	}
 	
 	if(collision.gameObject.name == "Upgrade03"){
-		HasPlayerGottenUpgrade03 = true;
+		//Player.gameObject.GetComponent(Hover).CanWater = true;
 	}
 	
 	if(collision.gameObject.name == "Upgrade04"){
-		HasPlayerGottenUpgrade04 = true;
+		//Start Final Cutscene
 	}
 	
 	
@@ -116,4 +119,4 @@ function DayTime()
 		navAgent = Enemy.GetComponent(NavMeshAgent);
 		navAgent.speed = 0;
 		navAgent.enabled = false;
-}
+}*/
