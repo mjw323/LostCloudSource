@@ -676,6 +676,9 @@ public class Hover : MonoBehaviour
         public float Lean(){
             return m_lean;
         }
+	    public bool Jump(){
+            return (m_jump && onGround);
+        }
 
         // Internal references
         [HideInInspector] new private Transform transform;
