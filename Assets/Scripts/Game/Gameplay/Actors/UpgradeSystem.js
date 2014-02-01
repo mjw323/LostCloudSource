@@ -5,6 +5,8 @@ var MainCamera : Camera;
 var Enemy : GameObject;
 var Sun : GameObject;
 var Moon : GameObject;
+var DaySky : Material;
+var NightSky : Material;
 var FadeWaitTime : int;
 
 
@@ -14,6 +16,7 @@ function Start(){
 	HasPlayerGottenUpgrade02 = false;
 	HasPlayerGottenUpgrade03 = false;
 	HasPlayerGottenUpgrade04 = false;
+	
 }
 
 
@@ -76,7 +79,7 @@ function NightTime()
 		RenderSettings.fogStartDistance = 0;
 		RenderSettings.fogEndDistance = 1200;
 		RenderSettings.ambientLight = new Color(.075,.075,.09);
-		MainCamera.Skybox.material = "Night1 Skybox";
+		RenderSettings.skybox = NightSky;
 		
 		Player.rigidbody.isKinematic = false;
 		navAgent = Enemy.GetComponent(NavMeshAgent);
@@ -99,7 +102,7 @@ function DayTime()
 		RenderSettings.fogStartDistance = 0;
 		RenderSettings.fogEndDistance = 1200;
 		RenderSettings.ambientLight = new Color(.2,.2,.2);
-		MainCamera.Skybox.material = "Clouds3 Skybox";
+		RenderSettings.skybox = DaySky;
 		
 		Player.rigidbody.isKinematic = false;
 		navAgent = Enemy.GetComponent(NavMeshAgent);
