@@ -49,7 +49,6 @@ Shader "LostCloud/TerrainAdvanced" {
         sampler2D _Ground1;
         sampler2D _Ground2;
         sampler2D _Ground3;
-
         
         sampler2D _Ground0Bump;
         sampler2D _Ground1Bump;

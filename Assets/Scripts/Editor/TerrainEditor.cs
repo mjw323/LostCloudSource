@@ -24,6 +24,10 @@ public class TerrainEditor : Editor {
 	SerializedProperty ground1;
 	SerializedProperty ground2;
 	SerializedProperty ground3;
+	SerializedProperty ground0bump;
+	SerializedProperty ground1bump;
+	SerializedProperty ground2bump;
+	SerializedProperty ground3bump;
 	SerializedProperty wall1;
 	SerializedProperty wall2;
 	SerializedProperty ramp;
@@ -53,6 +57,10 @@ public class TerrainEditor : Editor {
 		ground1 = serializedObject.FindProperty("groundTexture1");
 		ground2 = serializedObject.FindProperty("groundTexture2");
 		ground3 = serializedObject.FindProperty("groundTexture3");
+		ground0bump = serializedObject.FindProperty("groundBump0");
+		ground1bump = serializedObject.FindProperty("groundBump1");
+		ground2bump = serializedObject.FindProperty("groundBump2");
+		ground3bump = serializedObject.FindProperty("groundBump3");
 		wall1 = serializedObject.FindProperty("wallTexture");
 		ramp = serializedObject.FindProperty("ramp");
 	}
@@ -94,6 +102,10 @@ public class TerrainEditor : Editor {
 		EditorGUILayout.Slider(groundscale0,0.001f,5.0f,new GUIContent("Ground Scale"));
 		EditorGUILayout.PropertyField(ground0,new GUIContent("Ground Texture (Low)"));
 
+		if(bumpmap.boolValue == true) {
+			EditorGUILayout.PropertyField(ground0bump,new GUIContent("Ground Bump (Low)"));
+		}
+
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
@@ -102,6 +114,10 @@ public class TerrainEditor : Editor {
 		EditorGUILayout.Slider(groundscale1,0.001f,5.0f,new GUIContent("Ground Scale"));
 		EditorGUILayout.PropertyField(ground1,new GUIContent("Ground Texture (Mid-Low)"));
 
+		if(bumpmap.boolValue == true) {
+			EditorGUILayout.PropertyField(ground1bump,new GUIContent("Ground Bump (Mid-Low)"));
+		}
+
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
@@ -109,6 +125,10 @@ public class TerrainEditor : Editor {
 
 		EditorGUILayout.Slider(groundscale2,0.001f,5.0f,new GUIContent("Ground Scale"));
 		EditorGUILayout.PropertyField(ground2,new GUIContent("Ground Texture (Mid-High)"));
+		
+		if(bumpmap.boolValue == true) {
+			EditorGUILayout.PropertyField(ground2bump,new GUIContent("Ground Bump (Mid-High)"));
+		}
 
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
@@ -117,6 +137,10 @@ public class TerrainEditor : Editor {
 
 		EditorGUILayout.Slider(groundscale3,0.001f,5.0f,new GUIContent("Ground Scale"));
 		EditorGUILayout.PropertyField(ground3,new GUIContent("Ground Texture (High)"));
+		
+		if(bumpmap.boolValue == true) {
+			EditorGUILayout.PropertyField(ground3bump,new GUIContent("Ground Bump (High)"));
+		}
 
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();

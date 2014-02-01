@@ -27,6 +27,10 @@ public class TerrainAdvanced : MonoBehaviour {
 	private System.String Ground1 = "_Ground1";
 	private System.String Ground2 = "_Ground2";
 	private System.String Ground3 = "_Ground3";
+	private System.String Ground0Bump = "_Ground0Bump";
+	private System.String Ground1Bump = "_Ground1Bump";
+	private System.String Ground2Bump = "_Ground2Bump";
+	private System.String Ground3Bump = "_Ground3Bump";
 	private System.String Wall = "_Wall";
 	private System.String Ramp = "_Ramp";
 
@@ -45,6 +49,10 @@ public class TerrainAdvanced : MonoBehaviour {
 	public Texture2D groundTexture1;
 	public Texture2D groundTexture2;
 	public Texture2D groundTexture3;
+	public Texture2D groundBump0;
+	public Texture2D groundBump1;
+	public Texture2D groundBump2;
+	public Texture2D groundBump3;
 
 	public float wallScale = 1.0f;
 	public Texture2D wallTexture;
@@ -84,6 +92,10 @@ public class TerrainAdvanced : MonoBehaviour {
 		terrainMaterial.SetTexture(Ground1,groundTexture1);
 		terrainMaterial.SetTexture(Ground2,groundTexture2);
 		terrainMaterial.SetTexture(Ground3,groundTexture3);
+		terrainMaterial.SetTexture(Ground0,groundBump0);
+		terrainMaterial.SetTexture(Ground1,groundBump1);
+		terrainMaterial.SetTexture(Ground2,groundBump2);
+		terrainMaterial.SetTexture(Ground3,groundBump3);
 		terrainMaterial.SetTexture(Wall,wallTexture);
 		
 		if(EnableHGradient) {
