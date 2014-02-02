@@ -793,7 +793,7 @@ Transition:
     m_ExitTime: 0
   m_Atomic: 1
   m_Solo: 0
-  m_Mute: 1
+  m_Mute: 0
 --- !u!1101 &110165518
 Transition:
   m_ObjectHideFlags: 3
@@ -1203,7 +1203,7 @@ State:
   - {fileID: 7400000, guid: e7850b7cbd394484395aee9049007a8e, type: 3}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 276, y: 0, z: 0}
+  m_Position: {x: 300, y: 0, z: 0}
   m_IKOnFeet: 1
   m_Mirror: 0
   m_Tag: 
@@ -1234,7 +1234,7 @@ State:
   - {fileID: 7400000, guid: d904b9d3c2947c946860c56b40744f2b, type: 3}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 48, y: 0, z: 0}
+  m_Position: {x: -12, y: 0, z: 0}
   m_IKOnFeet: 1
   m_Mirror: 0
   m_Tag: 
@@ -1298,7 +1298,7 @@ State:
   - {fileID: 7400004, guid: da596380719078c46877c005bd586853, type: 3}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: 576, y: -120, z: 0}
+  m_Position: {x: 576, y: -96, z: 0}
   m_IKOnFeet: 1
   m_Mirror: 0
   m_Tag: 
