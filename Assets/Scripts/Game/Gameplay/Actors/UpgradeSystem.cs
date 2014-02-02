@@ -107,7 +107,7 @@ public class UpgradeSystem : MonoBehaviour {
 		
 		//Set Render Settings and Fog
 		RenderSettings.fog = enabled;
-		RenderSettings.fogColor = new Color(1f,.98f,.706f);
+		RenderSettings.fogColor = new Color(.46f,.709f,.949f);
 		RenderSettings.fogMode = FogMode.Linear;
 		RenderSettings.fogDensity = .01f;
 		RenderSettings.fogStartDistance = 0;
