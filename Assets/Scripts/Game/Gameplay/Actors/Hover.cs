@@ -29,6 +29,18 @@ public class Hover : MonoBehaviour
 	private float waterTime = 1.0f;
 	public float drownWiggle = 10.0f;
 
+/////////////sounds
+    public AudioSource loopAudio;
+    public AudioSource hitAudio;
+    public AudioClip sndBoardIdle;
+    public AudioClip sndBoardStart;
+    public AudioClip sndBoardEnd;
+    public AudioClip sndBoardRun;
+    public AudioClip sndBoardRunIn;
+    public AudioClip sndBoardRunOut;
+    public AudioClip sndBoardGrind;
+    public AudioClip sndBoardGrindStart;
+    private bool idling = true;
 
         [HideInInspector] Transform[] m_sensors;
         RaycastHit[] m_hits;
@@ -219,6 +231,12 @@ public class Hover : MonoBehaviour
                 nokeAnimator.SetBool(ridingId, true);
 				spinAmount = 0f;
 				flipAmount = 0f;
+
+                hitAudio.clip = sndBoardStart;
+                hitAudio.Play();
+
+                loopAudio.clip = sndBoardIdle;
+                loopAudio.Play();
         }
 
         void OnDisable()
@@ -226,6 +244,11 @@ public class Hover : MonoBehaviour
                 rigidbody.isKinematic = true;
                 renderer.enabled = false;
                 nokeAnimator.SetBool(ridingId, false);
+
+                hitAudio.clip = sndBoardEnd;
+                hitAudio.Play();
+
+                loopAudio.Stop();
         }
 
         void OnCollisionEnter(Collision collision) {
@@ -316,13 +339,13 @@ public class Hover : MonoBehaviour
 					waterTime -= Time.deltaTime;
 					drownParticles.startLifetime = 0.05f;
 			Vector3 myRotation = transform.InverseTransformDirection(this.transform.rotation.eulerAngles);
-			Debug.Log ("actual: "+this.transform.rotation.eulerAngles+", rotated: "+myRotation);
+			//Debug.Log ("actual: "+this.transform.rotation.eulerAngles+", rotated: "+myRotation);
 			this.transform.rotation = Quaternion.LookRotation(
 				transform.TransformDirection (
 				new Vector3(myRotation.x + ((Mathf.Sin ((waterTime)*Mathf.PI*8) - Mathf.Sin ((waterTime+Time.deltaTime)*Mathf.PI*8))*drownWiggle),
 			            myRotation.y,myRotation.z)
 				));
-			Debug.Log ("new: "+this.transform.rotation.eulerAngles);
+			//Debug.Log ("new: "+this.transform.rotation.eulerAngles);
 					if (waterTime <=0 ){
 						waterTime = maxWaterTime;
 						drownParticles.startLifetime = 0.0f;
@@ -476,6 +499,24 @@ public class Hover : MonoBehaviour
                 Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
+
+                if (Vector3.Magnitude(inputDir)>.75f){if (idling){
+                    idling = false;
+                    hitAudio.clip = sndBoardRunIn;
+                    hitAudio.Play();
+
+                    loopAudio.clip = sndBoardRun;
+                    loopAudio.Play();
+                    }}else{
+                    if (!idling){
+                    idling = true;
+                    hitAudio.clip = sndBoardRunOut;
+                    hitAudio.Play();
+
+                    loopAudio.clip = sndBoardIdle;
+                    loopAudio.Play();
+                    }
+                    }
 		/////////////////////////////FLIPS////////////////////////////////
 	if (!grinding){
 		if (!onGround){
