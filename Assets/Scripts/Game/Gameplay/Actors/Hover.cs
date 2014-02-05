@@ -29,6 +29,7 @@ public class Hover : MonoBehaviour
 	private float waterTime = 1.0f;
 	public float drownWiggle = 10.0f;
 
+
         [HideInInspector] Transform[] m_sensors;
         RaycastHit[] m_hits;
         Transform m_thruster;
@@ -38,6 +39,7 @@ public class Hover : MonoBehaviour
         float m_glide;
         private bool m_jump;
         private bool detach;
+        private bool jumping = false;
 
         private float jumpPower; // measures how long jump was held, 0 - 1
         public float jumpLength = 3.0f; //how many seconds to build maximum jump
@@ -292,14 +294,16 @@ public class Hover : MonoBehaviour
 				cameraDir.y = 0;
 
                 hoverMod = 1;
-                if (detach){hoverMod = 0.5f;}
+                //if (detach){hoverMod = 0.5f;}
 		
 				bool waterSpray = false;
                 for (int i = 0; i < m_sensors.Length; i++)
                 {
                         if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*(hoverMod)))
                         {
-                                if (Vector3.Dot(m_sensors[i].up,Vector3.up)>.5){onGround = true;}
+                                if (Vector3.Dot(m_sensors[i].up,Vector3.up)>.5){onGround = true; 
+                                        if (!detach && jumping){jumping = false; Debug.Log("not jumping");}
+                                    }
                                 if (!detach && !grinding){
                                         float hoverForce = ((hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime)+ Mathf.Max(0,-rigidbody.velocity.y*1000f);;
                                         rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
@@ -451,6 +455,7 @@ public class Hover : MonoBehaviour
                 	else{
                         if (jumpPower > 0.0f){
                                 detach = true; 
+                                jumping = true; 
                                 rigidbody.AddForce(transform.up * jumpForce * Mathf.Sqrt(jumpPower), ForceMode.Impulse);
                                 jumpPower = 0.0f;
 								if (waterSpray){splashParticles.Emit (30);}
@@ -678,6 +683,9 @@ public class Hover : MonoBehaviour
         }
 	    public bool Jump(){
             return (m_jump && onGround);
+        }
+        public bool Jumping(){
+            return (jumping);
         }
 
         // Internal references

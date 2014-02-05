@@ -68,6 +68,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Jumping
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -529,9 +535,13 @@ Transition:
     m_ConditionEvent: BoardJump
     m_EventTreshold: 0
     m_ExitTime: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Jumping
+    m_EventTreshold: 0
+    m_ExitTime: 0
   m_Atomic: 1
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
 --- !u!1101 &110111455
 Transition:
   m_ObjectHideFlags: 3
@@ -557,6 +567,10 @@ Transition:
     m_ExitTime: .899999976
   - m_ConditionMode: 2
     m_ConditionEvent: BoardJump
+    m_EventTreshold: .25
+    m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: Jumping
     m_EventTreshold: .25
     m_ExitTime: .899999976
   m_Atomic: 0
@@ -650,9 +664,9 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Jumping
     m_EventTreshold: 0
-    m_ExitTime: .531250358
+    m_ExitTime: .75
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -668,7 +682,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Jumping
     m_EventTreshold: 0
     m_ExitTime: .166667223
   m_Atomic: 1
@@ -789,6 +803,10 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: BoardJump
+    m_EventTreshold: 0
+    m_ExitTime: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Jumping
     m_EventTreshold: 0
     m_ExitTime: 0
   m_Atomic: 1
@@ -1234,7 +1252,7 @@ State:
   - {fileID: 7400000, guid: d904b9d3c2947c946860c56b40744f2b, type: 3}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110717645}
-  m_Position: {x: -12, y: 0, z: 0}
+  m_Position: {x: 36, y: 0, z: 0}
   m_IKOnFeet: 1
   m_Mirror: 0
   m_Tag: 
@@ -1349,28 +1367,14 @@ StateMachine:
       - {fileID: 110126417}
       - {fileID: 110177939}
     data:
-      first: {fileID: 110256108}
+      first: {fileID: 110203199}
       second:
-      - {fileID: 110122545}
-      - {fileID: 110102204}
-    data:
-      first: {fileID: 110248794}
-      second:
-      - {fileID: 110168582}
-      - {fileID: 110190101}
-    data:
-      first: {fileID: 110276188}
-      second:
-      - {fileID: 110127974}
+      - {fileID: 110133607}
     data:
       first: {fileID: 110215284}
       second:
       - {fileID: 110159184}
       - {fileID: 110103981}
-    data:
-      first: {fileID: 110203199}
-      second:
-      - {fileID: 110133607}
     data:
       first: {fileID: 110217416}
       second: []
@@ -1402,6 +1406,16 @@ StateMachine:
       second:
       - {fileID: 110133169}
     data:
+      first: {fileID: 110248794}
+      second:
+      - {fileID: 110168582}
+      - {fileID: 110190101}
+    data:
+      first: {fileID: 110256108}
+      second:
+      - {fileID: 110122545}
+      - {fileID: 110102204}
+    data:
       first: {fileID: 110257703}
       second:
       - {fileID: 110134781}
@@ -1413,6 +1427,10 @@ StateMachine:
       first: {fileID: 110267364}
       second:
       - {fileID: 110158025}
+    data:
+      first: {fileID: 110276188}
+      second:
+      - {fileID: 110127974}
     data:
       first: {fileID: 110292723}
       second:
@@ -1440,7 +1458,7 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions: {}
   m_MotionSetCount: 2
-  m_AnyStatePosition: {x: 72, y: -204, z: 0}
+  m_AnyStatePosition: {x: -24, y: -192, z: 0}
   m_ParentStateMachinePosition: {x: 300, y: -216, z: 0}
 --- !u!1107 &110739360
 StateMachine:
