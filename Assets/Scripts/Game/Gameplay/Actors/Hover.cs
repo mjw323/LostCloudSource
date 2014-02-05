@@ -258,7 +258,8 @@ public class Hover : MonoBehaviour
                 grinding = false;
                 Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
                 if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){
-					DismissBoard();
+					transform.position = transform.position+(Vector3.up*.5f);
+                    DismissBoard();
 		}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
