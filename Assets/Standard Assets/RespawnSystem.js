@@ -20,7 +20,7 @@ function Start(){
 	boardC = gameObject.GetComponent("BoardController");
 }
 
-function Update(){
+function FixedUpdate(){
 	if ((!Respawning)){
 	var hit : RaycastHit;
 	var touchingWater : boolean;
@@ -47,6 +47,7 @@ function Update(){
 }
 
 function OnTriggerEnter (other : Collider) {
+		Debug.Log("hit respawner!");
 		if(other.transform.tag == "Respawn"){
 			Respawn();
 		}

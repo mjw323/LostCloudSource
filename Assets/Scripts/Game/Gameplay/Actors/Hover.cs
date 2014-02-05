@@ -222,6 +222,8 @@ public class Hover : MonoBehaviour
 				theCamera = cam.GetComponent<Camera>();
 				cameraFOV = theCamera.fieldOfView;
 				whoosh = cam.GetComponent("CameraWhoosh") as CameraWhoosh;
+
+                respawner = noke.GetComponent("RespawnSystem") as RespawnSystem;
         }
 
         void OnEnable()
@@ -274,6 +276,10 @@ public class Hover : MonoBehaviour
                                 initialGrindDir.Normalize();
 
                                 Debug.Log("found a rail!");
+                }
+                if (col.gameObject.tag == "Respawn"){
+                    DismissBoard();
+                    respawner.Respawn();
                 }
         }
 
@@ -742,6 +748,7 @@ public class Hover : MonoBehaviour
 		[HideInInspector] new private Camera theCamera;
 		[HideInInspector] new private float cameraFOV;
 		[HideInInspector] new private CameraWhoosh whoosh;
+        [HideInInspector] new private RespawnSystem respawner;
 
         // External references
         [HideInInspector] private Animator nokeAnimator;
