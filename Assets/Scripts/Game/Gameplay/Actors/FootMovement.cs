@@ -23,7 +23,9 @@ public class FootMovement : MonoBehaviour
 		animator.SetFloat(stickMagId, Vector3.Magnitude (direction));
 		if (Vector3.Magnitude (prevDir) > 0f && Vector3.Magnitude (direction) > 0f) {
 						animator.SetFloat (angleChangeId, Mathf.Abs(Vector3.Angle (prevDir, direction)));
-						Debug.Log ("prev: " + prevDir + ", cur: " + direction + ", diff: " + Vector3.Angle (prevDir, direction));
+						if (Mathf.Abs(Vector3.Angle (prevDir, direction))>1){
+							Debug.Log ("prev: " + prevDir + ", cur: " + direction + ", diff: " + Vector3.Angle (prevDir, direction));
+						}
 				}
 		this.direction = direction;
 		if (Vector3.Magnitude (direction) > 0f) {
