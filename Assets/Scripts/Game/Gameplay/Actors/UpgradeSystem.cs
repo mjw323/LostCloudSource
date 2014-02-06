@@ -21,7 +21,7 @@ public class UpgradeSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		HasPlayerGottenNextUpgrade = false;
+	HasPlayerGottenNextUpgrade = false;
 	
 	Player.gameObject.GetComponent<Hover>().canGlide = false;
 	Player.gameObject.GetComponent<Hover>().canGrind = false;
