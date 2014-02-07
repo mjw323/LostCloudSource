@@ -32,6 +32,7 @@ public class BoardController : MonoBehaviour
 		leanId = Animator.StringToHash("Lean");
 		jumpId = Animator.StringToHash("BoardJump");
 		jumpingId = Animator.StringToHash("Jumping");
+		landingId = Animator.StringToHash("Landing");
 
 		GameObject board = GameObject.FindWithTag("Board");
 		boardTransform = board.GetComponent<Transform>();
@@ -70,6 +71,7 @@ public class BoardController : MonoBehaviour
 		if (Input.GetButtonDown("Fire3")) // TODO: Rename this input!
 			boardMovement.DismissBoard();
 		animator.SetFloat(leanId, boardMovement.Lean());
+		animator.SetFloat(landingId, boardMovement.Landing());
 		animator.SetBool(jumpingId, boardMovement.Jumping());
 		animator.SetBool(jumpId, boardMovement.Jump());
 		/*boardMovement.Move(
@@ -98,6 +100,7 @@ public class BoardController : MonoBehaviour
 	[HideInInspector] private int leanId;
 	[HideInInspector] private int jumpId;
 	[HideInInspector] private int jumpingId;
+	[HideInInspector] private int landingId;
 
 	// Animator state references
 	/*[HideInInspector] private int pivotLeftId;

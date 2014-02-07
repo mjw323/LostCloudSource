@@ -52,6 +52,7 @@ public class Hover : MonoBehaviour
         private bool m_jump;
         private bool detach;
         private bool jumping = false;
+		private float landing = 0f;
 
         private float jumpPower; // measures how long jump was held, 0 - 1
         public float jumpLength = 3.0f; //how many seconds to build maximum jump
@@ -91,6 +92,8 @@ public class Hover : MonoBehaviour
         private double flipTimes = 0;
         private double spinTimes = 0;
         public float bailAngle = 60.0f;
+	
+		private GameObject noke;
 
         // Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
         Vector3 CalculateBoardDimensions()
@@ -187,10 +190,10 @@ public class Hover : MonoBehaviour
 
         void Awake()
         {
+				noke = GameObject.FindWithTag("Player");
                 transform = GetComponent<Transform>();
                 renderer = boardObj.GetComponent<Renderer>();//GetComponentInChildren<Renderer>();
 
-                GameObject noke = GameObject.FindWithTag("Player");
                 nokeAnimator = noke.GetComponent<Animator>();
                 ridingId = Animator.StringToHash("Riding");
 
@@ -259,6 +262,7 @@ public class Hover : MonoBehaviour
                 Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
                 if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){
 					transform.position = transform.position+(Vector3.up*.5f);
+					noke.GetComponent<Animator>().enabled=false;
                     DismissBoard();
 		}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
@@ -316,6 +320,7 @@ public class Hover : MonoBehaviour
 
         void FixedUpdate()
         {
+				bool wasOnGround = onGround;
                 onGround = false;
 				Transform activeThruster = m_thruster;
 				if (doing180){activeThruster = b_thruster;}
@@ -341,17 +346,19 @@ public class Hover : MonoBehaviour
                                 }
                         }
                 }
+				if (landing > 1f){landing -= 1f;}else{landing = 0f;}
+				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y);}
 				////////////////////////////////BOARD DROWNING//////////////////////////////////////////////
 				if (!canWater && waterSpray) {
 					waterTime -= Time.deltaTime;
 					drownParticles.startLifetime = 0.05f;
-			Vector3 myRotation = transform.InverseTransformDirection(this.transform.rotation.eulerAngles);
+			/*Vector3 myRotation = transform.InverseTransformDirection(this.transform.rotation.eulerAngles);
 			//Debug.Log ("actual: "+this.transform.rotation.eulerAngles+", rotated: "+myRotation);
 			this.transform.rotation = Quaternion.LookRotation(
 				transform.TransformDirection (
 				new Vector3(myRotation.x + ((Mathf.Sin ((waterTime)*Mathf.PI*8) - Mathf.Sin ((waterTime+Time.deltaTime)*Mathf.PI*8))*drownWiggle),
 			            myRotation.y,myRotation.z)
-				));
+				));*/
 			//Debug.Log ("new: "+this.transform.rotation.eulerAngles);
 					if (waterTime <=0 ){
 						waterTime = maxWaterTime;
@@ -734,6 +741,9 @@ public class Hover : MonoBehaviour
         }
         public bool Jumping(){
             return (jumping);
+        }
+	    public float Landing(){
+            return (landing);
         }
 
         // Internal references
