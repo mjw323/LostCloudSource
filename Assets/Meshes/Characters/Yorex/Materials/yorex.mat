@@ -22,13 +22,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _NormalMap
-        second:
-          m_Texture: {fileID: 2800000, guid: 4bd2e8b300e29f64b9c8e2ceb803e5ca, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Ramp
         second:
           m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
@@ -41,15 +34,22 @@ Material:
           m_Texture: {fileID: 2800000, guid: abe1d730fbecbc74196c3cf873cab233, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 4bd2e8b300e29f64b9c8e2ceb803e5ca, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
+      data:
+        first:
+          name: _RimPower
+        second: 4.11607122
       data:
         first:
           name: _Scale
         second: 1
-      data:
-        first:
-          name: _RimPower
-        second: 6.38942337
     m_Colors:
       data:
         first:
@@ -58,4 +58,4 @@ Material:
       data:
         first:
           name: _RimColor
-        second: {r: .183823526, g: .165846661, b: .158142298, a: 0}
+        second: {r: .147058845, g: .137327015, b: .137327015, a: 0}
