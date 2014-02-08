@@ -10,20 +10,11 @@
 	}
 
 	SubShader {
-        Tags {"RenderType"="TransparentCutout" "Queue"="AlphaTest"}
+        Tags {"RenderType"="TransparentCutout" "Queue"="Transparent"}
          
         LOD 300
-    
-        // Pass to draw back faces
-        Pass {
-            Cull Front
-            ZWrite Off
-        }
-        
-        // Draw normally
-        Cull Back
-        ZWrite On
-
+        Cull Off
+        Alphatest Greater 0
         
         CGPROGRAM
         #pragma surface SurfMain ToonRamp
@@ -56,9 +47,6 @@
             half4 c;
             c.rgb = s.Albedo * _LightColor0.rgb * ramp * ( atten * 2 );
             c.a = s.Alpha;
-
-            if(c.a <= _AlphaCutoff)
-                discard;
             
             return c;
         }
