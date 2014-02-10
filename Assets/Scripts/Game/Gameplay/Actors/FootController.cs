@@ -57,7 +57,7 @@ public class FootController : MonoBehaviour
 		Vector3 moveDirection = stickToWorld * stickDirection;
 		
 		if (Vector3.Magnitude(moveDirection)>0f){
-				this.GetComponent<Animator>().enabled=true;
+				//this.GetComponent<Animator>().enabled=true;
 		}
 		
 		footMovement.MoveTowards(moveDirection);

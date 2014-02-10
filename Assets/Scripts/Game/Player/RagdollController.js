@@ -20,4 +20,5 @@ function killRagdoll ()
 	 	ragdoll.isKinematic = false; //disables the animated ragdoll and turns it into just a regular ragdoll with no movement
 	}
 	GetComponent(Animator).enabled=false; //disables the mecanim animator so our character no longer has any animations playing
+	//Debug.Log("i'm a fucking ragdoll");
 }

@@ -10,6 +10,7 @@ var Respawning : boolean;
 
 	var footC;
 	var boardC;
+	var ragdollC;
 
 function Start(){
 	SpawnPoint = Player.position;
@@ -18,6 +19,7 @@ function Start(){
 	
 	footC = gameObject.GetComponent("FootController");
 	boardC = gameObject.GetComponent("BoardController");
+	ragdollC = gameObject.GetComponent("RagdollController");
 }
 
 function FixedUpdate(){
@@ -48,6 +50,7 @@ function FixedUpdate(){
 
 function OnTriggerEnter (other : Collider) {
 		Debug.Log("hit respawner!");
+		GetComponent(Animator).enabled=false;
 		if(other.transform.tag == "Respawn"){
 			Respawn();
 		}
