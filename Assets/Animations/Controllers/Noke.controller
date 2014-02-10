@@ -1657,6 +1657,22 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110288264
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: grind001
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 37a77fb4ef7b34a46aa89e9cd3c027cd, type: 3}
+  - {fileID: 0}
+  m_ParentStateMachine: {fileID: 110717645}
+  m_Position: {x: 538, y: -224, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110292723
 State:
   m_ObjectHideFlags: 3
@@ -1818,6 +1834,7 @@ StateMachine:
   - {fileID: 110248794}
   - {fileID: 110256108}
   - {fileID: 110221665}
+  - {fileID: 110288264}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions: {}
