@@ -27,7 +27,8 @@ public class Hover : MonoBehaviour
 	public bool canWater = true;
 	public float maxWaterTime = 1.0f;
 	private float waterTime = 1.0f;
-	public float drownWiggle = 10.0f;
+	//public float drownWiggle = 10.0f;
+	private bool drowning = false;
 
 /////////////sounds
     public AudioSource loopAudio;
@@ -181,7 +182,11 @@ public class Hover : MonoBehaviour
         /// Fired when Noke should get off of her board.
         /// </summary>
         public event DismissedBoardHandler OnDismissBoard;
-
+		
+		public void Bail(){
+			noke.GetComponent<Animator>().enabled=false;
+			DismissBoard();
+		}
         public void DismissBoard()
         {
                 if (true) // Under what conditions should this be allowed?
@@ -262,8 +267,7 @@ public class Hover : MonoBehaviour
                 Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
                 if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){
 					transform.position = transform.position+(Vector3.up*.5f);
-					noke.GetComponent<Animator>().enabled=false;
-                    DismissBoard();
+					Bail();
 		}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
@@ -343,13 +347,15 @@ public class Hover : MonoBehaviour
                                         float hoverForce = ((hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime)+ Mathf.Max(0,-rigidbody.velocity.y*1000f);;
                                         rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
 										if (m_hits[i].transform.tag == "Water"){waterSpray = true;}
+											else{drowning = false;}
                                 }
                         }
                 }
 				if (landing > 1f){landing -= 1f;}else{landing = 0f;}
-				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y);}
+				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y/5f);}
 				////////////////////////////////BOARD DROWNING//////////////////////////////////////////////
-				if (!canWater && waterSpray) {
+		if (!canWater && waterSpray) {drowning = true;}
+		if (drowning){
 					waterTime -= Time.deltaTime;
 					drownParticles.startLifetime = 0.05f;
 			/*Vector3 myRotation = transform.InverseTransformDirection(this.transform.rotation.eulerAngles);
@@ -363,7 +369,7 @@ public class Hover : MonoBehaviour
 					if (waterTime <=0 ){
 						waterTime = maxWaterTime;
 						drownParticles.startLifetime = 0.0f;
-						DismissBoard();
+						Bail();
 						}
 				} else {
 					waterTime = maxWaterTime;
