@@ -33,9 +33,9 @@ public class DynamicCamera : MonoBehaviour {
 
   private void LateUpdate() {
     if (anchor != null) {
-      elevationAngle += Input.GetAxis("RightStickY");
-      float rotationAngle = Input.GetAxis("RightStickX") * rotationSpeed *
-        Time.deltaTime;
+      elevationAngle += Input.GetAxis("RightStickY") - Input.GetAxis("Mouse Y");
+      float rotationAngle = (Input.GetAxis("RightStickX") + Input.GetAxis(
+        "Mouse X")) * rotationSpeed * Time.deltaTime;
       Quaternion rotation = Quaternion.AngleAxis(rotationAngle, Vector3.up);
 
       Vector3 relativePos = transform.position - anchor.position;
