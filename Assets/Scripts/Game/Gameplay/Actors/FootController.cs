@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿//#define FOOT_CONTROLLER_DEBUG_LOG_DIRECTIONS
+//#define FOOT_CONTROLLER_DEBUG_DRAW
+using UnityEngine;
+using Conditional = System.Diagnostics.ConditionalAttribute;
 
 /// <summary>
 /// Controller for Noke in the on-foot state.
@@ -13,7 +16,7 @@ public class FootController : MonoBehaviour
 		boardController.enabled = true;
 	}
 
-	void Awake()
+	private void Awake()
 	{
 		footMovement = GetComponent<FootMovement>();
 		footMovement.OnSummonBoard += OnSummonBoard;
@@ -21,26 +24,37 @@ public class FootController : MonoBehaviour
 		boardController = GetComponent<BoardController>();
 		
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
-		cameraTransform = mainCamera.GetComponent<Transform>();
+		camera = mainCamera.GetComponent<Transform>();
 	}
 
-	void OnEnable()
+	private void OnEnable()
 	{
 		footMovement.enabled = true;
 	}
 
-	void OnDisable()
+	private void OnDisable()
 	{
 		footMovement.enabled = false;
 	}
 
-	void OnDestroy()
+	private void OnDestroy()
 	{
 		if (footMovement != null) // Possible during shutdown
 			footMovement.OnSummonBoard -= OnSummonBoard;
 	}
 
-	void Update()
+  [Conditional("FOOT_CONTROLLER_DEBUG_LOG_DIRECTIONS")]
+  private void LogDirections(Vector3 cameraForward, Vector3 moveDirection) {
+    Debug.Log("[Foot Controller] Camera Forward: " + cameraForward, gameObject);
+    Debug.Log("[Foot Controller] Move Direction: " + moveDirection, gameObject);
+  }
+
+	[Conditional("FOOT_CONTROLLER_DEBUG_DRAW")]
+	private void DrawRay(Vector3 origin, Vector3 direction, Color color) {
+		Debug.DrawRay(origin, direction, color);
+	}
+
+	private void Update()
 	{
 		if (Input.GetButtonDown("Fire3")) // TODO: Rename this input!
 			footMovement.SummonBoard();
@@ -49,11 +63,12 @@ public class FootController : MonoBehaviour
 		float stickY = Input.GetAxis("Vertical");
 		Vector3 stickDirection = new Vector3(stickX, 0f, stickY);
 		
-		Vector3 cameraLook = cameraTransform.forward;
-		cameraLook.y = 0f; // Flatten look direction into 2D
+    // Correct camera's look direction to always be parallel to XZ-plane
+		Vector3 cameraLook = Vector3.Cross(camera.right, Vector3.up);
+    DrawRay(camera.position, cameraLook, Color.green);
 		
 		Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,
-			cameraLook.normalized);
+			cameraLook);
 		Vector3 moveDirection = stickToWorld * stickDirection;
 		
 		if (Vector3.Magnitude(moveDirection)>0f){
@@ -64,6 +79,10 @@ public class FootController : MonoBehaviour
 
 		if (Input.GetButtonDown("Jump"))
 			footMovement.Jump();
+
+    LogDirections(cameraLook, moveDirection);
+		DrawRay(camera.position, camera.forward, Color.blue);
+		DrawRay(transform.position, moveDirection, Color.red);
 	}
 
 	// Internal references
@@ -71,5 +90,5 @@ public class FootController : MonoBehaviour
 	[HideInInspector] private BoardController boardController;
 
 	// External references
-	[HideInInspector] private Transform cameraTransform;
+	[HideInInspector] private Transform camera;
 }
