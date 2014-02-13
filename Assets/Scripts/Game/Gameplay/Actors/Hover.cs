@@ -27,7 +27,21 @@ public class Hover : MonoBehaviour
 	public bool canWater = true;
 	public float maxWaterTime = 1.0f;
 	private float waterTime = 1.0f;
-	public float drownWiggle = 10.0f;
+	//public float drownWiggle = 10.0f;
+	private bool drowning = false;
+
+/////////////sounds
+    public AudioSource loopAudio;
+    public AudioSource hitAudio;
+    public AudioClip sndBoardIdle;
+    public AudioClip sndBoardStart;
+    public AudioClip sndBoardEnd;
+    public AudioClip sndBoardRun;
+    public AudioClip sndBoardRunIn;
+    public AudioClip sndBoardRunOut;
+    public AudioClip sndBoardGrind;
+    public AudioClip sndBoardGrindStart;
+    private bool idling = true;
 
         [HideInInspector] Transform[] m_sensors;
         RaycastHit[] m_hits;
@@ -38,6 +52,8 @@ public class Hover : MonoBehaviour
         float m_glide;
         private bool m_jump;
         private bool detach;
+        private bool jumping = false;
+		private float landing = 0f;
 
         private float jumpPower; // measures how long jump was held, 0 - 1
         public float jumpLength = 3.0f; //how many seconds to build maximum jump
@@ -77,6 +93,8 @@ public class Hover : MonoBehaviour
         private double flipTimes = 0;
         private double spinTimes = 0;
         public float bailAngle = 60.0f;
+	
+		private GameObject noke;
 
         // Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
         Vector3 CalculateBoardDimensions()
@@ -164,7 +182,11 @@ public class Hover : MonoBehaviour
         /// Fired when Noke should get off of her board.
         /// </summary>
         public event DismissedBoardHandler OnDismissBoard;
-
+		
+		public void Bail(){
+			noke.GetComponent<Animator>().enabled=false;
+			DismissBoard();
+		}
         public void DismissBoard()
         {
                 if (true) // Under what conditions should this be allowed?
@@ -173,10 +195,10 @@ public class Hover : MonoBehaviour
 
         void Awake()
         {
+				noke = GameObject.FindWithTag("Player");
                 transform = GetComponent<Transform>();
                 renderer = boardObj.GetComponent<Renderer>();//GetComponentInChildren<Renderer>();
 
-                GameObject noke = GameObject.FindWithTag("Player");
                 nokeAnimator = noke.GetComponent<Animator>();
                 ridingId = Animator.StringToHash("Riding");
 
@@ -208,6 +230,8 @@ public class Hover : MonoBehaviour
 				theCamera = cam.GetComponent<Camera>();
 				cameraFOV = theCamera.fieldOfView;
 				whoosh = cam.GetComponent("CameraWhoosh") as CameraWhoosh;
+
+                respawner = noke.GetComponent("RespawnSystem") as RespawnSystem;
         }
 
         void OnEnable()
@@ -217,6 +241,12 @@ public class Hover : MonoBehaviour
                 nokeAnimator.SetBool(ridingId, true);
 				spinAmount = 0f;
 				flipAmount = 0f;
+
+                hitAudio.clip = sndBoardStart;
+                hitAudio.Play();
+
+                loopAudio.clip = sndBoardIdle;
+                loopAudio.Play();
         }
 
         void OnDisable()
@@ -224,6 +254,11 @@ public class Hover : MonoBehaviour
                 rigidbody.isKinematic = true;
                 renderer.enabled = false;
                 nokeAnimator.SetBool(ridingId, false);
+
+                hitAudio.clip = sndBoardEnd;
+                hitAudio.Play();
+
+                loopAudio.Stop();
         }
 
         void OnCollisionEnter(Collision collision) {
@@ -231,7 +266,8 @@ public class Hover : MonoBehaviour
                 grinding = false;
                 Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
                 if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){
-					DismissBoard();
+					transform.position = transform.position+(Vector3.up*.5f);
+					Bail();
 		}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
@@ -249,6 +285,10 @@ public class Hover : MonoBehaviour
                                 initialGrindDir.Normalize();
 
                                 Debug.Log("found a rail!");
+                }
+                if (col.gameObject.tag == "Respawn"){
+                    DismissBoard();
+                    respawner.Respawn();
                 }
         }
 
@@ -284,6 +324,7 @@ public class Hover : MonoBehaviour
 
         void FixedUpdate()
         {
+				bool wasOnGround = onGround;
                 onGround = false;
 				Transform activeThruster = m_thruster;
 				if (doing180){activeThruster = b_thruster;}
@@ -292,37 +333,43 @@ public class Hover : MonoBehaviour
 				cameraDir.y = 0;
 
                 hoverMod = 1;
-                if (detach){hoverMod = 0.5f;}
+                //if (detach){hoverMod = 0.5f;}
 		
 				bool waterSpray = false;
                 for (int i = 0; i < m_sensors.Length; i++)
                 {
                         if (Physics.Raycast(m_sensors[i].position, -m_sensors[i].up, out m_hits[i], hoverProperties.hoverHeight*(hoverMod)))
                         {
-                                if (Vector3.Dot(m_sensors[i].up,Vector3.up)>.5){onGround = true;}
+                                if (Vector3.Dot(m_sensors[i].up,Vector3.up)>.5){onGround = true; 
+                                        if (!detach && jumping){jumping = false; Debug.Log("not jumping");}
+                                    }
                                 if (!detach && !grinding){
                                         float hoverForce = ((hoverProperties.hoverHeight - m_hits[i].distance) * hoverProperties.hoverDamping * Time.deltaTime)+ Mathf.Max(0,-rigidbody.velocity.y*1000f);;
                                         rigidbody.AddForceAtPosition(m_sensors[i].up * hoverForce, m_sensors[i].position);
 										if (m_hits[i].transform.tag == "Water"){waterSpray = true;}
+											else{drowning = false;}
                                 }
                         }
                 }
+				if (landing > 1f){landing -= 1f;}else{landing = 0f;}
+				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y/5f);}
 				////////////////////////////////BOARD DROWNING//////////////////////////////////////////////
-				if (!canWater && waterSpray) {
+		if (!canWater && waterSpray) {drowning = true;}
+		if (drowning){
 					waterTime -= Time.deltaTime;
 					drownParticles.startLifetime = 0.05f;
-			Vector3 myRotation = transform.InverseTransformDirection(this.transform.rotation.eulerAngles);
-			Debug.Log ("actual: "+this.transform.rotation.eulerAngles+", rotated: "+myRotation);
+			/*Vector3 myRotation = transform.InverseTransformDirection(this.transform.rotation.eulerAngles);
+			//Debug.Log ("actual: "+this.transform.rotation.eulerAngles+", rotated: "+myRotation);
 			this.transform.rotation = Quaternion.LookRotation(
 				transform.TransformDirection (
 				new Vector3(myRotation.x + ((Mathf.Sin ((waterTime)*Mathf.PI*8) - Mathf.Sin ((waterTime+Time.deltaTime)*Mathf.PI*8))*drownWiggle),
 			            myRotation.y,myRotation.z)
-				));
-			Debug.Log ("new: "+this.transform.rotation.eulerAngles);
+				));*/
+			//Debug.Log ("new: "+this.transform.rotation.eulerAngles);
 					if (waterTime <=0 ){
 						waterTime = maxWaterTime;
 						drownParticles.startLifetime = 0.0f;
-						DismissBoard();
+						Bail();
 						}
 				} else {
 					waterTime = maxWaterTime;
@@ -451,6 +498,7 @@ public class Hover : MonoBehaviour
                 	else{
                         if (jumpPower > 0.0f){
                                 detach = true; 
+                                jumping = true; 
                                 rigidbody.AddForce(transform.up * jumpForce * Mathf.Sqrt(jumpPower), ForceMode.Impulse);
                                 jumpPower = 0.0f;
 								if (waterSpray){splashParticles.Emit (30);}
@@ -471,6 +519,24 @@ public class Hover : MonoBehaviour
                 Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
+
+                if (Vector3.Magnitude(inputDir)>.75f){if (idling){
+                    idling = false;
+                    hitAudio.clip = sndBoardRunIn;
+                    hitAudio.Play();
+
+                    loopAudio.clip = sndBoardRun;
+                    loopAudio.Play();
+                    }}else{
+                    if (!idling){
+                    idling = true;
+                    hitAudio.clip = sndBoardRunOut;
+                    hitAudio.Play();
+
+                    loopAudio.clip = sndBoardIdle;
+                    loopAudio.Play();
+                    }
+                    }
 		/////////////////////////////FLIPS////////////////////////////////
 	if (!grinding){
 		if (!onGround){
@@ -676,6 +742,15 @@ public class Hover : MonoBehaviour
         public float Lean(){
             return m_lean;
         }
+	    public bool Jump(){
+            return (m_jump && onGround);
+        }
+        public bool Jumping(){
+            return (jumping);
+        }
+	    public float Landing(){
+            return (landing);
+        }
 
         // Internal references
         [HideInInspector] new private Transform transform;
@@ -690,6 +765,7 @@ public class Hover : MonoBehaviour
 		[HideInInspector] new private Camera theCamera;
 		[HideInInspector] new private float cameraFOV;
 		[HideInInspector] new private CameraWhoosh whoosh;
+        [HideInInspector] new private RespawnSystem respawner;
 
         // External references
         [HideInInspector] private Animator nokeAnimator;

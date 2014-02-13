@@ -67,6 +67,8 @@ GameObject:
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400000}
   - 136: {fileID: 13600000}
+  - 82: {fileID: 8200002}
+  - 82: {fileID: 8200000}
   m_Layer: 9
   m_Name: Hoverboard
   m_TagString: Board
@@ -304,6 +306,122 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .400000006, y: .230000004, z: 1.70000005}
   m_Center: {x: 0, y: -.0599999987, z: .100000001}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8200002
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2
@@ -326,14 +444,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47a0105f33fa47f7b4d1b4a0cd20e35, type: 3}
+  m_Script: {fileID: 11500000, guid: 004e64d5226314137b67055fe1b524cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HasPlayerGottenUpgrade: 0
+  DebugUpgrades: 0
+  HasPlayerGottenNextUpgrade: 0
   Player: {fileID: 400006}
   MainCamera: {fileID: 0}
   Enemy: {fileID: 0}
   Sun: {fileID: 0}
+  Moon: {fileID: 0}
+  DaySky: {fileID: 2100000, guid: 2be178f90546a44a5a080ad375f2ec06, type: 2}
+  NightSky: {fileID: 2100000, guid: 64296e0e3f8174750838a44d6fb7c917, type: 2}
   FadeWaitTime: 3
 --- !u!114 &11400002
 MonoBehaviour:
@@ -357,8 +479,19 @@ MonoBehaviour:
   airAngleClamp: 10
   canGlide: 1
   canGrind: 1
-  canWater: 0
+  canWater: 1
   maxWaterTime: 3
+  drownWiggle: 10
+  loopAudio: {fileID: 8200002}
+  hitAudio: {fileID: 8200000}
+  sndBoardIdle: {fileID: 8300000, guid: b1e0dbf3518404cb2a6f3bacf29fd01f, type: 3}
+  sndBoardStart: {fileID: 8300000, guid: ec76bf6d3c94345a3953f228b426b0a7, type: 3}
+  sndBoardEnd: {fileID: 8300000, guid: a6ce7d54b183b4e08991f0e79c441fe0, type: 3}
+  sndBoardRun: {fileID: 8300000, guid: cced00c6cd6a74c4d811b035c2a51ef4, type: 3}
+  sndBoardRunIn: {fileID: 8300000, guid: 5723b66809304429f88c3232158a55a7, type: 3}
+  sndBoardRunOut: {fileID: 8300000, guid: 9d0031b46f48f484a8d9597b6f726a83, type: 3}
+  sndBoardGrind: {fileID: 8300000, guid: 9c8b1d0229f554727bb76c67da0f24ca, type: 3}
+  sndBoardGrindStart: {fileID: 8300000, guid: f39e032ba112b440c8f08e5f129b9558, type: 3}
   jumpLength: 2.5
   jumpForce: 5000
   glideForce: 4000

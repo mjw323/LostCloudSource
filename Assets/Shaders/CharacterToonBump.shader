@@ -1,7 +1,6 @@
 ﻿Shader "LostCloud/CharacterToonBump" {
 	Properties {
 		_Base ("Base (RGB)", 2D) = "white" {}
-        _AlphaCutoff("Alpha Cutoff", Range(0.0,1.0)) = 0.1
 		_NormalMap ("NormalMap", 2D) = "bump" {}
         _Scale("Texture Scaling", Range(1,20)) = 1
         _RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
@@ -10,20 +9,11 @@
 	}
 
 	SubShader {
-        Tags {"RenderType"="TransparentCutout" "Queue"="AlphaTest"}
+        Tags {"RenderType"="TransparentCutout" "Queue"="Transparent"}
          
         LOD 300
-    
-        // Pass to draw back faces
-        Pass {
-            Cull Front
-            ZWrite Off
-        }
-        
-        // Draw normally
-        Cull Back
-        ZWrite On
-
+        Cull Off
+        Alphatest Greater 0.2
         
         CGPROGRAM
         #pragma surface SurfMain ToonRamp
@@ -40,7 +30,6 @@
         };
 
         float _Scale;
-        float _AlphaCutoff;
 
         sampler2D _Base;
         sampler2D _NormalMap;       
@@ -56,9 +45,6 @@
             half4 c;
             c.rgb = s.Albedo * _LightColor0.rgb * ramp * ( atten * 2 );
             c.a = s.Alpha;
-
-            if(c.a <= _AlphaCutoff)
-                discard;
             
             return c;
         }

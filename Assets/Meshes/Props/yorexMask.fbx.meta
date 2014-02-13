@@ -138,7 +138,9 @@ ModelImporter:
     400130: yorex_geo
     400132: yorex_node
     2300000: //RootNode
+    2300002: mask_05:polySurface11
     3300000: //RootNode
+    3300002: mask_05:polySurface11
     4300000: polySurface11
     4300002: mask_05:polySurface11
     7400000: Take 001
@@ -152,7 +154,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -176,9 +178,9 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 0
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0

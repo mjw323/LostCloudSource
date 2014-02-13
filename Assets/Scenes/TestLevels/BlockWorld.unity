@@ -1709,6 +1709,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 127125927}
+  - 136: {fileID: 127125930}
+  - 54: {fileID: 127125929}
+  - 144: {fileID: 127125928}
   m_Layer: 8
   m_Name: noke_R_knee
   m_TagString: Untagged
@@ -1728,6 +1731,71 @@ Transform:
   m_Children:
   - {fileID: 70948775}
   m_Father: {fileID: 413513103}
+--- !u!144 &127125928
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400012, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 127125926}
+  m_ConnectedBody: {fileID: 413513105}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: .434757739, y: -4.68993662e-08, z: 4.70919872e-07}
+  m_SwingAxis: {x: 0, y: -1, z: 0}
+  m_LowTwistLimit:
+    limit: -80
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &127125929
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400012, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 127125926}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &127125930
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600008, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 127125926}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .100563422
+  m_Height: .402253687
+  m_Direction: 0
+  m_Center: {x: .201126844, y: 0, z: 0}
 --- !u!1 &142687944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,6 +2475,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 283673013}
+  - 136: {fileID: 283673016}
+  - 54: {fileID: 283673015}
+  - 144: {fileID: 283673014}
   m_Layer: 8
   m_Name: noke_L_knee
   m_TagString: Untagged
@@ -2426,6 +2497,71 @@ Transform:
   m_Children:
   - {fileID: 833236766}
   m_Father: {fileID: 691146049}
+--- !u!144 &283673014
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400014, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 283673012}
+  m_ConnectedBody: {fileID: 691146051}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -.434758544, y: -2.31851978e-08, z: -7.35771577e-09}
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_LowTwistLimit:
+    limit: -80
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &283673015
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400014, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 283673012}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &283673016
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600010, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 283673012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .100563318
+  m_Height: .40225327
+  m_Direction: 0
+  m_Center: {x: -.201126635, y: 0, z: 0}
 --- !u!1 &290975449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,6 +3069,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 376443628}
+  - 136: {fileID: 376443631}
+  - 54: {fileID: 376443630}
+  - 144: {fileID: 376443629}
   m_Layer: 8
   m_Name: noke_L_elbow
   m_TagString: Untagged
@@ -2952,6 +3091,71 @@ Transform:
   m_Children:
   - {fileID: 22505783}
   m_Father: {fileID: 719200356}
+--- !u!144 &376443629
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400004, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 376443627}
+  m_ConnectedBody: {fileID: 719200358}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -.221130982, y: .000357337995, z: .016295135}
+  m_SwingAxis: {x: 0, y: 0, z: -1}
+  m_LowTwistLimit:
+    limit: -90
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &376443630
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400004, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 376443627}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &376443631
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600002, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 376443627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .0833073482
+  m_Height: .416536748
+  m_Direction: 0
+  m_Center: {x: -.208268374, y: 0, z: 0}
 --- !u!1 &385458235
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3345,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413513103}
+  - 136: {fileID: 413513106}
+  - 54: {fileID: 413513105}
+  - 144: {fileID: 413513104}
   m_Layer: 8
   m_Name: noke_R_upReg
   m_TagString: Untagged
@@ -3160,6 +3367,71 @@ Transform:
   m_Children:
   - {fileID: 127125927}
   m_Father: {fileID: 2127315652}
+--- !u!144 &413513104
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400016, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 413513102}
+  m_ConnectedBody: {fileID: 1160728479}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: .0909091011, y: -3.57627869e-07, z: -4.72329557e-05}
+  m_SwingAxis: {x: 0, y: -1, z: 0}
+  m_LowTwistLimit:
+    limit: -20
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 70
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 30
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &413513105
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400016, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 413513102}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &413513106
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600012, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 413513102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .130426988
+  m_Height: .434756607
+  m_Direction: 0
+  m_Center: {x: .217378303, y: 0, z: 0}
 --- !u!1 &421596378
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,7 +3479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &432652046
 Transform:
   m_ObjectHideFlags: 0
@@ -3251,12 +3523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47a0105f33fa47f7b4d1b4a0cd20e35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HasPlayerGottenUpgrade: 0
-  Player: {fileID: 432652046}
-  MainCamera: {fileID: 0}
-  Enemy: {fileID: 0}
-  Sun: {fileID: 0}
-  FadeWaitTime: 3
 --- !u!135 &432652049
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3400,6 +3666,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437695334}
+  - 135: {fileID: 437695337}
+  - 54: {fileID: 437695336}
+  - 144: {fileID: 437695335}
   m_Layer: 8
   m_Name: noke_head
   m_TagString: Untagged
@@ -3426,6 +3695,70 @@ Transform:
   - {fileID: 1324166282}
   - {fileID: 1716439843}
   m_Father: {fileID: 175182454}
+--- !u!144 &437695335
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400000, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 437695333}
+  m_ConnectedBody: {fileID: 1577064410}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: -1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -.329113722, y: .0802111179, z: -1.66274319e-08}
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_LowTwistLimit:
+    limit: -40
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 25
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 25
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &437695336
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 437695333}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &437695337
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13500000, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 437695333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0732727051
+  m_Center: {x: -.0732727051, y: 0, z: 0}
 --- !u!1 &491719888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3969,6 +4302,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 691146049}
+  - 136: {fileID: 691146052}
+  - 54: {fileID: 691146051}
+  - 144: {fileID: 691146050}
   m_Layer: 8
   m_Name: noke_L_upLeg
   m_TagString: Untagged
@@ -3988,6 +4324,71 @@ Transform:
   m_Children:
   - {fileID: 283673013}
   m_Father: {fileID: 2127315652}
+--- !u!144 &691146050
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400018, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 691146048}
+  m_ConnectedBody: {fileID: 1160728479}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -.0909090862, y: 0, z: -4.72143292e-05}
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_LowTwistLimit:
+    limit: -20
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 70
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 30
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &691146051
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400018, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 691146048}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &691146052
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600014, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 691146048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .130427092
+  m_Height: .434756964
+  m_Direction: 0
+  m_Center: {x: -.217378482, y: 0, z: 0}
 --- !u!1 &692406778
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,6 +4575,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 719200356}
+  - 136: {fileID: 719200359}
+  - 54: {fileID: 719200358}
+  - 144: {fileID: 719200357}
   m_Layer: 8
   m_Name: noke_L_shoulder
   m_TagString: Untagged
@@ -4193,6 +4597,71 @@ Transform:
   m_Children:
   - {fileID: 376443628}
   m_Father: {fileID: 1552225705}
+--- !u!144 &719200357
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400008, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 719200355}
+  m_ConnectedBody: {fileID: 1577064410}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: -1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -.157861248, y: .0347931758, z: .146542132}
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_LowTwistLimit:
+    limit: -70
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 10
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 50
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &719200358
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400008, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 719200355}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &719200359
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600006, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 719200355}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .0552755445
+  m_Height: .221102178
+  m_Direction: 0
+  m_Center: {x: -.110551089, y: 0, z: 0}
 --- !u!1 &730561033
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,6 +4781,32 @@ SkinnedMeshRenderer:
     m_Center: {x: -.184713706, y: .14292492, z: .0445292778}
     m_Extent: {x: .0161325485, y: .0152618885, z: .0189955197}
   m_DirtyAABB: 0
+--- !u!1 &752817634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 752817635}
+  m_Layer: 0
+  m_Name: Noke Camera Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &752817635
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752817634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .929596901, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 947616165}
 --- !u!1 &761285222
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +5206,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 831150531}
+  - 136: {fileID: 831150534}
+  - 54: {fileID: 831150533}
+  - 144: {fileID: 831150532}
   m_Layer: 8
   m_Name: noke_R_elbow
   m_TagString: Untagged
@@ -4730,6 +5228,71 @@ Transform:
   m_Children:
   - {fileID: 491719889}
   m_Father: {fileID: 1454735098}
+--- !u!144 &831150532
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400002, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 831150530}
+  m_ConnectedBody: {fileID: 1454735099}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: -1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: .221137553, y: -.000357490731, z: -.016298078}
+  m_SwingAxis: {x: 0, y: 0, z: 1}
+  m_LowTwistLimit:
+    limit: -90
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!54 &831150533
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400002, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 831150530}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &831150534
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600000, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 831150530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .0833060369
+  m_Height: .416530162
+  m_Direction: 0
+  m_Center: {x: .208265081, y: 0, z: 0}
 --- !u!1 &833236765
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,8 +5687,8 @@ GameObject:
   - 143: {fileID: 947616172}
   - 114: {fileID: 947616170}
   - 114: {fileID: 947616169}
-  - 114: {fileID: 947616168}
   - 114: {fileID: 947616166}
+  - 114: {fileID: 947616167}
   m_Layer: 8
   m_Name: noke
   m_TagString: Player
@@ -5145,6 +5708,7 @@ Transform:
   m_Children:
   - {fileID: 833689511}
   - {fileID: 693226949}
+  - {fileID: 752817635}
   m_Father: {fileID: 0}
 --- !u!114 &947616166
 MonoBehaviour:
@@ -5158,7 +5722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03e6f17539ad36419b1b9b384e7179d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoint: {x: 0, y: 0, z: 0}
+  SpawnPoint: {x: .660000026, y: 0, z: 0}
   Player: {fileID: 947616165}
   MainCamera: {fileID: 0}
   FadeWaitTime: 3
@@ -5167,18 +5731,30 @@ MonoBehaviour:
   WaterTime: 0
   WaterTimeMax: 10
   Respawning: 0
---- !u!114 &947616168
+--- !u!114 &947616167
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 6aab4641853f477448c0488366f61e50,
+  m_PrefabParentObject: {fileID: 11400000, guid: 6aab4641853f477448c0488366f61e50,
     type: 2}
   m_PrefabInternal: {fileID: 1383939240}
   m_GameObject: {fileID: 947616164}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49224cdd7c3e554ea6bd402a99f0d10, type: 3}
+  m_Script: {fileID: 11500000, guid: 627e3294ea5f9dc4db9c6fecbc729898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boneRig:
+  - {fileID: 1160728478}
+  - {fileID: 691146049}
+  - {fileID: 283673013}
+  - {fileID: 413513103}
+  - {fileID: 127125927}
+  - {fileID: 1577064409}
+  - {fileID: 719200356}
+  - {fileID: 376443628}
+  - {fileID: 1454735098}
+  - {fileID: 831150531}
+  - {fileID: 437695334}
 --- !u!114 &947616169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,7 +5794,7 @@ CharacterController:
   m_GameObject: {fileID: 947616164}
   serializedVersion: 2
   m_Height: 1.72000003
-  m_Radius: .349999994
+  m_Radius: .3111206
   m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .00100000005
@@ -5998,6 +6574,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1160728478}
+  - 65: {fileID: 1160728480}
+  - 54: {fileID: 1160728479}
   m_Layer: 8
   m_Name: noke_root
   m_TagString: Untagged
@@ -6018,6 +6596,35 @@ Transform:
   - {fileID: 2127315652}
   - {fileID: 315199646}
   m_Father: {fileID: 693226949}
+--- !u!54 &1160728479
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400020, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1160728477}
+  serializedVersion: 2
+  m_Mass: 3.125
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1160728480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500002, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1160728477}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .29309082, y: .252620339, z: .207040608}
+  m_Center: {x: 0, y: .12631017, z: -.0102579743}
 --- !u!1 &1161181305
 GameObject:
   m_ObjectHideFlags: 0
@@ -6122,10 +6729,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170159385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1338876339}
 --- !u!114 &1170159391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6134,19 +6741,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1170159385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e9d6aaaf275e24ca733e017aa4bc98, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1d6a5a505a46949823ccf6683dbb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follow:
-    distanceAbove: 2
-    distanceAway: 4
-    time: .200000003
-  look:
-    distanceAbove: 2
-    speed: 5
-  rotate:
-    degreesPerSecond: 360
-    threshold: .100000001
+  dynamicCamera: {fileID: 1338876340}
+  targetViewportPosition: {x: .660000026, y: .330000013, z: 0}
+  panSpeed: 1
+  panCurve: {fileID: 11400000, guid: 02ef8325c3b5019439334c0a4f625d39, type: 2}
 --- !u!1 &1170304746
 GameObject:
   m_ObjectHideFlags: 0
@@ -6768,6 +7369,50 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 833689511}
+--- !u!1 &1338876338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1338876339}
+  - 114: {fileID: 1338876340}
+  m_Layer: 0
+  m_Name: Camera Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1338876339
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338876338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.230569661, y: 2.14302015, z: -4.9571867}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1170159390}
+  m_Father: {fileID: 0}
+--- !u!114 &1338876340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338876338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e56358bcfd35f4e9fec6dd871c191b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchor: {fileID: 752817635}
+  targetDistance: 4
+  zoomSpeed: 1
+  zoomCurve: {fileID: 11400000, guid: 02ef8325c3b5019439334c0a4f625d39, type: 2}
+  rotationSpeed: 60
 --- !u!1 &1339920788
 GameObject:
   m_ObjectHideFlags: 0
@@ -7021,9 +7666,154 @@ Prefab:
       propertyPath: jumpForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100138, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400018, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -.0909090862
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400018, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400018, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -4.72143292e-05
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400016, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: .0909091011
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400016, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -3.57627869e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400016, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -4.72329557e-05
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400014, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -.434758544
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400014, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -2.31851978e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400014, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -7.35771577e-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400012, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: .434757739
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400012, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -4.68993662e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400012, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 4.70919872e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400010, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 6.93534075e-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400010, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: .252620101
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400010, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -.0283370204
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400008, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -.157861248
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400008, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: .0347931758
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400008, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: .146542132
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400006, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -.157864064
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400006, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: .0347936675
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400006, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -.146542013
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400004, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -.221130982
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400004, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: .000357337995
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400004, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: .016295135
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400002, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: .221137553
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400002, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -.000357490731
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400002, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -.016298078
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400000, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -.329113722
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400000, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: .0802111179
+      objectReference: {fileID: 0}
+    - target: {fileID: 14400000, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -1.66274319e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+      propertyPath: SpawnPoint.x
+      value: .660000026
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 11400010, guid: 6aab4641853f477448c0488366f61e50, type: 2}
+    - {fileID: 11400006, guid: 6aab4641853f477448c0488366f61e50, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6aab4641853f477448c0488366f61e50, type: 2}
   m_RootGameObject: {fileID: 947616164}
   m_IsPrefabParent: 0
@@ -7116,6 +7906,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1454735098}
+  - 136: {fileID: 1454735101}
+  - 54: {fileID: 1454735099}
+  - 144: {fileID: 1454735100}
   m_Layer: 8
   m_Name: noke_R_shoulder
   m_TagString: Untagged
@@ -7135,6 +7928,71 @@ Transform:
   m_Children:
   - {fileID: 831150531}
   m_Father: {fileID: 1371118641}
+--- !u!54 &1454735099
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400006, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1454735097}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!144 &1454735100
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400006, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1454735097}
+  m_ConnectedBody: {fileID: 1577064410}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -.157864064, y: .0347936675, z: -.146542013}
+  m_SwingAxis: {x: 0, y: -1, z: 0}
+  m_LowTwistLimit:
+    limit: -70
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 10
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 50
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!136 &1454735101
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13600004, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1454735097}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .0552907661
+  m_Height: .221163064
+  m_Direction: 0
+  m_Center: {x: .110581532, y: 0, z: 0}
 --- !u!1 &1459322078
 GameObject:
   m_ObjectHideFlags: 0
@@ -8436,6 +9294,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1577064409}
+  - 65: {fileID: 1577064412}
+  - 54: {fileID: 1577064410}
+  - 144: {fileID: 1577064411}
   m_Layer: 8
   m_Name: noke_spine4
   m_TagString: Untagged
@@ -8455,6 +9316,70 @@ Transform:
   m_Children:
   - {fileID: 1339920789}
   m_Father: {fileID: 1676679442}
+--- !u!54 &1577064410
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400010, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1577064408}
+  serializedVersion: 2
+  m_Mass: 3.125
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!144 &1577064411
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14400010, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1577064408}
+  m_ConnectedBody: {fileID: 1160728479}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: -1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 6.93534075e-09, y: .252620101, z: -.0283370204}
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_LowTwistLimit:
+    limit: -20
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_HighTwistLimit:
+    limit: 20
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 10
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    spring: 0
+    damper: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+--- !u!65 &1577064412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: 6aab4641853f477448c0488366f61e50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383939240}
+  m_GameObject: {fileID: 1577064408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .157863095, y: .20582056, z: .29309082}
+  m_Center: {x: -.0789303556, y: .0101441294, z: 0}
 --- !u!1 &1609513413
 GameObject:
   m_ObjectHideFlags: 0

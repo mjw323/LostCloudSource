@@ -6,15 +6,25 @@ ModelImporter:
     100000: //RootNode
     100002: polySurface220_MeshPart0
     100004: polySurface220_MeshPart1
+    100006: polySurface220_MeshPart2
+    100008: polySurface220_MeshPart3
     400000: //RootNode
     400002: polySurface220_MeshPart0
     400004: polySurface220_MeshPart1
+    400006: polySurface220_MeshPart2
+    400008: polySurface220_MeshPart3
     2300000: polySurface220_MeshPart0
     2300002: polySurface220_MeshPart1
+    2300004: polySurface220_MeshPart2
+    2300006: polySurface220_MeshPart3
     3300000: polySurface220_MeshPart0
     3300002: polySurface220_MeshPart1
+    3300004: polySurface220_MeshPart2
+    3300006: polySurface220_MeshPart3
     4300000: polySurface220_MeshPart0
     4300002: polySurface220_MeshPart1
+    4300004: polySurface220_MeshPart2
+    4300006: polySurface220_MeshPart3
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -48,9 +58,9 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 0
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
@@ -66,5 +76,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   userData: 

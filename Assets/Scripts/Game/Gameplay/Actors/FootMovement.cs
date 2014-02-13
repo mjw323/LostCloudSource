@@ -20,9 +20,12 @@ public class FootMovement : MonoBehaviour
 	//public float angleChange = 0f;
 	public void MoveTowards(Vector3 direction)
 	{
+		animator.SetFloat(stickMagId, Vector3.Magnitude (direction));
 		if (Vector3.Magnitude (prevDir) > 0f && Vector3.Magnitude (direction) > 0f) {
-						animator.SetFloat (angleChangeId, Vector3.Angle (prevDir, direction));
-						Debug.Log ("prev: " + prevDir + ", cur: " + direction + ", diff: " + Vector3.Angle (prevDir, direction));
+						animator.SetFloat (angleChangeId, Mathf.Abs(Vector3.Angle (prevDir, direction)));
+						if (Mathf.Abs(Vector3.Angle (prevDir, direction))>1){
+							Debug.Log ("prev: " + prevDir + ", cur: " + direction + ", diff: " + Vector3.Angle (prevDir, direction));
+						}
 				}
 		this.direction = direction;
 		if (Vector3.Magnitude (direction) > 0f) {
@@ -76,6 +79,7 @@ public class FootMovement : MonoBehaviour
 		directionId = Animator.StringToHash("Direction");
 		jumpId = Animator.StringToHash("Jump");
 		angleChangeId = Animator.StringToHash("AngleChange");
+		stickMagId = Animator.StringToHash("StickMag");
 
 		pivotLeftId = Animator.StringToHash("Base Layer.Locomotion.TurnOnSpot");
 		plantLeftId = Animator.StringToHash(
@@ -101,7 +105,7 @@ public class FootMovement : MonoBehaviour
 		animator.applyRootMotion = false;
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		if (shouldBoard)
 		{
@@ -204,6 +208,7 @@ public class FootMovement : MonoBehaviour
 	[HideInInspector] private int directionId;
 	[HideInInspector] private int jumpId;
 	[HideInInspector] private int angleChangeId;
+	[HideInInspector] private int stickMagId;
 
 	// Animator state references
 	[HideInInspector] private int pivotLeftId;
