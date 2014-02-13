@@ -4,7 +4,7 @@
 		_NormalMap ("NormalMap", 2D) = "bump" {}
         _Scale("Texture Scaling", Range(1,20)) = 1
         _RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
-        _RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
+        _RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 ) 
 		_Ramp("Color Ramp", 2D) = "white" {}
 	}
 
