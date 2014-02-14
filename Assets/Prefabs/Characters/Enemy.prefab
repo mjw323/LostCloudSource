@@ -8034,6 +8034,7 @@ Transform:
   m_Father: {fileID: 400000}
 --- !u!95 &9500000
 Animator:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -8044,8 +8045,10 @@ Animator:
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!95 &9500002
 Animator:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -8056,6 +8059,7 @@ Animator:
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8088,6 +8092,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -8111,6 +8118,7 @@ SkinnedMeshRenderer:
   - {fileID: 400156}
   - {fileID: 400132}
   - {fileID: 400130}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400156}
   m_AABB:
     m_Center: {x: -.34230566, y: -.0762871355, z: 3.23017073}
@@ -8134,6 +8142,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -8147,6 +8158,7 @@ SkinnedMeshRenderer:
   - {fileID: 400034}
   - {fileID: 400032}
   - {fileID: 400030}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400044}
   m_AABB:
     m_Center: {x: -.313737482, y: -.220140755, z: 0}
@@ -8170,12 +8182,16 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_Mesh: {fileID: 4300006, guid: 9d589c0037ee9cb4b8e444aa143c9196, type: 3}
   m_Bones:
   - {fileID: 400048}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400048}
   m_AABB:
     m_Center: {x: .269539714, y: .228088304, z: 0}
@@ -8199,12 +8215,16 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_Mesh: {fileID: 4300008, guid: 9d589c0037ee9cb4b8e444aa143c9196, type: 3}
   m_Bones:
   - {fileID: 400058}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400058}
   m_AABB:
     m_Center: {x: -.433470547, y: .13790378, z: 0}
@@ -8228,6 +8248,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -8250,6 +8273,7 @@ SkinnedMeshRenderer:
   - {fileID: 400078}
   - {fileID: 400080}
   - {fileID: 400024}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400126}
   m_AABB:
     m_Center: {x: -2.84029961, y: .0193889737, z: .014302671}
@@ -8273,6 +8297,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -8288,6 +8315,7 @@ SkinnedMeshRenderer:
   - {fileID: 400026}
   - {fileID: 400054}
   - {fileID: 400050}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400062}
   m_AABB:
     m_Center: {x: -.149674177, y: .322194576, z: 0}
@@ -8311,6 +8339,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -8331,6 +8362,7 @@ SkinnedMeshRenderer:
   - {fileID: 400026}
   - {fileID: 400054}
   - {fileID: 400050}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400086}
   m_AABB:
     m_Center: {x: -1.10401046, y: -.118233398, z: 0}
@@ -8354,12 +8386,16 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_Mesh: {fileID: 4300010, guid: 9d589c0037ee9cb4b8e444aa143c9196, type: 3}
   m_Bones:
   - {fileID: 400050}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400050}
   m_AABB:
     m_Center: {x: -.00101535022, y: -.00191605091, z: -.00864624977}
@@ -8383,12 +8419,16 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_Mesh: {fileID: 4300012, guid: 9d589c0037ee9cb4b8e444aa143c9196, type: 3}
   m_Bones:
   - {fileID: 400054}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400054}
   m_AABB:
     m_Center: {x: .001015082, y: .00191605091, z: .00864696503}
@@ -8412,6 +8452,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -8465,6 +8508,7 @@ SkinnedMeshRenderer:
   - {fileID: 400108}
   - {fileID: 400106}
   - {fileID: 400104}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400126}
   m_AABB:
     m_Center: {x: -1.71266437, y: -.401467204, z: 1.1920929e-07}
