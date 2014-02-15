@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider c) {
 		if (c.gameObject.tag.Equals("Player")){
-			Camera.mainCamera.GetComponent<AudioSource>().clip = blah;
+			//Camera.mainCamera.GetComponent<AudioSource>().clip = blah;
 		}
 	}
 }
