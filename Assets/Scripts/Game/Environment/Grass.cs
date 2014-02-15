@@ -10,7 +10,8 @@ public class Grass : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-        //InitializeGrass();
+        if(transform.childCount == 0)
+            InitializeGrass();
 	}
 	
 	// Update is called once per frame
@@ -50,8 +51,14 @@ public class Grass : MonoBehaviour {
             grass[idx + 2].renderer.receiveShadows = false;
             grass[idx + 2].renderer.material = renderer.material;
 
-            offset.x += (2.0f * Mathf.Cos(Mathf.Repeat(idx, 360.0f)));
-            offset.z += (2.0f * Mathf.Sin(Mathf.Repeat(idx, 360.0f)));
+            offset.x += (idx * 0.1f * Mathf.Cos(Mathf.Repeat(idx, 360.0f)));
+            offset.z += (idx * 0.1f * Mathf.Sin(Mathf.Repeat(idx, 360.0f)));
+        }
+    }
+
+    void DestroyGrass() {
+        foreach (GameObject g in grass) {
+            GameObject.Destroy(g);
         }
     }
 }
