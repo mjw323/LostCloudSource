@@ -7,6 +7,7 @@ public class NavMeshAI : MonoBehaviour {
 	public Transform Player;
 	public Vector3 lastKnownPlayerPosition;
 	public GameObject HidePosition;
+	public Camera Eyes;
 	public bool Leaping;
 	public float leapDistance;
 	public int state = 0;
@@ -58,13 +59,15 @@ public class NavMeshAI : MonoBehaviour {
 
 	void search(){
 		//Move around player's area slowly, raycast for player
-		GetComponent<NavMeshAgent>().speed = 15;
+		GetComponent<NavMeshAgent>().speed = 10;
 		look ();
 	}
 
 	void chase(){
 		//Speed up and chase player in any direction until the enemy loses sight of the player
 		//Leap towards the player occasionally
+
+		look ();
 
 		if (!Leaping && (Vector3.Magnitude(Player.position - this.transform.position) < 100)){
 			GetComponent<NavMeshAgent>().destination = Player.position;
@@ -85,34 +88,12 @@ public class NavMeshAI : MonoBehaviour {
 	}
 
 	void look(){
-		Vector3 forward = transform.TransformDirection(Vector3.forward);
-		RaycastHit hit;
-
-		if(Physics.SphereCast(gameObject.transform.position, 3, forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
-			Debug.DrawRay(transform.position,forward*10,Color.green);
-			transform.LookAt(hit.transform);
-			state = 3;
-
-		if(Physics.SphereCast(gameObject.transform.position + upoffset, 3, forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
-			Debug.DrawRay(transform.position + upoffset,forward*10,Color.green);
-			transform.LookAt(hit.transform);
-			state = 3;
-		
-		if(Physics.SphereCast(gameObject.transform.position + downoffset, 3, forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
-			Debug.DrawRay(transform.position + downoffset,forward*10,Color.green);
-			transform.LookAt(hit.transform);
-			state = 3;
-		
-		if(Physics.SphereCast(gameObject.transform.position + leftoffset, 3, forward + leftoffset, out hit, 20000) && hit.transform.gameObject.tag == "Player")
-			Debug.DrawRay(gameObject.transform.position + leftoffset,forward*10,Color.green);
-			transform.LookAt(hit.transform);
-			state = 3;
-
-		if(Physics.SphereCast(gameObject.transform.position + rightoffset, 3, forward + rightoffset, out hit, 20000) && hit.transform.gameObject.tag == "Player")
-			Debug.DrawRay(gameObject.transform.position + rightoffset,forward*10,Color.green);
-			transform.LookAt(hit.transform);
+		if (Player.GetComponentInChildren<TestRendered>().Visible == true){
+			Debug.Log ("FOUND YOU!");
 			state = 3;
 		}
+
+	}
 	
 	void leap(){
 
@@ -126,7 +107,7 @@ public class NavMeshAI : MonoBehaviour {
 		else{
 			Debug.Log("OK done!!");
 			Leaping = false;
-			GetComponent<NavMeshAgent>().speed = 30;
+			GetComponent<NavMeshAgent>().speed = 20;
 		}
 	
 	}
