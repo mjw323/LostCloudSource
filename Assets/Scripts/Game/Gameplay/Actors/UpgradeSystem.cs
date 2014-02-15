@@ -59,6 +59,7 @@ public class UpgradeSystem : MonoBehaviour {
 		navAgent = Enemy.GetComponent<NavMeshAgent>();
 		navAgent.speed = 0;
 		navAgent.enabled = false;
+		Enemy.GetComponent<NavMeshAI>().state = 3;
 		MainCamera.SendMessage("fadeOut");
 		StartCoroutine(NightTime());
 		Destroy(collision.gameObject);
@@ -68,9 +69,7 @@ public class UpgradeSystem : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.name == "StartSphere" && HasPlayerGottenNextUpgrade == true){
 			Player.rigidbody.isKinematic = true;
-			navAgent = Enemy.GetComponent<NavMeshAgent>();
-			navAgent.speed = 0;
-			navAgent.enabled = false;
+			Enemy.GetComponent<NavMeshAI>().state = 0;
 			MainCamera.SendMessage("fadeOut");
 			StartCoroutine(DayTime());
 		}
