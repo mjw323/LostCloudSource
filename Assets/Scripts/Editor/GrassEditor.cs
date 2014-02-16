@@ -100,7 +100,7 @@ public class GrassEditor : Editor {
                             grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
                             grassChild.name = "GrassChild_" + (x * z) + "_a";
                             grassChild.transform.parent = grassRoot.transform;
-                            grassChild.transform.localScale = Vector3.one * 4.0f;
+                            grassChild.transform.localScale = Vector3.one * 3.0f;
                             height.y = hit.point.y + (grassChild.renderer.bounds.max.y - grassChild.renderer.bounds.min.y) * 0.5f; // Height offset from midpoint
                             grassChild.transform.position = offset + height;
                             grassChild.renderer.castShadows = false;
@@ -111,7 +111,7 @@ public class GrassEditor : Editor {
                             grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
                             grassChild.name = "GrassChild_" + (x * z) + "_b";
                             grassChild.transform.parent = grassRoot.transform;
-                            grassChild.transform.localScale = Vector3.one * 4.0f;
+                            grassChild.transform.localScale = Vector3.one * 3.0f;
                             grassChild.transform.position = offset + height;
                             grassChild.transform.Rotate(Vector3.up, 45.0f);
                             grassChild.renderer.castShadows = false;
@@ -122,7 +122,7 @@ public class GrassEditor : Editor {
                             grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
                             grassChild.name = "GrassChild_" + (x * z) + "_c";
                             grassChild.transform.parent = grassRoot.transform;
-                            grassChild.transform.localScale = Vector3.one * 4.0f;
+                            grassChild.transform.localScale = Vector3.one * 3.0f;
                             grassChild.transform.position = offset + height;
                             grassChild.transform.Rotate(Vector3.up, -45.0f);
                             grassChild.renderer.castShadows = false;
