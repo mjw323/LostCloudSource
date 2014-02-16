@@ -83,47 +83,53 @@ public class GrassEditor : Editor {
                     offset.y = grassRoot.transform.position.y;
 
                     // Randomize to avoid grid-like visuals
-                    offset.x += Random.Range(-12.5f, 12.5f);
-                    offset.z += Random.Range(-12.5f, 12.5f);
+                    offset.x += Random.Range(-20.0f, 20.0f);
+                    offset.z += Random.Range(-20.0f, 20.0f);
 
                     /*if (Physics.Raycast(offset, Vector3.down, out hit, 200.0f))
                         UnityEngine.Debug.DrawLine(offset, offset + Vector3.down * 20.0f, Color.green, 60.0f);
                     else
                         UnityEngine.Debug.DrawLine(offset, offset + Vector3.down * 20.0f, Color.red, 60.0f);*/
 
-                    if (Physics.Raycast(offset, Vector3.down, out hit, 200.0f))
+                    if(Physics.Raycast(offset, Vector3.down, out hit, 200.0f))
                     {
-                        offset.y = 0.0f;
+                        if (hit.transform.tag == "Terrain")
+                        {
+                            offset.y = 0.0f;
 
-                        grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
-                        grassChild.name = "GrassChild_" + (x * z) + "_a";
-                        grassChild.transform.parent = grassRoot.transform;
-                        grassChild.transform.localScale = Vector3.one * 4.0f;
-                        height.y = hit.point.y + (grassChild.renderer.bounds.max.y - grassChild.renderer.bounds.min.y) * 0.5f; // Height offset from midpoint
-                        grassChild.transform.position = offset + height;
-                        grassChild.renderer.castShadows = false;
-                        grassChild.renderer.receiveShadows = false;
-                        grassChild.renderer.material = (Material)material.objectReferenceValue;
+                            grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                            grassChild.name = "GrassChild_" + (x * z) + "_a";
+                            grassChild.transform.parent = grassRoot.transform;
+                            grassChild.transform.localScale = Vector3.one * 4.0f;
+                            height.y = hit.point.y + (grassChild.renderer.bounds.max.y - grassChild.renderer.bounds.min.y) * 0.5f; // Height offset from midpoint
+                            grassChild.transform.position = offset + height;
+                            grassChild.renderer.castShadows = false;
+                            grassChild.renderer.receiveShadows = false;
+                            grassChild.renderer.material = (Material)material.objectReferenceValue;
+                            grassChild.collider.isTrigger = true;
 
-                        grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
-                        grassChild.name = "GrassChild_" + (x * z) + "_b";
-                        grassChild.transform.parent = grassRoot.transform;
-                        grassChild.transform.localScale = Vector3.one * 4.0f;
-                        grassChild.transform.position = offset + height;
-                        grassChild.transform.Rotate(Vector3.up, 45.0f);
-                        grassChild.renderer.castShadows = false;
-                        grassChild.renderer.receiveShadows = false;
-                        grassChild.renderer.material = (Material)material.objectReferenceValue;
+                            grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                            grassChild.name = "GrassChild_" + (x * z) + "_b";
+                            grassChild.transform.parent = grassRoot.transform;
+                            grassChild.transform.localScale = Vector3.one * 4.0f;
+                            grassChild.transform.position = offset + height;
+                            grassChild.transform.Rotate(Vector3.up, 45.0f);
+                            grassChild.renderer.castShadows = false;
+                            grassChild.renderer.receiveShadows = false;
+                            grassChild.renderer.material = (Material)material.objectReferenceValue;
+                            grassChild.collider.isTrigger = true;
 
-                        grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
-                        grassChild.name = "GrassChild_" + (x * z) + "_c";
-                        grassChild.transform.parent = grassRoot.transform;
-                        grassChild.transform.localScale = Vector3.one * 4.0f;
-                        grassChild.transform.position = offset + height;
-                        grassChild.transform.Rotate(Vector3.up, -45.0f);
-                        grassChild.renderer.castShadows = false;
-                        grassChild.renderer.receiveShadows = false;
-                        grassChild.renderer.material = (Material)material.objectReferenceValue;                        
+                            grassChild = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                            grassChild.name = "GrassChild_" + (x * z) + "_c";
+                            grassChild.transform.parent = grassRoot.transform;
+                            grassChild.transform.localScale = Vector3.one * 4.0f;
+                            grassChild.transform.position = offset + height;
+                            grassChild.transform.Rotate(Vector3.up, -45.0f);
+                            grassChild.renderer.castShadows = false;
+                            grassChild.renderer.receiveShadows = false;
+                            grassChild.renderer.material = (Material)material.objectReferenceValue;
+                            grassChild.collider.isTrigger = true;
+                        }
                     }
                     x += deltaX;
                 }
