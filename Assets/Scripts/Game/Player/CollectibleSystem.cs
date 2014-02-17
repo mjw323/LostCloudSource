@@ -7,11 +7,11 @@ public class CollectibleSystem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		upgradeCount = GameObject.FindGameObjectsWithTag ("Collectible").Length ();
+		upgradeCount = GameObject.FindGameObjectsWithTag ("Collectible").Length;
 	}
 
 	void OnCollisionEnter(Collision col){
-		if (col.tag == "Collectible") {
+		if (col.gameObject.tag == "Collectible") {
 			Collectible c = col.gameObject.GetComponent<Collectible>();
 			if (!c.collected){
 				c.collected = true;
