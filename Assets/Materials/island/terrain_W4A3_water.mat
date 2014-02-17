@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: terrain_W4A3_water
+  m_Shader: {fileID: 4800000, guid: ed9bdc6cdcf552a4b8c2400195272292, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 7fa5d8ba763e55549ab08d72c825b56e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: ea96a8643a4f8f343bd37fd5601ca74d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 17836c47d9568da429cd8b510b01b3b1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FlowMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ReflectionTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ShoreTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 4cc23652293f2e84184400fd2136d320, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Foam
+        second:
+          m_Texture: {fileID: 2800000, guid: 4cc23652293f2e84184400fd2136d320, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: 500
+      data:
+        first:
+          name: _FoamOffset
+        second: .530769289
+      data:
+        first:
+          name: _Reflectivity
+        second: .550000012
+      data:
+        first:
+          name: _FresnelFactor
+        second: .785017252
+      data:
+        first:
+          name: _RippleScale
+        second: 45.7107468
+      data:
+        first:
+          name: _RippleSpeed
+        second: .0267857164
+      data:
+        first:
+          name: _N1
+        second: 1
+      data:
+        first:
+          name: _N2
+        second: 1.33000004
+      data:
+        first:
+          name: _FresnelScale
+        second: .75
+      data:
+        first:
+          name: _GerstnerIntensity
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _BaseColor
+        second: {r: .00232482934, g: .0824110582, b: .316176474, a: 1}
+      data:
+        first:
+          name: _RefractionColor
+        second: {r: .172794104, g: .215669483, b: .5, a: 1}
+      data:
+        first:
+          name: _FoamColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Foam
+        second: {r: .100000001, g: .375, b: 0, a: 0}
+      data:
+        first:
+          name: _WaterColor
+        second: {r: .0818014741, g: .0857506171, b: .654411793, a: .501960814}
+      data:
+        first:
+          name: _ReflectionColor
+        second: {r: 0, g: .183468595, b: .397058845, a: 1}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _WorldLightDir
+        second: {r: 0, g: 0, b: 1, a: 0}
+      data:
+        first:
+          name: _DistortParams
+        second: {r: 1, g: 1, b: 2, a: 1.14999998}
+      data:
+        first:
+          name: _InvFadeParemeter
+        second: {r: .150000006, g: .150000006, b: .5, a: 1}
+      data:
+        first:
+          name: _AnimationTiling
+        second: {r: 2.20000005, g: 2.20000005, b: -1.10000002, a: -1.10000002}
+      data:
+        first:
+          name: _AnimationDirection
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _BumpTiling
+        second: {r: .00999999978, g: .00999999978, b: .00999999978, a: .00999999978}
+      data:
+        first:
+          name: _BumpDirection
+        second: {r: 1, g: 1, b: -1, a: 1}
+      data:
+        first:
+          name: _GAmplitude
+        second: {r: .300000012, g: .349999994, b: .25, a: .25}
+      data:
+        first:
+          name: _GFrequency
+        second: {r: 1.29999995, g: 1.35000002, b: 1.25, a: 1.25}
+      data:
+        first:
+          name: _GSteepness
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _GSpeed
+        second: {r: 1.20000005, g: 1.375, b: 1.10000002, a: 1.5}
+      data:
+        first:
+          name: _GDirectionAB
+        second: {r: .300000012, g: .850000024, b: .850000024, a: .25}
+      data:
+        first:
+          name: _GDirectionCD
+        second: {r: .100000001, g: .899999976, b: .5, a: .5}

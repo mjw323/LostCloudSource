@@ -78,8 +78,11 @@ public class Water : MonoBehaviour {
 		halfW = width / 2;
 		halfH = height / 2;
 
-		waterMaterial.SetVector("waveMapMax",renderer.bounds.max);
-		waterMaterial.SetVector("waveMapSize",renderer.bounds.size);
+        if (waterMaterial != null)
+        {
+            waterMaterial.SetVector("waveMapMax", renderer.bounds.max);
+            waterMaterial.SetVector("waveMapSize", renderer.bounds.size);
+        }
 	}	
 	
 	private Camera SetupReflectionCamera(Camera cam) 

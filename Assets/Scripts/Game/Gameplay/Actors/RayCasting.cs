@@ -6,18 +6,30 @@ public class RayCasting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 forward = transform.TransformDirection(Vector3.forward) ;
-		if(Physics.Raycast(transform.position, transform.forward,  200)){
-			Debug.DrawRay(transform.position, transform.forward*10, Color.green);
-		}
+		Vector3 downoffset = new Vector3(0,-2,0);
+		Vector3 rightoffset = new Vector3(3,0,0);
+		Vector3 upoffset = new Vector3(0,2,0);
+		Vector3 leftoffset = new Vector3(-3,0,0);
 
-		RaycastHit  hit;                                                                                                                                                
-		if(Physics.SphereCast(transform.position, 2f, transform.forward, out hit, 500)) {                                                                            
-			if(hit.collider.gameObject.tag == "Player"){                             
-				Debug.DrawRay(transform.position, transform.forward*5, Color.red);    
-				transform.LookAt(hit.transform);
-			}                                                                                                                                                       
-		}
+		RaycastHit hit;
+		if(Physics.SphereCast(gameObject.transform.position, 3, transform.forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
+			transform.LookAt(hit.transform);
+			Debug.DrawRay(transform.position,transform.forward*10,Color.green);
 
-	
-	}
+		if(Physics.SphereCast(gameObject.transform.position + upoffset, 3, transform.forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
+			transform.LookAt(hit.transform);
+		Debug.DrawRay(transform.position + upoffset,transform.forward*10,Color.green);
+
+		if(Physics.SphereCast(gameObject.transform.position + downoffset, 3, transform.forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
+			transform.LookAt(hit.transform);
+		Debug.DrawRay(transform.position + downoffset,transform.forward*10,Color.green);
+
+		if(Physics.SphereCast(gameObject.transform.position + leftoffset, 3, transform.forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
+			transform.LookAt(hit.transform);
+		Debug.DrawRay(gameObject.transform.position + leftoffset,transform.forward*10,Color.green);
+
+		if(Physics.SphereCast(gameObject.transform.position + rightoffset, 3, transform.forward, out hit, 20000) && hit.transform.gameObject.tag == "Player")
+			transform.LookAt(hit.transform);
+		Debug.DrawRay(gameObject.transform.position + rightoffset,transform.forward*10,Color.green);
+		}
 }

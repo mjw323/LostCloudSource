@@ -10,6 +10,7 @@ public class DynamicCamera : MonoBehaviour {
 
   private void Awake() {
     transform = GetComponent<Transform>();
+	navAgent = enemyAnchor.gameObject.GetComponent<NavMeshAgent>();
   }
 
   private void Start() {
@@ -33,12 +34,17 @@ public class DynamicCamera : MonoBehaviour {
 
   private void LateUpdate() {
     if (anchor != null) {
-      elevationAngle += Input.GetAxis("RightStickY") - Input.GetAxis("Mouse Y");
+      elevationAngle += (Input.GetAxis("RightStickY") - Input.GetAxis("Mouse Y"));
       float rotationAngle = (Input.GetAxis("RightStickX") + Input.GetAxis(
-        "Mouse X")) * rotationSpeed * Time.deltaTime;
+        "Mouse X")) * rotationSpeed * Time.deltaTime;	
       Quaternion rotation = Quaternion.AngleAxis(rotationAngle, Vector3.up);
+			
+		Vector3 goalPos = anchor.position;
+		if (navAgent.enabled){
+				//goalPos = enemyAnchor.position;//(goalPos + enemyAnchor.position)/2;
+			}
 
-      Vector3 relativePos = transform.position - anchor.position;
+      Vector3 relativePos = transform.position - goalPos;
       Vector3 relativePosXz = new Vector3(relativePos.x, 0, relativePos.z);
       Vector3 xzDirection = rotation * relativePosXz.normalized;
       Quaternion elevation = Quaternion.AngleAxis(elevationAngle,
@@ -46,13 +52,22 @@ public class DynamicCamera : MonoBehaviour {
       Vector3 direction = elevation * xzDirection;
 
       float distanceDiff = Mathf.Abs(distance - targetDistance);
-      float distanceStep = zoomCurve.Evaluate(distanceDiff) * zoomSpeed *
-        Time.deltaTime;
+      float distanceStep = zoomCurve.Evaluate(distanceDiff) * zoomSpeed * Time.deltaTime;
+			
+		if (Input.GetAxis("Target")>.8f){
+				if (!navAgent.enabled){
+					direction = Vector3.Slerp(direction,-anchor.forward,.1f);
+				}else{
+					
+				}
+					//direction = new Vector3(direction.x,0,direction.z);
+		}
+			
       distance = Mathf.Lerp(distance, targetDistance, distanceStep);
 
-      transform.position = anchor.position + direction * distance;
+      transform.position = goalPos + direction * distance;
 
-      transform.LookAt(anchor.position);
+      transform.LookAt(goalPos);
 
       DrawLine(anchor.position, anchor.position + relativePos, Color.red);
       DrawLine(anchor.position, anchor.position + relativePosXz, Color.blue);
@@ -61,6 +76,8 @@ public class DynamicCamera : MonoBehaviour {
   }
 
   public Transform anchor;
+	public Transform enemyAnchor;
+	private NavMeshAgent navAgent;
   public float targetDistance;
   public float zoomSpeed;
   public Curve zoomCurve;
