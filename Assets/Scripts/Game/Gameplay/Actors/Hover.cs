@@ -17,6 +17,7 @@ public class Hover : MonoBehaviour
         public float thrusterScale = 1.0f;
 
         public float thrustPower;
+		public float upgradeThrustPower;
         public float steerPower;
         public float angleClamp = 50.0f;
         public float airAngleClamp = 10.0f;
@@ -518,7 +519,9 @@ public class Hover : MonoBehaviour
                 Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,cameraDir.normalized);
                 Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
-				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
+		rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) 
+		                             * (thrustPower + (upgradeThrustPower*noke.GetComponent<CollectibleSystem>().UpgradeCompletion())) 
+		                             * (1 + (0.5f * jumpPower)), activeThruster.position);
 
                 if (Vector3.Magnitude(inputDir)>.75f){if (idling){
                     idling = false;
