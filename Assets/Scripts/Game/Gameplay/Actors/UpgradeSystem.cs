@@ -26,11 +26,11 @@ public class UpgradeSystem : MonoBehaviour {
 	Hoverboard.GetComponent<Hover>().canGrind = false;
 	Hoverboard.GetComponent<Hover>().canWater = false;
 		
-	if(DebugUpgrades == true){
-		Hoverboard.GetComponent<Hover>().canGlide = true;
-		Hoverboard.GetComponent<Hover>().canGrind = true;
-		Hoverboard.GetComponent<Hover>().canWater = true;
-	}
+		if(DebugUpgrades == true){
+			Hoverboard.GetComponent<Hover>().canGlide = true;
+			Hoverboard.GetComponent<Hover>().canGrind = true;
+			Hoverboard.GetComponent<Hover>().canWater = true;
+		}
 	
 	}
 	
@@ -48,21 +48,10 @@ public class UpgradeSystem : MonoBehaviour {
 		navAgent.speed = 0;
 		navAgent.enabled = false;
 		Enemy.GetComponent<NavMeshAI>().state = 3;
-		MainCamera.SendMessage("fadeOut");
 		StartCoroutine(NightTime());
 		//Destroy(collision.gameObject);
 		
-	}
-
-	void ActivateSoundMachine(){
-		if(HasPlayerGottenNextUpgrade){
-			Hoverboard.rigidbody.isKinematic = true;
-			HasPlayerGottenNextUpgrade = false;
-			Enemy.GetComponent<NavMeshAI>().state = 0;
-			MainCamera.SendMessage("fadeOut");
-			StartCoroutine(DayTime());
-
-			if(gettingUpgrade == 0){
+		if(gettingUpgrade == 0){
 				Hoverboard.gameObject.GetComponent<Hover>().canGlide = true;
 			}
 			
@@ -73,12 +62,20 @@ public class UpgradeSystem : MonoBehaviour {
 			if(gettingUpgrade == 2){
 				Hoverboard.gameObject.GetComponent<Hover>().canWater = true;
 			}
+		
+	}
+
+	void ActivateSoundMachine(){
+		if(HasPlayerGottenNextUpgrade){
+			Hoverboard.rigidbody.isKinematic = true;
+			HasPlayerGottenNextUpgrade = false;
+			Enemy.GetComponent<NavMeshAI>().state = 0;
+			StartCoroutine(DayTime());
 		}
 	}
 
 	IEnumerator NightTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
-		MainCamera.SendMessage("fadeIn");
 		//Sun.active = false;
 		//Moon.active = true;
 		
@@ -99,7 +96,6 @@ public class UpgradeSystem : MonoBehaviour {
 
 	IEnumerator DayTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
-		MainCamera.SendMessage("fadeIn");
 		//Sun.active = true;
 		//Moon.active = false;
 		HasPlayerGottenNextUpgrade = false;
