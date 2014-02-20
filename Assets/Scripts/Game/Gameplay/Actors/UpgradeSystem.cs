@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-
 public class UpgradeSystem : MonoBehaviour {
 
 	public bool DebugUpgrades;
 	public bool HasPlayerGottenNextUpgrade;
-	public Transform Player;
+	public GameObject Hoverboard;
 	public Camera MainCamera;
 	public GameObject Enemy;
 	//public GameObject Sun;
@@ -24,14 +22,14 @@ public class UpgradeSystem : MonoBehaviour {
 
 	HasPlayerGottenNextUpgrade = false;
 	
-	Player.gameObject.GetComponent<Hover>().canGlide = false;
-	Player.gameObject.GetComponent<Hover>().canGrind = false;
-	Player.gameObject.GetComponent<Hover>().canWater = false;
+	Hoverboard.GetComponent<Hover>().canGlide = false;
+	Hoverboard.GetComponent<Hover>().canGrind = false;
+	Hoverboard.GetComponent<Hover>().canWater = false;
 		
 	if(DebugUpgrades == true){
-		Player.gameObject.GetComponent<Hover>().canGlide = true;
-		Player.gameObject.GetComponent<Hover>().canGrind = true;
-		Player.gameObject.GetComponent<Hover>().canWater = true;
+		Hoverboard.GetComponent<Hover>().canGlide = true;
+		Hoverboard.GetComponent<Hover>().canGrind = true;
+		Hoverboard.GetComponent<Hover>().canWater = true;
 	}
 	
 	}
@@ -45,7 +43,7 @@ public class UpgradeSystem : MonoBehaviour {
 	
 	
 		HasPlayerGottenNextUpgrade = true;
-		Player.rigidbody.isKinematic = true;
+		Hoverboard.rigidbody.isKinematic = true;
 		navAgent = Enemy.GetComponent<NavMeshAgent>();
 		navAgent.speed = 0;
 		navAgent.enabled = false;
@@ -58,22 +56,22 @@ public class UpgradeSystem : MonoBehaviour {
 
 	void ActivateSoundMachine(){
 		if(HasPlayerGottenNextUpgrade){
-			Player.rigidbody.isKinematic = true;
+			Hoverboard.rigidbody.isKinematic = true;
 			HasPlayerGottenNextUpgrade = false;
 			Enemy.GetComponent<NavMeshAI>().state = 0;
 			MainCamera.SendMessage("fadeOut");
 			StartCoroutine(DayTime());
 
 			if(gettingUpgrade == 0){
-				Player.gameObject.GetComponent<Hover>().canGlide = true;
+				Hoverboard.gameObject.GetComponent<Hover>().canGlide = true;
 			}
 			
 			if(gettingUpgrade == 1){
-				Player.gameObject.GetComponent<Hover>().canGrind = true;
+				Hoverboard.gameObject.GetComponent<Hover>().canGrind = true;
 			}
 			
 			if(gettingUpgrade == 2){
-				Player.gameObject.GetComponent<Hover>().canWater = true;
+				Hoverboard.gameObject.GetComponent<Hover>().canWater = true;
 			}
 		}
 	}
@@ -94,7 +92,7 @@ public class UpgradeSystem : MonoBehaviour {
 		//RenderSettings.ambientLight = new Color(.075f,.075f,.09f);
 		//RenderSettings.skybox = NightSky;*/
 		
-		Player.rigidbody.isKinematic = false;
+		Hoverboard.rigidbody.isKinematic = false;
 		navAgent.enabled = true;
 		navAgent.speed = 12;
 	}
@@ -117,7 +115,7 @@ public class UpgradeSystem : MonoBehaviour {
 		//RenderSettings.ambientLight = new Color(.2f,.2f,.2f);
 		//RenderSettings.skybox = DaySky;*/
 		
-		Player.rigidbody.isKinematic = false;
+		Hoverboard.rigidbody.isKinematic = false;
 		navAgent.speed = 0;
 		navAgent.enabled = false;
 	}

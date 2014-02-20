@@ -4,7 +4,7 @@ using System.Collections;
 public class NavMeshAI : MonoBehaviour {
 	
 
-	public Transform Player;
+	public GameObject Player;
 	public Vector3 lastKnownPlayerPosition;
 	public GameObject HidePosition;
 	public Camera Eyes;
@@ -69,15 +69,15 @@ public class NavMeshAI : MonoBehaviour {
 
 		look ();
 
-		if (!Leaping && (Vector3.Magnitude(Player.position - this.transform.position) < 100)){
-			GetComponent<NavMeshAgent>().destination = Player.position;
+		if (!Leaping && (Vector3.Magnitude(Player.transform.position - this.transform.position) < 100)){
+			GetComponent<NavMeshAgent>().destination = Player.transform.position;
 		}
 
 		if (Random.Range(1,500) == 1 || Leaping){
 			if (!Leaping){
 				Debug.Log("Leap!");
 			}
-			if (Vector3.Magnitude(Player.position - this.transform.position) < 100){
+			if (Vector3.Magnitude(Player.transform.position - this.transform.position) < 100){
 				leap();
 			}
 		}
@@ -98,8 +98,8 @@ public class NavMeshAI : MonoBehaviour {
 	void leap(){
 
 		float distance;
-		distance = Vector3.Magnitude(Player.position-this.transform.position);
-		GetComponent<NavMeshAgent>().destination = Player.position + (Player.rigidbody.velocity * (distance/GetComponent<NavMeshAgent>().speed));
+		distance = Vector3.Magnitude(Player.transform.position-this.transform.position);
+		GetComponent<NavMeshAgent>().destination = Player.transform.position + (Player.rigidbody.velocity * (distance/GetComponent<NavMeshAgent>().speed));
 		if (distance > leapDistance){
 			Leaping = true;
 			GetComponent<NavMeshAgent>().speed = 200;
