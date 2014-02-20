@@ -10,8 +10,8 @@ public class UpgradeSystem : MonoBehaviour {
 	public Transform Player;
 	public Camera MainCamera;
 	public GameObject Enemy;
-	public GameObject Sun;
-	public GameObject Moon;
+	//public GameObject Sun;
+	//public GameObject Moon;
 	//public Material DaySky;
 	//public Material NightSky;
 	public float FadeWaitTime;
@@ -81,8 +81,8 @@ public class UpgradeSystem : MonoBehaviour {
 	IEnumerator NightTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
 		MainCamera.SendMessage("fadeIn");
-		Sun.active = false;
-		Moon.active = true;
+		//Sun.active = false;
+		//Moon.active = true;
 		
 		//Set Render Settings and Fog
 		/*RenderSettings.fog = enabled;
@@ -102,8 +102,8 @@ public class UpgradeSystem : MonoBehaviour {
 	IEnumerator DayTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
 		MainCamera.SendMessage("fadeIn");
-		Sun.active = true;
-		Moon.active = false;
+		//Sun.active = true;
+		//Moon.active = false;
 		HasPlayerGottenNextUpgrade = false;
 		
 		

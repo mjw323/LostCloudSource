@@ -610,18 +610,6 @@ public class Hover : MonoBehaviour
 											+ (30 * Math.Max (0,Vector3.Dot (Vector3.Normalize (rigidbody.velocity),cameraDir)))
 											)*Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20);
 				whoosh.setSpeed(Mathf.Pow (Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20),6.0f));
-				/*
-                steerMod = 1;
-                if (!onGround){steerMod = 0.66f;}
-
-                rigidbody.AddForceAtPosition(m_thruster.forward * m_thrust * thrustPower * (1 + (0.25f * jumpPower)), m_thruster.position);
-                rigidbody.AddTorque(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/2)));
-                //transform.Rotate(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/1)));
-                */
-
-                //m_thrust = 0;
-                //m_lean = 0;
-                //m_jump = false;
 		
 				hoverParticlesB.startLifetime = hoverParticlesA.startLifetime;
 				hoverParticlesB.startSpeed = hoverParticlesA.startSpeed;
