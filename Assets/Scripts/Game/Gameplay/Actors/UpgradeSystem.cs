@@ -35,25 +35,24 @@ public class UpgradeSystem : MonoBehaviour {
 	
 	}
 	
-	void OnCollisionEnter(Collision collision){
-		if(collision.gameObject.name == "Upgrade01"){
+	void GotBigUpgrade(float index){
+		if(index == 0){
 		Player.gameObject.GetComponent<Hover>().canGlide = true;
 	}
 	 
-	if(collision.gameObject.name == "Upgrade02"){
+		if(index == 1){
 		Player.gameObject.GetComponent<Hover>().canGrind = true;
 	}
 	
-	if(collision.gameObject.name == "Upgrade03"){
+		if(index == 2){
 		Player.gameObject.GetComponent<Hover>().canWater = true;
 	}
 	
-	if(collision.gameObject.name == "Upgrade04"){
+		if(index == 3){
 		//Start Final Cutscene
 	}
 	
 	
-	if(collision.gameObject.tag == "Upgrade"){
 		HasPlayerGottenNextUpgrade = true;
 		Player.rigidbody.isKinematic = true;
 		navAgent = Enemy.GetComponent<NavMeshAgent>();
@@ -62,8 +61,8 @@ public class UpgradeSystem : MonoBehaviour {
 		Enemy.GetComponent<NavMeshAI>().state = 3;
 		MainCamera.SendMessage("fadeOut");
 		StartCoroutine(NightTime());
-		Destroy(collision.gameObject);
-		}
+		//Destroy(collision.gameObject);
+		
 	}
 
 	void OnTriggerEnter(Collider other){

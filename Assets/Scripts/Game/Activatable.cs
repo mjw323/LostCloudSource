@@ -20,6 +20,8 @@ public class Activatable : MonoBehaviour {
 	private Transform camera;
 	private float activeDistance = 3.0f;
 	private bool activated = false;
+	public string message = "";
+	public float messageAttachment = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -35,10 +37,11 @@ public class Activatable : MonoBehaviour {
 	void Update () {
 		Color color = buttonDraw.materials [0].color;
 		float dist = Vector3.Magnitude (noke.position - this.transform.position);
-		if (dist < activeDistance && !activated) {
+		if (dist < activeDistance && !activated && noke.GetComponent<FootMovement>().enabled) {
 			buttonDraw.materials [0].SetColor("_Color", new Color(color.r,color.g,color.b,color.a + ((1f - color.a) * 0.3f))); //fade in button
 			if (Input.GetButton("Activate")){
 				activated = true;
+				if (message!=""){noke.SendMessage(message,messageAttachment,SendMessageOptions.RequireReceiver);}
 			}
 
 		} else {
