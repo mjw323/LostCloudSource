@@ -63,6 +63,7 @@ GameObject:
   - 136: {fileID: 13600000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Upgrade01
   m_TagString: Upgrade
@@ -217,6 +218,18 @@ MonoBehaviour:
   button: {fileID: 100000, guid: 700f9b71ada7b42879622d2951fc6d4e, type: 2}
   message: GotBigUpgrade
   messageAttachment: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ff355e001c34f5690a7bd2f7dbe46c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 100002}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
