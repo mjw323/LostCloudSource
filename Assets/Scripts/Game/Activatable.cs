@@ -58,4 +58,8 @@ public class Activatable : MonoBehaviour {
 	public void Deactivate(){ // call this to deactivate
 		activated = false;
 	}
+
+	public void setActive(bool setto){ // call this to deactivate
+		activated = setto;
+	}
 }

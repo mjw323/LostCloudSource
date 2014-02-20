@@ -113,6 +113,7 @@ GameObject:
   - 33: {fileID: 3300008}
   - 136: {fileID: 13600000}
   - 23: {fileID: 2300008}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Upgrade02
   m_TagString: Upgrade
@@ -244,8 +245,8 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aaeda4e58a4b24f29b24a1834b23d32f, type: 2}
+  - {fileID: 2100000, guid: aaeda4e58a4b24f29b24a1834b23d32f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -287,8 +288,8 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aaeda4e58a4b24f29b24a1834b23d32f, type: 2}
+  - {fileID: 2100000, guid: aaeda4e58a4b24f29b24a1834b23d32f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -309,8 +310,8 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aaeda4e58a4b24f29b24a1834b23d32f, type: 2}
+  - {fileID: 2100000, guid: aaeda4e58a4b24f29b24a1834b23d32f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -346,7 +347,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 8806e734ef9e44694aec56ea10a161a4, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 8806e734ef9e44694aec56ea10a161a4, type: 3}
 --- !u!33 &3300002
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -360,14 +361,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
-  m_Mesh: {fileID: 4300000, guid: 8806e734ef9e44694aec56ea10a161a4, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 8806e734ef9e44694aec56ea10a161a4, type: 3}
 --- !u!33 &3300006
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
-  m_Mesh: {fileID: 4300000, guid: 8806e734ef9e44694aec56ea10a161a4, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 8806e734ef9e44694aec56ea10a161a4, type: 3}
 --- !u!33 &3300008
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -375,6 +376,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5735d048b3184e768a63c1f326238fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 1
+  button: {fileID: 100000, guid: 700f9b71ada7b42879622d2951fc6d4e, type: 2}
+  message: GotBigUpgrade
+  messageAttachment: 1
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

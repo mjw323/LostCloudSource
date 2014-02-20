@@ -12,10 +12,11 @@ public class UpgradeSystem : MonoBehaviour {
 	public GameObject Enemy;
 	public GameObject Sun;
 	public GameObject Moon;
-	public Material DaySky;
-	public Material NightSky;
-	public int FadeWaitTime;
+	//public Material DaySky;
+	//public Material NightSky;
+	public float FadeWaitTime;
 	private NavMeshAgent navAgent;
+	private float gettingUpgrade = 0f;
 
 
 	// Use this for initialization
@@ -36,17 +37,7 @@ public class UpgradeSystem : MonoBehaviour {
 	}
 	
 	void GotBigUpgrade(float index){
-		if(index == 0){
-		Player.gameObject.GetComponent<Hover>().canGlide = true;
-	}
-	 
-		if(index == 1){
-		Player.gameObject.GetComponent<Hover>().canGrind = true;
-	}
-	
-		if(index == 2){
-		Player.gameObject.GetComponent<Hover>().canWater = true;
-	}
+		gettingUpgrade = index;
 	
 		if(index == 3){
 		//Start Final Cutscene
@@ -65,12 +56,25 @@ public class UpgradeSystem : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter(Collider other){
-		if(other.gameObject.name == "StartSphere" && HasPlayerGottenNextUpgrade == true){
+	void ActivateSoundMachine(){
+		if(HasPlayerGottenNextUpgrade){
 			Player.rigidbody.isKinematic = true;
+			HasPlayerGottenNextUpgrade = false;
 			Enemy.GetComponent<NavMeshAI>().state = 0;
 			MainCamera.SendMessage("fadeOut");
 			StartCoroutine(DayTime());
+
+			if(gettingUpgrade == 0){
+				Player.gameObject.GetComponent<Hover>().canGlide = true;
+			}
+			
+			if(gettingUpgrade == 1){
+				Player.gameObject.GetComponent<Hover>().canGrind = true;
+			}
+			
+			if(gettingUpgrade == 2){
+				Player.gameObject.GetComponent<Hover>().canWater = true;
+			}
 		}
 	}
 
@@ -81,14 +85,14 @@ public class UpgradeSystem : MonoBehaviour {
 		Moon.active = true;
 		
 		//Set Render Settings and Fog
-		RenderSettings.fog = enabled;
-		RenderSettings.fogColor = new Color(.051f,.051f,.098f);
-		RenderSettings.fogMode = FogMode.ExponentialSquared;
-		RenderSettings.fogDensity = .0035f;
+		/*RenderSettings.fog = enabled;
+		//RenderSettings.fogColor = new Color(.051f,.051f,.098f);
+		//RenderSettings.fogMode = FogMode.ExponentialSquared;
+		//RenderSettings.fogDensity = .0035f;
 		RenderSettings.fogStartDistance = 0;
 		RenderSettings.fogEndDistance = 1200;
-		RenderSettings.ambientLight = new Color(.075f,.075f,.09f);
-		RenderSettings.skybox = NightSky;
+		//RenderSettings.ambientLight = new Color(.075f,.075f,.09f);
+		//RenderSettings.skybox = NightSky;*/
 		
 		Player.rigidbody.isKinematic = false;
 		navAgent.enabled = true;
@@ -104,14 +108,14 @@ public class UpgradeSystem : MonoBehaviour {
 		
 		
 		//Set Render Settings and Fog
-		RenderSettings.fog = enabled;
-		RenderSettings.fogColor = new Color(.46f,.709f,.949f);
-		RenderSettings.fogMode = FogMode.Linear;
-		RenderSettings.fogDensity = .01f;
+		/*RenderSettings.fog = enabled;
+		//RenderSettings.fogColor = new Color(.46f,.709f,.949f);
+		//RenderSettings.fogMode = FogMode.Linear;
+		//RenderSettings.fogDensity = .01f;
 		RenderSettings.fogStartDistance = 0;
 		RenderSettings.fogEndDistance = 1200;
-		RenderSettings.ambientLight = new Color(.2f,.2f,.2f);
-		RenderSettings.skybox = DaySky;
+		//RenderSettings.ambientLight = new Color(.2f,.2f,.2f);
+		//RenderSettings.skybox = DaySky;*/
 		
 		Player.rigidbody.isKinematic = false;
 		navAgent.speed = 0;
