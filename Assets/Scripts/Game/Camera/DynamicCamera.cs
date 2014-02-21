@@ -41,7 +41,7 @@ public class DynamicCamera : MonoBehaviour {
 			
 		Vector3 goalPos = anchor.position;
 		if (navAgent.enabled){
-				//goalPos = enemyAnchor.position;//(goalPos + enemyAnchor.position)/2;
+				//goalPos = (goalPos + enemyAnchor.position)/2;
 			}
 
       Vector3 relativePos = transform.position - goalPos;
@@ -58,7 +58,7 @@ public class DynamicCamera : MonoBehaviour {
 				if (!navAgent.enabled){
 					direction = Vector3.Slerp(direction,-anchor.forward,.1f);
 				}else{
-					
+					direction = Vector3.Slerp(direction,Vector3.Normalize(anchor.position-enemyAnchor.position),.1f);
 				}
 					//direction = new Vector3(direction.x,0,direction.z);
 		}
