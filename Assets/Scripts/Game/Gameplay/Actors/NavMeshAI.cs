@@ -41,6 +41,9 @@ public class NavMeshAI : MonoBehaviour {
 		else if (state == 4){
 			alerted();
 		}
+		else if (state == 5){
+			curious();
+		}
 	}
 
 	void hide(){
@@ -85,6 +88,10 @@ public class NavMeshAI : MonoBehaviour {
 
 	void alerted(){
 		//Move to last known spot of the player, then stop rotate for 5 seconds, and then move to search
+	}
+
+	void curious(){
+		//Move closer to last heard hoverboard spot slowly, then stop, rotate after 5 seconds, return to move and search
 	}
 
 	void look(){
