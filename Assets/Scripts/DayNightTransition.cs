@@ -46,7 +46,7 @@ public class DayNightTransition : MonoBehaviour {
 		Moon.GetComponent<Light> ().intensity = 0f;
 	}
 
-	void fadeOut(){
+	void fadeDayOut(){
 		camControl.enabled = false;
 		parentControl.enabled = false;
 
@@ -60,7 +60,7 @@ public class DayNightTransition : MonoBehaviour {
 		Sun.active = true;
 	}
 
-	void fadeIn(){
+	void fadeDayIn(){
 		lookUp = false;
 		timePassed = 0f;
 		animating = true;
