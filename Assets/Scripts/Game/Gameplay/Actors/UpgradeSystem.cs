@@ -47,7 +47,7 @@ public class UpgradeSystem : MonoBehaviour {
 		navAgent = Enemy.GetComponent<NavMeshAgent>();
 		navAgent.speed = 0;
 		navAgent.enabled = false;
-		Enemy.GetComponent<NavMeshAI>().state = 3;
+		Enemy.GetComponent<NavMeshAI>().state = 1;
 		MainCamera.SendMessage("fadeOut");
 		StartCoroutine(NightTime());
 		//Destroy(collision.gameObject);
