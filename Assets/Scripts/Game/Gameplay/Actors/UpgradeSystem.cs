@@ -48,6 +48,7 @@ public class UpgradeSystem : MonoBehaviour {
 		navAgent.speed = 0;
 		navAgent.enabled = false;
 		Enemy.GetComponent<NavMeshAI>().state = 3;
+		MainCamera.SendMessage("fadeOut");
 		StartCoroutine(NightTime());
 		//Destroy(collision.gameObject);
 		
@@ -70,12 +71,14 @@ public class UpgradeSystem : MonoBehaviour {
 			Hoverboard.rigidbody.isKinematic = true;
 			HasPlayerGottenNextUpgrade = false;
 			Enemy.GetComponent<NavMeshAI>().state = 0;
+			MainCamera.SendMessage("fadeOut");
 			StartCoroutine(DayTime());
 		}
 	}
 
 	IEnumerator NightTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
+		MainCamera.SendMessage("fadeIn");
 		//Sun.active = false;
 		//Moon.active = true;
 		
@@ -96,6 +99,7 @@ public class UpgradeSystem : MonoBehaviour {
 
 	IEnumerator DayTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
+		MainCamera.SendMessage("fadeIn");
 		//Sun.active = true;
 		//Moon.active = false;
 		HasPlayerGottenNextUpgrade = false;
