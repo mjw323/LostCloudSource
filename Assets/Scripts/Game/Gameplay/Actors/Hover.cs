@@ -17,6 +17,7 @@ public class Hover : MonoBehaviour
         public float thrusterScale = 1.0f;
 
         public float thrustPower;
+		public float upgradeThrustPower;
         public float steerPower;
         public float angleClamp = 50.0f;
         public float airAngleClamp = 10.0f;
@@ -230,6 +231,8 @@ public class Hover : MonoBehaviour
 				theCamera = cam.GetComponent<Camera>();
 				cameraFOV = theCamera.fieldOfView;
 				whoosh = cam.GetComponent("CameraWhoosh") as CameraWhoosh;
+				cameraMoveDir = theCamera.transform.forward;
+				cameraMoveDir.y = 0;
 
                 respawner = noke.GetComponent("RespawnSystem") as RespawnSystem;
         }
@@ -351,8 +354,8 @@ public class Hover : MonoBehaviour
                                 }
                         }
                 }
-				if (landing > 1f){landing -= 1f;}else{landing = 0f;}
-				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y/5f);}
+				if (landing > 0f){landing -= Time.deltaTime;}else{landing = 0f;}
+				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y/15f);}
 				////////////////////////////////BOARD DROWNING//////////////////////////////////////////////
 		if (!canWater && waterSpray) {drowning = true;}
 		if (drowning){
@@ -514,11 +517,16 @@ public class Hover : MonoBehaviour
 				
 				Vector3 inputDir = new Vector3(m_lean,0,m_thrust);
 				float angleSign = Math.Sign (Vector3.Cross(Vector3.forward,inputDir).y);
-				//Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
-                Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,cameraDir.normalized);
+				//if (Vector3.Magnitude(inputDir)<.3f){ //only updates stick to camera relationship when character is relatively still
+					cameraMoveDir = cameraDir;
+				//}
+
+                Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,cameraMoveDir.normalized);
                 Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
-				rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) * thrustPower * (1 + (0.5f * jumpPower)), activeThruster.position);
+		rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) 
+		                             * (thrustPower + (upgradeThrustPower*noke.GetComponent<CollectibleSystem>().UpgradeCompletion())) 
+		                             * (1 + (0.5f * jumpPower)), activeThruster.position);
 
                 if (Vector3.Magnitude(inputDir)>.75f){if (idling){
                     idling = false;
@@ -607,18 +615,6 @@ public class Hover : MonoBehaviour
 											+ (30 * Math.Max (0,Vector3.Dot (Vector3.Normalize (rigidbody.velocity),cameraDir)))
 											)*Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20);
 				whoosh.setSpeed(Mathf.Pow (Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20),6.0f));
-				/*
-                steerMod = 1;
-                if (!onGround){steerMod = 0.66f;}
-
-                rigidbody.AddForceAtPosition(m_thruster.forward * m_thrust * thrustPower * (1 + (0.25f * jumpPower)), m_thruster.position);
-                rigidbody.AddTorque(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/2)));
-                //transform.Rotate(transform.up * m_lean * steerMod * steerPower * (0.5f + ((1 - jumpPower)/1)));
-                */
-
-                //m_thrust = 0;
-                //m_lean = 0;
-                //m_jump = false;
 		
 				hoverParticlesB.startLifetime = hoverParticlesA.startLifetime;
 				hoverParticlesB.startSpeed = hoverParticlesA.startSpeed;
@@ -743,8 +739,12 @@ public class Hover : MonoBehaviour
             return m_lean;
         }
 	    public bool Jump(){
-            return (m_jump && onGround);
+            return (m_jump);
         }
+	
+		public bool Grounded(){
+			return onGround;
+		}
         public bool Jumping(){
             return (jumping);
         }
@@ -762,6 +762,7 @@ public class Hover : MonoBehaviour
 		[HideInInspector] new private ParticleSystem splashParticles;
 		[HideInInspector] new private ParticleSystem drownParticles;
 		[HideInInspector] new private Vector3 cameraDir;
+		[HideInInspector] new private Vector3 cameraMoveDir;
 		[HideInInspector] new private Camera theCamera;
 		[HideInInspector] new private float cameraFOV;
 		[HideInInspector] new private CameraWhoosh whoosh;

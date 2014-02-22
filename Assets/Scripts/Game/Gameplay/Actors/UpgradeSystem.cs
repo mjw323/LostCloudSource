@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-
 public class UpgradeSystem : MonoBehaviour {
 
 	public bool DebugUpgrades;
 	public bool HasPlayerGottenNextUpgrade;
-	public Transform Player;
+	public GameObject Hoverboard;
 	public Camera MainCamera;
 	public GameObject Enemy;
-	public GameObject Sun;
-	public GameObject Moon;
-	public Material DaySky;
-	public Material NightSky;
-	public int FadeWaitTime;
+	//public GameObject Sun;
+	//public GameObject Moon;
+	//public Material DaySky;
+	//public Material NightSky;
+	public float FadeWaitTime;
 	private NavMeshAgent navAgent;
+	private float gettingUpgrade = 0f;
 
 
 	// Use this for initialization
@@ -23,98 +22,100 @@ public class UpgradeSystem : MonoBehaviour {
 
 	HasPlayerGottenNextUpgrade = false;
 	
-	Player.gameObject.GetComponent<Hover>().canGlide = false;
-	Player.gameObject.GetComponent<Hover>().canGrind = false;
-	Player.gameObject.GetComponent<Hover>().canWater = false;
+	Hoverboard.GetComponent<Hover>().canGlide = false;
+	Hoverboard.GetComponent<Hover>().canGrind = false;
+	Hoverboard.GetComponent<Hover>().canWater = false;
 		
-	if(DebugUpgrades == true){
-		Player.gameObject.GetComponent<Hover>().canGlide = true;
-		Player.gameObject.GetComponent<Hover>().canGrind = true;
-		Player.gameObject.GetComponent<Hover>().canWater = true;
-	}
+		if(DebugUpgrades == true){
+			Hoverboard.GetComponent<Hover>().canGlide = true;
+			Hoverboard.GetComponent<Hover>().canGrind = true;
+			Hoverboard.GetComponent<Hover>().canWater = true;
+		}
 	
 	}
 	
-	void OnCollisionEnter(Collision collision){
-		if(collision.gameObject.name == "Upgrade01"){
-		Player.gameObject.GetComponent<Hover>().canGlide = true;
-	}
-	 
-	if(collision.gameObject.name == "Upgrade02"){
-		Player.gameObject.GetComponent<Hover>().canGrind = true;
-	}
+	void GotBigUpgrade(float index){
+		gettingUpgrade = index;
 	
-	if(collision.gameObject.name == "Upgrade03"){
-		Player.gameObject.GetComponent<Hover>().canWater = true;
-	}
-	
-	if(collision.gameObject.name == "Upgrade04"){
+		if(index == 3){
 		//Start Final Cutscene
 	}
 	
 	
-	if(collision.gameObject.tag == "Upgrade"){
 		HasPlayerGottenNextUpgrade = true;
-		Player.rigidbody.isKinematic = true;
+		Hoverboard.rigidbody.isKinematic = true;
 		navAgent = Enemy.GetComponent<NavMeshAgent>();
 		navAgent.speed = 0;
 		navAgent.enabled = false;
-		Enemy.GetComponent<NavMeshAI>().state = 3;
-		MainCamera.SendMessage("fadeOut");
+		Enemy.GetComponent<NavMeshAI>().state = 1;
+		MainCamera.SendMessage("fadeDayOut");
 		StartCoroutine(NightTime());
-		Destroy(collision.gameObject);
-		}
+		//Destroy(collision.gameObject);
+		
+		if(gettingUpgrade == 0){
+				Hoverboard.gameObject.GetComponent<Hover>().canGlide = true;
+			}
+			
+			if(gettingUpgrade == 1){
+				Hoverboard.gameObject.GetComponent<Hover>().canGrind = true;
+			}
+			
+			if(gettingUpgrade == 2){
+				Hoverboard.gameObject.GetComponent<Hover>().canWater = true;
+			}
+		
 	}
 
-	void OnTriggerEnter(Collider other){
-		if(other.gameObject.name == "StartSphere" && HasPlayerGottenNextUpgrade == true){
-			Player.rigidbody.isKinematic = true;
+	void ActivateSoundMachine(){
+		if(HasPlayerGottenNextUpgrade){
+			Hoverboard.rigidbody.isKinematic = true;
+			HasPlayerGottenNextUpgrade = false;
 			Enemy.GetComponent<NavMeshAI>().state = 0;
-			MainCamera.SendMessage("fadeOut");
+			MainCamera.SendMessage("fadeDayOut");
 			StartCoroutine(DayTime());
 		}
 	}
 
 	IEnumerator NightTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
-		MainCamera.SendMessage("fadeIn");
-		Sun.active = false;
-		Moon.active = true;
+		MainCamera.SendMessage("fadeDayIn");
+		//Sun.active = false;
+		//Moon.active = true;
 		
 		//Set Render Settings and Fog
-		RenderSettings.fog = enabled;
-		RenderSettings.fogColor = new Color(.051f,.051f,.098f);
-		RenderSettings.fogMode = FogMode.ExponentialSquared;
-		RenderSettings.fogDensity = .0035f;
+		/*RenderSettings.fog = enabled;
+		//RenderSettings.fogColor = new Color(.051f,.051f,.098f);
+		//RenderSettings.fogMode = FogMode.ExponentialSquared;
+		//RenderSettings.fogDensity = .0035f;
 		RenderSettings.fogStartDistance = 0;
 		RenderSettings.fogEndDistance = 1200;
-		RenderSettings.ambientLight = new Color(.075f,.075f,.09f);
-		RenderSettings.skybox = NightSky;
+		//RenderSettings.ambientLight = new Color(.075f,.075f,.09f);
+		//RenderSettings.skybox = NightSky;*/
 		
-		Player.rigidbody.isKinematic = false;
+		Hoverboard.rigidbody.isKinematic = false;
 		navAgent.enabled = true;
 		navAgent.speed = 12;
 	}
 
 	IEnumerator DayTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
-		MainCamera.SendMessage("fadeIn");
-		Sun.active = true;
-		Moon.active = false;
+		MainCamera.SendMessage("fadeDayIn");
+		//Sun.active = true;
+		//Moon.active = false;
 		HasPlayerGottenNextUpgrade = false;
 		
 		
 		//Set Render Settings and Fog
-		RenderSettings.fog = enabled;
-		RenderSettings.fogColor = new Color(.46f,.709f,.949f);
-		RenderSettings.fogMode = FogMode.Linear;
-		RenderSettings.fogDensity = .01f;
+		/*RenderSettings.fog = enabled;
+		//RenderSettings.fogColor = new Color(.46f,.709f,.949f);
+		//RenderSettings.fogMode = FogMode.Linear;
+		//RenderSettings.fogDensity = .01f;
 		RenderSettings.fogStartDistance = 0;
 		RenderSettings.fogEndDistance = 1200;
-		RenderSettings.ambientLight = new Color(.2f,.2f,.2f);
-		RenderSettings.skybox = DaySky;
+		//RenderSettings.ambientLight = new Color(.2f,.2f,.2f);
+		//RenderSettings.skybox = DaySky;*/
 		
-		Player.rigidbody.isKinematic = false;
+		Hoverboard.rigidbody.isKinematic = false;
 		navAgent.speed = 0;
 		navAgent.enabled = false;
 	}
