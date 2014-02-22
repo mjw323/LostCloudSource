@@ -25,7 +25,7 @@ public class RagdollScript : MonoBehaviour {
 		//Set all RigidBodies to kinematic so that they can be controlled with Mecanim
 		//and there will be no glitches when transitioning to a ragdoll
 		SetKinematic(true);
-		Debug.Log ("shits nuts");
+		//Debug.Log ("shits nuts");
 	}
 	
 	// Update is called once per frame

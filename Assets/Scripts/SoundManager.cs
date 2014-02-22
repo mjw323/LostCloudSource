@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
 
-	public AudioClip otherClip;
+	public AudioClip song;
 	
 	// Use this for initialization
 	void Start () {
@@ -16,8 +16,11 @@ public class SoundManager : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider c) {
-		if (c.gameObject.tag.Equals("Player")){
-			//Camera.mainCamera.GetComponent<AudioSource>().clip = blah;
+		print("collided");
+		if (c.gameObject.tag.Equals("Player") || c.gameObject.tag.Equals("Board")){
+			print ("found player");
+			Camera.mainCamera.GetComponent<AudioSource>().clip = song;
+			Camera.mainCamera.GetComponent<AudioSource>().Play();
 		}
 	}
 }
