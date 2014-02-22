@@ -33,6 +33,9 @@ public class BoardController : MonoBehaviour
 		jumpId = Animator.StringToHash("BoardJump");
 		jumpingId = Animator.StringToHash("Jumping");
 		landingId = Animator.StringToHash("Landing");
+		landStrId = Animator.StringToHash("LandStrength");
+		groundedId = Animator.StringToHash("Grounded");
+		needLandId = Animator.StringToHash("NeedToLand");
 
 		GameObject board = GameObject.FindWithTag("Board");
 		boardTransform = board.GetComponent<Transform>();
@@ -72,8 +75,17 @@ public class BoardController : MonoBehaviour
 			boardMovement.DismissBoard();
 		animator.SetFloat(leanId, boardMovement.Lean());
 		animator.SetFloat(landingId, boardMovement.Landing());
+		
+		if (boardMovement.Landing() > 0.25f && !needToLand){needToLand = true; animator.SetBool(needLandId, true);}
+		else{animator.SetBool(needLandId, false);}
+		if (boardMovement.Landing() <= 0f){needToLand = false;}
+		
+		if (landing == 0f && boardMovement.Landing()>0){animator.SetFloat(landStrId, boardMovement.Landing());}
 		animator.SetBool(jumpingId, boardMovement.Jumping());
 		animator.SetBool(jumpId, boardMovement.Jump());
+		animator.SetBool(groundedId, boardMovement.Grounded());
+		
+		landing = boardMovement.Landing();
 		/*boardMovement.Move(
 			Input.GetAxis("Vertical"),
 			Input.GetAxis("Horizontal"),
@@ -101,6 +113,11 @@ public class BoardController : MonoBehaviour
 	[HideInInspector] private int jumpId;
 	[HideInInspector] private int jumpingId;
 	[HideInInspector] private int landingId;
+	[HideInInspector] private float landing;
+	[HideInInspector] private int landStrId;
+	[HideInInspector] private int groundedId;
+	[HideInInspector] private int needLandId;
+	private bool needToLand = false;
 
 	// Animator state references
 	/*[HideInInspector] private int pivotLeftId;

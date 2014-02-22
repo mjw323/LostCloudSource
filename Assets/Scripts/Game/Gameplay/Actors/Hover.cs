@@ -231,6 +231,8 @@ public class Hover : MonoBehaviour
 				theCamera = cam.GetComponent<Camera>();
 				cameraFOV = theCamera.fieldOfView;
 				whoosh = cam.GetComponent("CameraWhoosh") as CameraWhoosh;
+				cameraMoveDir = theCamera.transform.forward;
+				cameraMoveDir.y = 0;
 
                 respawner = noke.GetComponent("RespawnSystem") as RespawnSystem;
         }
@@ -352,8 +354,8 @@ public class Hover : MonoBehaviour
                                 }
                         }
                 }
-				if (landing > 1f){landing -= 1f;}else{landing = 0f;}
-				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y/5f);}
+				if (landing > 0f){landing -= Time.deltaTime;}else{landing = 0f;}
+				if (onGround && !wasOnGround){landing = Mathf.Abs (rigidbody.velocity.y/15f);}
 				////////////////////////////////BOARD DROWNING//////////////////////////////////////////////
 		if (!canWater && waterSpray) {drowning = true;}
 		if (drowning){
@@ -515,8 +517,11 @@ public class Hover : MonoBehaviour
 				
 				Vector3 inputDir = new Vector3(m_lean,0,m_thrust);
 				float angleSign = Math.Sign (Vector3.Cross(Vector3.forward,inputDir).y);
-				//Vector3 moveDir = Quaternion.AngleAxis (Vector3.Angle (Vector3.forward,inputDir)*angleSign,Vector3.up)*cameraDir;
-                Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,cameraDir.normalized);
+				//if (Vector3.Magnitude(inputDir)<.3f){ //only updates stick to camera relationship when character is relatively still
+					cameraMoveDir = cameraDir;
+				//}
+
+                Quaternion stickToWorld = Quaternion.FromToRotation(Vector3.forward,cameraMoveDir.normalized);
                 Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 		rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) 
@@ -734,8 +739,12 @@ public class Hover : MonoBehaviour
             return m_lean;
         }
 	    public bool Jump(){
-            return (m_jump && onGround);
+            return (m_jump);
         }
+	
+		public bool Grounded(){
+			return onGround;
+		}
         public bool Jumping(){
             return (jumping);
         }
@@ -753,6 +762,7 @@ public class Hover : MonoBehaviour
 		[HideInInspector] new private ParticleSystem splashParticles;
 		[HideInInspector] new private ParticleSystem drownParticles;
 		[HideInInspector] new private Vector3 cameraDir;
+		[HideInInspector] new private Vector3 cameraMoveDir;
 		[HideInInspector] new private Camera theCamera;
 		[HideInInspector] new private float cameraFOV;
 		[HideInInspector] new private CameraWhoosh whoosh;

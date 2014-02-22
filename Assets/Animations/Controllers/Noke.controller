@@ -98,6 +98,24 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Grounded
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: LandStrength
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: NeedToLand
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -158,16 +176,23 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - m_Motion: {fileID: 7400000, guid: da596380719078c46877c005bd586853, type: 3}
-    m_Threshold: 1
+    m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  m_BlendParameter: Landing
+  - m_Motion: {fileID: 7400000, guid: da596380719078c46877c005bd586853, type: 3}
+    m_Threshold: 3
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 2
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  m_BlendParameter: LandStrength
   m_BlendParameterY: Speed
-  m_MinThreshold: 1
-  m_MaxThreshold: 1
+  m_MinThreshold: 0
+  m_MaxThreshold: 3
   m_UseAutomaticThresholds: 0
   m_BlendType: 0
 --- !u!206 &20638792
@@ -525,6 +550,10 @@ Transition:
     m_ConditionEvent: BoardJump
     m_EventTreshold: 0
     m_ExitTime: .558823705
+  - m_ConditionMode: 1
+    m_ConditionEvent: Grounded
+    m_EventTreshold: 0
+    m_ExitTime: .558823705
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -590,20 +619,20 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110215284}
   m_DstState: {fileID: 110223276}
-  m_TransitionDuration: 1.87500179
+  m_TransitionDuration: 50.9631348
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: BoardJump
     m_EventTreshold: 0
     m_ExitTime: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Jumping
+    m_ConditionEvent: Grounded
     m_EventTreshold: 0
     m_ExitTime: 0
   m_Atomic: 1
   m_Solo: 0
-  m_Mute: 1
+  m_Mute: 0
 --- !u!1101 &110106570
 Transition:
   m_ObjectHideFlags: 3
@@ -659,6 +688,10 @@ Transition:
     m_ExitTime: .899999976
   - m_ConditionMode: 4
     m_ConditionEvent: Landing
+    m_EventTreshold: .00100000005
+    m_ExitTime: .899999976
+  - m_ConditionMode: 1
+    m_ConditionEvent: Grounded
     m_EventTreshold: .00999999978
     m_ExitTime: .899999976
   m_Atomic: 0
@@ -932,12 +965,12 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110221665}
   m_DstState: {fileID: 110223276}
-  m_TransitionDuration: 5.75671148
-  m_TransitionOffset: .00167542673
+  m_TransitionDuration: .594996572
+  m_TransitionOffset: .277077675
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: Landing
-    m_EventTreshold: .5
+    m_EventTreshold: .00999999978
     m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
@@ -1077,8 +1110,20 @@ Transition:
   m_TransitionDuration: .100000001
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: Landing
+  - m_ConditionMode: 1
+    m_ConditionEvent: NeedToLand
+    m_EventTreshold: .25
+    m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: BoardJump
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: Jumping
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
+  - m_ConditionMode: 1
+    m_ConditionEvent: Grounded
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -1159,6 +1204,10 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: BoardJump
+    m_EventTreshold: 0
+    m_ExitTime: .772727132
+  - m_ConditionMode: 1
+    m_ConditionEvent: Grounded
     m_EventTreshold: 0
     m_ExitTime: .772727132
   m_Atomic: 1
@@ -1315,6 +1364,10 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: BoardJump
+    m_EventTreshold: 0
+    m_ExitTime: .77272737
+  - m_ConditionMode: 1
+    m_ConditionEvent: Grounded
     m_EventTreshold: 0
     m_ExitTime: .77272737
   m_Atomic: 1
@@ -1477,7 +1530,7 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: land
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
   - {fileID: 20621665}
@@ -1776,6 +1829,14 @@ StateMachine:
       - {fileID: 110126417}
       - {fileID: 110177939}
     data:
+      first: {fileID: 110281429}
+      second:
+      - {fileID: 110193453}
+    data:
+      first: {fileID: 110256813}
+      second:
+      - {fileID: 110162902}
+    data:
       first: {fileID: 110203199}
       second:
       - {fileID: 110133607}
@@ -1836,10 +1897,6 @@ StateMachine:
       - {fileID: 110102204}
       - {fileID: 110118179}
     data:
-      first: {fileID: 110256813}
-      second:
-      - {fileID: 110162902}
-    data:
       first: {fileID: 110257703}
       second:
       - {fileID: 110134781}
@@ -1861,14 +1918,13 @@ StateMachine:
       - {fileID: 110106570}
       - {fileID: 110134646}
     data:
-      first: {fileID: 110281429}
-      second:
-      - {fileID: 110193453}
-    data:
       first: {fileID: 110292723}
       second:
       - {fileID: 110198754}
       - {fileID: 110199052}
+    data:
+      first: {fileID: 110288264}
+      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -588, y: 108, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
