@@ -60,7 +60,7 @@
             o.Alpha = baseColor.a;
             o.Normal = normal;
 
-            half rim = 1.0 - saturate( dot( normalize(IN.viewDir), normal) );
+            half rim = 1.0 - saturate(abs(dot(normalize(IN.viewDir),normal)));
             o.Emission = _RimColor.rgb * pow( rim, _RimPower );
         }
 
