@@ -26,7 +26,7 @@ public class CollectibleSystem : MonoBehaviour {
 		for (int i = 0; i < upgrades.Length; i+= 1) {
 			if (upgrades[i].GetComponent<Activatable>().Activated()){count = 1f;}
 		}
-		Debug.Log (count / (float)upgrades.Length);
+		//sDebug.Log (count / (float)upgrades.Length);
 		return count / (float)upgrades.Length;
 	}
 }

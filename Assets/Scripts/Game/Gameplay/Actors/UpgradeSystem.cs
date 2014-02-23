@@ -40,14 +40,7 @@ public class UpgradeSystem : MonoBehaviour {
 		if(index == 3){
 		//Start Final Cutscene
 	}
-	
-	
 		HasPlayerGottenNextUpgrade = true;
-		Hoverboard.rigidbody.isKinematic = true;
-		navAgent = Enemy.GetComponent<NavMeshAgent>();
-		navAgent.speed = 0;
-		navAgent.enabled = false;
-		Enemy.GetComponent<NavMeshAI>().state = 1;
 		MainCamera.SendMessage("fadeDayOut");
 		StartCoroutine(NightTime());
 		//Destroy(collision.gameObject);
@@ -79,6 +72,11 @@ public class UpgradeSystem : MonoBehaviour {
 	IEnumerator NightTime(){
 		yield return new WaitForSeconds(FadeWaitTime);
 		MainCamera.SendMessage("fadeDayIn");
+		Hoverboard.rigidbody.isKinematic = true;
+		navAgent = Enemy.GetComponent<NavMeshAgent>();
+		navAgent.speed = 0;
+		Enemy.GetComponent<NavMeshAI>().state = 1;
+		Enemy.GetComponent<NavMeshAI>().StartAI();
 		//Sun.active = false;
 		//Moon.active = true;
 		
