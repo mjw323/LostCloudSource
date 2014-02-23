@@ -9,6 +9,11 @@ public class MonsterTeleport : MonoBehaviour {
 	public int DistanceNeededToReactivate;
 	public bool Active;
 	public NavMeshAgent navAgent;
+	private GameObject[] gos;
+       
+	void Awake(){
+		gos = GameObject.FindGameObjectsWithTag("YorexNode");
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,4 +34,5 @@ public class MonsterTeleport : MonoBehaviour {
 		}
 	
 	}
+	
 }
