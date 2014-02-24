@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Ragdoll))]
+[RequireComponent(typeof(FootController))]
 public class RagdollController : MonoBehaviour {
 	public void DoRagdoll() {
-		Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
-		for (int i = 0; i < rigidbodies.Length; i++) {
-			rigidbodies[i].isKinematic = false;
-		}
-		GetComponent<Animator>().enabled = false;
+		footController.enabled = false;
+		ragdoll.DoRagdoll();
 	}
+
+	private void Awake() {
+		ragdoll = GetComponent<Ragdoll>();
+		footController = GetComponent<FootController>();
+	}
+
+	private Ragdoll ragdoll;
+	private FootController footController;
 }
