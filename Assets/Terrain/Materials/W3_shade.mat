@@ -22,9 +22,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Ramp
+          name: _HeightRamp
         second:
-          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
+          m_Texture: {fileID: 2800000, guid: 2afbeed060d45b545b144b70e9c8378f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Tex1a
+        second:
+          m_Texture: {fileID: 2800000, guid: f2ea92116644543d29b3164dc0441a36, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Tex1b
+        second:
+          m_Texture: {fileID: 2800000, guid: 45f567f890c544b40b294c9d56d1b8d1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -43,23 +57,9 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _HeightRamp
+          name: _Ramp
         second:
-          m_Texture: {fileID: 2800000, guid: 2afbeed060d45b545b144b70e9c8378f, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Tex1a
-        second:
-          m_Texture: {fileID: 2800000, guid: f2ea92116644543d29b3164dc0441a36, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Tex1b
-        second:
-          m_Texture: {fileID: 2800000, guid: 45f567f890c544b40b294c9d56d1b8d1, type: 3}
+          m_Texture: {fileID: 2800000, guid: 692a5005ed513f54183ffab54205172c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -87,19 +87,23 @@ Material:
       data:
         first:
           name: _X
-        second: 1
+        second: .357142866
       data:
         first:
           name: _Y
-        second: 1
+        second: .732142866
       data:
         first:
           name: _Z
+        second: .482142836
+      data:
+        first:
+          name: _Range
         second: 1
       data:
         first:
           name: _Scale1
-        second: 1.78662503
+        second: 20
       data:
         first:
           name: _Scale2
@@ -116,10 +120,6 @@ Material:
         first:
           name: _RimPower
         second: 3
-      data:
-        first:
-          name: _Range
-        second: 1
     m_Colors:
       data:
         first:
@@ -127,9 +127,9 @@ Material:
         second: {r: .647058845, g: .241061121, b: .431997478, a: 1}
       data:
         first:
-          name: _Mix
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
           name: _RimColor
         second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _Mix
+        second: {r: 1, g: 1, b: 1, a: 1}

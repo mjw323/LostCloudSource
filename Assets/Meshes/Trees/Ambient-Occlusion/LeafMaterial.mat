@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: LeafMaterial
-  m_Shader: {fileID: 3, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 10511, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -94,7 +94,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .558035731
+        second: .899999976
       data:
         first:
           name: PixelSnap
@@ -154,15 +154,15 @@ Material:
       data:
         first:
           name: _BaseLight
-        second: 0
+        second: .303571433
       data:
         first:
           name: _AO
-        second: 2.75714302
+        second: 4.10714293
       data:
         first:
           name: _Occlusion
-        second: 8.5714283
+        second: 13.2142859
       data:
         first:
           name: _InvFade
