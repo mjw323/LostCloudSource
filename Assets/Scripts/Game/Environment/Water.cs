@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class Water : MonoBehaviour {
 	// Water Material
-	public Material waterMaterial = null;
+	private Material waterMaterial = null;
 
 	// reflection
 	public LayerMask reflectionMask;
@@ -19,6 +19,7 @@ public class Water : MonoBehaviour {
 	private GameObject board;
 	private Camera reflectionCamera;
 	private Camera mainCamera;
+    private RenderTexture rt;
 
 	// Uniforms
 	private System.String boardDirection = "_BoardDirection";
@@ -86,8 +87,8 @@ public class Water : MonoBehaviour {
 	}	
 	
 	private Camera SetupReflectionCamera(Camera cam) 
-	{		
-		System.String reflName = gameObject.name+"Reflection"+cam.name;
+	{
+        System.String reflName = "WaterReflectionCamera";// gameObject.name + "Reflection" + cam.name;
 		GameObject go = GameObject.Find(reflName);
 		
 		// No camera game object
@@ -109,22 +110,24 @@ public class Water : MonoBehaviour {
 		reflectCamera.enabled = false;		
 		
 		if(!reflectCamera.targetTexture) {
-			RenderTexture rt = new RenderTexture(Mathf.FloorToInt(reflectCamera.pixelWidth), Mathf.FloorToInt(reflectCamera.pixelHeight), 24);
+			rt = new RenderTexture(Mathf.FloorToInt(reflectCamera.pixelWidth), Mathf.FloorToInt(reflectCamera.pixelHeight), 24);
 			rt.hideFlags = HideFlags.DontSave;
-			reflectCamera.targetTexture = rt;
 		}
 		
 		return reflectCamera;
 	}
 	
 	public void Update()
-	{		
+	{	
 		RenderReflection(mainCamera, reflectionCamera);
 
-		waterMaterial.SetVector(boardDirection,board.transform.forward);
-		waterMaterial.SetVector(boardPosition,board.transform.position);
-		waterMaterial.SetVector(boardVelocity,board.rigidbody.velocity);
-		waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
+        if (waterMaterial != null)
+        {
+            waterMaterial.SetVector(boardDirection, board.transform.forward);
+            waterMaterial.SetVector(boardPosition, board.transform.position);
+            waterMaterial.SetVector(boardVelocity, board.rigidbody.velocity);
+            waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
+        }
 
 		// I am broken :'(
 		//if(board.transform.position.x > renderer.bounds.min.x && board.transform.position.x < renderer.bounds.max.x
@@ -204,6 +207,7 @@ public class Water : MonoBehaviour {
 		reflectCamera.renderingPath = RenderingPath.Forward;		
 		reflectCamera.backgroundColor = clearColor;				
 		reflectCamera.clearFlags = reflectSkybox ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
+        reflectCamera.targetTexture = rt;
 
 		if(reflectSkybox) 
 		{ 			
@@ -232,9 +236,12 @@ public class Water : MonoBehaviour {
 				
 		Matrix4x4 reflection = Matrix4x4.zero;
 		reflection = CalculateReflectionMatrix(reflection, reflectionPlane);		
-		oldpos = cam.transform.position;
-		Vector3 newpos = reflection.MultiplyPoint (oldpos);
-						
+		//oldpos = cam.transform.position;
+		//Vector3 newpos = reflection.MultiplyPoint(oldpos);
+        Vector3 newpos = cam.transform.position;
+        newpos.y = reflectiveSurface.position.y - (cam.transform.position.y - reflectiveSurface.position.y);
+        //Debug.Log(reflectiveSurface.transform.name);
+		
 		reflectCamera.worldToCameraMatrix = cam.worldToCameraMatrix * reflection;
 				
 		Vector4 clipPlane = CameraSpacePlane(reflectCamera, pos, normal, 1.0f);
@@ -242,8 +249,8 @@ public class Water : MonoBehaviour {
 		Matrix4x4 projection =  cam.projectionMatrix;
 		projection = CalculateObliqueMatrix(projection, clipPlane);
 		reflectCamera.projectionMatrix = projection;
-		
-		reflectCamera.transform.position = newpos;
+
+        reflectCamera.transform.position = newpos;
 		Vector3 euler = cam.transform.eulerAngles;
 		reflectCamera.transform.eulerAngles = new Vector3(-euler.x, euler.y, euler.z);	
 														
