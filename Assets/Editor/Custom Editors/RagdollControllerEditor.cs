@@ -5,6 +5,7 @@ using UnityEditor;
 public class RagdollControllerEditor : Editor {
 	public void OnEnable() {
 		instance = (RagdollController)target;
+		controlled = instance.GetComponent<Ragdoll>();
 	}
 
 	public override void OnInspectorGUI() {
@@ -13,15 +14,25 @@ public class RagdollControllerEditor : Editor {
 		}
 
 		DrawDefaultInspector();
-		// Disable the use of this button outside of Play Mode.
-		if (!EditorApplication.isPlaying) {
+
+		if (!EditorApplication.isPlaying || controlled.IsRagdolled) {
 			GUI.enabled = false;
 		}
 		if (GUILayout.Button("Ragdoll")) {
-			instance.DoRagdoll();
+			instance.Ragdoll();
+		}
+		GUI.enabled = true;
+
+		if (!EditorApplication.isPlaying || controlled.IsGettingUp ||
+		    !controlled.IsRagdolled) {
+			GUI.enabled = false;
+		}
+		if (GUILayout.Button("Get Up")) {
+			instance.GetUp();
 		}
 		GUI.enabled = true;
 	}
 
 	private RagdollController instance;
+	private Ragdoll controlled;
 }

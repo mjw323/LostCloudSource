@@ -7,9 +7,9 @@ public class Framing : MonoBehaviour {
 	[SerializeField] private float panSpeed;
 	[SerializeField] private Curve panCurve;
 
-	[HideInInspector] new private Transform transform;
-	[HideInInspector] new private Camera camera;
-	[HideInInspector] private Vector3 translation;
+	[HideInInspector][SerializeField] new private Transform transform;
+	[HideInInspector][SerializeField] new private Camera camera;
+	[HideInInspector][SerializeField] private Vector3 translation;
 
 	private void Awake() {
 		transform = GetComponent<Transform>();

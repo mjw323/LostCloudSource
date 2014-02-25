@@ -36,7 +36,7 @@ public class DynamicCamera : MonoBehaviour {
 	[SerializeField] private bool lookAtEnabled = false;
 	
 	[HideInInspector] new private Transform transform;
-	[HideInInspector] [SerializeField] private Transform playerAnchor;
+	[HideInInspector][SerializeField] private Transform playerAnchor;
 	[HideInInspector] private float distance;
 	[HideInInspector] private float elevationAngle;
 	[HideInInspector] private Transform enemyAnchor;
@@ -45,7 +45,7 @@ public class DynamicCamera : MonoBehaviour {
 	private void ComputeDistanceAndElevationAngle() {
 		if (playerAnchor != null) {
 			Vector3 relativePos = transform.position - playerAnchor.position;
-			Vector3 relativePosXz = new Vector3(relativePos.x, 0,relativePos.z);
+			Vector3 relativePosXz = new Vector3(relativePos.x, 0, relativePos.z);
 			elevationAngle = Vector3.Angle(relativePosXz, relativePos);
 			distance = relativePos.magnitude;
 		}
@@ -75,7 +75,7 @@ public class DynamicCamera : MonoBehaviour {
 			Quaternion rotation = Quaternion.AngleAxis(rotationAngle,Vector3.up);
 
 			Vector3 relativePos = transform.position - playerAnchor.position;
-			Vector3 relativePosXz = new Vector3(relativePos.x, 0,relativePos.z);
+			Vector3 relativePosXz = new Vector3(relativePos.x, 0, relativePos.z);
 			Vector3 xzDirection = rotation * relativePosXz.normalized;
 			Quaternion elevation = Quaternion.AngleAxis(elevationAngle,
 			Vector3.Cross(xzDirection, Vector3.up));
@@ -87,8 +87,7 @@ public class DynamicCamera : MonoBehaviour {
 
 			if (lookAtEnabled && Input.GetAxis("Target") > 0.8f){
 				if (!navAgent.enabled){
-					direction = Vector3.Slerp(direction, -playerAnchor.forward,
-					                          .1f);
+					direction = Vector3.Slerp(direction, -playerAnchor.forward, .1f);
 				} else {
 					direction = Vector3.Slerp(direction, Vector3.Normalize(
 						playerAnchor.position - enemyAnchor.position), .1f);
@@ -102,8 +101,8 @@ public class DynamicCamera : MonoBehaviour {
 			transform.LookAt(playerAnchor.position);
 
 #if DYNAMIC_CAMERA_DEBUG_DRAW
-			Debug.DrawLine(playerAnchor.position,
-			               playerAnchor.position + relativePos, Color.red);
+			Debug.DrawLine(playerAnchor.position, playerAnchor.position + relativePos,
+                     Color.red);
 			Debug.DrawLine(playerAnchor.position,
 			               playerAnchor.position + relativePosXz, Color.blue);
 			Debug.DrawRay(playerAnchor.position, direction, Color.green);
