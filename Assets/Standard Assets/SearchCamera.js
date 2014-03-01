@@ -2,6 +2,7 @@
 	// Grab the camera's view when this variable is true.
 	private var grab: boolean;
 	private var visible: boolean;
+	public var threshold: float = 5;
 	public var frequency: float; //how many seconds to wait betwen checks
 	private var timer: float;
 	public var tsize: int = 16;  //needs to match up with size of RenderTexture or camera window
@@ -49,7 +50,7 @@
 				}
 			}*/
 			var targetHit : int = 0;
-			var targetThresh : int = 5;  //number of pixels needed to register visible.
+			var targetThresh : int = threshold;  //number of pixels needed to register visible.
 			tex.ReadPixels(new Rect(0, 0, tsize, tsize), 0, 0);
 			tex.Apply();
 			if (true){

@@ -1,10 +1,10 @@
         // One shader, renders things white.
     Shader "Custom/RenderWhite" {
         SubShader {
-            Tags { "RenderType"="RenderWhite" "MyTag" = "MyTagWhite" }
+            Tags { "RenderType"="TheTarget" "MyTag" = "TargetTag" }
             Pass {
                 Fog { Mode Off }        
-                Color (1,0,0,1)
+                Color (0,1,1,1)
             }
         }
     }
