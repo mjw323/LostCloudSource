@@ -4,7 +4,7 @@
             Tags { "RenderType"="RenderWhite" "MyTag" = "MyTagWhite" }
             Pass {
                 Fog { Mode Off }        
-                Color (1,1,1,1)
+                Color (1,0,0,1)
             }
         }
     }
