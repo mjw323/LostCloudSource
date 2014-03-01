@@ -64,6 +64,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Tex1
+        second:
+          m_Texture: {fileID: 2800000, guid: 38b334e6159bd5d48ade95e95c299d21, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Ground
         second:
           m_Texture: {fileID: 2800000, guid: 8bf80e21d2ed45b43818405c0a18733e, type: 3}
@@ -83,22 +90,11 @@ Material:
           m_Texture: {fileID: 2800000, guid: 3bb2ddda8187b45bdba9337de280ac7f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Tex1
-        second:
-          m_Texture: {fileID: 2800000, guid: 38b334e6159bd5d48ade95e95c299d21, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
-          name: _Scale
-        second: 3.03571463
-      data:
-        first:
           name: _X
-        second: 1
+        second: .535714269
       data:
         first:
           name: _Y
@@ -106,7 +102,7 @@ Material:
       data:
         first:
           name: _Z
-        second: 1
+        second: .714285731
       data:
         first:
           name: _Range
@@ -114,7 +110,7 @@ Material:
       data:
         first:
           name: _Scale1
-        second: 3.05079842
+        second: 15.6043701
       data:
         first:
           name: _Scale2
@@ -131,6 +127,10 @@ Material:
         first:
           name: _RimPower
         second: 8
+      data:
+        first:
+          name: _Scale
+        second: 3.03571463
     m_Colors:
       data:
         first:

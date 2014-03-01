@@ -2110,6 +2110,7 @@ GameObject:
   - 4: {fileID: 400280}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 64: {fileID: 6400000}
   m_Layer: 0
   m_Name: polySurface72
   m_TagString: Untagged
@@ -2155,7 +2156,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400286}
-  - 64: {fileID: 6400000}
   m_Layer: 0
   m_Name: dumptruck_dumping
   m_TagString: Untagged
@@ -3882,13 +3882,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100286}
-  m_LocalRotation: {x: -.00772870425, y: .580677748, z: -.0108345058, w: .814024746}
-  m_LocalPosition: {x: -448.221893, y: 131.119247, z: 939.903076}
+  m_LocalRotation: {x: -.0876038522, y: -.834502459, z: .0893890932, w: .536601186}
+  m_LocalPosition: {x: 316.317474, y: 21.1424904, z: 329.42218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400284}
-  - {fileID: 400282}
   - {fileID: 400280}
+  - {fileID: 400282}
+  - {fileID: 400284}
   m_Father: {fileID: 0}
 --- !u!23 &2300000
 Renderer:
@@ -3903,6 +3903,8 @@ Renderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: b0581585e9950416ba9583904ead0327, type: 2}
+  - {fileID: 2100000, guid: f664a57b70ec24cc9b4ae3ad625ede94, type: 2}
+  - {fileID: 2100000, guid: 841afb5facda440558a2cbbd772de22a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3923,7 +3925,7 @@ MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100286}
+  m_GameObject: {fileID: 100280}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
