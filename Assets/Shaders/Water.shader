@@ -37,7 +37,7 @@ Shader "LostCloud/Water" {
 
 		// Auto-Gen'ed Textures
 		sampler2D _ReflectionTex;
-		sampler2D _RefractionTex;
+		sampler2D _GrabTexture;
 		sampler2D _CameraDepthTexture;
 
 		// Wave info
@@ -118,7 +118,7 @@ Shader "LostCloud/Water" {
 
 			// Blended reflection/refraction color based on view angle and depth below 
 			// lake surface
-			half4 refColor = (1 - F) * lerp(_RefractionColor,tex2D(_ReflectionTex,screenPos.xy),depth) + F * lerp(_RefractionColor,tex2D(_RefractionTex,screenPos.xy),1 - depth);
+			half4 refColor = (1 - F) * lerp(_RefractionColor,tex2D(_ReflectionTex,screenPos.xy),depth) + F * lerp(_RefractionColor,tex2D(_GrabTexture,float2(screenPos.x,1.0 - screenPos.y)),1 - depth);
 			
 			// DEBUG: Draw some gridlines :)
 			//half4 lines = half4(0.0);
@@ -153,7 +153,7 @@ Shader "LostCloud/Water" {
 		ColorMask RGB
 		
 		// Renders objects below the water to a render texture
-		GrabPass { "_RefractionTex" }
+		GrabPass { }
 		
 		Pass {
 				Blend SrcAlpha OneMinusSrcAlpha
