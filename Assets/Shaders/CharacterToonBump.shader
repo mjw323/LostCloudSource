@@ -9,7 +9,7 @@
 	}
 
 	SubShader {
-        Tags {"RenderType"="TransparentCutout" "Queue"="Transparent"}
+        Tags {"RenderType"="TransparentCutout" "Queue"="Transparent" "Player" = "TargetTag" }
          
         LOD 300
         Cull Off

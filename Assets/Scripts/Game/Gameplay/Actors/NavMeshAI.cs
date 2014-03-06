@@ -43,7 +43,7 @@ public class NavMeshAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Player.GetComponentInChildren<YorexSight>().Visible() != seen ){
+		if (Eyes.transform.GetComponent<SearchCamera>().CanSee() != seen ){
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
@@ -158,7 +158,7 @@ public class NavMeshAI : MonoBehaviour {
 		
 		if (!Player.GetComponentInChildren<YorexSight>().Visible()){
 				JumpCountdownCurrent -= Time.deltaTime;
-				Debug.Log ("Jump Countdown Timer:" + JumpCountdownCurrent);
+				//Debug.Log ("Jump Countdown Timer:" + JumpCountdownCurrent);
 			}
 		if (JumpCountdownCurrent < 0f){
 			Jump ();	
