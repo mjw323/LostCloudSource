@@ -1,6 +1,9 @@
 ﻿//#define DYNAMIC_CAMERA_DEBUG_DRAW
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [AddComponentMenu("Camera/Dynamic Camera")]
 public class DynamicCamera : MonoBehaviour {
