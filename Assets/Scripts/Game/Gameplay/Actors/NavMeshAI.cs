@@ -8,7 +8,7 @@ public class NavMeshAI : MonoBehaviour {
 	public Vector3 lastKnownPlayerPosition;
 	public GameObject HidePosition;
 	public Camera Eyes;
-	public bool Leaping;
+	public bool Flying;
 	public float WaitTime;
 	public float leapDistance;
 	public int state = 0;
@@ -17,6 +17,10 @@ public class NavMeshAI : MonoBehaviour {
 	private Vector3 JumpTarget;
 	public float JumpCountdown = 6f;
 	private float JumpCountdownCurrent = 0f;
+	public float risingSpeed = 35f;
+	public float flyingSpeed = 30f;
+	public float landingSpeed = 40f;
+	public float glideHeight = 120f;
 	
 	public float mySpeed = 12f;
 	
@@ -36,6 +40,11 @@ public class NavMeshAI : MonoBehaviour {
 		leapDistance = 40.0f;
 		gos = GameObject.FindGameObjectsWithTag("YorexNode");
 		navAgent = this.GetComponent<NavMeshAgent>();
+		Eyes = this.GetComponentInChildren<Camera> ();
+
+		animator = GetComponent<Animator>();
+		speedId = Animator.StringToHash("Speed");
+		glidingId = Animator.StringToHash("Gliding");
 		
 		jumpAnimCur = jumpAnim;
 	
@@ -47,7 +56,9 @@ public class NavMeshAI : MonoBehaviour {
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
-
+		if (state != 0) {
+			//Debug.Log ("Current yorex state: "+state);
+		}
 		if (state == 0){
 			hide();
 		}
@@ -66,6 +77,15 @@ public class NavMeshAI : MonoBehaviour {
 		else if (state == 5){
 			curious();
 		}
+		else if (state == 6){
+			flying();
+		}
+
+		////////animator stuff
+		if (GetComponent<NavMeshAgent> ().enabled) {
+			animator.SetFloat (speedId, GetComponent<NavMeshAgent> ().speed);
+		} 
+		animator.SetBool (glidingId, Flying);
 	}
 	
 	public void StartAI(){
@@ -73,19 +93,55 @@ public class NavMeshAI : MonoBehaviour {
 		navAgent.enabled = false;
 		Vector3 targetPos = FindJumpNode (Player.transform.position);
 		this.transform.position = targetPos;
+		this.transform.LookAt (Player.transform.position,Vector3.up);
 		//Debug.Log ("I'm going to "+targetPos+", and ended up at "+this.transform.position);
 		navAgent.enabled = true;
 	}
 	
 	public void Jump(){
-		
+		Debug.Log ("looking to jump");
+		JumpTarget = FindJumpNode (Player.transform.position) + (Vector3.up*GetComponent<NavMeshAgent> ().height/2f);
+		if (Vector3.Magnitude(JumpTarget - this.transform.position) > flyingSpeed){
 		navAgent.enabled = false;
-		Vector3 targetPos = FindJumpNode (Player.transform.position);
-		this.transform.position = targetPos;
+		Flying = true;
+		state = 6;
+		Debug.Log ("jumping to "+JumpTarget);
+		}
+		//this.transform.position = targetPos;
 		//Debug.Log ("I'm going to "+targetPos+", and ended up at "+this.transform.position);
-		navAgent.enabled = true;
+		//navAgent.enabled = true;
 	}
 
+	void flying(){
+		navAgent.enabled = false;
+		Flying = true;
+		/*if (!Flying) { //something's been turned off, go back to ground movement
+			navAgent.enabled = true;
+			state = 2;
+		} else {*/
+			Vector3 distLeft = JumpTarget - this.transform.position; //see how close we are to destination
+			distLeft.y = 0;
+
+			////////////////////////rising/landing////////////////////
+			if (Vector3.Magnitude (distLeft) / flyingSpeed <= (JumpTarget.y - this.transform.position.y) / landingSpeed) { //if we're in range where we should start landing
+				this.transform.position += new Vector3(0,Mathf.Sign (JumpTarget.y - this.transform.position.y) * landingSpeed * Time.deltaTime,0);
+			} else {
+			this.transform.position += new Vector3(0,Mathf.Sign (glideHeight - this.transform.position.y) * risingSpeed * Time.deltaTime,0); //otherwise, rise up toward glide height
+			}
+
+			////////////////////////moving/stopping////////////////////
+		if (Vector3.Magnitude (distLeft) <= flyingSpeed * Time.deltaTime) { //if we're close enough to the target to get there this frame, get there
+				navAgent.enabled = true;
+				state = 2;
+				Flying = false;
+
+				this.transform.position = JumpTarget;
+			Debug.Log("Landed");
+			} else { //otherwise, fly towards it
+			this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;
+			}
+		//}
+	}
 
 	void hide(){
 		//Monster is turned off and reset to a hidden location;
@@ -109,7 +165,6 @@ public class NavMeshAI : MonoBehaviour {
 		//Move around player's area slowly
 		GetComponent<NavMeshAgent>().speed = 9;
 		look ();
-
 		//Move around code
 	}
 
@@ -138,7 +193,7 @@ public class NavMeshAI : MonoBehaviour {
 		
 		RaycastHit hit;
 		//Can't find her
-		if (!Player.GetComponentInChildren<YorexSight>().Visible()){
+		if (!seen){
 			Debug.Log ("distance is "+Vector3.Magnitude (this.transform.position - Player.transform.position)+"/75, wall between us is "+Physics.Raycast (this.transform.position,Player.transform.position-this.transform.position, out hit, 75f,  ~ (1 << 11)));
 			if(Vector3.Magnitude (this.transform.position - Player.transform.position) > 75f || 
 				Physics.Raycast (this.transform.position,Player.transform.position-this.transform.position, out hit, 75f,  ~ (1 << 11))
@@ -155,14 +210,6 @@ public class NavMeshAI : MonoBehaviour {
 		look ();
 		GetComponent<NavMeshAgent>().destination = lastKnownPlayerPosition;
 		this.transform.Rotate (0,Time.deltaTime*30,0);
-		
-		if (!Player.GetComponentInChildren<YorexSight>().Visible()){
-				JumpCountdownCurrent -= Time.deltaTime;
-				//Debug.Log ("Jump Countdown Timer:" + JumpCountdownCurrent);
-			}
-		if (JumpCountdownCurrent < 0f){
-			Jump ();	
-		}
 	}
 
 	void curious(){
@@ -170,10 +217,22 @@ public class NavMeshAI : MonoBehaviour {
 		look ();
 	}
 
+	void flyReady(){
+		if (!seen) {
+			JumpCountdownCurrent -= Time.deltaTime;
+			//Debug.Log ("Flying in: " + JumpCountdownCurrent);
+		} else {
+			JumpCountdownCurrent = JumpCountdown;
+		}
+		if (JumpCountdownCurrent < 0f){
+			Jump ();
+			JumpCountdownCurrent = JumpCountdown;
+		}
+	}
+
 	void look(){
-		if (Player.GetComponentInChildren<YorexSight>().Visible() 
-			//&& Physics.Raycast (this.transform.position,Player.transform.position-this.transform.position, out hit, 75f,  ~ (1 << 11))
-			){
+		flyReady ();
+		if (seen){
 			if (state!=3){Debug.Log ("saw player, started chasing");}
 			state = 3;
 			lastKnownPlayerPosition = Player.transform.position;
@@ -215,5 +274,10 @@ public class NavMeshAI : MonoBehaviour {
 			return Vector3.zero;}
 		
     }
+
+	//Animator BS
+	[HideInInspector] private Animator animator;
+	[HideInInspector] private int glidingId;
+	[HideInInspector] private int speedId;
 
 }
