@@ -60,7 +60,7 @@
   			     for (zz=0;zz<tsize;zz++){
   			        var pixcol : Color = tex.GetPixel(xx,zz);
 			        //Debug.Log("texture col[" + xx + ", " + zz + "] = " + pixcol);
-			        if (pixcol.Equals(Color.red)){
+			        if (pixcol.r > 0f){
 			           targetHit++;
 //			           Debug.Log("TARGET hit");
 			        }
@@ -71,6 +71,7 @@
 			if (targetHit > targetThresh)
 			{
 						           visible = true;
+						           Debug.Log("yorex can see noke!");
 			}
 			targetHit = 0;
 			
