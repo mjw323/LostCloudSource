@@ -21,6 +21,7 @@ public class NavMeshAI : MonoBehaviour {
 	public float flyingSpeed = 30f;
 	public float landingSpeed = 40f;
 	public float glideHeight = 120f;
+	public float landAnimDist = 0f; //distance he moves while playing his landing animation
 	
 	public float mySpeed = 12f;
 	
@@ -42,7 +43,9 @@ public class NavMeshAI : MonoBehaviour {
 		navAgent = this.GetComponent<NavMeshAgent>();
 		Eyes = this.GetComponentInChildren<Camera> ();
 
-		animator = GetComponent<Animator>();
+		animator = GetComponentInChildren<Animator>();
+		animator.applyRootMotion = false; //we turn off root motion because of some of the funky stuff fly animations do.
+
 		speedId = Animator.StringToHash("Speed");
 		glidingId = Animator.StringToHash("Gliding");
 		
@@ -78,6 +81,7 @@ public class NavMeshAI : MonoBehaviour {
 			curious();
 		}
 		else if (state == 6){
+			//Debug.Log ("flying...");
 			flying();
 		}
 
@@ -101,6 +105,9 @@ public class NavMeshAI : MonoBehaviour {
 	public void Jump(){
 		Debug.Log ("looking to jump");
 		JumpTarget = FindJumpNode (Player.transform.position) + (Vector3.up*GetComponent<NavMeshAgent> ().height/2f);
+		Vector3 moveDir = this.transform.position - JumpTarget; //move landing spot towards starting so he has space to land
+			moveDir.y = 0f;
+			JumpTarget += (Vector3.Normalize(moveDir)*landAnimDist);
 		if (Vector3.Magnitude(JumpTarget - this.transform.position) > flyingSpeed){
 		navAgent.enabled = false;
 		Flying = true;
@@ -119,23 +126,31 @@ public class NavMeshAI : MonoBehaviour {
 			navAgent.enabled = true;
 			state = 2;
 		} else {*/
-			Vector3 distLeft = JumpTarget - this.transform.position; //see how close we are to destination
-			distLeft.y = 0;
+		Vector3 distLeft = JumpTarget - this.transform.position; //see how close we are to destination
+		Vector3 lookDir = distLeft;
 
-			////////////////////////rising/landing////////////////////
-			if (Vector3.Magnitude (distLeft) / flyingSpeed <= (JumpTarget.y - this.transform.position.y) / landingSpeed) { //if we're in range where we should start landing
-				this.transform.position += new Vector3(0,Mathf.Sign (JumpTarget.y - this.transform.position.y) * landingSpeed * Time.deltaTime,0);
+		distLeft.y = 0;
+
+		////////////////////////rising/landing////////////////////
+		Debug.Log("time left for fly: "+(Vector3.Magnitude (distLeft) / flyingSpeed)+", time left for land: "+(Mathf.Abs(JumpTarget.y - this.transform.position.y) / landingSpeed));
+		if ((Vector3.Magnitude (distLeft) / flyingSpeed) <= (Mathf.Abs(JumpTarget.y - this.transform.position.y) / landingSpeed)) { //if we're in range where we should start landing
+			Debug.Log("landing");
+				this.transform.position += Vector3.up * Mathf.Sign (JumpTarget.y - this.transform.position.y) * landingSpeed * Time.deltaTime;
 			} else {
-			this.transform.position += new Vector3(0,Mathf.Sign (glideHeight - this.transform.position.y) * risingSpeed * Time.deltaTime,0); //otherwise, rise up toward glide height
+			this.transform.position += Vector3.up * Mathf.Sign (glideHeight - this.transform.position.y) * risingSpeed * Time.deltaTime; //otherwise, rise up toward glide height
+			lookDir.y = glideHeight - this.transform.position.y;
 			}
+
+		this.transform.rotation = Quaternion.LookRotation (Vector3.RotateTowards(this.transform.forward,distLeft,1.0f * Time.deltaTime, 0.0f)); // rotate towards destination
 
 			////////////////////////moving/stopping////////////////////
 		if (Vector3.Magnitude (distLeft) <= flyingSpeed * Time.deltaTime) { //if we're close enough to the target to get there this frame, get there
 				navAgent.enabled = true;
 				state = 2;
 				Flying = false;
-
 				this.transform.position = JumpTarget;
+
+				this.transform.LookAt(JumpTarget,Vector3.up);
 			Debug.Log("Landed");
 			} else { //otherwise, fly towards it
 			this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;

@@ -36,14 +36,14 @@ public class DynamicCamera : MonoBehaviour {
 	[SerializeField] private float zoomSpeed = 1.0f;
 	[SerializeField] private Curve zoomCurve;
 	[SerializeField] private float rotationSpeed = 60.0f;
-	[SerializeField] private bool lookAtEnabled = false;
+	[SerializeField] private bool lookAtEnabled = true;
 	
 	[HideInInspector] new private Transform transform;
 	[HideInInspector][SerializeField] private Transform playerAnchor;
 	[HideInInspector] private float distance;
 	[HideInInspector] private float elevationAngle;
 	[HideInInspector] private Transform enemyAnchor;
-	[HideInInspector] private NavMeshAgent navAgent;
+	[HideInInspector] private NavMeshAI navAgent;
 
 	private void ComputeDistanceAndElevationAngle() {
 		if (playerAnchor != null) {
@@ -56,12 +56,13 @@ public class DynamicCamera : MonoBehaviour {
 
 	private void GetNavAgent() {
 		if (enemyAnchor != null) {
-			navAgent = enemyAnchor.GetComponent<NavMeshAgent>();
+			navAgent = enemyAnchor.GetComponent<NavMeshAI>();
 		}
 	}
 
 	private void Awake() {
 		transform = GetComponent<Transform>();
+		enemyAnchor = GameObject.FindWithTag ("Yorex").transform;
 		GetNavAgent();
 	}
 
@@ -88,8 +89,8 @@ public class DynamicCamera : MonoBehaviour {
 			float distanceStep = zoomCurve.Evaluate(distanceDiff) * zoomSpeed
 				* Time.deltaTime;
 
-			if (lookAtEnabled && Input.GetAxis("Target") > 0.8f){
-				if (!navAgent.enabled){
+			if (/*lookAtEnabled &&*/ (Input.GetAxis("Target") > 0.8f || Input.GetButton("Target")  || navAgent.state==6)){
+				if (navAgent.state==0){
 					direction = Vector3.Slerp(direction, -playerAnchor.forward, .1f);
 				} else {
 					direction = Vector3.Slerp(direction, Vector3.Normalize(
