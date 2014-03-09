@@ -34,6 +34,8 @@ public class NavMeshAI : MonoBehaviour {
 	Vector3 leftoffset = new Vector3(-3,0,0);
 	
 	private bool seen = false;
+	
+	private Framing shakeCam;
 
 
 	
@@ -50,6 +52,8 @@ public class NavMeshAI : MonoBehaviour {
 		glidingId = Animator.StringToHash("Gliding");
 		
 		jumpAnimCur = jumpAnim;
+		
+		shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<Framing>();
 	
 	}
 	
@@ -151,6 +155,13 @@ public class NavMeshAI : MonoBehaviour {
 				this.transform.position = JumpTarget;
 
 				this.transform.LookAt(JumpTarget,Vector3.up);
+				
+				float distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
+			Debug.Log (distToPlayer);
+				shakeCam.ShakeScreen(
+					3f - (2f * Mathf.Max (1f,Mathf.Abs ((distToPlayer/80f)))), 
+					6f - (6f * Mathf.Max (1f,Mathf.Abs ((distToPlayer/200f))))
+				);
 			Debug.Log("Landed");
 			} else { //otherwise, fly towards it
 			this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;
