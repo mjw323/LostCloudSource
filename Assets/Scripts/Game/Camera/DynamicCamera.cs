@@ -86,6 +86,9 @@ public class DynamicCamera : MonoBehaviour {
 				"Mouse X")) * rotationSpeed * Time.deltaTime;	
 			rotation = Quaternion.AngleAxis(rotationAngle,Vector3.up);
 			}
+			else{
+				elevationAngle = Mathf.Lerp (elevationAngle,(enemyAnchor.position.y - transform.position.y)/1f,.5f); //why won't you look at yorex!
+			}
 
 			Vector3 relativePos = transform.position - goalAnchor.position;
 			Vector3 relativePosXz = new Vector3(relativePos.x, 0, relativePos.z);
@@ -109,10 +112,13 @@ public class DynamicCamera : MonoBehaviour {
 			float targD = targetDistance;
 			if (followEnemy){targD = 20f;}
 			distance = Mathf.Lerp(distance, targD, distanceStep);
-			
-			if (!followEnemy){transform.position = goalAnchor.position + direction * distance;}
+			//if (!followEnemy){
+			transform.position = playerAnchor.position + direction * distance;
+		//}
+			//if (!followEnemy){transform.position = Vector3.Lerp(transform.position, goalAnchor.position + direction * distance, 0.9f);}
 
-			transform.LookAt(goalAnchor.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(goalAnchor.position - transform.position), 0.9f);
+			//LookAt(goalAnchor.position);
 
 #if DYNAMIC_CAMERA_DEBUG_DRAW
 			Debug.DrawLine(goalAnchor.position, goalAnchor.position + relativePos,

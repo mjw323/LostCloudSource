@@ -60,7 +60,10 @@ public class NavMeshAI : MonoBehaviour {
 		jumpAnimCur = jumpAnim;
 		
 		shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<Framing>();
-	
+		
+		beaconParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[0];
+		beaconParticles.enableEmission = false;
+		beaconParticles.renderer.material.renderQueue = 4000;
 	}
 	
 	// Update is called once per frame
@@ -100,6 +103,13 @@ public class NavMeshAI : MonoBehaviour {
 			animator.SetFloat (speedId, GetComponent<NavMeshAgent> ().speed);
 		} 
 		animator.SetBool (glidingId, Flying);
+		
+		////particle stuff
+		if (state==6 && Vector3.Magnitude (this.transform.position-Player.transform.position)>100f){
+			beaconParticles.enableEmission = true;
+		}else{
+			beaconParticles.enableEmission = false;
+		}
 	}
 	
 	public void StartAI(){
@@ -108,7 +118,7 @@ public class NavMeshAI : MonoBehaviour {
 		Vector3 targetPos = FindJumpNode (Player.transform.position);
 		Vector3 startDir = (Player.transform.position - targetPos);
 		startDir.y = 0f;
-		this.transform.position = targetPos + (Vector3.up*100f) + (Vector3.Normalize (startDir)*200f);
+		this.transform.position = targetPos + (Vector3.up*100f) + (Quaternion.AngleAxis(-20, Vector3.up) * Vector3.Normalize (startDir) * 200f);
 		this.transform.LookAt (Player.transform.position,Vector3.up);
 		//Debug.Log ("I'm going to "+targetPos+", and ended up at "+this.transform.position);
 		navAgent.speed = mySpeed;
@@ -376,5 +386,7 @@ public class NavMeshAI : MonoBehaviour {
 	[HideInInspector] private Animator animator;
 	[HideInInspector] private int glidingId;
 	[HideInInspector] private int speedId;
+	
+	[HideInInspector] new private ParticleSystem beaconParticles;
 
 }
