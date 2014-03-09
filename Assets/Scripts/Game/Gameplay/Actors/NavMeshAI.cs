@@ -101,13 +101,17 @@ public class NavMeshAI : MonoBehaviour {
 	}
 	
 	public void StartAI(){
-		
+		state = 1;
 		navAgent.enabled = false;
 		Vector3 targetPos = FindJumpNode (Player.transform.position);
-		this.transform.position = targetPos;
+		Vector3 startDir = (Player.transform.position - targetPos);
+		startDir.y = 0f;
+		this.transform.position = targetPos + (Vector3.up*100f) + (Vector3.Normalize (startDir)*200f);
 		this.transform.LookAt (Player.transform.position,Vector3.up);
 		//Debug.Log ("I'm going to "+targetPos+", and ended up at "+this.transform.position);
+		navAgent.speed = mySpeed;
 		navAgent.enabled = true;
+		Jump ();
 	}
 	
 	public void Jump(){
