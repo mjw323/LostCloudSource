@@ -44,6 +44,7 @@ public class DynamicCamera : MonoBehaviour {
 	[HideInInspector] private float elevationAngle;
 	[HideInInspector] private Transform enemyAnchor;
 	[HideInInspector] private NavMeshAI navAgent;
+	public bool followEnemy = false;
 
 	private void ComputeDistanceAndElevationAngle() {
 		if (playerAnchor != null) {
@@ -71,14 +72,22 @@ public class DynamicCamera : MonoBehaviour {
 	}
 
 	private void LateUpdate() {
-		if (playerAnchor != null) {
+		Quaternion rotation = Quaternion.identity;
+		
+		Transform goalAnchor;
+		if (followEnemy){goalAnchor = enemyAnchor;}
+		else{goalAnchor = playerAnchor;}
+		
+		if (goalAnchor != null) {
+			if (!followEnemy){
 			elevationAngle += (Input.GetAxis("RightStickY") -
 			                   Input.GetAxis("Mouse Y"));
 			float rotationAngle = (Input.GetAxis("RightStickX") + Input.GetAxis(
 				"Mouse X")) * rotationSpeed * Time.deltaTime;	
-			Quaternion rotation = Quaternion.AngleAxis(rotationAngle,Vector3.up);
+			rotation = Quaternion.AngleAxis(rotationAngle,Vector3.up);
+			}
 
-			Vector3 relativePos = transform.position - playerAnchor.position;
+			Vector3 relativePos = transform.position - goalAnchor.position;
 			Vector3 relativePosXz = new Vector3(relativePos.x, 0, relativePos.z);
 			Vector3 xzDirection = rotation * relativePosXz.normalized;
 			Quaternion elevation = Quaternion.AngleAxis(elevationAngle,
@@ -89,27 +98,28 @@ public class DynamicCamera : MonoBehaviour {
 			float distanceStep = zoomCurve.Evaluate(distanceDiff) * zoomSpeed
 				* Time.deltaTime;
 
-			if (/*lookAtEnabled &&*/ (Input.GetAxis("Target") > 0.8f || Input.GetButton("Target")  || navAgent.state==6)){
+			if (!followEnemy && (Input.GetAxis("Target") > 0.8f || Input.GetButton("Target")  || navAgent.state==6)){
 				if (navAgent.state==0){
-					direction = Vector3.Slerp(direction, -playerAnchor.forward, .1f);
+					direction = Vector3.Slerp(direction, -goalAnchor.forward, .1f);
 				} else {
 					direction = Vector3.Slerp(direction, Vector3.Normalize(
-						playerAnchor.position - enemyAnchor.position), .1f);
+						goalAnchor.position - enemyAnchor.position), .1f);
 				}
 			}
-				
-			distance = Mathf.Lerp(distance, targetDistance, distanceStep);
+			float targD = targetDistance;
+			if (followEnemy){targD = 20f;}
+			distance = Mathf.Lerp(distance, targD, distanceStep);
+			
+			if (!followEnemy){transform.position = goalAnchor.position + direction * distance;}
 
-			transform.position = playerAnchor.position + direction * distance;
-
-			transform.LookAt(playerAnchor.position);
+			transform.LookAt(goalAnchor.position);
 
 #if DYNAMIC_CAMERA_DEBUG_DRAW
-			Debug.DrawLine(playerAnchor.position, playerAnchor.position + relativePos,
+			Debug.DrawLine(goalAnchor.position, goalAnchor.position + relativePos,
                      Color.red);
-			Debug.DrawLine(playerAnchor.position,
-			               playerAnchor.position + relativePosXz, Color.blue);
-			Debug.DrawRay(playerAnchor.position, direction, Color.green);
+			Debug.DrawLine(goalAnchor.position,
+			               goalAnchor.position + relativePosXz, Color.blue);
+			Debug.DrawRay(goalAnchor.position, direction, Color.green);
 #endif
 		}
 	}
