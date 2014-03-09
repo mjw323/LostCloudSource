@@ -6,6 +6,7 @@ public class NavMeshAI : MonoBehaviour {
 
 	public GameObject Player;
 	public Vector3 lastKnownPlayerPosition;
+	public Vector3 RandomMoveLocation;
 	public GameObject HidePosition;
 	public Camera Eyes;
 	public bool Flying;
@@ -28,6 +29,7 @@ public class NavMeshAI : MonoBehaviour {
 	public float landAnimDist = 0f; //distance he moves while playing his landing animation
 	
 	public float mySpeed = 12f;
+	private Vector3 NewRandomNode;
 	
 	public float jumpAnim = 0.5f;
 	private float jumpAnimCur;
@@ -200,7 +202,8 @@ public class NavMeshAI : MonoBehaviour {
 		GetComponent<NavMeshAgent>().speed = 9;
 		look ();
 		//Move around code
-		Wandering = false;
+		Wandering = true;
+		MoveAround ();
 	}
 
 	void chase(){
@@ -274,33 +277,63 @@ public class NavMeshAI : MonoBehaviour {
 		}
 	}
 	
-	void MoveAround(){
-		if(Wandering = true){
-		RaycastHit hit;
-		int randomNumber = Random.Range (0,3);
-		GameObject MoveLocation = RandomMove[randomNumber];
-		if(Physics.Raycast(this.transform.position,transform.forward, out hit, 10)){
-				Debug.DrawRay(this.transform.position,transform.forward,Color.green);
-			if(hit.collider.tag == "Terrain"){
-				//Don't move towards location because terrain is between the Yorex and the move location
-				}
-			else{
-				//Move towards location
-				navAgent.destination = MoveLocation.transform.position;
-				navAgent.speed = 6;
+	
+	Vector3 GetRandomNode(){
+		bool[] canGo = new bool[4];
+		int i;
+		float pDiddy = Mathf.Infinity;
+		int goNode = 0;
+		int safeZones = 0;
+		for(i = 0; i < RandomMove.Length; i+=1){
+			if(Physics.Raycast(RandomMove[i].transform.position, -Vector3.up,10f)){
+			canGo[i] = true;
+				safeZones += 1;
+			if (Vector3.Magnitude (RandomMove[i].transform.position - Player.transform.position) < pDiddy){
+						pDiddy = Vector3.Magnitude (RandomMove[i].transform.position - Player.transform.position);
+						goNode = i;
 				}
 			}
+			else{
+				canGo[i] = false;
+			}
+		}
+		if (safeZones > 0){
+		if (Random.Range (0f,1f)<.5f){return RandomMove[goNode].transform.position;}
+		else{
+			goNode = Random.Range (0,3);
+			while(!canGo[goNode]){
+				goNode = Random.Range (0,3);
+			}
+				
+			return RandomMove[goNode].transform.position;	
+		}
+		}else{return this.transform.position;}
+
+	}
+	
+	void MoveAround(){
+		if(Wandering = true){
+		navAgent.enabled = true;
+		RaycastHit hit;
 		if (!seen) {
 			WanderCountdownCurrent -= Time.deltaTime;
+			float moveDistance = (this.transform.position - NewRandomNode).sqrMagnitude;
+			Debug.Log (moveDistance);
+			if((moveDistance) < 10f){
+				navAgent.speed = 0;	
+				}
 			//Debug.Log ("Moving randomly in" + WanderCountdownCurrent);
 		} else {
 			WanderCountdownCurrent = WanderCountdown;
-		}	
-		if (WanderCountdownCurrent < 0f){
-			Wandering = false;
-			WanderCountdownCurrent = WanderCountdown;
+		}
+		if (WanderCountdownCurrent <= 0f){
+			NewRandomNode = GetRandomNode();
+			navAgent.destination = NewRandomNode;
+			WanderCountdownCurrent = WanderCountdown*(Random.Range (.5f,1f));
 			}	
 		}
+		
+		 
 	}
 
 	IEnumerator Wait(){
