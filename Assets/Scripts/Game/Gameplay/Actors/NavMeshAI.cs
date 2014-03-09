@@ -9,14 +9,18 @@ public class NavMeshAI : MonoBehaviour {
 	public GameObject HidePosition;
 	public Camera Eyes;
 	public bool Flying;
+	public bool Wandering;
 	public float WaitTime;
 	public float leapDistance;
 	public int state = 0;
 	private GameObject[] gos;
+	private GameObject[] RandomMove;
 	private NavMeshAgent navAgent;
 	private Vector3 JumpTarget;
 	public float JumpCountdown = 6f;
 	private float JumpCountdownCurrent = 0f;
+	public float WanderCountdown = 12f;
+	private float WanderCountdownCurrent = 0f;
 	public float risingSpeed = 35f;
 	public float flyingSpeed = 30f;
 	public float landingSpeed = 40f;
@@ -38,10 +42,10 @@ public class NavMeshAI : MonoBehaviour {
 	private Framing shakeCam;
 
 
-	
 	void Start(){
 		leapDistance = 40.0f;
 		gos = GameObject.FindGameObjectsWithTag("YorexNode");
+		RandomMove = GameObject.FindGameObjectsWithTag ("RandomMove");
 		navAgent = this.GetComponent<NavMeshAgent>();
 		Eyes = this.GetComponentInChildren<Camera> ();
 
@@ -63,7 +67,7 @@ public class NavMeshAI : MonoBehaviour {
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
-		if (state != 0) {
+		if (state != 6) {
 			//Debug.Log ("Current yorex state: "+state);
 		}
 		if (state == 0){
@@ -182,8 +186,8 @@ public class NavMeshAI : MonoBehaviour {
 		
 		look ();
 		GetComponent<NavMeshAgent>().speed = 6;
-		Wait ();
-		this.transform.Rotate (0,Time.deltaTime*10,0);
+		Wandering = true;
+		MoveAround ();
 
 	}
 
@@ -192,6 +196,7 @@ public class NavMeshAI : MonoBehaviour {
 		GetComponent<NavMeshAgent>().speed = 9;
 		look ();
 		//Move around code
+		Wandering = false;
 	}
 
 	void chase(){
@@ -262,6 +267,35 @@ public class NavMeshAI : MonoBehaviour {
 			if (state!=3){Debug.Log ("saw player, started chasing");}
 			state = 3;
 			lastKnownPlayerPosition = Player.transform.position;
+		}
+	}
+	
+	void MoveAround(){
+		if(Wandering = true){
+		RaycastHit hit;
+		int randomNumber = Random.Range (0,3);
+		GameObject MoveLocation = RandomMove[randomNumber];
+		if(Physics.Raycast(this.transform.position,transform.forward, out hit, 10)){
+				Debug.DrawRay(this.transform.position,transform.forward,Color.green);
+			if(hit.collider.tag == "Terrain"){
+				//Don't move towards location because terrain is between the Yorex and the move location
+				}
+			else{
+				//Move towards location
+				navAgent.destination = MoveLocation.transform.position;
+				navAgent.speed = 6;
+				}
+			}
+		if (!seen) {
+			WanderCountdownCurrent -= Time.deltaTime;
+			//Debug.Log ("Moving randomly in" + WanderCountdownCurrent);
+		} else {
+			WanderCountdownCurrent = WanderCountdown;
+		}	
+		if (WanderCountdownCurrent < 0f){
+			Wandering = false;
+			WanderCountdownCurrent = WanderCountdown;
+			}	
 		}
 	}
 
