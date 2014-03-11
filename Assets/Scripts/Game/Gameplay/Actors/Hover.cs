@@ -265,6 +265,7 @@ public class Hover : MonoBehaviour
         }
 
         void OnCollisionEnter(Collision collision) {
+		if (collision.gameObject.tag != "Respawn"){
                 detach = false;
                 grinding = false;
                 //Debug.Log(collision.gameObject);
@@ -281,6 +282,7 @@ public class Hover : MonoBehaviour
 						Bail();
 					}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
+		}
         }
 
         // Nearing rail
