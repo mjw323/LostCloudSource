@@ -51,8 +51,13 @@ public class DayNightTransition : MonoBehaviour {
 	}
 
 	void fadeDayOut(){
-		camControl.enabled = false;
-		parentControl.enabled = false;
+		if (noke.HasPlayerGottenNextUpgrade){
+			camControl.enabled = false;
+			parentControl.enabled = false;
+		}
+		else{
+			parentControl.followEnemy = true;
+		}
 
 		timePassed = 0f;
 		lookUp = true;
@@ -80,11 +85,13 @@ public class DayNightTransition : MonoBehaviour {
 				float skyFade = timePassed - (moveTime /*+ stayTime + waitTime*/);
 				float lerp = Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,skyFade/fadeTime));
 				
-				if (lerp>=1f && ai.state == 0 && noke.HasPlayerGottenNextUpgrade){ //get yorex to show up and land if night is starting
+				if (lerp>=1f && noke.HasPlayerGottenNextUpgrade){ //get yorex to show up and land if night is starting
+					if (ai.state==0){
 						ai.StartAI (); 
 						parentControl.enabled = true; 
 						camControl.enabled = true;
 						parentControl.followEnemy = true;
+					}
 				} else{ //otherwise/before that, animate towards the sky
 					this.transform.parent.rotation = Quaternion.Slerp(fromDir,toDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,Mathf.Max(timePassed-waitTime,0f)/moveTime)));
 				}

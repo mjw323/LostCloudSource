@@ -63,7 +63,7 @@ public class UpgradeSystem : MonoBehaviour {
 		if(HasPlayerGottenNextUpgrade){
 			Hoverboard.rigidbody.isKinematic = true;
 			HasPlayerGottenNextUpgrade = false;
-			Enemy.GetComponent<NavMeshAI>().state = 0;
+			Enemy.GetComponent<NavMeshAI>().DayFlee();//state = 0;
 			MainCamera.SendMessage("fadeDayOut");
 			StartCoroutine(DayTime());
 		}

@@ -8,6 +8,7 @@ public class NavMeshAI : MonoBehaviour {
 	public Vector3 lastKnownPlayerPosition;
 	public Vector3 RandomMoveLocation;
 	public GameObject HidePosition;
+	public Camera Eyes;
 	public bool Flying;
 	public bool Wandering;
 	public float WaitTime;
@@ -41,14 +42,19 @@ public class NavMeshAI : MonoBehaviour {
 	private bool seen = false;
 	
 	private Framing shakeCam;
-    private HeatVisionCamera Eyes;
+	
+	public Vector3 fleePos = new Vector3(120f,220f,1220f);
+	public bool rise = false; //used for camera follow
+	private float riseTime = 1f;
+	private float riseTimer = 1f;
+
 
 	void Start(){
 		leapDistance = 40.0f;
 		gos = GameObject.FindGameObjectsWithTag("YorexNode");
 		RandomMove = GameObject.FindGameObjectsWithTag ("RandomMove");
 		navAgent = this.GetComponent<NavMeshAgent>();
-        Eyes = this.GetComponentInChildren<HeatVisionCamera>();
+		Eyes = this.GetComponentInChildren<Camera> ();
 
 		animator = GetComponentInChildren<Animator>();
 		animator.applyRootMotion = false; //we turn off root motion because of some of the funky stuff fly animations do.
@@ -67,7 +73,7 @@ public class NavMeshAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Eyes.CanSee() != seen ){
+		if (Eyes.transform.GetComponent<SearchCamera>().CanSee() != seen ){
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
@@ -125,6 +131,13 @@ public class NavMeshAI : MonoBehaviour {
 		Jump ();
 	}
 	
+	public void DayFlee(){
+		JumpTarget = fleePos;
+		navAgent.enabled = false;
+		Flying = true;
+		state = 6;
+	}
+	
 	public void Jump(){
 		Debug.Log ("looking to jump");
 		JumpTarget = FindJumpNode (Player.transform.position) + (Vector3.up*GetComponent<NavMeshAgent> ().height/2f);
@@ -135,6 +148,9 @@ public class NavMeshAI : MonoBehaviour {
 		navAgent.enabled = false;
 		Flying = true;
 		state = 6;
+			
+		rise = true;
+		riseTimer = riseTime;
 		Debug.Log ("jumping to "+JumpTarget);
 		}
 		//this.transform.position = targetPos;
@@ -143,6 +159,9 @@ public class NavMeshAI : MonoBehaviour {
 	}
 
 	void flying(){
+		if (riseTimer > 0f){riseTimer -= Time.deltaTime;}
+		else{rise = false;}
+		
 		navAgent.enabled = false;
 		Flying = true;
 		/*if (!Flying) { //something's been turned off, go back to ground movement
@@ -178,7 +197,7 @@ public class NavMeshAI : MonoBehaviour {
 				
 				float distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
 				shakeCam.ShakeScreen(
-					2f - (1.75f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/150f)))), 
+					2f - (1.5f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/200f)))), 
 					1f - (1f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
 				);
 			
