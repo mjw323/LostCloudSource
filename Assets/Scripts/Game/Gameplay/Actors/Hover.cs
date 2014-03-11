@@ -267,11 +267,19 @@ public class Hover : MonoBehaviour
         void OnCollisionEnter(Collision collision) {
                 detach = false;
                 grinding = false;
-                Debug.Log("hit ground @ angles "+transform.rotation.eulerAngles);
-                if ((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) || (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle)){
-					transform.position = transform.position+(Vector3.up*.5f);
-					Bail();
-		}
+                //Debug.Log(collision.gameObject);
+				bool isNoke = false;
+				Transform par = collision.transform;
+				while(par!=null){
+						if (par.gameObject.tag == "Player"){isNoke = true; break;}
+						par = par.parent;
+					}
+                if (!isNoke && 
+					((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) 
+					|| (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle))){
+						transform.position = transform.position+(Vector3.up*.5f);
+						Bail();
+					}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}
         }
 

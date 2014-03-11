@@ -106,7 +106,7 @@ public class NavMeshAI : MonoBehaviour {
 		
 		////particle stuff
 		if (state==6 && Vector3.Magnitude (this.transform.position-Player.transform.position)>100f){
-			beaconParticles.enableEmission = true;
+			//beaconParticles.enableEmission = true;
 		}else{
 			beaconParticles.enableEmission = false;
 		}
