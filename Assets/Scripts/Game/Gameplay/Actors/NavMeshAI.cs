@@ -105,7 +105,7 @@ public class NavMeshAI : MonoBehaviour {
 		
 		////particle stuff
 		if (state==6 && Vector3.Magnitude (this.transform.position-Player.transform.position)>100f){
-			beaconParticles.enableEmission = true;
+			//beaconParticles.enableEmission = true;
 		}else{
 			beaconParticles.enableEmission = false;
 		}
@@ -155,9 +155,9 @@ public class NavMeshAI : MonoBehaviour {
 		distLeft.y = 0;
 
 		////////////////////////rising/landing////////////////////
-		Debug.Log("time left for fly: "+(Vector3.Magnitude (distLeft) / flyingSpeed)+", time left for land: "+(Mathf.Abs(JumpTarget.y - this.transform.position.y) / landingSpeed));
+		//Debug.Log("time left for fly: "+(Vector3.Magnitude (distLeft) / flyingSpeed)+", time left for land: "+(Mathf.Abs(JumpTarget.y - this.transform.position.y) / landingSpeed));
 		if ((Vector3.Magnitude (distLeft) / flyingSpeed) <= (Mathf.Abs(JumpTarget.y - this.transform.position.y) / landingSpeed)) { //if we're in range where we should start landing
-			Debug.Log("landing");
+			//Debug.Log("landing");
 				this.transform.position += Vector3.up * Mathf.Sign (JumpTarget.y - this.transform.position.y) * landingSpeed * Time.deltaTime;
 			} else {
 			this.transform.position += Vector3.up * Mathf.Sign (glideHeight - this.transform.position.y) * risingSpeed * Time.deltaTime; //otherwise, rise up toward glide height
@@ -168,6 +168,7 @@ public class NavMeshAI : MonoBehaviour {
 
 			////////////////////////moving/stopping////////////////////
 		if (Vector3.Magnitude (distLeft) <= flyingSpeed * Time.deltaTime) { //if we're close enough to the target to get there this frame, get there
+				Debug.Log ("Landed!");	
 				navAgent.enabled = true;
 				state = 2;
 				Flying = false;
@@ -176,12 +177,11 @@ public class NavMeshAI : MonoBehaviour {
 				this.transform.LookAt(JumpTarget,Vector3.up);
 				
 				float distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
-			Debug.Log (distToPlayer);
 				shakeCam.ShakeScreen(
-					3f - (2f * Mathf.Max (1f,Mathf.Abs ((distToPlayer/80f)))), 
-					6f - (6f * Mathf.Max (1f,Mathf.Abs ((distToPlayer/200f))))
+					2f - (1.75f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/150f)))), 
+					1f - (1f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
 				);
-			Debug.Log("Landed");
+			
 			} else { //otherwise, fly towards it
 			this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;
 			}
@@ -327,7 +327,7 @@ public class NavMeshAI : MonoBehaviour {
 		if (!seen) {
 			WanderCountdownCurrent -= Time.deltaTime;
 			float moveDistance = (this.transform.position - NewRandomNode).sqrMagnitude;
-			Debug.Log (moveDistance);
+			//Debug.Log (moveDistance);
 			if((moveDistance) < 10f){
 				navAgent.speed = 0;	
 				}

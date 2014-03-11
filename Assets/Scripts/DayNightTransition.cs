@@ -113,7 +113,9 @@ public class DayNightTransition : MonoBehaviour {
 				}
 			}
 			else{ // looking back down at the layer
-				//this.transform.parent.rotation = Quaternion.Slerp(toDir,fromDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,timePassed/moveTime)));
+				if (!noke.HasPlayerGottenNextUpgrade){ //night to day transition just pans back down for now
+					this.transform.parent.rotation = Quaternion.Slerp(toDir,fromDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,timePassed/moveTime)));
+				}
 				if (timePassed >= moveTime && (!noke.HasPlayerGottenNextUpgrade || ai.state!=6)){ //reached old position; time to close up shop, boys
 					camControl.enabled = true;
 					parentControl.enabled = true;
