@@ -48,7 +48,7 @@ public class Activatable : MonoBehaviour {
 			buttonDraw.materials [0].SetColor("_Color", new Color(color.r,color.g,color.b,color.a + ((0f - color.a) * 0.1f))); //fade out button
 		}
 
-		myButton.transform.rotation = Quaternion.LookRotation (camera.position - myButton.transform.position) * Quaternion.Euler(0, 90, 0); //button rotates toward camera
+		myButton.transform.rotation = Quaternion.LookRotation (camera.position - myButton.transform.position) * Quaternion.Euler(0, -90, 0); //button rotates toward camera
 	}
 
 	public bool Activated(){ // find out if this has been activated
