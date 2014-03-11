@@ -8,7 +8,6 @@ public class NavMeshAI : MonoBehaviour {
 	public Vector3 lastKnownPlayerPosition;
 	public Vector3 RandomMoveLocation;
 	public GameObject HidePosition;
-	public Camera Eyes;
 	public bool Flying;
 	public bool Wandering;
 	public float WaitTime;
@@ -42,14 +41,14 @@ public class NavMeshAI : MonoBehaviour {
 	private bool seen = false;
 	
 	private Framing shakeCam;
-
+    private HeatVisionCamera Eyes;
 
 	void Start(){
 		leapDistance = 40.0f;
 		gos = GameObject.FindGameObjectsWithTag("YorexNode");
 		RandomMove = GameObject.FindGameObjectsWithTag ("RandomMove");
 		navAgent = this.GetComponent<NavMeshAgent>();
-		Eyes = this.GetComponentInChildren<Camera> ();
+        Eyes = this.GetComponentInChildren<HeatVisionCamera>();
 
 		animator = GetComponentInChildren<Animator>();
 		animator.applyRootMotion = false; //we turn off root motion because of some of the funky stuff fly animations do.
@@ -68,7 +67,7 @@ public class NavMeshAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Eyes.transform.GetComponent<SearchCamera>().CanSee() != seen ){
+		if (Eyes.CanSee() != seen ){
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
