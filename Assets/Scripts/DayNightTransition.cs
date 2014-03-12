@@ -27,6 +27,8 @@ public class DayNightTransition : MonoBehaviour {
 	private bool animating = false;
 	private float timePassed = 0f;
 	private UpgradeSystem noke;
+	
+	private GameObject Enemy;
 
 	// Use this for initialization
 	void Start () {
@@ -44,11 +46,18 @@ public class DayNightTransition : MonoBehaviour {
 		RenderSettings.fogMode = FogMode.Linear;
 
 		Moon.GetComponent<Light> ().intensity = 0f;
+		
+		Enemy = GameObject.FindWithTag ("Yorex");
 	}
 
 	void fadeDayOut(){
-		camControl.enabled = false;
-		parentControl.enabled = false;
+		if (noke.HasPlayerGottenNextUpgrade){
+			camControl.enabled = false;
+			parentControl.enabled = false;
+		}
+		else{
+			parentControl.followEnemy = true;
+		}
 
 		timePassed = 0f;
 		lookUp = true;
@@ -69,12 +78,24 @@ public class DayNightTransition : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
+		NavMeshAI ai = Enemy.GetComponent<NavMeshAI>();
 
 		if (animating) { // in motion
 			if (lookUp){ //looking up to the sky
-				this.transform.parent.rotation = Quaternion.Slerp(fromDir,toDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,Mathf.Max(timePassed-waitTime,0f)/moveTime)));
 				float skyFade = timePassed - (moveTime /*+ stayTime + waitTime*/);
 				float lerp = Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,skyFade/fadeTime));
+				
+				if (lerp>=1f && noke.HasPlayerGottenNextUpgrade){ //get yorex to show up and land if night is starting
+					if (ai.state==0){
+						ai.StartAI (); 
+						parentControl.enabled = true; 
+						camControl.enabled = true;
+						parentControl.followEnemy = true;
+					}
+				} else{ //otherwise/before that, animate towards the sky
+					this.transform.parent.rotation = Quaternion.Slerp(fromDir,toDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,Mathf.Max(timePassed-waitTime,0f)/moveTime)));
+				}
+				
 				if (skyFade > 0f){ 
 					if (noke.HasPlayerGottenNextUpgrade){ //fade to night if we're carrying the next upgrade
 						RenderSettings.skybox.SetFloat("_Blend",lerp);
@@ -99,10 +120,13 @@ public class DayNightTransition : MonoBehaviour {
 				}
 			}
 			else{ // looking back down at the layer
-				this.transform.parent.rotation = Quaternion.Slerp(toDir,fromDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,timePassed/moveTime)));
-				if (timePassed >= moveTime){ //reached old position; time to close up shop, boys
+				if (!noke.HasPlayerGottenNextUpgrade){ //night to day transition just pans back down for now
+					this.transform.parent.rotation = Quaternion.Slerp(toDir,fromDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,timePassed/moveTime)));
+				}
+				if (timePassed >= moveTime && (!noke.HasPlayerGottenNextUpgrade || ai.state!=6)){ //reached old position; time to close up shop, boys
 					camControl.enabled = true;
 					parentControl.enabled = true;
+					parentControl.followEnemy = false;
 					animating = false;
 
 					Sun.active = !noke.HasPlayerGottenNextUpgrade;

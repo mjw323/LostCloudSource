@@ -6,23 +6,30 @@ public class NavMeshAI : MonoBehaviour {
 
 	public GameObject Player;
 	public Vector3 lastKnownPlayerPosition;
+	public Vector3 RandomMoveLocation;
 	public GameObject HidePosition;
 	public Camera Eyes;
 	public bool Flying;
+	public bool Wandering;
 	public float WaitTime;
 	public float leapDistance;
 	public int state = 0;
 	private GameObject[] gos;
+	private GameObject[] RandomMove;
 	private NavMeshAgent navAgent;
 	private Vector3 JumpTarget;
 	public float JumpCountdown = 6f;
 	private float JumpCountdownCurrent = 0f;
+	public float WanderCountdown = 12f;
+	private float WanderCountdownCurrent = 0f;
 	public float risingSpeed = 35f;
 	public float flyingSpeed = 30f;
 	public float landingSpeed = 40f;
 	public float glideHeight = 120f;
+	public float landAnimDist = 0f; //distance he moves while playing his landing animation
 	
 	public float mySpeed = 12f;
+	private Vector3 NewRandomNode;
 	
 	public float jumpAnim = 0.5f;
 	private float jumpAnimCur;
@@ -33,21 +40,35 @@ public class NavMeshAI : MonoBehaviour {
 	Vector3 leftoffset = new Vector3(-3,0,0);
 	
 	private bool seen = false;
-
-
 	
+	private Framing shakeCam;
+	
+	public Vector3 fleePos = new Vector3(120f,220f,1220f);
+	public bool rise = false; //used for camera follow
+	private float riseTime = 1f;
+	private float riseTimer = 1f;
+
+
 	void Start(){
 		leapDistance = 40.0f;
 		gos = GameObject.FindGameObjectsWithTag("YorexNode");
+		RandomMove = GameObject.FindGameObjectsWithTag ("RandomMove");
 		navAgent = this.GetComponent<NavMeshAgent>();
 		Eyes = this.GetComponentInChildren<Camera> ();
 
-		animator = GetComponent<Animator>();
+		animator = GetComponentInChildren<Animator>();
+		animator.applyRootMotion = false; //we turn off root motion because of some of the funky stuff fly animations do.
+
 		speedId = Animator.StringToHash("Speed");
 		glidingId = Animator.StringToHash("Gliding");
 		
 		jumpAnimCur = jumpAnim;
-	
+		
+		shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<Framing>();
+		
+		beaconParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[0];
+		beaconParticles.enableEmission = false;
+		beaconParticles.renderer.material.renderQueue = 4000;
 	}
 	
 	// Update is called once per frame
@@ -56,7 +77,7 @@ public class NavMeshAI : MonoBehaviour {
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
-		if (state != 0) {
+		if (state != 6) {
 			//Debug.Log ("Current yorex state: "+state);
 		}
 		if (state == 0){
@@ -78,6 +99,7 @@ public class NavMeshAI : MonoBehaviour {
 			curious();
 		}
 		else if (state == 6){
+			//Debug.Log ("flying...");
 			flying();
 		}
 
@@ -86,25 +108,49 @@ public class NavMeshAI : MonoBehaviour {
 			animator.SetFloat (speedId, GetComponent<NavMeshAgent> ().speed);
 		} 
 		animator.SetBool (glidingId, Flying);
+		
+		////particle stuff
+		if (state==6 && Vector3.Magnitude (this.transform.position-Player.transform.position)>100f){
+			//beaconParticles.enableEmission = true;
+		}else{
+			beaconParticles.enableEmission = false;
+		}
 	}
 	
 	public void StartAI(){
-		
+		state = 1;
 		navAgent.enabled = false;
 		Vector3 targetPos = FindJumpNode (Player.transform.position);
-		this.transform.position = targetPos;
+		Vector3 startDir = (Player.transform.position - targetPos);
+		startDir.y = 0f;
+		this.transform.position = targetPos + (Vector3.up*100f) + (Quaternion.AngleAxis(-20, Vector3.up) * Vector3.Normalize (startDir) * 200f);
 		this.transform.LookAt (Player.transform.position,Vector3.up);
 		//Debug.Log ("I'm going to "+targetPos+", and ended up at "+this.transform.position);
+		navAgent.speed = mySpeed;
 		navAgent.enabled = true;
+		Jump ();
+	}
+	
+	public void DayFlee(){
+		JumpTarget = fleePos;
+		navAgent.enabled = false;
+		Flying = true;
+		state = 6;
 	}
 	
 	public void Jump(){
 		Debug.Log ("looking to jump");
 		JumpTarget = FindJumpNode (Player.transform.position) + (Vector3.up*GetComponent<NavMeshAgent> ().height/2f);
+		Vector3 moveDir = this.transform.position - JumpTarget; //move landing spot towards starting so he has space to land
+			moveDir.y = 0f;
+			JumpTarget += (Vector3.Normalize(moveDir)*landAnimDist);
 		if (Vector3.Magnitude(JumpTarget - this.transform.position) > flyingSpeed){
 		navAgent.enabled = false;
 		Flying = true;
 		state = 6;
+			
+		rise = true;
+		riseTimer = riseTime;
 		Debug.Log ("jumping to "+JumpTarget);
 		}
 		//this.transform.position = targetPos;
@@ -113,30 +159,48 @@ public class NavMeshAI : MonoBehaviour {
 	}
 
 	void flying(){
+		if (riseTimer > 0f){riseTimer -= Time.deltaTime;}
+		else{rise = false;}
+		
 		navAgent.enabled = false;
 		Flying = true;
 		/*if (!Flying) { //something's been turned off, go back to ground movement
 			navAgent.enabled = true;
 			state = 2;
 		} else {*/
-			Vector3 distLeft = JumpTarget - this.transform.position; //see how close we are to destination
-			distLeft.y = 0;
+		Vector3 distLeft = JumpTarget - this.transform.position; //see how close we are to destination
+		Vector3 lookDir = distLeft;
 
-			////////////////////////rising/landing////////////////////
-			if (Vector3.Magnitude (distLeft) / flyingSpeed <= (JumpTarget.y - this.transform.position.y) / landingSpeed) { //if we're in range where we should start landing
-				this.transform.position += new Vector3(0,Mathf.Sign (JumpTarget.y - this.transform.position.y) * landingSpeed * Time.deltaTime,0);
+		distLeft.y = 0;
+
+		////////////////////////rising/landing////////////////////
+		//Debug.Log("time left for fly: "+(Vector3.Magnitude (distLeft) / flyingSpeed)+", time left for land: "+(Mathf.Abs(JumpTarget.y - this.transform.position.y) / landingSpeed));
+		if ((Vector3.Magnitude (distLeft) / flyingSpeed) <= (Mathf.Abs(JumpTarget.y - this.transform.position.y) / landingSpeed)) { //if we're in range where we should start landing
+			//Debug.Log("landing");
+				this.transform.position += Vector3.up * Mathf.Sign (JumpTarget.y - this.transform.position.y) * landingSpeed * Time.deltaTime;
 			} else {
-			this.transform.position += new Vector3(0,Mathf.Sign (glideHeight - this.transform.position.y) * risingSpeed * Time.deltaTime,0); //otherwise, rise up toward glide height
+			this.transform.position += Vector3.up * Mathf.Sign (glideHeight - this.transform.position.y) * risingSpeed * Time.deltaTime; //otherwise, rise up toward glide height
+			lookDir.y = glideHeight - this.transform.position.y;
 			}
+
+		this.transform.rotation = Quaternion.LookRotation (Vector3.RotateTowards(this.transform.forward,distLeft,1.0f * Time.deltaTime, 0.0f)); // rotate towards destination
 
 			////////////////////////moving/stopping////////////////////
 		if (Vector3.Magnitude (distLeft) <= flyingSpeed * Time.deltaTime) { //if we're close enough to the target to get there this frame, get there
+				Debug.Log ("Landed!");	
 				navAgent.enabled = true;
 				state = 2;
 				Flying = false;
-
 				this.transform.position = JumpTarget;
-			Debug.Log("Landed");
+
+				this.transform.LookAt(JumpTarget,Vector3.up);
+				
+				float distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
+				shakeCam.ShakeScreen(
+					2f - (1.5f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/200f)))), 
+					1f - (1f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
+				);
+			
 			} else { //otherwise, fly towards it
 			this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;
 			}
@@ -156,8 +220,8 @@ public class NavMeshAI : MonoBehaviour {
 		
 		look ();
 		GetComponent<NavMeshAgent>().speed = 6;
-		Wait ();
-		this.transform.Rotate (0,Time.deltaTime*10,0);
+		Wandering = true;
+		MoveAround ();
 
 	}
 
@@ -166,6 +230,8 @@ public class NavMeshAI : MonoBehaviour {
 		GetComponent<NavMeshAgent>().speed = 9;
 		look ();
 		//Move around code
+		Wandering = true;
+		MoveAround ();
 	}
 
 	void chase(){
@@ -238,6 +304,65 @@ public class NavMeshAI : MonoBehaviour {
 			lastKnownPlayerPosition = Player.transform.position;
 		}
 	}
+	
+	
+	Vector3 GetRandomNode(){
+		bool[] canGo = new bool[4];
+		int i;
+		float pDiddy = Mathf.Infinity;
+		int goNode = 0;
+		int safeZones = 0;
+		for(i = 0; i < RandomMove.Length; i+=1){
+			if(Physics.Raycast(RandomMove[i].transform.position, -Vector3.up,10f)){
+			canGo[i] = true;
+				safeZones += 1;
+			if (Vector3.Magnitude (RandomMove[i].transform.position - Player.transform.position) < pDiddy){
+						pDiddy = Vector3.Magnitude (RandomMove[i].transform.position - Player.transform.position);
+						goNode = i;
+				}
+			}
+			else{
+				canGo[i] = false;
+			}
+		}
+		if (safeZones > 0){
+		if (Random.Range (0f,1f)<.5f){return RandomMove[goNode].transform.position;}
+		else{
+			goNode = Random.Range (0,3);
+			while(!canGo[goNode]){
+				goNode = Random.Range (0,3);
+			}
+				
+			return RandomMove[goNode].transform.position;	
+		}
+		}else{return this.transform.position;}
+
+	}
+	
+	void MoveAround(){
+		if(Wandering = true){
+		navAgent.enabled = true;
+		RaycastHit hit;
+		if (!seen) {
+			WanderCountdownCurrent -= Time.deltaTime;
+			float moveDistance = (this.transform.position - NewRandomNode).sqrMagnitude;
+			//Debug.Log (moveDistance);
+			if((moveDistance) < 10f){
+				navAgent.speed = 0;	
+				}
+			//Debug.Log ("Moving randomly in" + WanderCountdownCurrent);
+		} else {
+			WanderCountdownCurrent = WanderCountdown;
+		}
+		if (WanderCountdownCurrent <= 0f){
+			NewRandomNode = GetRandomNode();
+			navAgent.destination = NewRandomNode;
+			WanderCountdownCurrent = WanderCountdown*(Random.Range (.5f,1f));
+			}	
+		}
+		
+		 
+	}
 
 	IEnumerator Wait(){
 		yield return new WaitForSeconds(WaitTime);
@@ -279,5 +404,7 @@ public class NavMeshAI : MonoBehaviour {
 	[HideInInspector] private Animator animator;
 	[HideInInspector] private int glidingId;
 	[HideInInspector] private int speedId;
+	
+	[HideInInspector] new private ParticleSystem beaconParticles;
 
 }

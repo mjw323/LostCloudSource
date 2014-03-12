@@ -6,7 +6,8 @@
 	public var frequency: float; //how many seconds to wait betwen checks
 	private var timer: float;
 	public var tsize: int = 16;  //needs to match up with size of RenderTexture or camera window
-	
+	public var visionTex : Texture2D;	
+
 	function Awake(){
 		timer = frequency;
 	}
@@ -73,6 +74,7 @@
 						           visible = true;
 						           Debug.Log("yorex can see noke!");
 			}
+
 			targetHit = 0;
 			
 			// Set the display texture to the newly captured image.

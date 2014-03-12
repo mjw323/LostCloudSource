@@ -32,10 +32,21 @@ public class RespawnSystem : MonoBehaviour {
 		if (!isRespawning){
 			RaycastHit hit;
 			bool touchingWater = false;
-			if (Physics.Raycast (player.position, -Vector3.up, out hit, footDist, ~1000000000)){				//if (hit.distance<=footDist){
-					if ((hit.transform.tag != "Grind") && (hit.transform.tag != "Water") && 
-						(hit.transform.tag != "NoRespawn") && (hit.transform.tag != "Respawn"))	{
+			Debug.DrawRay(transform.position, -Vector3.up, Color.magenta);
+			if (Physics.Raycast (player.position, -Vector3.up, out hit, footDist/*, ~100000000*/)){				//if (hit.distance<=footDist){
+				//print ("hit distance:" +hit.distance);
+				/*bool isNoke = false;
+				Transform par = hit.transform;
+				while(par!=null){
+						if (par.gameObject.tag == "Player"){isNoke = true; break;}
+						par = par.parent;
+					}
+					if ((!isNoke) && (hit.transform.tag != "Grind") && (hit.transform.tag != "Water") && 
+						(hit.transform.tag != "NoRespawn") && (hit.transform.tag != "Respawn"))	{*/
+					if(hit.transform.tag == "Terrain"){
 						spawnPoint = player.position;
+						print ("hit tag: " + hit.transform.tag);
+						print ("hit gameobject: " + hit.transform.name);
 					}
 					
 					if ((hit.transform.tag == "Water") && (!waterUpgrade)){

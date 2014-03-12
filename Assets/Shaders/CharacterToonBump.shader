@@ -9,7 +9,7 @@
 	}
 
 	SubShader {
-        Tags {"RenderType"="TransparentCutout" "Queue"="Transparent" "Player" = "TargetTag" }
+        Tags {"IgnoreProjector"="True" "RenderType"="TransparentCutout" "Queue"="AlphaTest" "Player" = "TargetTag" }
          
         LOD 300
         Cull Off
@@ -43,7 +43,7 @@
             half3 ramp = tex2D( _Ramp, float2(diff)).rgb;
 
             half4 c;
-            c.rgb = s.Albedo * _LightColor0.rgb * ramp * ( atten * 2 );
+            c.rgb = s.Albedo * _LightColor0.rgb * ramp * ( atten * 2 );          	
             c.a = s.Alpha;
             
             return c;
@@ -56,6 +56,9 @@
             fixed4 baseColor = tex2D(_Base, IN.uv_Base * scale);            
             fixed3 normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap * scale));
 
+			if(baseColor.a > 0.0)
+				baseColor.a = 1.0;
+				
             o.Albedo = baseColor.rgb;
             o.Alpha = baseColor.a;
             o.Normal = normal;

@@ -36,14 +36,19 @@ public class DynamicCamera : MonoBehaviour {
 	[SerializeField] private float zoomSpeed = 1.0f;
 	[SerializeField] private Curve zoomCurve;
 	[SerializeField] private float rotationSpeed = 60.0f;
-	[SerializeField] private bool lookAtEnabled = false;
+	[SerializeField] private bool lookAtEnabled = true;
 	
 	[HideInInspector] new private Transform transform;
 	[HideInInspector][SerializeField] private Transform playerAnchor;
 	[HideInInspector] private float distance;
 	[HideInInspector] private float elevationAngle;
+	
+	[HideInInspector] private float elevationAngleSave;
+	[HideInInspector] private bool wasFollowing = false;
+	
 	[HideInInspector] private Transform enemyAnchor;
-	[HideInInspector] private NavMeshAgent navAgent;
+	[HideInInspector] private NavMeshAI navAgent;
+	public bool followEnemy = false;
 
 	private void ComputeDistanceAndElevationAngle() {
 		if (playerAnchor != null) {
@@ -56,12 +61,13 @@ public class DynamicCamera : MonoBehaviour {
 
 	private void GetNavAgent() {
 		if (enemyAnchor != null) {
-			navAgent = enemyAnchor.GetComponent<NavMeshAgent>();
+			navAgent = enemyAnchor.GetComponent<NavMeshAI>();
 		}
 	}
 
 	private void Awake() {
 		transform = GetComponent<Transform>();
+		enemyAnchor = GameObject.FindWithTag ("Yorex").transform;
 		GetNavAgent();
 	}
 
@@ -70,14 +76,39 @@ public class DynamicCamera : MonoBehaviour {
 	}
 
 	private void LateUpdate() {
-		if (playerAnchor != null) {
+		Quaternion rotation = Quaternion.identity;
+		Transform goalAnchor;
+		bool stuckOnYorex = (followEnemy || (navAgent.state==6 && navAgent.rise));
+		
+		if (stuckOnYorex != wasFollowing){ //follow state changed
+			wasFollowing = stuckOnYorex;
+			if (stuckOnYorex){ //started folowing
+				elevationAngleSave = elevationAngle;
+			}
+			else{ //stopped following; go back to old elevation
+				elevationAngle = elevationAngleSave;
+				if (this.transform.position.y<playerAnchor.position.y){
+					this.transform.position += Vector3.up*(playerAnchor.position.y-this.transform.position.y);
+				}
+			}
+		}
+		
+		if (stuckOnYorex){goalAnchor = enemyAnchor;}
+		else{goalAnchor = playerAnchor;}
+		
+		if (goalAnchor != null) {
+			if (!stuckOnYorex){
 			elevationAngle += (Input.GetAxis("RightStickY") -
 			                   Input.GetAxis("Mouse Y"));
 			float rotationAngle = (Input.GetAxis("RightStickX") + Input.GetAxis(
 				"Mouse X")) * rotationSpeed * Time.deltaTime;	
-			Quaternion rotation = Quaternion.AngleAxis(rotationAngle,Vector3.up);
+			rotation = Quaternion.AngleAxis(rotationAngle,Vector3.up);
+			}
+			else{
+				elevationAngle = Mathf.Lerp (elevationAngle,(enemyAnchor.position.y - transform.position.y)/1f,.5f); //why won't you look at yorex!
+			}
 
-			Vector3 relativePos = transform.position - playerAnchor.position;
+			Vector3 relativePos = transform.position - goalAnchor.position;
 			Vector3 relativePosXz = new Vector3(relativePos.x, 0, relativePos.z);
 			Vector3 xzDirection = rotation * relativePosXz.normalized;
 			Quaternion elevation = Quaternion.AngleAxis(elevationAngle,
@@ -88,27 +119,31 @@ public class DynamicCamera : MonoBehaviour {
 			float distanceStep = zoomCurve.Evaluate(distanceDiff) * zoomSpeed
 				* Time.deltaTime;
 
-			if (lookAtEnabled && Input.GetAxis("Target") > 0.8f){
-				if (!navAgent.enabled){
-					direction = Vector3.Slerp(direction, -playerAnchor.forward, .1f);
+			if (!stuckOnYorex && (Input.GetAxis("Target") > 0.8f || Input.GetButton("Target")  || navAgent.state==6)){
+				if (navAgent.state==0){
+					direction = Vector3.Slerp(direction, -goalAnchor.forward, .1f);
 				} else {
 					direction = Vector3.Slerp(direction, Vector3.Normalize(
-						playerAnchor.position - enemyAnchor.position), .1f);
+						goalAnchor.position - enemyAnchor.position), .1f);
 				}
 			}
-				
-			distance = Mathf.Lerp(distance, targetDistance, distanceStep);
+			float targD = targetDistance;
+			if (stuckOnYorex){targD = 20f;}
+			distance = Mathf.Lerp(distance, targD, distanceStep);
+			//if (!stuckOnYorex){
+			transform.position = Vector3.Lerp (transform.position,playerAnchor.position + direction * distance,0.9f);
+		//}
+			//if (!stuckOnYorex){transform.position = Vector3.Lerp(transform.position, goalAnchor.position + direction * distance, 0.9f);}
 
-			transform.position = playerAnchor.position + direction * distance;
-
-			transform.LookAt(playerAnchor.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(goalAnchor.position - transform.position), 0.9f);
+			//LookAt(goalAnchor.position);
 
 #if DYNAMIC_CAMERA_DEBUG_DRAW
-			Debug.DrawLine(playerAnchor.position, playerAnchor.position + relativePos,
+			Debug.DrawLine(goalAnchor.position, goalAnchor.position + relativePos,
                      Color.red);
-			Debug.DrawLine(playerAnchor.position,
-			               playerAnchor.position + relativePosXz, Color.blue);
-			Debug.DrawRay(playerAnchor.position, direction, Color.green);
+			Debug.DrawLine(goalAnchor.position,
+			               goalAnchor.position + relativePosXz, Color.blue);
+			Debug.DrawRay(goalAnchor.position, direction, Color.green);
 #endif
 		}
 	}
