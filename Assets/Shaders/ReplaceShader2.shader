@@ -16,6 +16,7 @@
             Pass {
                 Fog { Mode Off }
                 Color (1,0,0,1) // Render it red rather than white!
+				SetTexture [__RenderTex] {constantColor (0,0,0,0.25) combine texture * constant + previous}
             }
         }
        
