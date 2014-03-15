@@ -8,7 +8,6 @@ public class NavMeshAI : MonoBehaviour {
 	public Vector3 lastKnownPlayerPosition;
 	public Vector3 RandomMoveLocation;
 	public GameObject HidePosition;
-	public Camera Eyes;
 	public bool Flying;
 	public bool Wandering;
 	public float WaitTime;
@@ -17,6 +16,7 @@ public class NavMeshAI : MonoBehaviour {
 	private GameObject[] gos;
 	private GameObject[] RandomMove;
 	private NavMeshAgent navAgent;
+    private HeatVisionCamera Eyes;
 	private Vector3 JumpTarget;
 	public float JumpCountdown = 6f;
 	private float JumpCountdownCurrent = 0f;
@@ -54,7 +54,7 @@ public class NavMeshAI : MonoBehaviour {
 		gos = GameObject.FindGameObjectsWithTag("YorexNode");
 		RandomMove = GameObject.FindGameObjectsWithTag ("RandomMove");
 		navAgent = this.GetComponent<NavMeshAgent>();
-		Eyes = this.GetComponentInChildren<Camera> ();
+		Eyes = this.GetComponentInChildren<HeatVisionCamera> ();
 
 		animator = GetComponentInChildren<Animator>();
 		animator.applyRootMotion = false; //we turn off root motion because of some of the funky stuff fly animations do.
@@ -66,14 +66,18 @@ public class NavMeshAI : MonoBehaviour {
 		
 		shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<Framing>();
 		
-		beaconParticles = this.transform.GetComponentsInChildren<ParticleSystem>()[0];
-		beaconParticles.enableEmission = false;
-		beaconParticles.renderer.material.renderQueue = 4000;
+		beaconParticles = GetComponentInChildren<ParticleSystem>();
+
+        if (beaconParticles != null)
+        {
+            beaconParticles.enableEmission = false;
+            beaconParticles.renderer.material.renderQueue = 4000;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Eyes.transform.GetComponent<SearchCamera>().CanSee() != seen ){
+		if (Eyes.CanSee() != seen ){
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
@@ -110,11 +114,17 @@ public class NavMeshAI : MonoBehaviour {
 		animator.SetBool (glidingId, Flying);
 		
 		////particle stuff
-		if (state==6 && Vector3.Magnitude (this.transform.position-Player.transform.position)>100f){
-			//beaconParticles.enableEmission = true;
-		}else{
-			beaconParticles.enableEmission = false;
-		}
+        if (beaconParticles != null)
+        {
+            if (state == 6 && Vector3.Magnitude(this.transform.position - Player.transform.position) > 100f)
+            {
+                //beaconParticles.enableEmission = true;
+            }
+            else
+            {
+                beaconParticles.enableEmission = false;
+            }
+        }
 	}
 	
 	public void StartAI(){

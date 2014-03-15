@@ -1,19 +1,34 @@
 fileFormatVersion: 2
 guid: a2c867fbe6be3414aac1b5fb7000960e
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: Camera
     100002: Directional Light
     100004: Mesh
     100006: //RootNode
+    100008: body
+    100010: left
+    100012: right
     400000: Camera
     400002: Directional Light
     400004: Mesh
     400006: //RootNode
+    400008: body
+    400010: left
+    400012: right
     2300000: Mesh
+    2300002: body
+    2300004: left
+    2300006: right
     3300000: Mesh
+    3300002: body
+    3300004: left
+    3300006: right
     4300000: Mesh
+    4300002: left
+    4300004: right
+    4300006: body
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -66,5 +81,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 
