@@ -74,7 +74,7 @@ public class RespawnSystem : MonoBehaviour {
 	
 	void OnTriggerEnter (Collider other){
 		//Debug.Log("hit respawner");
-		GetComponent <Animator>().renderer.enabled = false; //Is .renderer needed?
+		//GetComponent <Animator>().renderer.enabled = false; //Is .renderer needed?
 		if(other.transform.tag == "Respawn"){
 			Respawn();
 		}
