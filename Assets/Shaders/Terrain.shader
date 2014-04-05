@@ -16,13 +16,13 @@ Shader "LostCloud/Terrain" {
         _Range("Blend Height Offset", Float) = 1
         _HeightRamp("Height color gradient", 2D) = "white" {}
         _Tex1a ("Ground High", 2D) = "white" {}
-        _Scale1("Texture Scaling", Range(1,20)) = 1
+        _Scale1("Texture Scaling", Range(1,200)) = 1
         _Tex1b ("Ground Low", 2D) = "white" {}
-        _Scale2("Texture Scaling", Range(1,20)) = 1
+        _Scale2("Texture Scaling", Range(1,200)) = 1
         _Tex2 ("Wall 1", 2D) = "white" {}
-        _Scale3("Texture Scaling", Range(1,20)) = 1
+        _Scale3("Texture Scaling", Range(1,200)) = 1
         _Tex3 ("Wall 2", 2D) = "white" {}
-        _Scale4("Texture Scaling", Range(1,20)) = 1
+        _Scale4("Texture Scaling", Range(1,200)) = 1
         _RimPower( "Rim Power", Range( 0.5, 8.0 ) ) = 3.0
         _RimColor( "Rim Color", Color ) = ( 0.26, 0.19, 0.16, 0.0 )
         _Ramp( "Ramp", 2D ) = "gray" {}
