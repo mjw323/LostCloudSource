@@ -37,7 +37,7 @@ Shader "LostCloud/Water" {
 
 		// Auto-Gen'ed Textures
 		sampler2D _ReflectionTex;
-		sampler2D _GrabTexture;
+		sampler2D _RefractionTex;
 		sampler2D _CameraDepthTexture;
 
 		// Wave info
@@ -89,6 +89,11 @@ Shader "LostCloud/Water" {
 			screenPos.xy = screenPos.xy / screenPos.w;
 			float4 foamPos = screenPos;
 			
+			// View space depth
+			float depth = LinearEyeDepth(pow(tex2D(_CameraDepthTexture,screenPos.xy).r,_FresnelFactor));
+			depth = depth * _ProjectionParams.w * _ProjectionParams.z * 0.005;
+			depth = saturate(depth);
+
 			// Board Waves
 			float tx = (waveMapMax.x - IN.worldPos.x) * (1.0/waveMapSize.x);
 			float tz = (waveMapMax.z - IN.worldPos.z) * (1.0/waveMapSize.z);
@@ -106,19 +111,14 @@ Shader "LostCloud/Water" {
 			float4 waveMap = tex2D(_NormalMap,float2(_Time.xz*_RippleSpeed) + ((offset + IN.worldPos.xz)/_RippleScale));
 			screenPos += float4(0.05 * UnpackNormal(waveMap),0.0);
 
-			// View space depth
-			float depth = LinearEyeDepth(pow(tex2D(_CameraDepthTexture,screenPos.xy).r,_FresnelFactor));
-			depth = depth * _ProjectionParams.w * (_ProjectionParams.z * 0.005);
-			depth = min(1.0,depth);
-
 			// Very simplistic approx. for fresnel term
 			float4 v = normalize(IN.viewDir);
 			float4 n = normalize(IN.normal);
-			float F = dot(v,n);
-
+			float F = saturate(dot(v,n));
+			
 			// Blended reflection/refraction color based on view angle and depth below 
 			// lake surface
-			half4 refColor = (1 - F) * lerp(_RefractionColor,tex2D(_ReflectionTex,screenPos.xy),depth) + F * lerp(_RefractionColor,tex2D(_GrabTexture,float2(screenPos.x,1.0 - screenPos.y)),1 - depth);
+			half4 refColor = (1 - F) * lerp(_RefractionColor,tex2D(_ReflectionTex,screenPos.xy),depth) + F * lerp(_RefractionColor,tex2D(_RefractionTex,float2(screenPos.xy)),1 - depth);
 			
 			// DEBUG: Draw some gridlines :)
 			//half4 lines = half4(0.0);
@@ -151,9 +151,6 @@ Shader "LostCloud/Water" {
 		
 		Lod 500
 		ColorMask RGB
-		
-		// Renders objects below the water to a render texture
-		GrabPass { }
 		
 		Pass {
 				Blend SrcAlpha OneMinusSrcAlpha

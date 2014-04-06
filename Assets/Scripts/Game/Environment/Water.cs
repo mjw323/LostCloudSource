@@ -10,12 +10,14 @@ public class Water : MonoBehaviour {
 	private Vector3 oldpos = Vector3.zero;
 	private GameObject board;
 	private Camera reflectionCamera;
+    private Camera refractionCamera;
 
 	// Uniforms
 	private System.String boardDirection = "_BoardDirection";
 	private System.String boardPosition = "_BoardPosition";
 	private System.String boardVelocity = "_BoardVelocity";
 	private System.String reflectionSampler = "_ReflectionTex";
+    private System.String refractionSampler = "_RefractionTex";
 	private System.String waveMapSampler = "_waveMapTexture";
  
 	// Waves
@@ -39,6 +41,9 @@ public class Water : MonoBehaviour {
 	public void Awake() {
 		GameObject go = GameObject.FindWithTag("WaterReflectionCamera");
 		reflectionCamera = go.GetComponent<Camera>();
+
+        go = GameObject.FindWithTag("WaterRefractionCamera");
+        refractionCamera = go.GetComponent<Camera>();
 
         /////////////////// Wake stuff below (BROKEN)
 		board = GameObject.FindWithTag("Board");
@@ -74,6 +79,8 @@ public class Water : MonoBehaviour {
             waterMaterial.SetVector("waveMapMax", renderer.bounds.max);
             waterMaterial.SetVector("waveMapSize", renderer.bounds.size);
         }
+
+        gameObject.layer = LayerMask.NameToLayer("Water");
 	}	
 	
 	public void Update()
@@ -84,6 +91,7 @@ public class Water : MonoBehaviour {
             //waterMaterial.SetVector(boardPosition, board.transform.position);
             //waterMaterial.SetVector(boardVelocity, board.rigidbody.velocity);
             waterMaterial.SetTexture(reflectionSampler, reflectionCamera.targetTexture);
+            waterMaterial.SetTexture(refractionSampler, refractionCamera.targetTexture);
         }
 
 		// I am broken :'(
