@@ -27,9 +27,17 @@ public class NavMeshAI : MonoBehaviour {
 	public float landingSpeed = 40f;
 	public float glideHeight = 120f;
 	public float landAnimDist = 0f; //distance he moves while playing his landing animation
+
+	private float distToPlayer;
+
+	private float HowlTimer = 1f;
+	public float HowlTimerMax = 7f;
+	private bool Howling = false;
 	
 	public float mySpeed = 12f;
 	private Vector3 NewRandomNode;
+
+	private bool startRoar = false;
 	
 	public float jumpAnim = 0.5f;
 	private float jumpAnimCur;
@@ -48,6 +56,8 @@ public class NavMeshAI : MonoBehaviour {
 	private float riseTime = 1f;
 	private float riseTimer = 1f;
 
+	private float roarTimer = 0f;
+
 
 	void Start(){
 		leapDistance = 40.0f;
@@ -61,6 +71,8 @@ public class NavMeshAI : MonoBehaviour {
 
 		speedId = Animator.StringToHash("Speed");
 		glidingId = Animator.StringToHash("Gliding");
+		roarId = Animator.StringToHash("Roar");
+		howlId = Animator.StringToHash("Howl");
 		
 		jumpAnimCur = jumpAnim;
 		
@@ -74,9 +86,31 @@ public class NavMeshAI : MonoBehaviour {
             beaconParticles.renderer.material.renderQueue = 4000;
         }
 	}
+
+	void Howl(){
+		Howling = ((!Howling) && (state != 3));
+		animator.SetBool (howlId, Howling);
+		if (Howling) {
+						HowlTimer = 0.1f;
+				} else {
+					HowlTimer = Random.Range(6f,HowlTimerMax);
+
+			shakeCam.ShakeScreen(
+				4f - (3.5f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/200f)))), 
+				.33f - (.33f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
+				);
+				}
+		}
 	
 	// Update is called once per frame
 	void Update () {
+		distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
+
+		HowlTimer -= Time.deltaTime;
+		if (HowlTimer <= 0f) {
+					Howl ();
+				}
+
 		if (Eyes.CanSee() != seen ){
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
@@ -112,11 +146,14 @@ public class NavMeshAI : MonoBehaviour {
 			animator.SetFloat (speedId, GetComponent<NavMeshAgent> ().speed);
 		} 
 		animator.SetBool (glidingId, Flying);
+		if (roarTimer <= 0) {
+						animator.SetBool (roarId, false);
+		} else {roarTimer -= Time.deltaTime;}
 		
 		////particle stuff
         if (beaconParticles != null)
         {
-            if (state == 6 && Vector3.Magnitude(this.transform.position - Player.transform.position) > 100f)
+            if (state == 6 && distToPlayer > 100f)
             {
                 //beaconParticles.enableEmission = true;
             }
@@ -138,6 +175,7 @@ public class NavMeshAI : MonoBehaviour {
 		//Debug.Log ("I'm going to "+targetPos+", and ended up at "+this.transform.position);
 		navAgent.speed = mySpeed;
 		navAgent.enabled = true;
+		startRoar = true;
 		Jump ();
 	}
 	
@@ -205,11 +243,11 @@ public class NavMeshAI : MonoBehaviour {
 
 				this.transform.LookAt(JumpTarget,Vector3.up);
 				
-				float distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
 				shakeCam.ShakeScreen(
 					2f - (1.5f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/200f)))), 
 					1f - (1f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
 				);
+			if (startRoar){startRoar = false; animator.SetBool(roarId,true); roarTimer = 5f;}
 			
 			} else { //otherwise, fly towards it
 			this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;
@@ -270,8 +308,8 @@ public class NavMeshAI : MonoBehaviour {
 		RaycastHit hit;
 		//Can't find her
 		if (!seen){
-			Debug.Log ("distance is "+Vector3.Magnitude (this.transform.position - Player.transform.position)+"/75, wall between us is "+Physics.Raycast (this.transform.position,Player.transform.position-this.transform.position, out hit, 75f,  ~ (1 << 11)));
-			if(Vector3.Magnitude (this.transform.position - Player.transform.position) > 75f || 
+			Debug.Log ("distance is "+distToPlayer+"/75, wall between us is "+Physics.Raycast (this.transform.position,Player.transform.position-this.transform.position, out hit, 75f,  ~ (1 << 11)));
+			if(distToPlayer > 75f || 
 				Physics.Raycast (this.transform.position,Player.transform.position-this.transform.position, out hit, 75f,  ~ (1 << 11))
 				){
 				Debug.Log ("changed states as a result");
@@ -413,6 +451,8 @@ public class NavMeshAI : MonoBehaviour {
 	//Animator BS
 	[HideInInspector] private Animator animator;
 	[HideInInspector] private int glidingId;
+	[HideInInspector] private int roarId;
+	[HideInInspector] private int howlId;
 	[HideInInspector] private int speedId;
 	
 	[HideInInspector] new private ParticleSystem beaconParticles;
