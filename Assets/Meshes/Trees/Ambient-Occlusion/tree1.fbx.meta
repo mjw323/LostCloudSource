@@ -1,13 +1,34 @@
 fileFormatVersion: 2
 guid: 0e9a2b0b02372164aa27369275fee151
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: leaves
+    100004: trunk
+    100006: transform1
+    100008: transform2
+    100010: tree1
+    100012: tree1_mesh
     400000: //RootNode
+    400002: leaves
+    400004: trunk
+    400006: transform1
+    400008: transform2
+    400010: tree1
+    400012: tree1_mesh
     2300000: //RootNode
+    2300002: leaves
+    2300004: trunk
+    2300006: tree1_mesh
     3300000: //RootNode
+    3300002: leaves
+    3300004: trunk
+    3300006: tree1_mesh
     4300000: tree01mesh
+    4300002: trunk
+    4300004: leaves
+    4300006: tree1_mesh
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -60,4 +81,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 
