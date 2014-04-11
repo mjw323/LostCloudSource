@@ -69,29 +69,43 @@ public class BoardController : MonoBehaviour
 			boardMovement.OnDismissBoard -= OnDismissBoard;
 	}
 
+    private void Update()
+    {
+        boardMovement.Move(Input.GetAxis("Vertical"),
+                           Input.GetAxis("Horizontal"),
+                           Input.GetButton("Jump"),
+                           Input.GetAxis("Glide"),
+                           Input.GetButton("Glide"));
+        if (Input.GetButtonDown("Fire3")) {
+            boardMovement.DismissBoard();
+        }
+    }
+
 	private void FixedUpdate()
 	{
-		if (Input.GetButtonDown("Fire3")) // TODO: Rename this input!
-			boardMovement.DismissBoard();
 		animator.SetFloat(leanId, boardMovement.Lean());
 		animator.SetFloat(landingId, boardMovement.Landing());
 		
-		if (boardMovement.Landing() > 0.25f && !needToLand){needToLand = true; animator.SetBool(needLandId, true);}
-		else{animator.SetBool(needLandId, false);}
-		if (boardMovement.Landing() <= 0f){needToLand = false;}
+		if (boardMovement.Landing() > 0.25f && !needToLand) {
+            needToLand = true;
+            animator.SetBool(needLandId, true);
+        } else {
+            animator.SetBool(needLandId, false);
+        }
+
+		if (boardMovement.Landing() <= 0f) {
+            needToLand = false;
+        }
 		
-		if (landing == 0f && boardMovement.Landing()>0){animator.SetFloat(landStrId, boardMovement.Landing());}
+		if (landing == 0f && boardMovement.Landing()>0) {
+            animator.SetFloat(landStrId, boardMovement.Landing());
+        }
+
 		animator.SetBool(jumpingId, boardMovement.Jumping());
 		animator.SetBool(jumpId, boardMovement.Jump());
 		animator.SetBool(groundedId, boardMovement.Grounded());
 		
 		landing = boardMovement.Landing();
-		/*boardMovement.Move(
-			Input.GetAxis("Vertical"),
-			Input.GetAxis("Horizontal"),
-			Input.GetButton("Jump"),
-			Input.GetAxis("Glide"),
-			Input.GetButton("Glide"));*/
 	}
 
 	// Internal references
@@ -106,9 +120,6 @@ public class BoardController : MonoBehaviour
 	[HideInInspector] private Transform oldParent;
 
 	// Animator parameter references
-	//[HideInInspector] private int speedId;
-	//[HideInInspector] private int directionId;
-	//[HideInInspector] private int jumpId;
 	[HideInInspector] private int leanId;
 	[HideInInspector] private int jumpId;
 	[HideInInspector] private int jumpingId;
@@ -118,15 +129,4 @@ public class BoardController : MonoBehaviour
 	[HideInInspector] private int groundedId;
 	[HideInInspector] private int needLandId;
 	private bool needToLand = false;
-
-	// Animator state references
-	/*[HideInInspector] private int pivotLeftId;
-	// [HideInInspector] private int pivotRightId; // Not yet implemented
-	[HideInInspector] private int plantLeftId;
-	[HideInInspector] private int plantRightId;*/
-	/*
-	public Animator Animator
-	{
-		get{return this.animator;}
-	}*/
 }
