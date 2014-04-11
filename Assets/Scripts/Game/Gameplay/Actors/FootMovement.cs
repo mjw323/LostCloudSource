@@ -8,6 +8,11 @@
 [RequireComponent (typeof(CharacterController))]
 public class FootMovement : MonoBehaviour
 {
+	[System.NonSerialized]
+	public float lookWeight;
+	[System.NonSerialized]
+	public Transform enemy;
+	public float lookSmoother = 3f;
 	/// <summary>
 	/// Move towards the provided direction.
 	/// </summary>
@@ -74,6 +79,7 @@ public class FootMovement : MonoBehaviour
 		transform = GetComponent<Transform>();
 		animator = GetComponent<Animator>();
 		characterController = GetComponent<CharacterController>();
+		enemy = GameObject.Find("Enemy").transform;
 
 		speedId = Animator.StringToHash("Speed");
 		directionId = Animator.StringToHash("Direction");
@@ -174,6 +180,18 @@ public class FootMovement : MonoBehaviour
 		}
 		
 		characterController.Move(velocity * Time.deltaTime);
+		//Look at enemy
+		animator.SetLookAtWeight(lookWeight);
+		if(Input.GetButton("LookAt"))
+		{
+			animator.SetLookAtPosition(enemy.position);
+			lookWeight = Mathf.Lerp(lookWeight, 0f, Time.deltaTime*lookSmoother);
+			Debug.Log("looked at"+ enemy.position);
+		}
+		else
+		{	
+			lookWeight = Mathf.Lerp(lookWeight, 0f, Time.deltaTime*lookSmoother);
+		}
 	}
 
 	// Called when Noke's feet leave the ground in her jump animation.
