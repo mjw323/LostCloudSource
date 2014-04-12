@@ -33,6 +33,9 @@ public class NavMeshAI : MonoBehaviour {
 	private float HowlTimer = 1f;
 	public float HowlTimerMax = 7f;
 	private bool Howling = false;
+
+	public float AttackDistance = 2f;
+	private bool Attacking = false;
 	
 	public float mySpeed = 12f;
 	private Vector3 NewRandomNode;
@@ -73,6 +76,7 @@ public class NavMeshAI : MonoBehaviour {
 		glidingId = Animator.StringToHash("Gliding");
 		roarId = Animator.StringToHash("Roar");
 		howlId = Animator.StringToHash("Howl");
+		attackId = Animator.StringToHash("Attack");
 		
 		jumpAnimCur = jumpAnim;
 		
@@ -101,7 +105,7 @@ public class NavMeshAI : MonoBehaviour {
 				);
 				}
 		}
-	
+
 	// Update is called once per frame
 	void Update () {
 		distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
@@ -270,6 +274,8 @@ public class NavMeshAI : MonoBehaviour {
 		GetComponent<NavMeshAgent>().speed = 6;
 		Wandering = true;
 		MoveAround ();
+		Attacking = false;
+		animator.SetBool (attackId, Attacking);
 
 	}
 
@@ -280,6 +286,8 @@ public class NavMeshAI : MonoBehaviour {
 		//Move around code
 		Wandering = true;
 		MoveAround ();
+		Attacking = false;
+		animator.SetBool (attackId, Attacking);
 	}
 
 	void chase(){
@@ -292,6 +300,15 @@ public class NavMeshAI : MonoBehaviour {
 
 		
 		GetComponent<NavMeshAgent>().destination = Player.transform.position;
+
+		if (distToPlayer < AttackDistance) {
+			Attacking = true;
+			animator.SetBool (attackId, Attacking);		
+				} 
+		else {
+			Attacking = false;
+			animator.SetBool (attackId, Attacking);
+				}
 		
 		
 		if (navAgent.isOnOffMeshLink){
@@ -324,11 +341,15 @@ public class NavMeshAI : MonoBehaviour {
 		look ();
 		GetComponent<NavMeshAgent>().destination = lastKnownPlayerPosition;
 		this.transform.Rotate (0,Time.deltaTime*30,0);
+		Attacking = false;
+		animator.SetBool (attackId, Attacking);
 	}
 
 	void curious(){
 		//Move closer to last heard hoverboard spot slowly, then stop, rotate after 5 seconds, return to move and search
 		look ();
+		Attacking = false;
+		animator.SetBool (attackId, Attacking);
 	}
 
 	void flyReady(){
@@ -454,6 +475,7 @@ public class NavMeshAI : MonoBehaviour {
 	[HideInInspector] private int roarId;
 	[HideInInspector] private int howlId;
 	[HideInInspector] private int speedId;
+	[HideInInspector] private int attackId;
 	
 	[HideInInspector] new private ParticleSystem beaconParticles;
 
