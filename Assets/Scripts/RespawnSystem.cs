@@ -45,8 +45,6 @@ public class RespawnSystem : MonoBehaviour {
 						(hit.transform.tag != "NoRespawn") && (hit.transform.tag != "Respawn"))	{*/
 					if(hit.transform.tag == "Terrain"){
 						spawnPoint = player.position;
-						print ("hit tag: " + hit.transform.tag);
-						print ("hit gameobject: " + hit.transform.name);
 					}
 					
 					if ((hit.transform.tag == "Water") && (!waterUpgrade)){
