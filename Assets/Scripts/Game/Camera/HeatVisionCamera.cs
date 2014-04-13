@@ -35,7 +35,7 @@ public class HeatVisionCamera : MonoBehaviour
 
     //private static string blurMatString =
 
-    public int textureSize = 16;
+    public int textureSize = 8;
     private RenderTexture m_RenderTexture = null;
     protected RenderTexture visionTexture
     {
