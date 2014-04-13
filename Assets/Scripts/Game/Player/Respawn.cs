@@ -31,7 +31,7 @@ public class Respawn : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(player.position, -Vector3.up, out hit, checkDistance)) {
             if (hit.transform.tag == "Terrain") {
-                respawnLocation = transform.position;
+                //respawnLocation = transform.position;
             }
         }
     }

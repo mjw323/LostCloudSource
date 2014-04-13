@@ -15,7 +15,11 @@ public class UpgradeSystem : MonoBehaviour {
 	public float FadeWaitTime;
 	private NavMeshAgent navAgent;
 	private float gettingUpgrade = 0f;
-
+	
+	public GameObject boardGeo;
+	public GameObject upgrade1;
+	public GameObject upgrade2;
+	public GameObject upgrade3;
 
 	// Use this for initialization
 	void Start () {
@@ -47,14 +51,26 @@ public class UpgradeSystem : MonoBehaviour {
 		
 		if(gettingUpgrade == 0){
 				Hoverboard.gameObject.GetComponent<Hover>().canGlide = true;
+				GameObject clone1 = (GameObject)Instantiate(upgrade1, Vector3.zero, Quaternion.identity);
+				clone1.transform.parent = boardGeo.transform;
+				clone1.transform.localPosition = new Vector3(0,0,0);
+				clone1.transform.localRotation = Quaternion.identity;
 			}
 			
 			if(gettingUpgrade == 1){
 				Hoverboard.gameObject.GetComponent<Hover>().canGrind = true;
+				GameObject clone2 = (GameObject)Instantiate(upgrade2, Vector3.zero, Quaternion.identity);
+				clone2.transform.parent = boardGeo.transform;
+				clone2.transform.localPosition = new Vector3(0,0,0);
+				clone2.transform.localRotation = Quaternion.identity;
 			}
 			
 			if(gettingUpgrade == 2){
 				Hoverboard.gameObject.GetComponent<Hover>().canWater = true;
+				GameObject clone3 = (GameObject)Instantiate(upgrade3, Vector3.zero, Quaternion.identity);
+				clone3.transform.parent = boardGeo.transform;
+				clone3.transform.localPosition = new Vector3(0,0,0);
+				clone3.transform.localRotation = Quaternion.identity;
 			}
 		
 	}
