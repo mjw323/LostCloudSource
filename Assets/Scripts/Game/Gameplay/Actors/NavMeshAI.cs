@@ -183,6 +183,11 @@ public class NavMeshAI : MonoBehaviour {
 		Jump ();
 	}
 	
+	public void EndAI(){
+			state = 0;
+			hide ();
+	}
+	
 	public void DayFlee(){
 		JumpTarget = fleePos;
 		navAgent.enabled = false;
