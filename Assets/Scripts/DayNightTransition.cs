@@ -28,6 +28,9 @@ public class DayNightTransition : MonoBehaviour {
 	private float timePassed = 0f;
 	private UpgradeSystem noke;
 	
+	private float fleeTime = 0f;
+	private float fleeMax = 4f;
+	
 	private GameObject Enemy;
 
 	// Use this for initialization
@@ -54,8 +57,8 @@ public class DayNightTransition : MonoBehaviour {
 		if (noke.HasPlayerGottenNextUpgrade){
 			camControl.enabled = false;
 			parentControl.enabled = false;
-		}
-		else{
+		}else{
+			fleeTime = 0f;
 			parentControl.followEnemy = true;
 		}
 
@@ -77,7 +80,13 @@ public class DayNightTransition : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (parentControl.followEnemy){
+			fleeTime += Time.deltaTime;
+			if (fleeTime >= fleeMax){parentControl.followEnemy = false;}
+		}
+		else{
 		timePassed += Time.deltaTime;
+		}
 		NavMeshAI ai = Enemy.GetComponent<NavMeshAI>();
 
 		if (animating) { // in motion
@@ -131,6 +140,8 @@ public class DayNightTransition : MonoBehaviour {
 
 					Sun.active = !noke.HasPlayerGottenNextUpgrade;
 					Moon.active = noke.HasPlayerGottenNextUpgrade;
+					
+					if (!noke.HasPlayerGottenNextUpgrade){ai.EndAI();}
 				}
 			}
 		}

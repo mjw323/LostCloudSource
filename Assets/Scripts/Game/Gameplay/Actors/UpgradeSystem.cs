@@ -82,6 +82,9 @@ public class UpgradeSystem : MonoBehaviour {
 			Enemy.GetComponent<NavMeshAI>().DayFlee();//state = 0;
 			MainCamera.SendMessage("fadeDayOut");
 			StartCoroutine(DayTime());
+			
+			Framing shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<Framing>();
+			shakeCam.ShakeScreen(2f, .75f);
 		}
 	}
 
