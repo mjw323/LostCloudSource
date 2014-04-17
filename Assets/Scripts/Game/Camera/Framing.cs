@@ -7,8 +7,6 @@ public class Framing : MonoBehaviour {
 	[SerializeField] private float panSpeed;
 	[SerializeField] private Curve panCurve;
 	
-	private float screenShake = 0f;
-	private float shakeAmount = 0f;
 	[HideInInspector][SerializeField] private MotionBlur mblur;
 
 	[HideInInspector][SerializeField] new private Transform transform;
@@ -25,6 +23,7 @@ public class Framing : MonoBehaviour {
 	private void LateUpdate() {
 		/////////////////frame///////////////
 		transform.Translate(-translation);
+
 		targetViewportPosition.z = dynamicCamera.Distance;
 		Vector3 targetViewportPosLocal = transform.InverseTransformPoint(
 			camera.ViewportToWorldPoint(targetViewportPosition));
@@ -36,25 +35,11 @@ public class Framing : MonoBehaviour {
 			Time.deltaTime;
 		translation = Vector3.Lerp(translation, targetTranslation, panStep);
 		translation.z = 0;
-		
-		/////////////////screen shake///////////////
-		if (screenShake > 0f){
-			translation.x += Mathf.Sin(8f * Mathf.PI * screenShake) * shakeAmount * 0.5f * Mathf.Min (1f,screenShake / 0.5f);
-			translation.y += Mathf.Sin(12f * Mathf.PI * screenShake) * shakeAmount * Mathf.Min (1f,screenShake / 0.5f);
-			screenShake -= Time.deltaTime;
-			
-			mblur.enabled = true;
-			mblur.blurAmount = shakeAmount * Mathf.Min (1f,screenShake / 0.5f);
-		}
-		else{mblur.enabled = false;}
+
 		
 		/////////////////set///////////////
 		transform.Translate(translation);
 	}
 	
-	public void ShakeScreen(float secs, float amt){
-		Debug.Log ("shaking screen by "+amt+" for "+secs+" seconds!");
-		screenShake = secs;
-		shakeAmount = amt;
-	}
+
 }

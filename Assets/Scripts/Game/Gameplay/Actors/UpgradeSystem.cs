@@ -13,7 +13,8 @@ public class UpgradeSystem : MonoBehaviour {
 	//public Material DaySky;
 	//public Material NightSky;
 	public float FadeWaitTime;
-	private NavMeshAgent navAgent;
+	public float NightWaitTime;
+	//private NavMeshAgent navAgent;
 	private float gettingUpgrade = 0f;
 	
 	public GameObject boardGeo;
@@ -79,12 +80,9 @@ public class UpgradeSystem : MonoBehaviour {
 		if(HasPlayerGottenNextUpgrade){
 			Hoverboard.rigidbody.isKinematic = true;
 			HasPlayerGottenNextUpgrade = false;
-			Enemy.GetComponent<NavMeshAI>().DayFlee();//state = 0;
+			//state = 0;
 			MainCamera.SendMessage("fadeDayOut");
 			StartCoroutine(DayTime());
-			
-			Framing shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<Framing>();
-			shakeCam.ShakeScreen(2f, .75f);
 		}
 	}
 
@@ -95,7 +93,7 @@ public class UpgradeSystem : MonoBehaviour {
 	}
 
 	IEnumerator DayTime(){
-		yield return new WaitForSeconds(FadeWaitTime);
+		yield return new WaitForSeconds(NightWaitTime);
 		MainCamera.SendMessage("fadeDayIn");
 		//Sun.active = true;
 		//Moon.active = false;
@@ -113,7 +111,7 @@ public class UpgradeSystem : MonoBehaviour {
 		//RenderSettings.skybox = DaySky;*/
 		
 		Hoverboard.rigidbody.isKinematic = false;
-		navAgent.speed = 0;
-		navAgent.enabled = false;
+		//navAgent.speed = 0;
+		//navAgent.enabled = false;
 	}
 }

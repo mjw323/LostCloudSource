@@ -23,6 +23,9 @@ public class DayNightTransition : MonoBehaviour {
 	private DynamicCamera parentControl;
 	private Quaternion fromDir;
 	private Quaternion toDir;
+	private Quaternion landDir;
+	private Vector3 landPos;
+	private Vector3 startPos;
 	private bool lookUp = false;
 	private bool animating = false;
 	private float timePassed = 0f;
@@ -30,6 +33,9 @@ public class DayNightTransition : MonoBehaviour {
 	
 	private float fleeTime = 0f;
 	private float fleeMax = 4f;
+
+	private bool smachineCam = false;
+	private Transform smachine;
 	
 	private GameObject Enemy;
 
@@ -38,6 +44,7 @@ public class DayNightTransition : MonoBehaviour {
 		camControl = this.GetComponent<Framing> ();
 		parentControl = this.transform.parent.GetComponent<DynamicCamera> ();
 		noke = GameObject.FindWithTag ("Player").GetComponent<UpgradeSystem> ();
+		smachine = GameObject.FindWithTag("SoundMachine").transform;
 
 		sunLight = Sun.GetComponent<Light> ().intensity;
 		moonLight = Moon.GetComponent<Light> ().intensity;
@@ -54,19 +61,31 @@ public class DayNightTransition : MonoBehaviour {
 	}
 
 	void fadeDayOut(){
-		if (noke.HasPlayerGottenNextUpgrade){
-			camControl.enabled = false;
-			parentControl.enabled = false;
-		}else{
+		camControl.enabled = false;
+		parentControl.enabled = false;
+		landPos = this.transform.parent.position;
+		landDir = this.transform.parent.rotation;
+		toDir = Quaternion.LookRotation (Vector3.up,-this.transform.parent.forward);
+
+		if (!noke.HasPlayerGottenNextUpgrade){
+			/*parentControl.enabled = false;
+		}else{*/
 			fleeTime = 0f;
-			parentControl.followEnemy = true;
+			smachineCam = true;
+			this.transform.parent.position = smachine.GetChild(0).position;
+			this.transform.parent.LookAt(smachine);
+			//parentControl.followEnemy = true;
+			ShakeCam shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<ShakeCam>();
+			shakeCam.ShakeScreen(2f, .75f);
 		}
+
+		startPos = this.transform.parent.position;
 
 		timePassed = 0f;
 		lookUp = true;
 		animating = true;
 		fromDir = this.transform.parent.rotation;
-		toDir = Quaternion.LookRotation (Vector3.up,-this.transform.parent.forward);
+		
 
 		Moon.active = true;
 		Sun.active = true;
@@ -80,9 +99,25 @@ public class DayNightTransition : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (parentControl.followEnemy){
+		if (smachineCam){
+			animating = false;
 			fleeTime += Time.deltaTime;
-			if (fleeTime >= fleeMax){parentControl.followEnemy = false;}
+			this.transform.parent.position = new Vector3(
+							transform.parent.position.x,transform.parent.position.y,
+							transform.parent.position.z+(20f*Time.deltaTime));
+			this.transform.parent.rotation = Quaternion.Slerp(fromDir,
+						Quaternion.LookRotation (Enemy.transform.position - this.transform.parent.position),
+						Mathf.SmoothStep(0f, 1f, fleeTime/fleeMax));
+
+			if (fleeTime >= fleeMax/2f && Enemy.GetComponent<NavMeshAI>().JumpTarget != Enemy.GetComponent<NavMeshAI>().fleePos ){
+				Enemy.GetComponent<NavMeshAI>().DayFlee();
+			}
+
+			if (fleeTime >= fleeMax){
+					smachineCam = false;
+					animating = true;
+					fromDir = this.transform.parent.rotation;
+				}
 		}
 		else{
 		timePassed += Time.deltaTime;
@@ -124,14 +159,16 @@ public class DayNightTransition : MonoBehaviour {
 						Moon.GetComponent<Light> ().intensity = Mathf.Lerp(moonLight,0f,lerp);
 						Sun.GetComponent<Light> ().intensity = Mathf.Lerp(0f,sunLight,lerp);
 					}
+
+					this.transform.parent.position += (landPos - this.transform.parent.position)*.4f;
 				}else{
 					//Debug.Log("skyfade at "+skyFade);
 				}
 			}
 			else{ // looking back down at the layer
-				if (!noke.HasPlayerGottenNextUpgrade){ //night to day transition just pans back down for now
-					this.transform.parent.rotation = Quaternion.Slerp(toDir,fromDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,timePassed/moveTime)));
-				}
+				this.transform.parent.position = landPos ;
+				this.transform.parent.rotation = Quaternion.Slerp(toDir,landDir,Mathf.SmoothStep(0f, 1f, Mathf.Min(1f,timePassed/moveTime)));
+				
 				if (timePassed >= moveTime && (!noke.HasPlayerGottenNextUpgrade || ai.state!=6)){ //reached old position; time to close up shop, boys
 					camControl.enabled = true;
 					parentControl.enabled = true;

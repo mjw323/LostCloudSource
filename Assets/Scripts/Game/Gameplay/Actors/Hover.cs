@@ -31,6 +31,8 @@ public class Hover : MonoBehaviour
 	//public float drownWiggle = 10.0f;
 	private bool drowning = false;
 
+    private Vector3 saveVelocity = new Vector3(0,0,0);
+
 /////////////sounds
     public AudioSource loopAudio;
     public AudioSource hitAudio;
@@ -342,6 +344,17 @@ public class Hover : MonoBehaviour
 
         void FixedUpdate()
         {
+                if (GameObject.FindWithTag("MainCamera").transform.parent.GetComponent<DynamicCamera>().stuckOnYorex){ //stop & save speed when cam's on yorex
+                    if (saveVelocity == Vector3.zero){
+                        saveVelocity = rigidbody.velocity;
+                        rigidbody.velocity = Vector3.zero;
+                    }
+                }else{
+                    if (saveVelocity != Vector3.zero){
+                        rigidbody.velocity = saveVelocity;
+                        saveVelocity = Vector3.zero;
+                    }
+                }
 				bool wasOnGround = onGround;
                 onGround = false;
 				Transform activeThruster = m_thruster;

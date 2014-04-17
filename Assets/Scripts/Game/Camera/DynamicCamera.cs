@@ -49,6 +49,7 @@ public class DynamicCamera : MonoBehaviour {
 	[HideInInspector] private Transform enemyAnchor;
 	[HideInInspector] private NavMeshAI navAgent;
 	public bool followEnemy = false;
+	[HideInInspector] public bool stuckOnYorex = false;
 
 	private void ComputeDistanceAndElevationAngle() {
 		if (playerAnchor != null) {
@@ -78,7 +79,7 @@ public class DynamicCamera : MonoBehaviour {
 	private void LateUpdate() {
 		Quaternion rotation = Quaternion.identity;
 		Transform goalAnchor;
-		bool stuckOnYorex = (followEnemy || (navAgent.state==6 && navAgent.rise));
+		stuckOnYorex = (followEnemy || (navAgent.state==6 && navAgent.rise));
 		
 		if (stuckOnYorex != wasFollowing){ //follow state changed
 			wasFollowing = stuckOnYorex;
