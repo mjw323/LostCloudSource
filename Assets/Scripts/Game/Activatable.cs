@@ -18,7 +18,7 @@ public class Activatable : MonoBehaviour {
 	private GameObject myButton;
 	private MeshRenderer buttonDraw;
 	private Transform camera;
-	private float activeDistance = 3.0f;
+	private float activeDistance = 4.0f;
 	private bool activated = false;
 	public string message = "";
 	public float messageAttachment = 0f;
