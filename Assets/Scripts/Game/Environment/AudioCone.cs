@@ -18,9 +18,9 @@ public class AudioCone : MonoBehaviour {
 
 		if (intensity > 0f){ //scale only grows, and snaps to 0 when intensity is 0
 		this.transform.localScale = new Vector3(
-				Mathf.Max(Mathf.Sqrt(intensity)*2.5f,transform.localScale.x),
-				Mathf.Max(Mathf.Sqrt(intensity)*2.5f,transform.localScale.y),
-				Mathf.Max(Mathf.Pow(intensity,2f)*10f,transform.localScale.z)
+				Mathf.Max(Mathf.Sqrt(intensity)*10f,transform.localScale.x),
+				Mathf.Max(Mathf.Sqrt(intensity)*10f,transform.localScale.y),
+				Mathf.Max(Mathf.Pow(intensity,2f)*40f,transform.localScale.z)
 				);
 		}else{
 			this.transform.localScale = Vector3.zero;

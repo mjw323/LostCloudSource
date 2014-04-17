@@ -192,8 +192,10 @@ public class Hover : MonoBehaviour
 		}
         public void DismissBoard()
         {
-                if (true) // Under what conditions should this be allowed?
-                        shouldDismount = true;
+                //if (true) // Under what conditions should this be allowed?
+        shouldDismount = true;
+		whoosh.setSpeed(0f);
+		whoosh.Boost(0f);
         }
 
         void Awake()
