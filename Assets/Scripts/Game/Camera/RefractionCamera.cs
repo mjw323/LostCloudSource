@@ -43,7 +43,6 @@ public class RefractionCamera : MonoBehaviour
         camera.transform.rotation = mainCamera.transform.rotation;
         camera.projectionMatrix = mainCamera.projectionMatrix;
         camera.depthTextureMode |= DepthTextureMode.Depth;
-        //camera.depthTextureMode = DepthTextureMode.None;
         camera.renderingPath = RenderingPath.Forward;
         camera.targetTexture = rt;
         camera.Render();

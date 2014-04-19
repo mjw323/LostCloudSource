@@ -53,7 +53,6 @@ public class ReflectionCamera : MonoBehaviour {
 
     void Update()
     {
-        //mainCamera.depthTextureMode |= DepthTextureMode.Depth;
         camera.depthTextureMode |= DepthTextureMode.Depth;
         //camera.cullingMask = properties.reflectionMask & ~(1 << LayerMask.NameToLayer("Water"));
         camera.depthTextureMode = DepthTextureMode.None;
