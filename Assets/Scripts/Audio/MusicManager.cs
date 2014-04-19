@@ -3,38 +3,65 @@ using System.Collections;
 
 public class MusicManager : MonoBehaviour {
 
-	public AudioClip song;
+	public AudioClip currentClip;
+
+	public AudioSource audio;
 
 	private float audio1Volume = 1.0f;
-	
-	// Use this for initialization
-	void Start () {
-	
+
+	//static MusicManager instance;
+
+	void Start(){
+		audio.clip = currentClip;
+		audio.Play ();
+	}
+
+	public void PlaySong(AudioClip newClip){
+		StartCoroutine (DoPlaySong(newClip));
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	IEnumerator FadeOut(){
+		while(audio1Volume > 0.1){
+			audio1Volume -= 0.2f * Time.deltaTime;
+			print("volume = " + audio1Volume);
+			audio.volume = audio1Volume;
+			//Camera.mainCamera.GetComponent<AudioSource>().volume = audio1Volume;
+			yield return null;
+		}
 	}
-	
-	void OnTriggerEnter(Collider c) {
-		//print("SoundManager.cs collided");
-		if (c.gameObject.tag.Equals("Player") || c.gameObject.tag.Equals("Board")){
-			//print ("SoundManager.cs found player");
-			//If the music playing is the same as the one we just collided with, no need to change clip or restart song
-			if (!string.Equals(song.name, Camera.mainCamera.GetComponent<AudioSource>().clip.name)){
-				Camera.mainCamera.GetComponent<AudioSource>().clip = song;
-				Camera.mainCamera.GetComponent<AudioSource>().Play();
+
+	IEnumerator FadeIn(){
+		while (audio1Volume < 1) {
+			audio1Volume += 0.2f * Time.deltaTime;
+			audio.volume = audio1Volume;
+			yield return null;
+		}
+	}
+
+	private IEnumerator DoPlaySong(AudioClip newClip){
+		if (!string.Equals (newClip.name, currentClip.name)) {
+			yield return StartCoroutine(FadeOut ());
+			currentClip = newClip;
+			if (audio1Volume <= 0.2f) {
+				audio.clip = newClip;
+				audio.Play ();
+				yield return StartCoroutine(FadeIn ());
 			}
-
 		}
 	}
 
-	void FadeOut(){
-		if(audio1Volume > 0.1)
-		{
-			audio1Volume -= 0.1f * Time.deltaTime;
-			Camera.mainCamera.GetComponent<AudioSource>().volume = audio1Volume;
+	//For use if we want MusicManager to be singleton
+	/*
+	public static MusicManager GetInstance(){
+		if (instance == null) {
+			GameObject musicMgr = new GameObject("Music Manager");
+			instance = musicMgr.AddComponent<MusicManager>();
+
+			instance.audio = musicMgr.AddComponent<AudioSource>();
+
+			instance.currentClip = 
 		}
+		return instance;
 	}
+	*/
 }

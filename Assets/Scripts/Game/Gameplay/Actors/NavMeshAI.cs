@@ -17,7 +17,7 @@ public class NavMeshAI : MonoBehaviour {
 	private GameObject[] RandomMove;
 	private NavMeshAgent navAgent;
     private HeatVisionCamera Eyes;
-	private Vector3 JumpTarget;
+	[HideInInspector] public Vector3 JumpTarget;
 	public float JumpCountdown = 6f;
 	private float JumpCountdownCurrent = 0f;
 	public float WanderCountdown = 12f;
@@ -52,7 +52,7 @@ public class NavMeshAI : MonoBehaviour {
 	
 	private bool seen = false;
 	
-	private Framing shakeCam;
+	private ShakeCam shakeCam;
 	
 	public Vector3 fleePos = new Vector3(120f,220f,1220f);
 	public bool rise = false; //used for camera follow
@@ -80,7 +80,7 @@ public class NavMeshAI : MonoBehaviour {
 		
 		jumpAnimCur = jumpAnim;
 		
-		shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<Framing>();
+		shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<ShakeCam>();
 		
 		beaconParticles = GetComponentInChildren<ParticleSystem>();
 
@@ -181,6 +181,11 @@ public class NavMeshAI : MonoBehaviour {
 		navAgent.enabled = true;
 		startRoar = true;
 		Jump ();
+	}
+	
+	public void EndAI(){
+			state = 0;
+			hide ();
 	}
 	
 	public void DayFlee(){
@@ -398,8 +403,10 @@ public class NavMeshAI : MonoBehaviour {
 		if (Random.Range (0f,1f)<.5f){return RandomMove[goNode].transform.position;}
 		else{
 			goNode = Random.Range (0,3);
-			while(!canGo[goNode]){
+			int tries = 0; //max 50 tries so we don't crash
+			while(!canGo[goNode] && tries<50){
 				goNode = Random.Range (0,3);
+				tries += 1;
 			}
 				
 			return RandomMove[goNode].transform.position;	
@@ -459,12 +466,12 @@ public class NavMeshAI : MonoBehaviour {
 		
 		RaycastHit nodeHit;
 		if (Physics.Raycast (new Vector3(nodePoint.x,300f,nodePoint.z),-Vector3.up,out nodeHit)){
-		//Debug.Log ("point "+nodeHit.point+", distance "+nodeHit.distance+", collider "+nodeHit.collider);
-		//Debug.Log ("returning "+nodeHit.point+", which was found from "+nodePoint);
+		Debug.Log ("point "+nodeHit.point+", distance "+nodeHit.distance+", collider "+nodeHit.collider);
+		Debug.Log ("returning "+nodeHit.point+", which was found from "+nodePoint);
         return nodeHit.point; 
 		}
 		else{
-			//Debug.Log ("didn't find anything"); 
+			Debug.Log ("didn't find anything"); 
 			return Vector3.zero;}
 		
     }

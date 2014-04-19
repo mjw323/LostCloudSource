@@ -81,9 +81,9 @@ public class RespawnSystem : MonoBehaviour {
 	public void Respawn(){
 		//Debug.log ("respawning");
 		isRespawning = true;
-		mainCamera.SendMessage("fadeOut");
-		StartCoroutine(Wait());
-		mainCamera.SendMessage("fadeIn");
+		mainCamera.SendMessage("flash");
+		//StartCoroutine(Wait());
+		//mainCamera.SendMessage("fadeIn");
 		player.position = spawnPoint;
 		isRespawning = false;
 	}
