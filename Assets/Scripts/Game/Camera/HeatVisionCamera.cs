@@ -31,7 +31,8 @@ public class HeatVisionCamera : MonoBehaviour
 
     public Timer updateTimer;
     private bool visible = false;
-    private bool ready = false;
+    private bool imageReady = false;
+    private bool postReady = false;
 
     //private static string blurMatString =
 
@@ -103,8 +104,9 @@ public class HeatVisionCamera : MonoBehaviour
 
     void Update() {
         updateTimer.ticks -= Time.deltaTime;
-        if(updateTimer.ticks < updateTimer.frequency) {
-             ready = true;
+        if(updateTimer.ticks <= 0.0f) {
+             postReady = true;
+             imageReady = true;
              updateTimer.ticks = updateTimer.frequency;
         }
     }
@@ -136,33 +138,37 @@ public class HeatVisionCamera : MonoBehaviour
     // Called by the camera to apply the image effect
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        int rtW = source.width / 4;
-        int rtH = source.height / 4;
-        RenderTexture buffer = RenderTexture.GetTemporary(rtW, rtH, 0);
+        if(imageReady) {
+            int rtW = source.width / 4;
+            int rtH = source.height / 4;
+            RenderTexture buffer = RenderTexture.GetTemporary(rtW, rtH, 0);
 
-        // Copy source to the 4x4 smaller texture.
-        DownSample4x(source, buffer);
+            // Copy source to the 4x4 smaller texture.
+            DownSample4x(source, buffer);
 
-        // Blur the small texture
-        for (int i = 0; i < blurIterations; i++)
-        {
-            RenderTexture buffer2 = RenderTexture.GetTemporary(rtW, rtH, 0);
-            FourTapCone(buffer, buffer2, i);
+            // Blur the small texture
+            for (int i = 0; i < blurIterations; i++)
+            {
+                RenderTexture buffer2 = RenderTexture.GetTemporary(rtW, rtH, 0);
+                FourTapCone(buffer, buffer2, i);
+                RenderTexture.ReleaseTemporary(buffer);
+                buffer = buffer2;
+            }
+
+            Graphics.Blit(buffer, visionTexture);
+
+            // Downsample temp rt into camera render texture
+            //DownSample4x(rt, destination);
+
             RenderTexture.ReleaseTemporary(buffer);
-            buffer = buffer2;
+
+            imageReady = false;
         }
-
-        Graphics.Blit(buffer, visionTexture);
-
-        // Downsample temp rt into camera render texture
-        //DownSample4x(rt, destination);
-
-        RenderTexture.ReleaseTemporary(buffer);
     }
 
     // Called after rendering is done
     void OnPostRender() {
-        if (ready) {
+        if (postReady) {
             int hits = 0;
             Texture2D tex = new Texture2D(textureSize, textureSize, TextureFormat.ARGB32, false);
             RenderTexture.active = visionTexture;
@@ -187,7 +193,7 @@ public class HeatVisionCamera : MonoBehaviour
             if (hits > targetThreashold)
                 visible = true;
 
-            ready = false;
+            postReady = false;
         }
     }
 
