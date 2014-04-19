@@ -299,6 +299,12 @@ public class NavMeshAI : MonoBehaviour {
 			}
 		//}
 	}
+	
+	 void OnTriggerEnter(Collider other) {
+        if (other.tag=="Player" && state == 3){
+			Debug.Log("kill noke!!!");
+		}
+    }
 
 	void hide(){
 		//Monster is turned off and reset to a hidden location;
