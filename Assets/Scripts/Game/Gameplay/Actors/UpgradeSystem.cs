@@ -39,6 +39,16 @@ public class UpgradeSystem : MonoBehaviour {
 	
 	}
 	
+	public int UpgradesFound(){
+		//return how many upgrades player has
+		int howMany = 0;
+		if (Hoverboard.GetComponent<Hover>().canGlide){howMany += 1;}
+		if (Hoverboard.GetComponent<Hover>().canGrind){howMany += 1;}
+		if (Hoverboard.GetComponent<Hover>().canWater){howMany += 1;}
+		
+		return howMany;
+	}
+	
 	void GotBigUpgrade(float index){
 		gettingUpgrade = index;
 	
