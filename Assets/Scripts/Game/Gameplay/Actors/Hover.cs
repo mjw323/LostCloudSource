@@ -631,8 +631,8 @@ public class Hover : MonoBehaviour
 				
 				}
 		else{
-					if (Math.Abs(spinAmount)>=270f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.0f);}
-					if (Math.Abs(flipAmount)>=270f){rigidbody.AddForceAtPosition(cameraDir * spinBoost*1.25f, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.25f);}
+					if (Math.Abs(spinAmount)>=225f){rigidbody.AddForceAtPosition(cameraDir * spinBoost, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.0f);}
+					if (Math.Abs(flipAmount)>=225f){rigidbody.AddForceAtPosition(cameraDir * spinBoost*1.25f, activeThruster.position,ForceMode.Impulse); whoosh.Boost(1.25f);}
 					spinAmount = 0f;
 					flipAmount = 0f;
                     flipTimes = 0f;
