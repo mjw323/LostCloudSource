@@ -4,6 +4,7 @@ using System.Collections;
 public class Respawn : MonoBehaviour
 {
     [SerializeField] private Fade fade;
+    [SerializeField] private Flash flash;
     [SerializeField] private DynamicCamera dynamicCamera;
     [SerializeField] private float fadeInSeconds;
     [SerializeField] private float fadeOutSeconds;
@@ -32,7 +33,8 @@ public class Respawn : MonoBehaviour
         dynamicCamera.TeleportBehind();
         dynamicCamera.EnableFollow();
         yield return new WaitForSeconds(delay);
-        yield return fade.FadeIn(fadeInSeconds);
+        flash.Fire(1.0f);
+        fade.FadeIn(0);
         inProgress = false;
     }
 
