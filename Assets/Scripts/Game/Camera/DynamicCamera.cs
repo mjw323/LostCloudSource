@@ -47,6 +47,17 @@ public class DynamicCamera : MonoBehaviour {
         transform.position = playerAnchor.position - playerAnchor.forward * targetDistance;
     }
 
+    public void PushAnchor(Transform anchor)
+    {
+        oldAnchor = playerAnchor;
+        playerAnchor = anchor;
+    }
+
+    public void PopAnchor()
+    {
+        playerAnchor = oldAnchor;
+    }
+
 	[SerializeField] private float targetDistance = 4.0f;
 	[SerializeField] private float zoomSpeed = 1.0f;
 	[SerializeField] private Curve zoomCurve;
@@ -58,6 +69,7 @@ public class DynamicCamera : MonoBehaviour {
 	[HideInInspector] private float distance;
 	[HideInInspector] private float elevationAngle;
     [HideInInspector] private bool shouldFollowPlayer = true;
+    [HideInInspector] private Transform oldAnchor;
 	
 	[HideInInspector] private float elevationAngleSave;
 	[HideInInspector] private bool wasFollowing = false;

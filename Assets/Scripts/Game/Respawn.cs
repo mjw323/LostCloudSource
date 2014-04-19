@@ -32,6 +32,7 @@ public class Respawn : MonoBehaviour
         yield return fade.FadeOut(fadeOutSeconds);
         player.position = spawnLocation;
         ragdollController.GetUp();
+        dynamicCamera.PopAnchor();
         dynamicCamera.TeleportBehind();
         dynamicCamera.EnableFollow();
         yield return new WaitForSeconds(delay);
