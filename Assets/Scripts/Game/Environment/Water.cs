@@ -165,4 +165,11 @@ public class Water : MonoBehaviour {
 		}
 	}
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Death death = other.GetComponent<Death>();
+        if (death != null) {
+            death.OnFall();
+        }
+    }
 }

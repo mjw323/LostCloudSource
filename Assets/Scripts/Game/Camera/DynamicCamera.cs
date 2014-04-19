@@ -32,6 +32,21 @@ public class DynamicCamera : MonoBehaviour {
 		get { return distance; }
 	}
 
+    public void EnableFollow()
+    {
+        shouldFollowPlayer = true;
+    }
+
+    public void DisableFollow()
+    {
+        shouldFollowPlayer = false;
+    }
+
+    public void TeleportBehind()
+    {
+        transform.position = playerAnchor.position - playerAnchor.forward * targetDistance;
+    }
+
 	[SerializeField] private float targetDistance = 4.0f;
 	[SerializeField] private float zoomSpeed = 1.0f;
 	[SerializeField] private Curve zoomCurve;
@@ -42,6 +57,7 @@ public class DynamicCamera : MonoBehaviour {
 	[HideInInspector][SerializeField] private Transform playerAnchor;
 	[HideInInspector] private float distance;
 	[HideInInspector] private float elevationAngle;
+    [HideInInspector] private bool shouldFollowPlayer = true;
 	
 	[HideInInspector] private float elevationAngleSave;
 	[HideInInspector] private bool wasFollowing = false;
@@ -130,10 +146,12 @@ public class DynamicCamera : MonoBehaviour {
 			}
 			float targD = targetDistance;
 			if (stuckOnYorex){targD = 20f;}
-			distance = Mathf.Lerp(distance, targD, distanceStep);
+            distance = Mathf.Lerp(distance, targD, distanceStep);
 			//if (!stuckOnYorex){
-			transform.position = Vector3.Lerp (transform.position,playerAnchor.position + direction * distance,0.9f);
-		//}
+            if (shouldFollowPlayer) {
+			    transform.position = Vector3.Lerp (transform.position,playerAnchor.position + direction * distance,0.9f);
+            }
+        //}
 			//if (!stuckOnYorex){transform.position = Vector3.Lerp(transform.position, goalAnchor.position + direction * distance, 0.9f);}
 
 			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(goalAnchor.position - transform.position), 0.9f);
