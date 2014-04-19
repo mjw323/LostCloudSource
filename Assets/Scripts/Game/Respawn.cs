@@ -10,6 +10,7 @@ public class Respawn : MonoBehaviour
     [SerializeField] private float fadeOutSeconds;
     [SerializeField] private float delay;
     [SerializeField] private Transform player;
+    [SerializeField] private RagdollController ragdollController;
     private Vector3 spawnLocation;
     private bool inProgress;
 
@@ -30,6 +31,7 @@ public class Respawn : MonoBehaviour
     {
         yield return fade.FadeOut(fadeOutSeconds);
         player.position = spawnLocation;
+        ragdollController.GetUp();
         dynamicCamera.TeleportBehind();
         dynamicCamera.EnableFollow();
         yield return new WaitForSeconds(delay);
