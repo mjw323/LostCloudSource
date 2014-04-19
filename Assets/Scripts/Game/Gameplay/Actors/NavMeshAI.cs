@@ -300,11 +300,7 @@ public class NavMeshAI : MonoBehaviour {
 		//}
 	}
 	
-	 void OnTriggerEnter(Collider other) {
-        if (other.tag=="Player" && state == 3){
-			Debug.Log("kill noke!!!");
-		}
-    }
+
 
 	void hide(){
 		//Monster is turned off and reset to a hidden location;
@@ -484,6 +480,19 @@ public class NavMeshAI : MonoBehaviour {
 
 	IEnumerator Wait(){
 		yield return new WaitForSeconds(WaitTime);
+	}
+	
+	public void TeleportNearPoint(Vector3 position){
+		Vector3 point = FindJumpNode(position);
+		
+		navAgent.enabled = false;
+		
+		Flying = false;
+		this.transform.position = point;
+		this.transform.LookAt(point,Vector3.up);
+		state = 1;
+		
+		navAgent.enabled = true;
 	}
 	
 	Vector3 FindJumpNode(Vector3 position){

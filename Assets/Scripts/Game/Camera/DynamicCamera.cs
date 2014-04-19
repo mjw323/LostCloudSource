@@ -148,7 +148,7 @@ public class DynamicCamera : MonoBehaviour {
 			float distanceStep = zoomCurve.Evaluate(distanceDiff) * zoomSpeed
 				* Time.deltaTime;
 
-			if (!stuckOnYorex && (Input.GetAxis("Target") > 0.8f || Input.GetButton("Target")  || navAgent.state==6 /*|| navAgent.state==3*/)){
+			if (!stuckOnYorex && (navAgent.enabled)&&(Input.GetAxis("Target") > 0.8f || Input.GetButton("Target")  || navAgent.state==6 /*|| navAgent.state==3*/)){
 				if (navAgent.state==0){
 					direction = Vector3.Slerp(direction, -goalAnchor.forward, .1f);
 				} else {
