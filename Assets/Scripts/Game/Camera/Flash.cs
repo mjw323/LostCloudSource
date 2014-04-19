@@ -4,7 +4,7 @@ using System.Collections;
 public class Flash : MonoBehaviour
 {
     [SerializeField] private Texture2D texture;
-    private float alpha = 0f;
+    private float alpha;
     private bool inProgress;
 	private const int depth = -1000;
 
@@ -16,6 +16,7 @@ public class Flash : MonoBehaviour
     public void Fire(float duration)
     {
         inProgress = true;
+        alpha = 1.0f;
         StartCoroutine(DoFlash(duration));
     }
 
@@ -23,8 +24,7 @@ public class Flash : MonoBehaviour
     {
         float timeModifier = 1.0f / duration;
         while (alpha > 0) {
-            float progress = 1.0f - alpha;
-            alpha -= Time.deltaTime * timeModifier * progress;
+            alpha -= Time.deltaTime * timeModifier;
             yield return null;
         }
         alpha = 0;
@@ -33,6 +33,7 @@ public class Flash : MonoBehaviour
 
     private void Awake()
     {
+        alpha = 0;
         inProgress = false;
     }
 	
