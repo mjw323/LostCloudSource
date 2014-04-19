@@ -75,8 +75,10 @@ public class DayNightTransition : MonoBehaviour {
 			this.transform.parent.position = smachine.GetChild(0).position;
 			this.transform.parent.LookAt(smachine);
 			//parentControl.followEnemy = true;
-			ShakeCam shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<ShakeCam>();
-			shakeCam.ShakeScreen(2f, .75f);
+			if (noke.UpgradesFound()<3){ //once 3rd upgrade is found, sound machine is broke here.
+				ShakeCam shakeCam = GameObject.FindWithTag ("MainCamera").GetComponent<ShakeCam>();
+				shakeCam.ShakeScreen(2f, .75f);
+			}
 		}
 
 		startPos = this.transform.parent.position;

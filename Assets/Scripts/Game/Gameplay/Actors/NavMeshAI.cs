@@ -60,6 +60,10 @@ public class NavMeshAI : MonoBehaviour {
 	private float riseTimer = 1f;
 
 	private float roarTimer = 0f;
+	private Vector3 machinePos;
+	private bool wreckingMachine = false; //switch this on and his behavior will center on wrecking the machine
+	private bool wreckedMachine = false; //switch this on and he'll hang out where he is without howling
+	private GameObject maskObj;
 
 
 	void Start(){
@@ -68,6 +72,7 @@ public class NavMeshAI : MonoBehaviour {
 		RandomMove = GameObject.FindGameObjectsWithTag ("RandomMove");
 		navAgent = this.GetComponent<NavMeshAgent>();
 		Eyes = this.GetComponentInChildren<HeatVisionCamera> ();
+		maskObj = GameObject.FindWithTag("YorexMask");
 
 		animator = GetComponentInChildren<Animator>();
 		animator.applyRootMotion = false; //we turn off root motion because of some of the funky stuff fly animations do.
@@ -77,6 +82,8 @@ public class NavMeshAI : MonoBehaviour {
 		roarId = Animator.StringToHash("Roar");
 		howlId = Animator.StringToHash("Howl");
 		attackId = Animator.StringToHash("Attack");
+		
+		machinePos = GameObject.FindWithTag("SoundMachine").transform.position;
 		
 		jumpAnimCur = jumpAnim;
 		
@@ -92,7 +99,7 @@ public class NavMeshAI : MonoBehaviour {
 	}
 
 	void Howl(){
-		Howling = ((!Howling) && (state != 3));
+		Howling = ((!Howling) && (state != 3) && (!wreckingMachine));
 		animator.SetBool (howlId, Howling);
 		if (Howling) {
 						HowlTimer = 0.1f;
@@ -109,6 +116,13 @@ public class NavMeshAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
+		
+		if (wreckedMachine){ 
+			state = 1;
+			if (distToPlayer < 20f){
+			wreckedMachine = false;
+			Player.SendMessage("ActivateSoundMachine");
+		}}
 
 		HowlTimer -= Time.deltaTime;
 		if (HowlTimer <= 0f) {
@@ -119,6 +133,13 @@ public class NavMeshAI : MonoBehaviour {
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
+		
+		if (!startRoar 
+			&& Player.GetComponent<UpgradeSystem>().UpgradesFound() >= 2 
+			&& Vector3.Magnitude(machinePos - Player.transform.position)<280f){
+				wreckingMachine = true; //wreck machine when noke has requisite upgrades and is near it
+		}
+		
 		if (state != 6) {
 			//Debug.Log ("Current yorex state: "+state);
 		}
@@ -180,6 +201,8 @@ public class NavMeshAI : MonoBehaviour {
 		navAgent.speed = mySpeed;
 		navAgent.enabled = true;
 		startRoar = true;
+		wreckingMachine = false;
+		wreckedMachine = false;
 		Jump ();
 	}
 	
@@ -197,7 +220,10 @@ public class NavMeshAI : MonoBehaviour {
 	
 	public void Jump(){
 		Debug.Log ("looking to jump");
-		JumpTarget = FindJumpNode (Player.transform.position) + (Vector3.up*GetComponent<NavMeshAgent> ().height/2f);
+		if (wreckingMachine){JumpTarget = machinePos + (Vector3.up*GetComponent<NavMeshAgent> ().height/2f);}
+		else{
+			JumpTarget = FindJumpNode (Player.transform.position) + (Vector3.up*GetComponent<NavMeshAgent> ().height/2f);
+		}
 		Vector3 moveDir = this.transform.position - JumpTarget; //move landing spot towards starting so he has space to land
 			moveDir.y = 0f;
 			JumpTarget += (Vector3.Normalize(moveDir)*landAnimDist);
@@ -245,17 +271,27 @@ public class NavMeshAI : MonoBehaviour {
 			////////////////////////moving/stopping////////////////////
 		if (Vector3.Magnitude (distLeft) <= flyingSpeed * Time.deltaTime) { //if we're close enough to the target to get there this frame, get there
 				Debug.Log ("Landed!");	
-				navAgent.enabled = true;
-				state = 2;
 				Flying = false;
 				this.transform.position = JumpTarget;
-
 				this.transform.LookAt(JumpTarget,Vector3.up);
-				
+			
+			if (!wreckingMachine){
+				navAgent.enabled = true;
+				state = 2;
 				shakeCam.ShakeScreen(
 					2f - (1.5f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/200f)))), 
 					1f - (1f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
 				);
+			}else{ //when wrecking machine
+				if (!wreckedMachine){
+				wreckedMachine = true;
+				shakeCam.ShakeScreen(2f, 1f);
+				maskObj.GetComponent<SkinnedMeshRenderer>().enabled = false; //turn off mask
+				maskObj.GetComponentInChildren<MeshRenderer>().enabled = true; //turn on broke mask
+					
+				GameObject.FindWithTag("SoundMachine").GetComponent<SoundMachine>().destroyed = true; //set sound machine to broken state
+				}
+			}
 			if (startRoar){startRoar = false; animator.SetBool(roarId,true); roarTimer = 5f;}
 			
 			} else { //otherwise, fly towards it
@@ -364,7 +400,7 @@ public class NavMeshAI : MonoBehaviour {
 		} else {
 			JumpCountdownCurrent = JumpCountdown;
 		}
-		if (JumpCountdownCurrent < 0f){
+		if ((JumpCountdownCurrent < 0f || (wreckingMachine && Vector3.Magnitude(this.transform.position - machinePos)>20f)) && !wreckedMachine){
 			Jump ();
 			JumpCountdownCurrent = JumpCountdown;
 		}
@@ -372,7 +408,7 @@ public class NavMeshAI : MonoBehaviour {
 
 	void look(){
 		flyReady ();
-		if (seen){
+		if (seen && !wreckingMachine){
 			if (state!=3){Debug.Log ("saw player, started chasing");}
 			state = 3;
 			lastKnownPlayerPosition = Player.transform.position;
