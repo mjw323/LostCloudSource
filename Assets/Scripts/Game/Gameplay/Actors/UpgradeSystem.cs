@@ -60,7 +60,16 @@ public class UpgradeSystem : MonoBehaviour {
 		StartCoroutine(NightTime());
 		//Destroy(collision.gameObject);
 		
-		if(gettingUpgrade == 0){
+	}
+
+	void ActivateSoundMachine(){
+		if(HasPlayerGottenNextUpgrade){
+			Debug.Log ("activated sound machine");
+			
+			Hoverboard.rigidbody.isKinematic = true;
+			HasPlayerGottenNextUpgrade = false;
+			
+			if(gettingUpgrade == 0){
 				Hoverboard.gameObject.GetComponent<Hover>().canGlide = true;
 				GameObject clone1 = (GameObject)Instantiate(upgrade1, Vector3.zero, Quaternion.identity);
 				clone1.transform.parent = boardGeo.transform;
@@ -83,13 +92,6 @@ public class UpgradeSystem : MonoBehaviour {
 				clone3.transform.localPosition = new Vector3(0,0,0);
 				clone3.transform.localRotation = Quaternion.identity;
 			}
-		
-	}
-
-	void ActivateSoundMachine(){
-		if(HasPlayerGottenNextUpgrade){
-			Hoverboard.rigidbody.isKinematic = true;
-			HasPlayerGottenNextUpgrade = false;
 			//state = 0;
 			MainCamera.SendMessage("fadeDayOut");
 			StartCoroutine(DayTime());

@@ -62,6 +62,7 @@ public class NavMeshAI : MonoBehaviour {
 	private float roarTimer = 0f;
 	private Vector3 machinePos;
 	private bool wreckingMachine = false; //switch this on and his behavior will center on wrecking the machine
+	private bool wreckedMachine = false; //switch this on and he'll hang out where he is without howling
 	private GameObject maskObj;
 
 
@@ -98,7 +99,7 @@ public class NavMeshAI : MonoBehaviour {
 	}
 
 	void Howl(){
-		Howling = ((!Howling) && (state != 3));
+		Howling = ((!Howling) && (state != 3) && (!wreckingMachine));
 		animator.SetBool (howlId, Howling);
 		if (Howling) {
 						HowlTimer = 0.1f;
@@ -115,6 +116,13 @@ public class NavMeshAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		distToPlayer = Vector3.Magnitude(this.transform.position - Player.transform.position);
+		
+		if (wreckedMachine){ 
+			state = 1;
+			if (distToPlayer < 20f){
+			wreckedMachine = false;
+			Player.SendMessage("ActivateSoundMachine");
+		}}
 
 		HowlTimer -= Time.deltaTime;
 		if (HowlTimer <= 0f) {
@@ -193,6 +201,8 @@ public class NavMeshAI : MonoBehaviour {
 		navAgent.speed = mySpeed;
 		navAgent.enabled = true;
 		startRoar = true;
+		wreckingMachine = false;
+		wreckedMachine = false;
 		Jump ();
 	}
 	
@@ -273,10 +283,13 @@ public class NavMeshAI : MonoBehaviour {
 					1f - (1f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
 				);
 			}else{ //when wrecking machine
-				if (maskObj.GetComponent<SkinnedMeshRenderer>().enabled){
+				if (!wreckedMachine){
+				wreckedMachine = true;
 				shakeCam.ShakeScreen(2f, 1f);
 				maskObj.GetComponent<SkinnedMeshRenderer>().enabled = false; //turn off mask
 				maskObj.GetComponentInChildren<MeshRenderer>().enabled = true; //turn on broke mask
+					
+				GameObject.FindWithTag("SoundMachine").GetComponent<SoundMachine>().destroyed = true; //set sound machine to broken state
 				}
 			}
 			if (startRoar){startRoar = false; animator.SetBool(roarId,true); roarTimer = 5f;}
@@ -387,7 +400,7 @@ public class NavMeshAI : MonoBehaviour {
 		} else {
 			JumpCountdownCurrent = JumpCountdown;
 		}
-		if (JumpCountdownCurrent < 0f || (wreckingMachine && Vector3.Magnitude(this.transform.position - machinePos)>20f)){
+		if ((JumpCountdownCurrent < 0f || (wreckingMachine && Vector3.Magnitude(this.transform.position - machinePos)>20f)) && !wreckedMachine){
 			Jump ();
 			JumpCountdownCurrent = JumpCountdown;
 		}
@@ -395,7 +408,7 @@ public class NavMeshAI : MonoBehaviour {
 
 	void look(){
 		flyReady ();
-		if (seen){
+		if (seen && !wreckingMachine){
 			if (state!=3){Debug.Log ("saw player, started chasing");}
 			state = 3;
 			lastKnownPlayerPosition = Player.transform.position;
