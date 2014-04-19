@@ -8,7 +8,7 @@ public class ReflectionCamera : MonoBehaviour {
     public class CameraProperties
     {
         public float clipPlaneOffset = 0.07f;
-        public LayerMask reflectionMask;
+        //public LayerMask reflectionMask;
         public bool reflectSkybox = false;
         public Color clearColor = Color.grey;
     }
@@ -40,7 +40,7 @@ public class ReflectionCamera : MonoBehaviour {
         camera.backgroundColor = properties.clearColor;
         camera.clearFlags = properties.reflectSkybox ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
 
-        camera.cullingMask = properties.reflectionMask & ~(1 << LayerMask.NameToLayer("Water"));
+        //camera.cullingMask = properties.reflectionMask & ~(1 << LayerMask.NameToLayer("Water"));
         camera.backgroundColor = Color.black;
         camera.enabled = false;
 
