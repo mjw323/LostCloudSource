@@ -187,7 +187,7 @@ public class Hover : MonoBehaviour
         public event DismissedBoardHandler OnDismissBoard;
 		
 		public void Bail(){
-			noke.GetComponent<Animator>().enabled=false;
+			//noke.GetComponent<Animator>().enabled=false;
 			DismissBoard();
 		}
         public void DismissBoard()
@@ -307,6 +307,12 @@ public class Hover : MonoBehaviour
                     DismissBoard();
                     respawner.Respawn();
                 }
+			
+        if (col.tag=="Yorex" && col.transform.GetComponent<NavMeshAI>().state == 3){
+			DismissBoard();
+			GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeSystem>().YorexStrike();
+		}
+    
         }
 
         // On rail
