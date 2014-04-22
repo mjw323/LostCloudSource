@@ -27,6 +27,8 @@ public class NavMeshAI : MonoBehaviour {
 	public float landingSpeed = 40f;
 	public float glideHeight = 120f;
 	public float landAnimDist = 0f; //distance he moves while playing his landing animation
+	
+	public float maxViewDist = 140f;
 
 	private float distToPlayer;
 
@@ -129,7 +131,7 @@ public class NavMeshAI : MonoBehaviour {
 					Howl ();
 				}
 
-		if (Eyes.CanSee() != seen ){
+		if ((Eyes.CanSee() && distToPlayer < maxViewDist) != seen ){
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
@@ -299,6 +301,8 @@ public class NavMeshAI : MonoBehaviour {
 			}
 		//}
 	}
+	
+
 
 	void hide(){
 		//Monster is turned off and reset to a hidden location;
@@ -478,6 +482,19 @@ public class NavMeshAI : MonoBehaviour {
 
 	IEnumerator Wait(){
 		yield return new WaitForSeconds(WaitTime);
+	}
+	
+	public void TeleportNearPoint(Vector3 position){
+		Vector3 point = FindJumpNode(position);
+		
+		navAgent.enabled = false;
+		
+		Flying = false;
+		this.transform.position = point;
+		this.transform.LookAt(point,Vector3.up);
+		state = 1;
+		
+		navAgent.enabled = true;
 	}
 	
 	Vector3 FindJumpNode(Vector3 position){

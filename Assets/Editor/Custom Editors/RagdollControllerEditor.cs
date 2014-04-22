@@ -23,8 +23,7 @@ public class RagdollControllerEditor : Editor {
 		}
 		GUI.enabled = true;
 
-		if (!EditorApplication.isPlaying || controlled.IsGettingUp ||
-		    !controlled.IsRagdolled) {
+		if (!EditorApplication.isPlaying || !controlled.IsRagdolled) {
 			GUI.enabled = false;
 		}
 		if (GUILayout.Button("Get Up")) {

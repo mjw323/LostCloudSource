@@ -23,7 +23,7 @@ public class MusicManager : MonoBehaviour {
 	IEnumerator FadeOut(){
 		while(audio1Volume > 0.1){
 			audio1Volume -= 0.2f * Time.deltaTime;
-			print("volume = " + audio1Volume);
+		//	print("volume = " + audio1Volume);
 			audio.volume = audio1Volume;
 			//Camera.mainCamera.GetComponent<AudioSource>().volume = audio1Volume;
 			yield return null;
