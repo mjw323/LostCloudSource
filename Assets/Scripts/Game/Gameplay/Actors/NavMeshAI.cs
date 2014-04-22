@@ -27,6 +27,8 @@ public class NavMeshAI : MonoBehaviour {
 	public float landingSpeed = 40f;
 	public float glideHeight = 120f;
 	public float landAnimDist = 0f; //distance he moves while playing his landing animation
+	
+	public float maxViewDist = 140f;
 
 	private float distToPlayer;
 
@@ -129,7 +131,7 @@ public class NavMeshAI : MonoBehaviour {
 					Howl ();
 				}
 
-		if (Eyes.CanSee() != seen ){
+		if ((Eyes.CanSee() && distToPlayer < maxViewDist) != seen ){
 				seen = !seen;
 				Debug.Log ("Noke visibility is now "+seen);
 		}
