@@ -9,6 +9,10 @@ public class FadeInOut : MonoBehaviour {
 	
 	private float alpha;
 	private int fadeDir;
+	
+	private bool reverse = false;
+	private GameObject caller;
+	private string callMessage;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +30,11 @@ public class FadeInOut : MonoBehaviour {
 	void OnGUI(){
 		alpha += fadeDir * fadeSpeed * Time.deltaTime;	
 		alpha = Mathf.Clamp01(alpha);	
+		
+		if (alpha>=1f && reverse){
+				reverse = false; fadeIn ();
+				caller.SendMessage(callMessage);
+		}
  
 		Color alphaColor = GUI.color;
 		alphaColor.a = alpha;
@@ -40,5 +49,13 @@ public class FadeInOut : MonoBehaviour {
 	
 	void fadeOut(){
 		fadeDir = 1;
+	}
+	
+	public void fadeOutIn(GameObject call, string str){ //give me an object and a message too
+		fadeDir = 1;
+		reverse = true;
+		
+		caller = call;
+		callMessage = str;
 	}
 }

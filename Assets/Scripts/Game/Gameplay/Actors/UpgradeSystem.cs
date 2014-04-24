@@ -17,6 +17,9 @@ public class UpgradeSystem : MonoBehaviour {
 	//private NavMeshAgent navAgent;
 	private float gettingUpgrade = 0f;
 	
+	private float respawnTimer = 5.0f; //how many second after death to respawn
+	private float respawnTimeLeft = -1f;
+	
 	public GameObject boardGeo;
 	public GameObject upgrade1;
 	public GameObject upgrade2;
@@ -60,6 +63,40 @@ public class UpgradeSystem : MonoBehaviour {
 		StartCoroutine(NightTime());
 		//Destroy(collision.gameObject);
 		
+	}
+	
+	void OnTriggerEnter(Collider other) {
+		Debug.Log ("collision with "+other.tag);
+        if (other.tag=="Yorex" && other.transform.GetComponent<NavMeshAI>().state == 3){
+			Debug.Log ("I'M DEEEEAAAAAAAAAADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+			YorexStrike();
+		}
+    }
+	
+	public void YorexStrike(){
+					respawnTimeLeft = 0f;
+			this.GetComponent<RagdollController>().Ragdoll();
+			this.GetComponent<Hover>().DismissBoard();
+	}
+	
+	void Update(){
+		if (respawnTimeLeft >= 0f){
+			respawnTimeLeft += Time.deltaTime;
+			if (respawnTimeLeft >= respawnTimer){
+				MainCamera.GetComponent<FadeInOut>().fadeOutIn(this.gameObject,"NightRespawn");
+				respawnTimeLeft = -1f;
+			}
+		}
+	}
+	
+	void NightRespawn(){
+		this.transform.position = GameObject.FindWithTag("NightSpawn").transform.GetChild((int) gettingUpgrade).position;
+		Enemy.GetComponent<NavMeshAI>().TeleportNearPoint(this.transform.position);
+		this.GetComponent<RagdollController>().GetUp();
+		
+		this.GetComponent<FootMovement>().enabled = true;
+		this.GetComponent<FootController>().enabled = true;
+		this.GetComponent<CharacterController>().enabled = true;
 	}
 
 	void ActivateSoundMachine(){
