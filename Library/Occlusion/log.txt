@@ -1,17 +1,17 @@
-[20:04:07] INFO: Umbra 3 Optimizer version 3.2.11  (build: 0)
-[20:04:07] INFO: T: 20 O: 5 H: 0.25 B: 100
-[20:04:11] INFO: Tile grid 352x76x284 (at -148,-24,-8) created for scene: 22087 tiles (0 empties not included) in 4.196 seconds
-[20:04:11] INFO: Using 4 threads to compute 22087 tiles, cache 4096 MB
-[20:08:50] INFO: Tile processing complete, computed 21998 tiles
-[20:08:50] INFO: Strict view volumes: no
-[20:08:56] INFO: Filtered 1611/1612 inside clusters
-[20:08:56] INFO: Filtered 3917/3918 global clusters
-[20:08:56] INFO: 54019/57936 cells reachable after global analysis
-[20:10:04] INFO: collapsed leaf tiles 22087 => 770
-[20:10:10] INFO: Generating LOD tiles using 4 threads
-[20:10:47] INFO: Connecting LOD tiles
-[20:10:50] INFO: Compressing lists
-[20:10:50] INFO: Average index range size: 67.59
-[20:10:57] INFO: object list: 5 kB 12 B, cluster list: 5 kB 508 B
-[20:10:57] INFO: created tome with 1539 tiles, 539 targets and 0 gates
-[20:11:42] DEBUG: Total allocations 43493492, peak 614291 (size 212 MB 993 kB 251 B)
+[21:15:19] INFO: Umbra 3 Optimizer version 3.2.11  (build: 0)
+[21:15:19] INFO: T: 100 O: 25 H: 1 B: 100
+[21:15:19] INFO: Tile grid 76x20x60 (at -32,-8,-4) created for scene: 776 tiles (0 empties not included) in 0.315 seconds
+[21:15:19] INFO: Using 8 threads to compute 776 tiles, cache 4096 MB
+[21:15:30] INFO: Tile processing complete, computed 776 tiles
+[21:15:30] INFO: Strict view volumes: no
+[21:15:30] INFO: Filtered 97/98 inside clusters
+[21:15:30] INFO: Filtered 187/188 global clusters
+[21:15:30] INFO: 2660/2847 cells reachable after global analysis
+[21:15:33] INFO: collapsed leaf tiles 776 => 38
+[21:15:34] INFO: Generating LOD tiles using 8 threads
+[21:15:36] INFO: Connecting LOD tiles
+[21:15:36] INFO: Compressing lists
+[21:15:36] INFO: Average index range size: 156.85
+[21:15:36] INFO: object list: 3 kB 980 B, cluster list: 120 B
+[21:15:36] INFO: created tome with 75 tiles, 770 targets and 0 gates
+[21:15:38] DEBUG: Total allocations 2114560, peak 29009 (size 80 MB 707 kB 241 B)
