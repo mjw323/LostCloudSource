@@ -3,7 +3,8 @@ using System.Collections;
 
 public class MusicRegion : MonoBehaviour {
 
-	public AudioClip song;
+	public AudioClip daySong;
+	public AudioClip nightSong;
 
 	private MusicManager mgr;
 	
