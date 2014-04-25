@@ -1,17 +1,17 @@
-[13:19:40] INFO: Umbra 3 Optimizer version 3.2.11  (build: 0)
-[13:19:40] INFO: T: 20 O: 5 H: 0.25 B: 100
-[13:19:45] INFO: Tile grid 352x76x284 (at -148,-24,-8) created for scene: 22645 tiles (0 empties not included) in 4.825 seconds
-[13:19:45] INFO: Using 4 threads to compute 22645 tiles, cache 4096 MB
-[13:24:03] INFO: Tile processing complete, computed 19281 tiles
-[13:24:03] INFO: Strict view volumes: no
-[13:24:08] INFO: Filtered 2857/2858 inside clusters
-[13:24:08] INFO: Filtered 6449/6450 global clusters
-[13:24:08] INFO: 56322/62771 cells reachable after global analysis
-[13:25:11] INFO: collapsed leaf tiles 22645 => 809
-[13:25:18] INFO: Generating LOD tiles using 4 threads
-[13:25:51] INFO: Connecting LOD tiles
-[13:25:54] INFO: Compressing lists
-[13:25:54] INFO: Average index range size: 104.46
-[13:26:01] INFO: object list: 6 kB 916 B, cluster list: 6 kB 
-[13:26:01] INFO: created tome with 1617 tiles, 763 targets and 0 gates
-[13:28:40] DEBUG: Total allocations 45107336, peak 647665 (size 225 MB 9 kB 227 B)
+[21:15:19] INFO: Umbra 3 Optimizer version 3.2.11  (build: 0)
+[21:15:19] INFO: T: 100 O: 25 H: 1 B: 100
+[21:15:19] INFO: Tile grid 76x20x60 (at -32,-8,-4) created for scene: 776 tiles (0 empties not included) in 0.315 seconds
+[21:15:19] INFO: Using 8 threads to compute 776 tiles, cache 4096 MB
+[21:15:30] INFO: Tile processing complete, computed 776 tiles
+[21:15:30] INFO: Strict view volumes: no
+[21:15:30] INFO: Filtered 97/98 inside clusters
+[21:15:30] INFO: Filtered 187/188 global clusters
+[21:15:30] INFO: 2660/2847 cells reachable after global analysis
+[21:15:33] INFO: collapsed leaf tiles 776 => 38
+[21:15:34] INFO: Generating LOD tiles using 8 threads
+[21:15:36] INFO: Connecting LOD tiles
+[21:15:36] INFO: Compressing lists
+[21:15:36] INFO: Average index range size: 156.85
+[21:15:36] INFO: object list: 3 kB 980 B, cluster list: 120 B
+[21:15:36] INFO: created tome with 75 tiles, 770 targets and 0 gates
+[21:15:38] DEBUG: Total allocations 2114560, peak 29009 (size 80 MB 707 kB 241 B)
