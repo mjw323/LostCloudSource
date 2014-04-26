@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-// Assumptions:
-// * Parent object has a Respawn component.
 public class RespawnNode : MonoBehaviour {
+    // To be called only by the Respawn component.
+    public Respawn Master
+    {
+        set { master = value; }
+    }
+
     [HideInInspector] private Respawn master;
     [HideInInspector] new private Transform transform;
 
     private void Awake()
     {
         transform = GetComponent<Transform>();
-        master = transform.parent.GetComponent<Respawn>();
     }
 
     private void OnTriggerEnter(Collider other)

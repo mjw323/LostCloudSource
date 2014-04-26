@@ -1,48 +1,65 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
+    [SerializeField] private Respawn respawn;
+    [SerializeField] private Transform firstNightRespawn;
+    [SerializeField] private Transform secondNightRespawn;
+    [SerializeField] private Transform thirdNightRespawn;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    [SerializeField] private Upgrade[] majorUpgrades;
+    [SerializeField] private Upgrade[] minorUpgrades;
 
-	public void Save(){
-		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
-		PlayerData data = new PlayerData();
+    private int day = 1;
 
-		//data.location = location;
-		//data.upgrade1 = upgrade1;
-		// etc...
-		bf.Serialize(file, data);
-		file.Close();
-	}
+    private void OnMajorUpgradeCollected(Upgrade which)
+    {
+        // Set spawn location depending upon which day it is
+        switch (day) {
+        case 1:
+            respawn.SpawnLocation = firstNightRespawn.position;
+            break;
+        case 2:
+            respawn.SpawnLocation = secondNightRespawn.position;
+            break;
+        case 3:
+            respawn.SpawnLocation = thirdNightRespawn.position;
+            break;
+        }
+        // Transition to night, and notify all systems whose behavior depends upon the time of day
+        // timeOfDay.GotoNight();
+        respawn.OnNightfall();
+    }
 
-	public void Load(){
-		if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")){
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-			PlayerData data = (PlayerData)bf.Deserialize(file);
-			file.Close();
-			//location = data.location;
-			//upgrade1 = data.upgrade1;
-			//etc...
-		}
-	}
-}
+    private void OnMinorUpgradeCollected(Upgrade which)
+    {
+        // increase hoverboard speed?
+    }
 
-[Serializable]
-class PlayerData{
-	//insert values here that we want to save. upgrades, time of day, location, etc
+    private void OnSoundMachineUsed()
+    {
+        respawn.OnSunrise();
+    }
 
+    private void Start()
+    {
+        // Subscribe to upgrade events
+        for (int i = 0; i < majorUpgrades.Length; i++) {
+            majorUpgrades[i].OnCollected += OnMajorUpgradeCollected;
+        }
+        for (int j = 0; j < minorUpgrades.Length; j++) {
+            minorUpgrades[j].OnCollected += OnMinorUpgradeCollected;
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        // Unsubscribe to upgrade events
+        for (int i = 0; i < majorUpgrades.Length; i++) {
+            majorUpgrades[i].OnCollected -= OnMajorUpgradeCollected;
+        }
+        for (int j = 0; j < minorUpgrades.Length; j++) {
+            minorUpgrades[j].OnCollected -= OnMinorUpgradeCollected;
+        }
+    }
 }
