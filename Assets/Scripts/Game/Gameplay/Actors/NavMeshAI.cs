@@ -41,6 +41,9 @@ public class NavMeshAI : MonoBehaviour {
 	
 	public float mySpeed = 12f;
 	private Vector3 NewRandomNode;
+	
+	public float turnSpeed = 360f;
+	public float chaseTurnSpeed = 90f;
 
 	private bool startRoar = false;
 	
@@ -140,6 +143,10 @@ public class NavMeshAI : MonoBehaviour {
 			&& Player.GetComponent<UpgradeSystem>().UpgradesFound() >= 2 
 			&& Vector3.Magnitude(machinePos - Player.transform.position)<280f){
 				wreckingMachine = true; //wreck machine when noke has requisite upgrades and is near it
+		}
+		
+		if (state!=3){
+			GetComponent<NavMeshAgent>().angularSpeed = turnSpeed;
 		}
 		
 		if (state != 6) {
@@ -340,6 +347,7 @@ public class NavMeshAI : MonoBehaviour {
 		//Leap towards the player occasionally
 		
 		GetComponent<NavMeshAgent>().speed = mySpeed;
+		GetComponent<NavMeshAgent>().angularSpeed = chaseTurnSpeed;
 		JumpCountdownCurrent = JumpCountdown;
 		look ();
 

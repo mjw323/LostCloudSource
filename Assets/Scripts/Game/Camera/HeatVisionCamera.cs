@@ -22,6 +22,8 @@ public class HeatVisionCamera : MonoBehaviour
 
     public Shader blurShader = null;
     public Shader replacementShader = null;
+	
+	private Transform noke;
 
     [Serializable]
     public class Timer {
@@ -90,6 +92,8 @@ public class HeatVisionCamera : MonoBehaviour
             enabled = false;
             return;
         }
+		
+		noke = GameObject.FindWithTag("Player").transform;
 
         updateTimer.ticks = 0.0f;
 
@@ -103,6 +107,7 @@ public class HeatVisionCamera : MonoBehaviour
 
 
     void Update() {
+		this.transform.LookAt(noke.position);
         updateTimer.ticks -= Time.deltaTime;
         if(updateTimer.ticks <= 0.0f) {
              postReady = true;
