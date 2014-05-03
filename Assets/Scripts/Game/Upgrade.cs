@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Interactive))]
 public class Upgrade : MonoBehaviour
 {
     public delegate void Collected(Upgrade which);
@@ -11,8 +10,6 @@ public class Upgrade : MonoBehaviour
 
     private void OnInteracted()
     {
-        // Interactive component will delete itself soon, so unsubscribe now
-        interactive.OnInteracted -= OnInteracted;
         if (OnCollected != null) { OnCollected(this); }
     }
 
@@ -24,5 +21,10 @@ public class Upgrade : MonoBehaviour
     private void Start()
     {
         interactive.OnInteracted += OnInteracted;
+    }
+
+    private void OnApplicationQuit()
+    {
+        interactive.OnInteracted -= OnInteracted;
     }
 }

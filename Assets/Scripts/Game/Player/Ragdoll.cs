@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(FootController))]
 public class Ragdoll : MonoBehaviour {
 	public bool IsRagdolled {
 		get { return isRagdolled; }
 	}
 
 	public void DoRagdoll() {
+        if (isRagdolled) { return; }
+        footController.enabled = false;
 		isRagdolled = true;
 		SetKinematic(false);
 		animator.enabled = false;
 	}
 
-    public void DoGetUp() {
-        if (!isRagdolled) return;
+    public void GetUp() {
+        if (!isRagdolled) { return; }
+        footController.enabled = true;
+        isRagdolled = false;
         SetKinematic(true);
         // Synchronize the positions of Noke's capsule and her skeleton.
         root.localPosition = Vector3.zero;
@@ -21,8 +26,9 @@ public class Ragdoll : MonoBehaviour {
 	}
 
     [SerializeField] private Transform root;
-    [HideInInspector][SerializeField] private Animator animator;
-    [HideInInspector][SerializeField] private bool isRagdolled;
+    private Animator animator;
+    private FootController footController;
+    private bool isRagdolled;
 
 	private void SetKinematic(bool value) {
 		Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -33,6 +39,7 @@ public class Ragdoll : MonoBehaviour {
 
 	private void Awake() {
 		animator = GetComponent<Animator>();
+        footController = GetComponent<FootController>();
         isRagdolled = false;
 	}
 }

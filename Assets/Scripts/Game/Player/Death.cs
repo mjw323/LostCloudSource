@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 // Assumptions:
-// * Component is attached to Noke, and that she has a RagdollController.
+// * Component is attached to Noke, and that she has a Ragdoll.
 // * The root bone of Noke's skeleton has been assigned to 'root'.
 public class Death : MonoBehaviour
 {
@@ -11,12 +11,12 @@ public class Death : MonoBehaviour
     [SerializeField] private Respawn respawn;
     [SerializeField] private DynamicCamera dynamicCamera;
     [SerializeField] private Transform root;
-    [HideInInspector] private RagdollController ragdollController;
+    [HideInInspector] private Ragdoll ragdoll;
 
     // To be called when Noke takes a swim or tries to escape the island by jumping off.
     public void OnFall()
     {
-        ragdollController.Ragdoll();
+        ragdoll.DoRagdoll();
         dynamicCamera.DisableFollow();
         dynamicCamera.PushAnchor(root);
         StartCoroutine(DoDeath());
@@ -25,7 +25,7 @@ public class Death : MonoBehaviour
     // To be called when Noke is hit by Yorex or when she bumps her noggin.
     public void OnHit()
     {
-        ragdollController.Ragdoll();
+        ragdoll.DoRagdoll();
         StartCoroutine(DoDeath());
     }
 
@@ -37,6 +37,6 @@ public class Death : MonoBehaviour
 
     private void Awake()
     {
-        ragdollController = GetComponent<RagdollController>();
+        ragdoll = GetComponent<Ragdoll>();
     }
 }

@@ -5,6 +5,7 @@ public class NavMeshAI : MonoBehaviour {
 	
 
 	public GameObject Player;
+    private Death playerDeath;
 	public Vector3 lastKnownPlayerPosition;
 	public Vector3 RandomMoveLocation;
 	public GameObject HidePosition;
@@ -67,6 +68,10 @@ public class NavMeshAI : MonoBehaviour {
 	private bool wreckedMachine = false; //switch this on and he'll hang out where he is without howling
 	private GameObject maskObj;
 
+    private void Awake()
+    {
+        playerDeath = Player.GetComponent<Death>();
+    }
 
 	void Start(){
 		leapDistance = 40.0f;
@@ -291,7 +296,7 @@ public class NavMeshAI : MonoBehaviour {
 				maskObj.GetComponent<SkinnedMeshRenderer>().enabled = false; //turn off mask
 				maskObj.GetComponentInChildren<MeshRenderer>().enabled = true; //turn on broke mask
 					
-				GameObject.FindWithTag("SoundMachine").GetComponent<SoundMachine>().destroyed = true; //set sound machine to broken state
+                    GameObject.FindWithTag("SoundMachine").GetComponent<SoundMachine>().GetWrecked(); //set sound machine to broken state
 				}
 			}
 			if (startRoar){startRoar = false; animator.SetBool(roarId,true); roarTimer = 5f;}
@@ -380,6 +385,14 @@ public class NavMeshAI : MonoBehaviour {
 			//else
 		}
 	}
+
+    // Kill the player if we're attacking and collide with her.
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Noke" && Attacking) {
+            playerDeath.OnHit();
+        }
+    }
 
 	void alerted(){
 		//Move to last known spot of the player, then stop rotate for 5 seconds, and then move to search

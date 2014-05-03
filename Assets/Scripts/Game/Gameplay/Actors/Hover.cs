@@ -14,10 +14,15 @@ public class Hover : MonoBehaviour
 	
 		public GameObject boardObj;
 
+    [SerializeField] GameObject upgradeOne;
+    [SerializeField] GameObject upgradeTwo;
+    [SerializeField] GameObject upgradeThree;
+
         public float thrusterScale = 1.0f;
 
         public float thrustPower;
 		public float upgradeThrustPower;
+    private float upgradeCompletion = 0;
         public float steerPower;
         public float angleClamp = 50.0f;
         public float airAngleClamp = 10.0f;
@@ -98,6 +103,41 @@ public class Hover : MonoBehaviour
         public float bailAngle = 60.0f;
 	
 		private GameObject noke;
+
+    // Upgrade "event" functions to be called by GameController:
+
+    public void OnGetGlideUpgrade()
+    {
+        canGlide = true;
+        AttachUpgrade(upgradeOne);
+    }
+
+    public void OnGetGrindUpgrade()
+    {
+        canGrind = true;
+        AttachUpgrade(upgradeTwo);
+    }
+
+    public void OnGetWaterUpgrade()
+    {
+        canWater = true;
+        AttachUpgrade(upgradeThree);
+    }
+
+    private void AttachUpgrade(GameObject prefab)
+    {
+        GameObject upgrade = (GameObject)Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        upgrade.transform.parent = boardObj.transform;
+        upgrade.transform.localPosition = new Vector3(0,0,0);
+        upgrade.transform.localRotation = Quaternion.identity;
+    }
+
+    public void OnGetMinorUpgrade(float completion)
+    {
+        upgradeCompletion = completion;
+    }
+
+    public 
 
         // Uses a temporary BoxCollider (unless there already is one attached) to compute the dimensions of the board.
         Vector3 CalculateBoardDimensions()
@@ -561,7 +601,7 @@ public class Hover : MonoBehaviour
                 Vector3 moveDir = stickToWorld * inputDir;
 				//Debug.Log ("Camera: "+cameraDir+", input: "+inputDir+", Player: "+transform.forward+", Move: "+moveDir);
 		rigidbody.AddForceAtPosition(moveDir * Vector3.Magnitude(inputDir) 
-		                             * (thrustPower + (upgradeThrustPower*noke.GetComponent<CollectibleSystem>().UpgradeCompletion())) 
+		                             * (thrustPower + (upgradeThrustPower*upgradeCompletion)) 
 		                             * (1 + (0.5f * jumpPower)), activeThruster.position);
 
                 if (Vector3.Magnitude(inputDir)>.75f){if (idling){

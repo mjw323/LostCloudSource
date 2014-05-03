@@ -39,10 +39,11 @@ public class Respawn : MonoBehaviour
     [SerializeField] private float fadeOutSeconds;
     [SerializeField] private float delay;
     [SerializeField] private Transform player;
+    [SerializeField] private NavMeshAI monster;
     [SerializeField] private GameObject dayNodeContainer;
     [HideInInspector] private Fade fade;
     [HideInInspector] private Flash flash;
-    [HideInInspector] private RagdollController ragdollController;
+    [HideInInspector] private Ragdoll ragdoll;
     private Vector3 spawnLocation;
     private bool inProgress;
     private bool isNight;
@@ -52,9 +53,9 @@ public class Respawn : MonoBehaviour
         yield return fade.FadeOut(fadeOutSeconds);
         player.position = spawnLocation;
         if (isNight) {
-            // reset yorex
+            monster.TeleportNearPoint(player.position);
         }
-        ragdollController.GetUp();
+        ragdoll.GetUp();
         dynamicCamera.PopAnchor();
         dynamicCamera.TeleportBehind();
         dynamicCamera.EnableFollow();
@@ -69,7 +70,7 @@ public class Respawn : MonoBehaviour
         inProgress = false;
         fade = dynamicCamera.GetComponent<Fade>();
         flash = dynamicCamera.GetComponent<Flash>();
-        ragdollController = player.GetComponent<RagdollController>();
+        ragdoll = player.GetComponent<Ragdoll>();
     }
 
     private void Start()

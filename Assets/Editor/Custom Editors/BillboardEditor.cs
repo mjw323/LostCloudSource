@@ -4,7 +4,8 @@ using UnityEditor;
 [CustomEditor(typeof(Billboard))]
 public class BillboardEditor : Editor
 {
-    public override void OnInspectorGUI() {
+    public override void OnInspectorGUI()
+    {
         if (instance == null) { return; }
         DrawDefaultInspector();
         if (!EditorApplication.isPlaying) {

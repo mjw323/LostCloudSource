@@ -6,9 +6,18 @@ public class Interactive : MonoBehaviour
     public delegate void Interacted();
     public event Interacted OnInteracted;
 
+    // Allows a used interactive object to be used again.
+    // NOTE: It would be more elegant to pass in a coroutine and have this
+    // behavior occur after it completes, but it would also be harder to work with.
+    public void Reactivate()
+    {
+        collider.enabled = true;
+    }
+
     [SerializeField] private Billboard buttonPrompt;
 
     new private Transform transform;
+    private Collider collider;
 
     // Used to check if the player is on-foot.
     private FootController foot;
@@ -16,6 +25,7 @@ public class Interactive : MonoBehaviour
     private void Awake()
     {
         transform = GetComponent<Transform>();
+        collider = GetComponent<Collider>();
 #if DEBUG_CHECK_LAYER
         if (gameObject.layer != LayerMask.NameToLayer("Interactive")) {
             Debug.LogError("Interactive object not in the \"Interactive\" layer.");
@@ -50,7 +60,11 @@ public class Interactive : MonoBehaviour
         buttonPrompt.Show();
         if (Input.GetButton("Activate")) {
             if (OnInteracted != null) { OnInteracted(); }
-            Destroy(this);
+            enabled = false;
+
+            // Disable the collider, putting this component into a coma.
+            collider.enabled = false;
+
             buttonPrompt.Hide();
         }
     }

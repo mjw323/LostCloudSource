@@ -75,7 +75,7 @@ public class UpgradeSystem : MonoBehaviour {
 	
 	public void YorexStrike(){
 					respawnTimeLeft = 0f;
-			this.GetComponent<RagdollController>().Ragdoll();
+//			this.GetComponent<RagdollController>().Ragdoll();
 			this.GetComponent<Hover>().DismissBoard();
 	}
 	
@@ -92,7 +92,7 @@ public class UpgradeSystem : MonoBehaviour {
 	void NightRespawn(){
 		this.transform.position = GameObject.FindWithTag("NightSpawn").transform.GetChild((int) gettingUpgrade).position;
 		Enemy.GetComponent<NavMeshAI>().TeleportNearPoint(this.transform.position);
-		this.GetComponent<RagdollController>().GetUp();
+//		this.GetComponent<RagdollController>().GetUp();
 		
 		this.GetComponent<FootMovement>().enabled = true;
 		this.GetComponent<FootController>().enabled = true;
