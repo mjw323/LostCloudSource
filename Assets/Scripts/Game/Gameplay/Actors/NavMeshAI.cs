@@ -49,6 +49,9 @@ public class NavMeshAI : MonoBehaviour {
 	
 	public float jumpAnim = 0.5f;
 	private float jumpAnimCur;
+	
+	public float chaseFatigueTime = 15.0f;
+	private float chaseFatigueTimeLeft = 0f;
 
 	Vector3 downoffset = new Vector3(0,-2,0);
 	Vector3 rightoffset = new Vector3(3,0,0);
@@ -350,6 +353,11 @@ public class NavMeshAI : MonoBehaviour {
 		GetComponent<NavMeshAgent>().angularSpeed = chaseTurnSpeed;
 		JumpCountdownCurrent = JumpCountdown;
 		look ();
+		
+		chaseFatigueTimeLeft += Time.deltaTime;
+		if (chaseFatigueTimeLeft >= chaseFatigueTime && distToPlayer >= 20f){
+				Jump (); chaseFatigueTimeLeft = 0f;
+		}
 
 		
 		GetComponent<NavMeshAgent>().destination = Player.transform.position;
