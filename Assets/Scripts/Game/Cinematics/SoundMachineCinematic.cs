@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Cinematics/Sound Machine Cinematic")]
 public class SoundMachineCinematic : Cinematic
 {
     protected override IEnumerator PlayCinematic()
@@ -27,7 +28,8 @@ public class SoundMachineCinematic : Cinematic
             Vector3 toMonster = monsterTransform.position - cameraHolder.position;
             Quaternion newRot = Quaternion.LookRotation(toMonster);
             cameraHolder.rotation = Quaternion.Slerp(startRot, newRot, closeness);
-            
+
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
     }

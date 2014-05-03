@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Cinematics/Sky Cinematic")]
 public class SkyCinematic : Cinematic
 {
     protected override IEnumerator PlayCinematic()
