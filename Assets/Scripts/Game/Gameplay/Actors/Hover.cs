@@ -396,6 +396,7 @@ public class Hover : MonoBehaviour
                     if (saveVelocity == Vector3.zero){
                         saveVelocity = rigidbody.velocity;
                         rigidbody.velocity = Vector3.zero;
+						m_lean = 0; m_thrust = 0;
                     }
                 }else{
                     if (saveVelocity != Vector3.zero){
@@ -547,7 +548,7 @@ public class Hover : MonoBehaviour
                         }
                 }
 				if (grinding){grindParticles.startLifetime = 0.55f;}
-					else{grindParticles.startLifetime = 0f;}
+					else{grindParticles.startLifetime = 0f; rigidbody.useGravity = true;}
                 
 		
 				/////////////////////////////////GLIDE///////////////////////////////////////////

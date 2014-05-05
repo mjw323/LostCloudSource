@@ -23,11 +23,11 @@ public class MusicRegion : MonoBehaviour {
 		if (c.gameObject.tag.Equals("Player") || c.gameObject.tag.Equals("Board")){
 			//print ("SoundManager.cs found player");
 			//If the music playing is the same as the one we just collided with, no need to change clip or restart song
-			//if (!string.Equals(song.name, mgr.currentClip.name)){
+			if (!string.Equals(daySong.name, mgr.currentClip.name)){
 
 				//refer to the MusicManager class to change songs
-				//mgr.PlaySong(song);
-			//}
+				mgr.PlaySong(daySong);
+			}
 		}
 	}
 }

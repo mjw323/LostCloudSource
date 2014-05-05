@@ -71,6 +71,8 @@ public class DynamicCamera : MonoBehaviour {
     [HideInInspector] private bool shouldFollowPlayer = true;
     [HideInInspector] private Transform oldAnchor;
 	
+	[HideInInspector] private Quaternion savedAngle;
+	
 	[HideInInspector] private float elevationAngleSave;
 	[HideInInspector] private bool wasFollowing = false;
 	
@@ -112,23 +114,28 @@ public class DynamicCamera : MonoBehaviour {
 		if (stuckOnYorex != wasFollowing){ //follow state changed
 			wasFollowing = stuckOnYorex;
 			if (stuckOnYorex){ //started folowing
+				savedAngle = this.transform.rotation;
 				elevationAngleSave = elevationAngle;
 			}
 			else{ //stopped following; go back to old elevation
 				elevationAngle = elevationAngleSave;
+				this.transform.rotation = savedAngle;
 				if (this.transform.position.y<playerAnchor.position.y){
 					this.transform.position += Vector3.up*(playerAnchor.position.y-this.transform.position.y);
 				}
 			}
 		}
 		
-		if (stuckOnYorex){goalAnchor = enemyAnchor;}
-		else{goalAnchor = playerAnchor;}
+		if (stuckOnYorex){
+					goalAnchor = enemyAnchor;
+		}
+		else{
+					goalAnchor = playerAnchor;
+			}
 		
 		if (goalAnchor != null) {
 			if (!stuckOnYorex){
-			elevationAngle += (Input.GetAxis("RightStickY") -
-			                   Input.GetAxis("Mouse Y"));
+			elevationAngle = Mathf.Clamp(elevationAngle+(Input.GetAxis("RightStickY") - Input.GetAxis("Mouse Y")), -50f, 70f);
 			float rotationAngle = (Input.GetAxis("RightStickX") + Input.GetAxis(
 				"Mouse X")) * rotationSpeed * Time.deltaTime;	
 			rotation = Quaternion.AngleAxis(rotationAngle,Vector3.up);
