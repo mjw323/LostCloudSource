@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UpgradeParticleController : MonoBehaviour {
-	private Activatable activator;
-	public GameObject particle;
-	// Use this for initialization
-	void Start () {
-		activator = GetComponent<Activatable> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (activator.Activated ()) {
-			particle.GetComponent<ParticleSystem>().enableEmission = false;
+public class UpgradeParticleController : MonoBehaviour
+{
+    private ParticleSystem[] particles;
+    private Interactive interactive;
 
-			Component[] partics = particle.GetComponentsInChildren<ParticleSystem>();
-			foreach (ParticleSystem p in partics){
-				p.enableEmission = false;
-			}
-		}
-	}
+    private void OnInteracted()
+    {
+        for (int i = 0; i < particles.Length; ++i) {
+            particles[i].enableEmission = false;
+        }
+    }
+	
+    private void Awake()
+    {
+        particles = GetComponentsInChildren<ParticleSystem>();
+        interactive = GetComponent<Interactive>();
+    }
+
+    private void Start()
+    {
+        interactive.OnInteracted += OnInteracted;
+    }
+
+    private void OnApplicationQuit()
+    {
+        interactive.OnInteracted -= OnInteracted;
+    }
 }

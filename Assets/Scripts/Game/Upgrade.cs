@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Interactive))]
 public class Upgrade : MonoBehaviour
 {
     public delegate void Collected(Upgrade which);
