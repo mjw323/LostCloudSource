@@ -37,7 +37,6 @@ public class ShakeCam: MonoBehaviour {
 	}
 	
 	public void ShakeScreen(float secs, float amt){
-		Debug.Log ("shaking screen by "+amt+" for "+secs+" seconds!");
 		screenShake = secs;
 		shakeAmount = amt;
 	}
