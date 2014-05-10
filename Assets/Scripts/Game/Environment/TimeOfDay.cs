@@ -3,18 +3,18 @@ using System.Collections;
 
 public class TimeOfDay : MonoBehaviour
 {
-    public void GotoDay()
+    public Coroutine GotoDay()
     {
-        if (isDay || inProgress) { return; }
+        if (isDay || inProgress) { return StartCoroutine(Utility.Null()); }
         inProgress = true;
-        StartCoroutine(DoGotoDay());
+        return StartCoroutine(DoGotoDay());
     }
 
-    public void GotoNight()
+    public Coroutine GotoNight()
     {
-        if (!isDay || inProgress) { return; }
+		if (!isDay || inProgress) { return StartCoroutine(Utility.Null()); }
         inProgress = true;
-        StartCoroutine(DoGotoNight());
+        return StartCoroutine(DoGotoNight());
     }
 
     public bool IsDay
@@ -75,6 +75,7 @@ public class TimeOfDay : MonoBehaviour
         moon.SetActive(false);
         isDay = true;
         inProgress = false;
+		// TODO: Swap lightmap sets
     }
 
     private IEnumerator DoGotoNight()
@@ -99,6 +100,7 @@ public class TimeOfDay : MonoBehaviour
         sun.SetActive(false);
         isDay = false;
         inProgress = false;
+		// TODO: Swap lightmap sets
     }
 
     private void Awake()

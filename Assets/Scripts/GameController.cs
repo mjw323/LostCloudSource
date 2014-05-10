@@ -2,7 +2,7 @@
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private Hover hoverboard;
+	[SerializeField] private Hover hoverboard;
     [SerializeField] private bool beginWithGlide;
     [SerializeField] private bool beginWithGrind;
     [SerializeField] private bool beginWithWater;
@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Upgrade[] minorUpgrades;
     private int numMinorUpgrades;
 
+	[SerializeField] private UpgradeCinematic upgradeCinematic;
     [SerializeField] private SoundMachineCinematic soundMachineCinematic;
 
     private int day = 1;
@@ -39,7 +40,7 @@ public class GameController : MonoBehaviour
             break;
         }
 
-        timeOfDay.GotoNight();
+        upgradeCinematic.Play();
         respawn.OnNightfall();
         soundMachine.Reactivate();
     }
@@ -64,7 +65,7 @@ public class GameController : MonoBehaviour
             break;
         }
 
-        timeOfDay.GotoDay();
+		soundMachineCinematic.Play();
         respawn.OnSunrise();
         
         day++;

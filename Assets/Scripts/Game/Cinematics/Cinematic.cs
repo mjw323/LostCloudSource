@@ -5,7 +5,7 @@ public abstract class Cinematic : MonoBehaviour
 {
     public Coroutine Play()
     {
-        if (inProgress) { return StartCoroutine(Null()); }
+        if (inProgress) { return StartCoroutine(Utility.Null()); }
         inProgress = true;
         return StartCoroutine(WrapCinematic());
     }
@@ -25,11 +25,5 @@ public abstract class Cinematic : MonoBehaviour
     {
         yield return StartCoroutine(PlayCinematic());
         inProgress = false;
-    }
-
-    // Empty coroutine, returned if you attempt to play an in-progress cinematic.
-    private IEnumerator Null()
-    {
-        yield return null;
     }
 }
