@@ -21,24 +21,26 @@ public class Framing : MonoBehaviour {
 	}
 
 	private void LateUpdate() {
-		/////////////////frame///////////////
-		transform.Translate(-translation);
+		if (dynamicCamera.enabled) { //I only work with my partner!!
+						/////////////////frame///////////////
+						transform.Translate (-translation);
 
-		targetViewportPosition.z = dynamicCamera.Distance;
-		Vector3 targetViewportPosLocal = transform.InverseTransformPoint(
-			camera.ViewportToWorldPoint(targetViewportPosition));
-		Vector3 anchorPosLocal = transform.InverseTransformPoint(
+						targetViewportPosition.z = dynamicCamera.Distance;
+						Vector3 targetViewportPosLocal = transform.InverseTransformPoint (
+			camera.ViewportToWorldPoint (targetViewportPosition));
+						Vector3 anchorPosLocal = transform.InverseTransformPoint (
 			dynamicCamera.PlayerAnchor.position);
-		Vector3 targetTranslation = anchorPosLocal - targetViewportPosLocal;
-		float translationDiff = (targetTranslation - translation).magnitude;
-		float panStep = panCurve.Evaluate(translationDiff) * panSpeed *
-			Time.deltaTime;
-		translation = Vector3.Lerp(translation, targetTranslation, panStep);
-		translation.z = 0;
+						Vector3 targetTranslation = anchorPosLocal - targetViewportPosLocal;
+						float translationDiff = (targetTranslation - translation).magnitude;
+						float panStep = panCurve.Evaluate (translationDiff) * panSpeed *
+								Time.deltaTime;
+						translation = Vector3.Lerp (translation, targetTranslation, panStep);
+						translation.z = 0;
 
 		
-		/////////////////set///////////////
-		transform.Translate(translation);
+						/////////////////set///////////////
+						transform.Translate (translation);
+				}
 	}
 	
 
