@@ -6,5 +6,5 @@ var mainMenuController : GameObject;
 
 // Returns to main menu
 function Back() {
-	mainMenuController.GetComponent(MainMenu).MainMenu();
+	mainMenuController.GetComponent(MainMenu2).MainMenu();
 }
