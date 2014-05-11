@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenuScript : MonoBehaviour {
 
 	// List of GUI elements
 	public GameObject mainMenuElements;

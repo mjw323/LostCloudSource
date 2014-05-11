@@ -605,7 +605,8 @@ ModelImporter:
     4300014: wingFeathers
     4300016: plumageFeathers
     4300018: mask_05:polySurface11
-    7400000: Take 001
+    7400000: sit
+    7400002: breath
     9500000: //RootNode
     13700000: body
     13700002: eyeL
@@ -631,7 +632,1243 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: sit
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 155
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DONTTOUCH
+        weight: 1
+      - path: DONTTOUCH/cluster_0Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_1Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_2Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_3Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_4Handle
+        weight: 1
+      - path: DONTTOUCH/spineIKcurve
+        weight: 1
+      - path: DONTTOUCH/spineIKhandle
+        weight: 1
+      - path: L_arm
+        weight: 1
+      - path: L_arm/L_clavicle_anim_o
+        weight: 1
+      - path: L_arm/L_clavicle_anim_o/L_clavicle_anim
+        weight: 1
+      - path: L_arm/L_shoulder_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK/L_elbow_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK/L_elbow_FK/L_wrist_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK/L_elbow_FK/L_wrist_FK/L_paw_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o/L_elbow_FK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o/L_elbow_FK_anim/L_wrist_FK_o
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o/L_elbow_FK_anim/L_wrist_FK_o/L_wrist_FK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK/L_elbow_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK/L_elbow_IK/L_wrist_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK/L_elbow_IK/L_wrist_IK/L_paw_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK_ikHandle
+        weight: 1
+      - path: L_arm/L_shoulder_IK_o
+        weight: 1
+      - path: L_arm/L_shoulder_IK_o/L_shoulder_IK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_IK_PV_anim
+        weight: 1
+      - path: L_arm/L_shoulderikFkSwitch
+        weight: 1
+      - path: L_leg
+        weight: 1
+      - path: L_leg/L_hip_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK/L_ankle_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK/L_ankle_FK/L_ball_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK/L_ankle_FK/L_ball_FK/L_toe_FK
+        weight: 1
+      - path: L_leg/L_hip_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o/L_ankle_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o/L_ankle_FK_anim/L_ball_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o/L_ankle_FK_anim/L_ball_FK_o/L_ball_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK/L_ankle_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK/L_ankle_IK/L_ball_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK/L_ankle_IK/L_ball_IK/L_toe_IK
+        weight: 1
+      - path: L_leg/L_hip_IK_o
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_ballNull
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_ballNull/L_ballIkHandle
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_ballNull/L_hip_IK_ikHandle
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_toeBendCtrl_o
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_toeBendCtrl_o/L_toeBendCtrl
+        weight: 1
+      - path: L_leg/L_hip_IK_PV_anim
+        weight: 1
+      - path: L_leg/L_hipikFkSwitch
+        weight: 1
+      - path: mastaCONTROL
+        weight: 1
+      - path: mastaCONTROL/root_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0/FKspine_anim_1
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0/FKspine_anim_1/FKspine_anim_2
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0/FKspine_anim_1/FKspine_anim_2/FKspine_anim_3
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o/L_innerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o/L_innerWing_b_anim/L_innerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o/L_innerWing_b_anim/L_innerWing_c_o/L_innerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o/L_middleWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o/L_middleWing_b_anim/L_middleWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o/L_middleWing_b_anim/L_middleWing_c_o/L_middleWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o/L_outerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o/L_outerWing_b_anim/L_outerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o/L_outerWing_b_anim/L_outerWing_c_o/L_outerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/baseSpine
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/L_eye_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/L_eye_o/L_eye_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/R_eye_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/R_eye_o/R_eye_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o/tongue_g_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o/tongue_g_anim/tongue_end_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o/tongue_g_anim/tongue_end_o/tongue_end_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/L_ear_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/L_ear_o/L_ear_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/R_ear_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/R_ear_o/R_ear_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/topSpine
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o/tail5_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o/tail5_anim/tailEnd_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o/tail5_anim/tailEnd_o/tailEnd_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o/R_innerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o/R_innerWing_b_anim/R_innerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o/R_innerWing_b_anim/R_innerWing_c_o/R_innerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o/R_middleWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o/R_middleWing_b_anim/R_middleWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o/R_middleWing_b_anim/R_middleWing_c_o/R_middleWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o/R_outerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o/R_outerWing_b_anim/R_outerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o/R_outerWing_b_anim/R_outerWing_c_o/R_outerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/yorex_node
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3/tail4
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3/tail4/tail5
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3/tail4/tail5/tailEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_outerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_outerWing_a/L_outerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_outerWing_a/L_outerWing_b/L_outerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_innerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_innerToe/L_innerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_outerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_outerToe/L_outerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_innerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_innerWing_a/L_innerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_innerWing_a/L_innerWing_b/L_innerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_middleWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_middleWing_a/L_middleWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_middleWing_a/L_middleWing_b/L_middleWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/headEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/jawEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e/tongue_f
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e/tongue_f/tongue_g
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e/tongue_f/tongue_g/tongue_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/L_ear
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/L_ear/L_earEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/L_eye
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/R_ear
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/R_ear/R_earEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/R_eye
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/snout
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_outerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_outerWing_a/R_outerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_outerWing_a/R_outerWing_b/R_outerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_innerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_innerToe/R_innerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_outerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_outerToe/R_outerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_innerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_innerWing_a/R_innerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_innerWing_a/R_innerWing_b/R_innerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_middleWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_middleWing_a/R_middleWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_middleWing_a/R_middleWing_b/R_middleWing_c
+        weight: 1
+      - path: R_arm
+        weight: 1
+      - path: R_arm/R_clavicle_anim_o
+        weight: 1
+      - path: R_arm/R_clavicle_anim_o/R_clavicle_anim
+        weight: 1
+      - path: R_arm/R_shoulder_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK/R_elbow_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK/R_elbow_FK/R_wrist_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK/R_elbow_FK/R_wrist_FK/R_paw_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o/R_elbow_FK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o/R_elbow_FK_anim/R_wrist_FK_o
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o/R_elbow_FK_anim/R_wrist_FK_o/R_wrist_FK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK/R_elbow_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK/R_elbow_IK/R_wrist_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK/R_elbow_IK/R_wrist_IK/R_paw_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK_ikHandle
+        weight: 1
+      - path: R_arm/R_shoulder_IK_o
+        weight: 1
+      - path: R_arm/R_shoulder_IK_o/R_shoulder_IK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_IK_PV_anim
+        weight: 1
+      - path: R_arm/R_shoulderikFkSwitch
+        weight: 1
+      - path: R_leg
+        weight: 1
+      - path: R_leg/R_hip_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK/R_ankle_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK/R_ankle_FK/R_ball_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK/R_ankle_FK/R_ball_FK/R_toe_FK
+        weight: 1
+      - path: R_leg/R_hip_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o/R_ankle_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o/R_ankle_FK_anim/R_ball_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o/R_ankle_FK_anim/R_ball_FK_o/R_ball_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK/R_ankle_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK/R_ankle_IK/R_ball_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK/R_ankle_IK/R_ball_IK/R_toe_IK
+        weight: 1
+      - path: R_leg/R_hip_IK_o
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_ballNull
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_ballNull/R_ballIkHandle
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_ballNull/R_hip_IK_ikHandle
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_toeBendCtrl_o
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_toeBendCtrl_o/R_toeBendCtrl
+        weight: 1
+      - path: R_leg/R_hip_IK_PV_anim
+        weight: 1
+      - path: R_leg/R_hipikFkSwitch
+        weight: 1
+      - path: yorex_geo
+        weight: 1
+      - path: yorex_geo/body
+        weight: 1
+      - path: yorex_geo/eyeL
+        weight: 1
+      - path: yorex_geo/eyeR
+        weight: 1
+      - path: yorex_geo/furCards
+        weight: 1
+      - path: yorex_geo/mask_05:polySurface11
+        weight: 1
+      - path: yorex_geo/plumageFeathers
+        weight: 1
+      - path: yorex_geo/teethLower
+        weight: 1
+      - path: yorex_geo/teethUpper
+        weight: 1
+      - path: yorex_geo/tongue
+        weight: 1
+      - path: yorex_geo/wingFeathers
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: breath
+      takeName: Take 001
+      firstFrame: 75
+      lastFrame: 155
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DONTTOUCH
+        weight: 1
+      - path: DONTTOUCH/cluster_0Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_1Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_2Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_3Handle
+        weight: 1
+      - path: DONTTOUCH/cluster_4Handle
+        weight: 1
+      - path: DONTTOUCH/spineIKcurve
+        weight: 1
+      - path: DONTTOUCH/spineIKhandle
+        weight: 1
+      - path: L_arm
+        weight: 1
+      - path: L_arm/L_clavicle_anim_o
+        weight: 1
+      - path: L_arm/L_clavicle_anim_o/L_clavicle_anim
+        weight: 1
+      - path: L_arm/L_shoulder_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK/L_elbow_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK/L_elbow_FK/L_wrist_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK/L_elbow_FK/L_wrist_FK/L_paw_FK
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o/L_elbow_FK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o/L_elbow_FK_anim/L_wrist_FK_o
+        weight: 1
+      - path: L_arm/L_shoulder_FK_o/L_shoulder_FK_anim/L_elbow_FK_o/L_elbow_FK_anim/L_wrist_FK_o/L_wrist_FK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK/L_elbow_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK/L_elbow_IK/L_wrist_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK/L_elbow_IK/L_wrist_IK/L_paw_IK
+        weight: 1
+      - path: L_arm/L_shoulder_IK_ikHandle
+        weight: 1
+      - path: L_arm/L_shoulder_IK_o
+        weight: 1
+      - path: L_arm/L_shoulder_IK_o/L_shoulder_IK_anim
+        weight: 1
+      - path: L_arm/L_shoulder_IK_PV_anim
+        weight: 1
+      - path: L_arm/L_shoulderikFkSwitch
+        weight: 1
+      - path: L_leg
+        weight: 1
+      - path: L_leg/L_hip_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK/L_ankle_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK/L_ankle_FK/L_ball_FK
+        weight: 1
+      - path: L_leg/L_hip_FK/L_knee_FK/L_ankle_FK/L_ball_FK/L_toe_FK
+        weight: 1
+      - path: L_leg/L_hip_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o/L_ankle_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o/L_ankle_FK_anim/L_ball_FK_o
+        weight: 1
+      - path: L_leg/L_hip_FK_o/L_hip_FK_anim/L_knee_FK_o/L_knee_FK_anim/L_ankle_FK_o/L_ankle_FK_anim/L_ball_FK_o/L_ball_FK_anim
+        weight: 1
+      - path: L_leg/L_hip_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK/L_ankle_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK/L_ankle_IK/L_ball_IK
+        weight: 1
+      - path: L_leg/L_hip_IK/L_knee_IK/L_ankle_IK/L_ball_IK/L_toe_IK
+        weight: 1
+      - path: L_leg/L_hip_IK_o
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_ballNull
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_ballNull/L_ballIkHandle
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_ballNull/L_hip_IK_ikHandle
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_toeBendCtrl_o
+        weight: 1
+      - path: L_leg/L_hip_IK_o/L_hip_IK_anim/L_heelNull/L_toeNull/L_toeBendCtrl_o/L_toeBendCtrl
+        weight: 1
+      - path: L_leg/L_hip_IK_PV_anim
+        weight: 1
+      - path: L_leg/L_hipikFkSwitch
+        weight: 1
+      - path: mastaCONTROL
+        weight: 1
+      - path: mastaCONTROL/root_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0/FKspine_anim_1
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0/FKspine_anim_1/FKspine_anim_2
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/FKspine_anim_0/FKspine_anim_1/FKspine_anim_2/FKspine_anim_3
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o/L_innerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o/L_innerWing_b_anim/L_innerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_innerWing_a_o/L_innerWing_a_anim/L_innerWing_b_o/L_innerWing_b_anim/L_innerWing_c_o/L_innerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o/L_middleWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o/L_middleWing_b_anim/L_middleWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_middleWing_a_o/L_middleWing_a_anim/L_middleWing_b_o/L_middleWing_b_anim/L_middleWing_c_o/L_middleWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o/L_outerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o/L_outerWing_b_anim/L_outerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/L_outerWing_a_o/L_outerWing_a_anim/L_outerWing_b_o/L_outerWing_b_anim/L_outerWing_c_o/L_outerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/baseSpine
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/L_eye_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/L_eye_o/L_eye_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/R_eye_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/eyes_o/eyes_anim/R_eye_o/R_eye_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o/tongue_g_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o/tongue_g_anim/tongue_end_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/jaw_o/jaw_anim/tongue_a_o/tongue_a_anim/tongue_b_o/tongue_b_anim/tongue_c_o/tongue_c_anim/tongue_d_o/tongue_d_anim/tongue_e_o/tongue_e_anim/tongue_f_o/tongue_f_anim/tongue_g_o/tongue_g_anim/tongue_end_o/tongue_end_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/L_ear_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/L_ear_o/L_ear_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/R_ear_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/head_o/head_anim/R_ear_o/R_ear_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/IK_spine_o/IKspine_anim/topSpine
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o/tail5_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o/tail5_anim/tailEnd_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/pelvis_o/pelvis_anim/tail1_o/tail1_anim/tail2_o/tail2_anim/tail3_o/tail3_anim/tail4_o/tail4_anim/tail5_o/tail5_anim/tailEnd_o/tailEnd_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o/R_innerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o/R_innerWing_b_anim/R_innerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_innerWing_a_o/R_innerWing_a_anim/R_innerWing_b_o/R_innerWing_b_anim/R_innerWing_c_o/R_innerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o/R_middleWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o/R_middleWing_b_anim/R_middleWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_middleWing_a_o/R_middleWing_a_anim/R_middleWing_b_o/R_middleWing_b_anim/R_middleWing_c_o/R_middleWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o/R_outerWing_b_anim
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o/R_outerWing_b_anim/R_outerWing_c_o
+        weight: 1
+      - path: mastaCONTROL/root_o/root_anim/R_outerWing_a_o/R_outerWing_a_anim/R_outerWing_b_o/R_outerWing_b_anim/R_outerWing_c_o/R_outerWing_c_anim
+        weight: 1
+      - path: mastaCONTROL/yorex_node
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3/tail4
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3/tail4/tail5
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/pelvis/tail1/tail2/tail3/tail4/tail5/tailEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_outerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_outerWing_a/L_outerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_outerWing_a/L_outerWing_b/L_outerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_innerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_innerToe/L_innerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_outerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_elbow/L_wrist/L_paw/L_outerToe/L_outerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_innerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_innerWing_a/L_innerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_innerWing_a/L_innerWing_b/L_innerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_middleWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_middleWing_a/L_middleWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/L_clavicle/L_shoulder/L_middleWing_a/L_middleWing_b/L_middleWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/headEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/jawEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e/tongue_f
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e/tongue_f/tongue_g
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/jaw/tongue_a/tongue_b/tongue_c/tongue_d/tongue_e/tongue_f/tongue_g/tongue_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/L_ear
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/L_ear/L_earEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/L_eye
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/R_ear
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/R_ear/R_earEnd
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/R_eye
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/neck/head/snout
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_outerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_outerWing_a/R_outerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_outerWing_a/R_outerWing_b/R_outerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_innerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_innerToe/R_innerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_outerToe
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_elbow/R_wrist/R_paw/R_outerToe/R_outerToe_end
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_innerWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_innerWing_a/R_innerWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_innerWing_a/R_innerWing_b/R_innerWing_c
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_middleWing_a
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_middleWing_a/R_middleWing_b
+        weight: 1
+      - path: mastaCONTROL/yorex_node/skeleton/root/spine1/spine2/spine3/spine4/spine5/R_clavicle/R_shoulder/R_middleWing_a/R_middleWing_b/R_middleWing_c
+        weight: 1
+      - path: R_arm
+        weight: 1
+      - path: R_arm/R_clavicle_anim_o
+        weight: 1
+      - path: R_arm/R_clavicle_anim_o/R_clavicle_anim
+        weight: 1
+      - path: R_arm/R_shoulder_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK/R_elbow_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK/R_elbow_FK/R_wrist_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK/R_elbow_FK/R_wrist_FK/R_paw_FK
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o/R_elbow_FK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o/R_elbow_FK_anim/R_wrist_FK_o
+        weight: 1
+      - path: R_arm/R_shoulder_FK_o/R_shoulder_FK_anim/R_elbow_FK_o/R_elbow_FK_anim/R_wrist_FK_o/R_wrist_FK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK/R_elbow_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK/R_elbow_IK/R_wrist_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK/R_elbow_IK/R_wrist_IK/R_paw_IK
+        weight: 1
+      - path: R_arm/R_shoulder_IK_ikHandle
+        weight: 1
+      - path: R_arm/R_shoulder_IK_o
+        weight: 1
+      - path: R_arm/R_shoulder_IK_o/R_shoulder_IK_anim
+        weight: 1
+      - path: R_arm/R_shoulder_IK_PV_anim
+        weight: 1
+      - path: R_arm/R_shoulderikFkSwitch
+        weight: 1
+      - path: R_leg
+        weight: 1
+      - path: R_leg/R_hip_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK/R_ankle_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK/R_ankle_FK/R_ball_FK
+        weight: 1
+      - path: R_leg/R_hip_FK/R_knee_FK/R_ankle_FK/R_ball_FK/R_toe_FK
+        weight: 1
+      - path: R_leg/R_hip_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o/R_ankle_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o/R_ankle_FK_anim/R_ball_FK_o
+        weight: 1
+      - path: R_leg/R_hip_FK_o/R_hip_FK_anim/R_knee_FK_o/R_knee_FK_anim/R_ankle_FK_o/R_ankle_FK_anim/R_ball_FK_o/R_ball_FK_anim
+        weight: 1
+      - path: R_leg/R_hip_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK/R_ankle_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK/R_ankle_IK/R_ball_IK
+        weight: 1
+      - path: R_leg/R_hip_IK/R_knee_IK/R_ankle_IK/R_ball_IK/R_toe_IK
+        weight: 1
+      - path: R_leg/R_hip_IK_o
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_ballNull
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_ballNull/R_ballIkHandle
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_ballNull/R_hip_IK_ikHandle
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_toeBendCtrl_o
+        weight: 1
+      - path: R_leg/R_hip_IK_o/R_hip_IK_anim/R_heelNull/R_toeNull/R_toeBendCtrl_o/R_toeBendCtrl
+        weight: 1
+      - path: R_leg/R_hip_IK_PV_anim
+        weight: 1
+      - path: R_leg/R_hipikFkSwitch
+        weight: 1
+      - path: yorex_geo
+        weight: 1
+      - path: yorex_geo/body
+        weight: 1
+      - path: yorex_geo/eyeL
+        weight: 1
+      - path: yorex_geo/eyeR
+        weight: 1
+      - path: yorex_geo/furCards
+        weight: 1
+      - path: yorex_geo/mask_05:polySurface11
+        weight: 1
+      - path: yorex_geo/plumageFeathers
+        weight: 1
+      - path: yorex_geo/teethLower
+        weight: 1
+      - path: yorex_geo/teethUpper
+        weight: 1
+      - path: yorex_geo/tongue
+        weight: 1
+      - path: yorex_geo/wingFeathers
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
