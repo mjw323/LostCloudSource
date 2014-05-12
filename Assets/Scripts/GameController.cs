@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
 	[SerializeField] private UpgradeCinematic upgradeCinematic;
     [SerializeField] private SoundMachineCinematic soundMachineCinematic;
 
+    [SerializeField] private GameObject endingParentObject;
+
     private int day = 1;
     private int minorUpgradesFound = 0;
 
@@ -101,6 +103,7 @@ public class GameController : MonoBehaviour
     private void OnNightThreeComplete()
     {
         hoverboard.OnGetWaterUpgrade();
+        endingParentObject.SetActive(true);
     }
     
     private void Start()

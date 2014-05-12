@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NavMeshAI : MonoBehaviour {
-	
+public class NavMeshAI : MonoBehaviour
+{
+    public void OnThirdNight()
+    {
+        isThirdNight = true;
+    }
 
 	public GameObject Player;
     private Death playerDeath;
@@ -73,6 +77,9 @@ public class NavMeshAI : MonoBehaviour {
 	private bool wreckingMachine = false; //switch this on and his behavior will center on wrecking the machine
 	private bool wreckedMachine = false; //switch this on and he'll hang out where he is without howling
 	private GameObject maskObj;
+
+    // Set to initiate machine-wrecking mode.
+    private bool isThirdNight = false;
 
     private void Awake()
     {
@@ -148,9 +155,9 @@ public class NavMeshAI : MonoBehaviour {
 		}
 		
 		if (!startRoar 
-			&& Player.GetComponent<UpgradeSystem>().UpgradesFound() >= 2 
+			&& isThirdNight 
 			&& Vector3.Magnitude(machinePos - Player.transform.position)<280f){
-				wreckingMachine = true; //wreck machine when noke has requisite upgrades and is near it
+				wreckingMachine = true;
 		}
 		
 		if (state!=3){

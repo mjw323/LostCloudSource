@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Interactive))]
 public class SoundMachine : MonoBehaviour
 {
     public delegate void Used();
