@@ -24,7 +24,7 @@ public class RespawnSystem : MonoBehaviour {
 		
 		footC = gameObject.GetComponent<FootController>();
 		boardC = gameObject.GetComponent<BoardController>();
-		ragdollC = gameObject.GetComponent<RagdollController>();
+//		ragdollC = gameObject.GetComponent<RagdollController>();
 	}
 	
 	// Update is called once per frame

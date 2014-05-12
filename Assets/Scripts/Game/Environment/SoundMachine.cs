@@ -1,62 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundMachine : MonoBehaviour {
-	private UpgradeSystem noke;
-	private Activatable activator;
-	private AudioCone[] awaves;
-	private bool pActive = false;
-	public float soundTime = 4f;
-	private float soundTimeC = 0f;
+public class SoundMachine : MonoBehaviour
+{
+    public delegate void Used();
+    public event Used OnUsed;
+
+    // Call this to re-arm the sound machine each night.
+    // NOTE: Starts the game de-activated.
+    public void Reactivate()
+    {
+        interactive.Reactivate();
+    }
+
+    // Call this when Yorex breaks the sound machine
+    public void GetWrecked()
+    {
+        for (int i = 0; i < numCones; i++) {
+            cones[i].Stop();
+        }
+
+        // Turn on our damage particles
+        for (int j = 0; j < numParticles; j++) {
+            particles[j].enableEmission = true;
+        }
+    }
+
+    [SerializeField] private float duration;
+
+    private Interactive interactive;
+    private AudioCone[] cones;
+    private int numCones;
+    private ParticleSystem[] particles;
+    private int numParticles;
+
+    private void OnInteracted()
+    {
+        if (OnUsed != null) { OnUsed(); }
+        for (int i = 0; i < numCones; i++) {
+            cones[i].MakeWaves(duration);
+        }
+    }
+
+    private void Awake()
+    {
+        interactive = GetComponent<Interactive>();
+        cones = GetComponentsInChildren<AudioCone>();
+        particles = GetComponentsInChildren<ParticleSystem>();
+    }
 	
-	private ParticleSystem[] particles;
-	
-	public bool destroyed = false; //use this to swap the model and particles when it gets wrecked
-	
-	// Use this for initialization
-	void Start () {
-		noke = GameObject.FindWithTag ("Player").GetComponent<UpgradeSystem> ();
-		activator = GetComponent<Activatable> ();
-		awaves = GetComponentsInChildren<AudioCone>();
-		
-		particles = GetComponentsInChildren<ParticleSystem>();
-		foreach (ParticleSystem part in particles){part.enableEmission = false;}
+    private void Start()
+    {
+        interactive.OnInteracted += OnInteracted;
+
+        numCones = cones.Length;
+        numParticles = particles.Length;
+
+        // Hide our particles until we're broken
+        for (int i = 0; i < numParticles; i++) {
+            particles[i].enableEmission = false;
+        }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-		if (destroyed){
-				foreach (ParticleSystem part in particles){part.enableEmission = true;}
-				activator.setActive(true);
-			foreach (AudioCone fx in awaves){
-				fx.intensity = 0f;
-			}
-		}
-		else{
-			if (activator.Activated () && !pActive){ //on the frame it's activated, start playing sound machine fx
-				soundTimeC = soundTime;
-			}
-			
-		if (soundTimeC > 0f){ //play thru sound machine fx
-			soundTimeC -= Time.deltaTime;
-			foreach (AudioCone fx in awaves){
-				fx.intensity += (1f - fx.intensity) * 0.4f;
-			}
-		}
-		else{
-			foreach (AudioCone fx in awaves){
-				fx.intensity += (0f - fx.intensity) * 0.2f;
-			}
-		}
-			
-		if (noke.HasPlayerGottenNextUpgrade == activator.Activated ()) { //make it activatable at night
-			activator.setActive(!activator.Activated());
-		}
 
-		pActive = activator.Activated ();
-		}
-
-
-	}
+    private void OnApplicationQuit()
+    {
+        interactive.OnInteracted -= OnInteracted;
+    }
 }

@@ -7,6 +7,16 @@ public class DayNightTransition : MonoBehaviour {
 	public float stayTime = 1f;
 	public float fadeTime = 1f;
 
+    public bool IsDay
+    {
+        get { return Sun.activeSelf; }
+    }
+
+    public bool IsNight
+    {
+        get { return Moon.activeSelf; }
+    }
+
 	public Color dayLight = new Color (.2f, .2f, .2f);
 	public Color dayFog = new Color(.46f,.709f,.949f);
 	public float dayFogDensity = .01f;
