@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private SoundMachine soundMachine;
 
+    [SerializeField] private MoonPhases moonPhases;
+
     [SerializeField] private Respawn respawn;
     [SerializeField] private Transform firstNightRespawn;
     [SerializeField] private Transform secondNightRespawn;
@@ -44,6 +46,7 @@ public class GameController : MonoBehaviour
 
         upgradeCinematic.Play();
         respawn.OnNightfall();
+        moonPhases.OnNightfall();
         soundMachine.Reactivate();
     }
 
