@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections.Generic;
 /// <summary>
 /// Controller for the player character's on-foot movement behavior.
 /// <summary>
@@ -22,6 +22,11 @@ public class FootMovement : MonoBehaviour
 	/// she is.
 	/// </param>
 	private Vector3 prevDir;
+	public List<AudioClip> grassSteps;
+	public List<AudioClip> sandSteps;
+	public float stepFreq = .33f;
+	private float stepTime = 0f;
+	
 	//public float angleChange = 0f;
 	public void MoveTowards(Vector3 direction)
 	{
@@ -150,8 +155,21 @@ public class FootMovement : MonoBehaviour
 		}
 
 		float runSpeed = direction.sqrMagnitude * maxSpeed;
-		if (runSpeed < minSpeed)
+		if (runSpeed < minSpeed){
 			runSpeed = 0f;
+			stepTime = 0f;
+		}else{
+			stepTime += Time.deltaTime;
+			if (stepTime >= stepFreq){
+				if (this.transform.position.y > 4f){
+						audio.clip = grassSteps[Random.Range (0,grassSteps.Count)];
+					}else{
+					audio.clip = sandSteps[Random.Range (0,sandSteps.Count)];
+				}
+				audio.Play ();
+				stepTime = 0f;
+			}
+		}
 		animator.SetFloat(speedId, runSpeed);
 
 		// Reset the Jump animator parameter to prevent looping
