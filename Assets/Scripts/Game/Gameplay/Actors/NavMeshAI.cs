@@ -80,6 +80,15 @@ public class NavMeshAI : MonoBehaviour
 
     // Set to initiate machine-wrecking mode.
     private bool isThirdNight = false;
+	
+	//SSSSSSOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUNNNNNNNNNNNNNNDDDDDDSSSSSSSSS
+	public AudioClip sndLand;
+	public AudioClip sndGrowl;
+	public AudioClip sndHowl;
+	public AudioClip sndPant;
+	public AudioClip sndWing;
+	private AudioSource pantAudio;
+	
 
     private void Awake()
     {
@@ -116,6 +125,10 @@ public class NavMeshAI : MonoBehaviour
             beaconParticles.enableEmission = false;
             beaconParticles.renderer.material.renderQueue = 4000;
         }
+		
+		pantAudio = this.gameObject.AddComponent ("AudioSource") as AudioSource;
+		pantAudio.loop=true;
+		pantAudio.clip = sndPant;
 	}
 
 	void Howl(){
@@ -130,6 +143,8 @@ public class NavMeshAI : MonoBehaviour
 				4f - (3.5f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/200f)))), 
 				.33f - (.33f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
 				);
+			
+			audio.clip = sndHowl; audio.Play ();
 				}
 		}
 
@@ -143,11 +158,12 @@ public class NavMeshAI : MonoBehaviour
 			wreckedMachine = false;
 			Player.SendMessage("ActivateSoundMachine");
 		}}
-
+		if (state!=0){
 		HowlTimer -= Time.deltaTime;
 		if (HowlTimer <= 0f) {
 					Howl ();
 				}
+		}
 
 		if ((Eyes.CanSee() && distToPlayer < maxViewDist) != seen ){
 				seen = !seen;
@@ -158,6 +174,11 @@ public class NavMeshAI : MonoBehaviour
 			&& isThirdNight 
 			&& Vector3.Magnitude(machinePos - Player.transform.position)<280f){
 				wreckingMachine = true;
+		}
+		
+		if ((state==3)!=pantAudio.isPlaying){
+			if (pantAudio.isPlaying){pantAudio.Stop();}
+			else{pantAudio.Play();}
 		}
 		
 		if (state!=3){
@@ -255,6 +276,7 @@ public class NavMeshAI : MonoBehaviour
 		navAgent.enabled = false;
 		Flying = true;
 		state = 6;
+			audio.clip = sndWing; audio.Play ();
 			
 		rise = true;
 		riseTimer = riseTime;
@@ -298,6 +320,7 @@ public class NavMeshAI : MonoBehaviour
 				Flying = false;
 				this.transform.position = JumpTarget;
 				this.transform.LookAt(JumpTarget,Vector3.up);
+				audio.clip = sndLand; audio.Play ();
 			
 			if (!wreckingMachine){
 				navAgent.enabled = true;
@@ -449,7 +472,7 @@ public class NavMeshAI : MonoBehaviour
 	void look(){
 		flyReady ();
 		if (seen && !wreckingMachine){
-			if (state!=3){Debug.Log ("saw player, started chasing");}
+			if (state!=3){Debug.Log ("saw player, started chasing"); audio.clip = sndGrowl; audio.Play ();}
 			state = 3;
 			lastKnownPlayerPosition = Player.transform.position;
 		}
