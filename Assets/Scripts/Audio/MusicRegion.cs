@@ -10,7 +10,13 @@ public class MusicRegion : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		mgr = GameObject.Find ("Music Manager").GetComponent<MusicManager>();
+		mgr = GameObject.FindWithTag ("MusicManager").GetComponent<MusicManager>();
+		for (int i=0;i<this.transform.childCount;i+=1){
+			MusicRegion g = this.transform.GetChild(i).gameObject.AddComponent("MusicRegion") as MusicRegion;
+			g.daySong = daySong;
+			g.nightSong = nightSong;
+			
+		}
 	}
 	
 	// Update is called once per frame
