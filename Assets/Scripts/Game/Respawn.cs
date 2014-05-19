@@ -61,7 +61,7 @@ public class Respawn : MonoBehaviour
         dynamicCamera.EnableFollow();
         yield return new WaitForSeconds(delay);
         flash.Fire(1.0f);
-        fade.FadeIn(1);
+        fade.FadeIn(0);
         inProgress = false;
     }
 
