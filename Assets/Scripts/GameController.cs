@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
 
         upgradeCinematic.Play();
         respawn.OnNightfall();
-        moonPhases.OnNightfall();
+        //moonPhases.OnNightfall(); //null ref rexception
         soundMachine.Reactivate();
     }
 
