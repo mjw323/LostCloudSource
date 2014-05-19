@@ -68,8 +68,8 @@ public class Respawn : MonoBehaviour
     private void Awake()
     {
         inProgress = false;
-        fade = dynamicCamera.GetComponent<Fade>();
-        flash = dynamicCamera.GetComponent<Flash>();
+        fade = dynamicCamera.GetComponentInChildren<Fade>();
+        flash = dynamicCamera.GetComponentInChildren<Flash>();
         ragdoll = player.GetComponent<Ragdoll>();
     }
 
