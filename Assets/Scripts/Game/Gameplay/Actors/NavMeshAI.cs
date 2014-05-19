@@ -137,14 +137,14 @@ public class NavMeshAI : MonoBehaviour
 		if (Howling) {
 						HowlTimer = 0.1f;
 				} else {
-					HowlTimer = Random.Range(6f,HowlTimerMax);
+					HowlTimer = Random.Range(20f,HowlTimerMax);
 
 			shakeCam.ShakeScreen(
 				4f - (3.5f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/200f)))), 
 				.33f - (.33f * Mathf.Min (1f,Mathf.Abs ((distToPlayer/300f))))
 				);
 			
-			audio.clip = sndHowl; audio.Play ();
+			if((state != 3) && (state != 6) && (this.GetComponent<NavMeshAgent>().enabled == true)){audio.clip = sndHowl; audio.Play ();}
 				}
 		}
 
@@ -435,7 +435,7 @@ public class NavMeshAI : MonoBehaviour
     // Kill the player if we're attacking and collide with her.
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Noke" && Attacking) {
+        if (other.tag == "Player" && Attacking) {
             playerDeath.OnHit();
         }
     }

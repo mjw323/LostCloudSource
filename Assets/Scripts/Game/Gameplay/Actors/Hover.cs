@@ -284,12 +284,15 @@ public class Hover : MonoBehaviour
 		
 				loopAudio = this.gameObject.AddComponent("AudioSource") as AudioSource;
 				loopAudio.loop = true;
+				loopAudio.volume = .5f;
 		
 				boardAudio = this.gameObject.AddComponent("AudioSource") as AudioSource;
 				boardAudio.loop = true;
 				boardAudio.clip = sndBoardIdle;
+				boardAudio.volume = .5f;
 		
 				hitAudio = this.gameObject.AddComponent("AudioSource") as AudioSource;
+				hitAudio.volume = .6f;
         }
 
         void OnEnable()

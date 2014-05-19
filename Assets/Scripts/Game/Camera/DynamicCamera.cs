@@ -158,10 +158,10 @@ public class DynamicCamera : MonoBehaviour {
 			if (!stuckOnYorex && (navAgent.enabled)&&(Input.GetAxis("Target") > 0.8f || Input.GetButton("Target")  || navAgent.state==6 /*|| navAgent.state==3*/)){
 				if (navAgent.state==0){
 					direction = Vector3.Slerp(direction, -goalAnchor.forward, .1f);
-				} else {
+				} /*else { // Forces player to look at Yorex even through geometry, making it hard to control
 					direction = Vector3.Slerp(direction, Vector3.Normalize(
 						goalAnchor.position - enemyAnchor.position), .1f);
-				}
+				}*/
 			}
 			float targD = targetDistance;
 			if (stuckOnYorex){targD = 20f;}
