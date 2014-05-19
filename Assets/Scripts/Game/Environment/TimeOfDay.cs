@@ -40,6 +40,8 @@ public class TimeOfDay : MonoBehaviour
     private float sunLightIntensity;
     private Light moonLight;
     private float moonLightIntensity;
+	
+	private LightMapController lmControl;
 
     [SerializeField] private Color dayLightColor = new Color(0.2f, 0.2f, 0.2f);
     [SerializeField] private Color dayFogColor = new Color(0.46f, 0.709f, 0.949f);
@@ -74,8 +76,9 @@ public class TimeOfDay : MonoBehaviour
         }
         moon.SetActive(false);
         isDay = true;
+		
         inProgress = false;
-		// TODO: Swap lightmap sets
+		lmControl.SwitchToDay();
     }
 
     private IEnumerator DoGotoNight()
@@ -100,7 +103,7 @@ public class TimeOfDay : MonoBehaviour
         sun.SetActive(false);
         isDay = false;
         inProgress = false;
-		// TODO: Swap lightmap sets
+		lmControl.SwitchToNight();
     }
 
     private void Awake()
@@ -122,5 +125,7 @@ public class TimeOfDay : MonoBehaviour
 
         // Start off in day-time.
         moonLight.intensity = 0;
+		
+		lmControl = GetComponent<LightMapController>();
     }
 }
