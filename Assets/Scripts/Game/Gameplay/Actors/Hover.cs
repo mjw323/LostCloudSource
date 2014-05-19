@@ -39,8 +39,9 @@ public class Hover : MonoBehaviour
     private Vector3 saveVelocity = new Vector3(0,0,0);
 
 /////////////sounds
-    public AudioSource loopAudio;
-    public AudioSource hitAudio;
+    private AudioSource loopAudio;
+    private AudioSource hitAudio;
+	private AudioSource boardAudio;
     public AudioClip sndBoardIdle;
     public AudioClip sndBoardStart;
     public AudioClip sndBoardEnd;
@@ -50,6 +51,7 @@ public class Hover : MonoBehaviour
     public AudioClip sndBoardGrind;
     public AudioClip sndBoardGrindStart;
     private bool idling = true;
+	private bool grindAudio = false;
 
         [HideInInspector] Transform[] m_sensors;
         RaycastHit[] m_hits;
@@ -279,6 +281,15 @@ public class Hover : MonoBehaviour
 				cameraMoveDir.y = 0;
 
                 respawner = noke.GetComponent("RespawnSystem") as RespawnSystem;
+		
+				loopAudio = this.gameObject.AddComponent("AudioSource") as AudioSource;
+				loopAudio.loop = true;
+		
+				boardAudio = this.gameObject.AddComponent("AudioSource") as AudioSource;
+				boardAudio.loop = true;
+				boardAudio.clip = sndBoardIdle;
+		
+				hitAudio = this.gameObject.AddComponent("AudioSource") as AudioSource;
         }
 
         void OnEnable()
@@ -292,8 +303,7 @@ public class Hover : MonoBehaviour
                 hitAudio.clip = sndBoardStart;
                 hitAudio.Play();
 
-                loopAudio.clip = sndBoardIdle;
-                loopAudio.Play();
+                boardAudio.Play();
         }
 
         void OnDisable()
@@ -306,6 +316,7 @@ public class Hover : MonoBehaviour
                 hitAudio.Play();
 
                 loopAudio.Stop();
+				boardAudio.Stop ();
         }
 
         void OnCollisionEnter(Collision collision) {
@@ -411,6 +422,7 @@ public class Hover : MonoBehaviour
 				GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
 				cameraDir = camera.transform.forward;//Vector3.Normalize (camera.transform.forward);//Vector3.Normalize(this.transform.position - camera.transform.position);
 				cameraDir.y = 0;
+				grindAudio = false;
 
                 hoverMod = 1;
                 //if (detach){hoverMod = 0.5f;}
@@ -487,6 +499,9 @@ public class Hover : MonoBehaviour
                                 if(grindPoint != null && Input.GetButton("Grind")) {
 										grinding = true;
                                         grindJump = m_jump;
+										hitAudio.clip = sndBoardGrindStart;
+										hitAudio.Play ();
+										grindAudio = true;
                                 }
                         } 
 							else {
@@ -559,6 +574,7 @@ public class Hover : MonoBehaviour
              
                         hoverParticlesA.startLifetime = 0.55f;//0.33f+(Mathf.Pow(glideLeft/glideLength,2.0f) * 2.66f);
                         hoverParticlesA.startSpeed = 2.5f+(Mathf.Pow (glideLeft/glideLength,2.0f)*3.0f);//0.5f + (Mathf.Pow (glideLeft/glideLength,2.0f)*2.5f);
+						grindAudio = true;
                 }
                 else{hoverParticlesA.startLifetime = 0.0f;}
 
@@ -609,17 +625,11 @@ public class Hover : MonoBehaviour
                     idling = false;
                     hitAudio.clip = sndBoardRunIn;
                     hitAudio.Play();
-
-                    loopAudio.clip = sndBoardRun;
-                    loopAudio.Play();
                     }}else{
                     if (!idling){
                     idling = true;
                     hitAudio.clip = sndBoardRunOut;
                     hitAudio.Play();
-
-                    loopAudio.clip = sndBoardIdle;
-                    loopAudio.Play();
                     }
                     }
 		/////////////////////////////FLIPS////////////////////////////////
@@ -692,6 +702,14 @@ public class Hover : MonoBehaviour
 											+ (30 * Math.Max (0,Vector3.Dot (Vector3.Normalize (rigidbody.velocity),cameraDir)))
 											)*Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20);
 				whoosh.setSpeed(Mathf.Pow (Math.Min(1,Vector3.Magnitude(rigidbody.velocity)/20),6.0f));
+				boardAudio.pitch = .8f + (1.5f * Vector3.Magnitude(rigidbody.velocity)/20f) + (.25f+(.25f * this.transform.localRotation.x));
+		
+				if (grindAudio != loopAudio.isPlaying){
+					if (!loopAudio.isPlaying){
+						loopAudio.clip = sndBoardGrind;
+						loopAudio.Play ();
+				}else{loopAudio.Stop ();}
+					}
 		
 				hoverParticlesB.startLifetime = hoverParticlesA.startLifetime;
 				hoverParticlesB.startSpeed = hoverParticlesA.startSpeed;
