@@ -160,7 +160,7 @@ public class UpgradeSystem : MonoBehaviour {
 		//RenderSettings.skybox = DaySky;*/
 		
 		Hoverboard.rigidbody.isKinematic = false;
-		//navAgent.speed = 0;
-		//navAgent.enabled = false;
+		Enemy.GetComponent<NavMeshAgent>().speed = 0;
+		Enemy.GetComponent<NavMeshAgent>().enabled = false;
 	}
 }

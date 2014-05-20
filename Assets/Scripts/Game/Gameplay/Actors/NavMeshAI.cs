@@ -353,7 +353,7 @@ public class NavMeshAI : MonoBehaviour
 		//Monster is turned off and reset to a hidden location;
 
 		GetComponent<NavMeshAgent>().speed = 0;
-		GetComponent<NavMeshAgent>().enabled = false;
+		navAgent.enabled = false;
 		this.transform.position = HidePosition.transform.position;
 	}
 
