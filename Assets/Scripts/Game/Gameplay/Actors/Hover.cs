@@ -298,6 +298,7 @@ public class Hover : MonoBehaviour
         void OnEnable()
         {
                 renderer.enabled = true;
+				boardObj.transform.ActivateChildren(); // #HackAttacks for upgrade meshes
                 rigidbody.isKinematic = false;
                 nokeAnimator.SetBool(ridingId, true);
 				spinAmount = 0f;
@@ -313,6 +314,7 @@ public class Hover : MonoBehaviour
         {
                 rigidbody.isKinematic = true;
                 renderer.enabled = false;
+				boardObj.transform.DeactivateChildren(); // #HackAttacks for upgrade meshes
                 nokeAnimator.SetBool(ridingId, false);
 
                 hitAudio.clip = sndBoardEnd;
@@ -336,7 +338,7 @@ public class Hover : MonoBehaviour
                 if (!isNoke && 
 					((transform.rotation.eulerAngles.x>bailAngle && transform.rotation.eulerAngles.x<360f-bailAngle) 
 					|| (transform.rotation.eulerAngles.z>bailAngle && transform.rotation.eulerAngles.z<360f-bailAngle))){
-						transform.position = transform.position+(Vector3.up*.5f);
+						transform.position = transform.position+(Vector3.up*1f);
 						Bail();
 					}
 				if (collision.transform.tag == "Water"){splashParticles.Emit (30);}

@@ -26,6 +26,9 @@ public class FootMovement : MonoBehaviour
 	public List<AudioClip> sandSteps;
 	public float stepFreq = .33f;
 	private float stepTime = 0f;
+	private bool jumping=false;
+	private float airTime = 0f;
+	private float jumpTime = 3f;
 	
 	//public float angleChange = 0f;
 	public void MoveTowards(Vector3 direction)
@@ -118,6 +121,7 @@ public class FootMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		
 		if (shouldBoard)
 		{
 			OnSummonBoard();
@@ -171,6 +175,13 @@ public class FootMovement : MonoBehaviour
 			}
 		}
 		animator.SetFloat(speedId, runSpeed);
+		///////////////////
+
+		
+		if (jumping){ //change jumping state on land or if in air for too long
+			airTime += Time.deltaTime;
+			if (airTime >= jumpTime || characterController.isGrounded){jumping = false;}
+		}else{airTime = 0f;}
 
 		// Reset the Jump animator parameter to prevent looping
 		if (jumpedLastFrame)
@@ -184,6 +195,7 @@ public class FootMovement : MonoBehaviour
 			animator.SetBool(jumpId, true);
 			shouldJump = false;
 			jumpedLastFrame = true;
+			jumping = true;
 		}
 
 		if (shouldLiftOff)
