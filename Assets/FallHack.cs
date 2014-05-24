@@ -13,14 +13,14 @@ public class FallHack : MonoBehaviour {
 		if (!this.transform.GetComponent<CharacterController>().isGrounded){
 			//Debug.Log("characater controller is not grounded");
 			//if (!jumping){
-			Debug.Log("checkin for falling thru world");
+			//Debug.Log("checkin for falling thru world");
 			RaycastHit hit = new RaycastHit();
 			Physics.Raycast(this.transform.position,Vector3.up,out hit);
 			if (hit.transform!=null){
-				Debug.Log("there's a dood above me");
+				//Debug.Log("there's a dood above me");
 			if (hit.transform.tag=="Terrain"){
-					Debug.Log("he's terrrein");
-				this.transform.Translate(10f*Vector3.up);
+					//sDebug.Log("he's terrrein");
+				this.transform.Translate((hit.distance+1f)*Vector3.up);
 			}}
 		}//}
 	}

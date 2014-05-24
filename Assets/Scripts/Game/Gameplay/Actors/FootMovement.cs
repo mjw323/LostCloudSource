@@ -107,6 +107,8 @@ public class FootMovement : MonoBehaviour
 	{
 		characterController.enabled = true;
 		animator.applyRootMotion = true;
+		
+		Debug.Log ("fixing rotation");
 
 		// Enforce "uprightness"
 		Vector3 eulerAngles = transform.rotation.eulerAngles;
