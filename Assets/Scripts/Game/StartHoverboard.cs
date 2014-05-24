@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class StartHoverboard : MonoBehaviour
 {
-    public delegate void Started();
-    public event Started OnStart;
-
     // Allows a used interactive object to be used again.
     // NOTE: It would be more elegant to pass in a coroutine and have this
     // behavior occur after it completes, but it would also be harder to work with.
@@ -26,40 +23,26 @@ public class StartHoverboard : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         collider = GetComponent<Collider>();
-#if DEBUG_CHECK_LAYER
-        if (gameObject.layer != LayerMask.NameToLayer("Interactive")) {
-            Debug.LogError("Interactive object not in the \"Interactive\" layer.");
-            Debug.Break();
-        }
-#endif
+		enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // Can only collide with the player, but we need to find the root
-        foot = other.transform.root.GetComponentInChildren<FootController>();
-        enabled = true;
+        foot = other.transform.root.GetComponentInChildren<FootController>();   
+		buttonPrompt.Show();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        enabled = false;
         buttonPrompt.Hide();
     }
 
     private void Update()
     {
-        // Check if we're capable of being interacted with
-        // Note: Use the trigger volume to determine minimum distance
-        if (!foot.enabled) {
-            buttonPrompt.Hide();
-            return;
-        }
-
         // Show button prompt and react to input
-        buttonPrompt.Show();
+        
         if (Input.GetButton("Fire3")) {
-            if (OnStart != null) { OnStart(); }
             this.gameObject.SetActive(false);
 			buttonPrompt.Hide();
         }
