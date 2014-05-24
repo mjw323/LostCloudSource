@@ -38,14 +38,13 @@ public class PauseMenu : MonoBehaviour {
 		Disable();
 		optionsMenu.SetActive(true);
 	}
-	
+	/*
 	public void Save(){
 		//Implement saving here
 	}
-
+	*/
 	private void Quit(){
-		Application.Quit();
-		Application.LoadLevel(0);
+		Application.LoadLevel("MainMenu");
 	}
 
 	private void Disable(){
