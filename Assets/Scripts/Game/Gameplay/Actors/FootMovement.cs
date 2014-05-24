@@ -94,6 +94,7 @@ public class FootMovement : MonoBehaviour
 		jumpId = Animator.StringToHash("Jump");
 		angleChangeId = Animator.StringToHash("AngleChange");
 		stickMagId = Animator.StringToHash("StickMag");
+		ridingId = Animator.StringToHash("Riding");
 
 		pivotLeftId = Animator.StringToHash("Base Layer.Locomotion.TurnOnSpot");
 		plantLeftId = Animator.StringToHash(
@@ -107,6 +108,7 @@ public class FootMovement : MonoBehaviour
 	{
 		characterController.enabled = true;
 		animator.applyRootMotion = true;
+		animator.SetBool(ridingId, false);
 		
 		Debug.Log ("fixing rotation");
 
@@ -119,6 +121,7 @@ public class FootMovement : MonoBehaviour
 	{
 		characterController.enabled = false;
 		animator.applyRootMotion = false;
+		animator.SetBool(ridingId, true);
 	}
 
 	private void FixedUpdate()
@@ -258,6 +261,7 @@ public class FootMovement : MonoBehaviour
 	[HideInInspector] private int directionId;
 	[HideInInspector] private int jumpId;
 	[HideInInspector] private int angleChangeId;
+	[HideInInspector] private int ridingId;
 	[HideInInspector] private int stickMagId;
 
 	// Animator state references

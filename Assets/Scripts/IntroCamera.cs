@@ -8,10 +8,17 @@ public class IntroCamera : MonoBehaviour {
 	public float startWait = 3f;
 
 	public float cameraSpeed = 5f;
+	public GameObject text;
+	private int onNode = 0;
 
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindWithTag ("IntroStartNode").transform;
+		//text = this.transform.GetChild (0).gameObject;
+		
+		Color nc = text.renderer.material.color;
+		nc.a = 0f;
+		text.renderer.material.color = nc;
 	}
 	
 	// Update is called once per frame
@@ -41,9 +48,21 @@ public class IntroCamera : MonoBehaviour {
 						this.transform.position = target.GetChild (1).position;
 						target = target.GetChild (1);
 						this.transform.LookAt(target.GetChild (0).position);
+						onNode += 1;
 					}
 				}
 			}
+			
+			}
+		if ((startWait<=0f) && onNode <2 && playing){
+				Color nc = text.renderer.material.color;
+				nc.a += (1f - nc.a)*Time.deltaTime*.66f;
+				text.renderer.material.color = nc;
 				}
+		else{
+			Color nc = text.renderer.material.color;
+			nc.a += (0f - nc.a)*Time.deltaTime*.66f;
+			text.renderer.material.color = nc;
+		}
 	}
 }
