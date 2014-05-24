@@ -10,7 +10,7 @@ public class Billboard : MonoBehaviour
     private bool isHidden = true;
 
     // The graphic we currently use for billboards is not properly rotated.
-    private static readonly Quaternion rotationOffset = Quaternion.Euler(0, -90.0f, 0);
+    private static readonly Quaternion rotationOffset = Quaternion.Euler(90.0f, 90.0f, 0);
 
     public void Show()
     {

@@ -60,12 +60,8 @@ public class StartHoverboard : MonoBehaviour
         buttonPrompt.Show();
         if (Input.GetButton("Fire3")) {
             if (OnStart != null) { OnStart(); }
-            enabled = false;
-
-            // Disable the collider, putting this component into a coma.
-            collider.enabled = false;
-
-            buttonPrompt.Hide();
+            this.gameObject.SetActive(false);
+			buttonPrompt.Hide();
         }
     }
 }
