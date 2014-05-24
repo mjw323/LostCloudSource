@@ -56,7 +56,6 @@ public class Respawn : MonoBehaviour
             monster.TeleportNearPoint(player.position);
         }
         ragdoll.GetUp();
-        dynamicCamera.PopAnchor();
         dynamicCamera.TeleportBehind();
         dynamicCamera.EnableFollow();
         yield return new WaitForSeconds(delay);

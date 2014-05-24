@@ -18,7 +18,6 @@ public class Death : MonoBehaviour
     {
         ragdoll.DoRagdoll();
         dynamicCamera.DisableFollow();
-        dynamicCamera.PushAnchor(root);
         StartCoroutine(DoDeath());
     }
 
