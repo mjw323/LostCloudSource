@@ -141,15 +141,17 @@ public class HeatVisionCamera : MonoBehaviour
     }
 
     // Called by the camera to apply the image effect
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
+        //Debug.Log("FUCK YEAH!");
+
         if(imageReady) {
-            int rtW = source.width / 4;
-            int rtH = source.height / 4;
+            int rtW = src.width / 4;
+            int rtH = src.height / 4;
             RenderTexture buffer = RenderTexture.GetTemporary(rtW, rtH, 0);
 
             // Copy source to the 4x4 smaller texture.
-            DownSample4x(source, buffer);
+            DownSample4x(src, buffer);
 
             // Blur the small texture
             for (int i = 0; i < blurIterations; i++)
@@ -163,7 +165,7 @@ public class HeatVisionCamera : MonoBehaviour
             Graphics.Blit(buffer, visionTexture);
 
             // Downsample temp rt into camera render texture
-            //DownSample4x(rt, destination);
+            DownSample4x(visionTexture, dest);
 
             RenderTexture.ReleaseTemporary(buffer);
 
@@ -173,6 +175,7 @@ public class HeatVisionCamera : MonoBehaviour
 
     // Called after rendering is done
     void OnPostRender() {
+        //Debug.Log("Poop");
         if (postReady) {
             int hits = 0;
             Texture2D tex = new Texture2D(textureSize, textureSize, TextureFormat.ARGB32, false);
