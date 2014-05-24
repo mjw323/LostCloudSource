@@ -21,6 +21,7 @@ public class NavMeshAI : MonoBehaviour
 	private GameObject[] gos;
 	private GameObject[] RandomMove;
 	private NavMeshAgent navAgent;
+	private GameObject GameControl;
     private HeatVisionCamera Eyes;
 	[HideInInspector] public Vector3 JumpTarget;
 	public float JumpCountdown = 6f;
@@ -93,6 +94,8 @@ public class NavMeshAI : MonoBehaviour
     private void Awake()
     {
         playerDeath = Player.GetComponent<Death>();
+		GameControl = GameObject.FindWithTag("GameController");
+		
     }
 
 	void Start(){
@@ -261,6 +264,7 @@ public class NavMeshAI : MonoBehaviour
 		navAgent.enabled = false;
 		Flying = true;
 		state = 6;
+		
 	}
 	
 	public void Jump(){
@@ -320,7 +324,7 @@ public class NavMeshAI : MonoBehaviour
 				Flying = false;
 				this.transform.position = JumpTarget;
 				this.transform.LookAt(JumpTarget,Vector3.up);
-				audio.clip = sndLand; audio.Play ();
+				audio.clip = sndLand; audio.Play ();	
 			
 			if (!wreckingMachine){
 				navAgent.enabled = true;
@@ -341,8 +345,14 @@ public class NavMeshAI : MonoBehaviour
 			}
 			if (startRoar){startRoar = false; animator.SetBool(roarId,true); roarTimer = 5f;}
 			
-			} else { //otherwise, fly towards it
-			this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;
+			if(GameControl.GetComponent<TimeOfDay>().IsDay){
+				state = 0;
+				hide ();
+			}
+			
+			} 
+			else { //otherwise, fly towards it
+				this.transform.position += Vector3.Normalize (distLeft) * flyingSpeed * Time.deltaTime;
 			}
 		//}
 	}
