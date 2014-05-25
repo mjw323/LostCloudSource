@@ -33,18 +33,24 @@ public class Interactive : MonoBehaviour
         }
 #endif
     }
+	
+	public void setFoot(FootController fooot){
+		foot = fooot;
+	}
 
     private void OnTriggerEnter(Collider other)
     {
         // Can only collide with the player, but we need to find the root
         foot = other.transform.root.GetComponentInChildren<FootController>();
         enabled = true;
+		Debug.Log ("collision enter");
     }
 
     private void OnTriggerExit(Collider other)
     {
         enabled = false;
         buttonPrompt.Hide();
+		Debug.Log ("collision ext");
     }
 
     private void Update()

@@ -31,6 +31,9 @@ public class SkipEditor : Editor
 		if (GUILayout.Button("Night")) {
 			instance.SkipNight();
 		}
+		if (GUILayout.Button("Ending")) {
+			instance.SkipEnding();
+		}
 
 		GUI.enabled = true;
 	}

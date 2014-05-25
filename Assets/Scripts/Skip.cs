@@ -27,12 +27,20 @@ public class Skip : MonoBehaviour
 		UpdateTransform();
 		targetTransform.position = skipNode0.position;
 	}
+	
+	public void SkipEnding()
+	{
+		UpdateTransform();
+		targetTransform.position = endNode.position;
+		GameObject.FindWithTag("GameController").GetComponent<GameController>().SkipToEnd();
+	}
 
 	[SerializeField] private Transform player;
 	[SerializeField] private Transform skipNode0;
 	[SerializeField] private Transform skipNode1;
 	[SerializeField] private Transform skipNode2;
 	[SerializeField] private Transform skipNode3;
+	[SerializeField] private Transform endNode;
 
 	private void UpdateTransform()
 	{

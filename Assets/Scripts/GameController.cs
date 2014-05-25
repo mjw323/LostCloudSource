@@ -75,6 +75,11 @@ public class GameController : MonoBehaviour
         
         day++;
     }
+	
+	public void SkipToEnd(){
+		Debug.Log ("skipping to end");
+		OnNightThreeComplete();
+	}
 
     // Day-specific logic:
 
