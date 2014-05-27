@@ -6,6 +6,10 @@ public class MusicManager : MonoBehaviour {
 	public AudioClip currentClip;
 
 	public AudioSource audio;
+	
+	[HideInInspector] public AudioClip daySong;
+	[HideInInspector] public AudioClip nightSong;
+	private TimeOfDay theTime;
 
 	private float audio1Volume = 1.0f;
 
@@ -14,6 +18,17 @@ public class MusicManager : MonoBehaviour {
 	void Start(){
 		audio.clip = currentClip;
 		audio.Play ();
+		
+		theTime = GameObject.FindWithTag("GameController").GetComponent<TimeOfDay>();
+	}
+	
+	void Update(){
+		if (theTime.IsDay && currentClip!=daySong){
+			PlaySong (daySong);
+		}
+		if (!theTime.IsDay && currentClip!=nightSong){
+			PlaySong (nightSong);
+		}
 	}
 
 	public void PlaySong(AudioClip newClip){
