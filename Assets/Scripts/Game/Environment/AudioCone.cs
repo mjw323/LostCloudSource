@@ -43,7 +43,7 @@ public class AudioCone : MonoBehaviour
     {
         float endTime = Time.time + duration;
         while (Time.time < endTime) {
-            intensity += (1.0f - intensity) * 0.4f; // ?
+            intensity = Mathf.Sqrt (Mathf.Max (0f,(Time.time-(endTime-duration))/duration)); // ?
             yield return null;
         }
         yield return StartCoroutine(Shrink());

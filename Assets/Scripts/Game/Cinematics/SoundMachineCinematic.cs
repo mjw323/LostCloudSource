@@ -19,6 +19,9 @@ public class SoundMachineCinematic : Cinematic
         // Move camera into place
         cameraHolder.position = soundMachineCameraSpot.position;
         cameraHolder.LookAt(soundMachineTransform);
+		
+		//play sound
+		audio.Play ();
 
         // Zoom in on / track the monster
         Quaternion startRot = cameraHolder.rotation;

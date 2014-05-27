@@ -7,8 +7,8 @@ public class MusicManager : MonoBehaviour {
 
 	public AudioSource audio;
 	
-	[HideInInspector] public AudioClip daySong;
-	[HideInInspector] public AudioClip nightSong;
+	public AudioClip daySong;
+	public AudioClip nightSong;
 	private TimeOfDay theTime;
 
 	private float audio1Volume = 1.0f;
