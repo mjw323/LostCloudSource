@@ -298,7 +298,7 @@ public class Hover : MonoBehaviour
         void OnEnable()
         {
                 renderer.enabled = true;
-				boardObj.transform.ActivateChildren(); // #HackAttacks for upgrade meshes
+				//boardObj.transform.ActivateChildren(); // #HackAttacks for upgrade meshes
                 rigidbody.isKinematic = false;
                 nokeAnimator.SetBool(ridingId, true);
 				spinAmount = 0f;
@@ -314,7 +314,7 @@ public class Hover : MonoBehaviour
         {
                 rigidbody.isKinematic = true;
                 renderer.enabled = false;
-				boardObj.transform.DeactivateChildren(); // #HackAttacks for upgrade meshes
+				//boardObj.transform.DeactivateChildren(); // #HackAttacks for upgrade meshes
                 nokeAnimator.SetBool(ridingId, false);
 
                 hitAudio.clip = sndBoardEnd;

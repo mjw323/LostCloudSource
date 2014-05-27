@@ -10,7 +10,6 @@ public class MainMenu : MonoBehaviour {
 
 	void Start()
 	{	
-		print ("calling LoadMainMenu");
 		LoadMainMenu();
 	}
 	// Enables the main menu
