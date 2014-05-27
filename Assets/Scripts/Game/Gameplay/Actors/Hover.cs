@@ -372,7 +372,7 @@ public class Hover : MonoBehaviour
 			
         if (col.tag=="Yorex" && col.transform.GetComponent<NavMeshAI>().state == 3){
 			DismissBoard();
-			GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeSystem>().YorexStrike();
+			GameObject.FindGameObjectWithTag("Player").GetComponent<Death>().OnHit();
 		}
     
         }
