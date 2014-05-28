@@ -10,7 +10,7 @@ public class EndingStuff : MonoBehaviour {
 	private Animator nokeAnim;
 	private int sceneStage = 0;
 	private float waitAfterClimbTime = 9f;
-	private float waitAfterLaunchTime = 4.9f;
+	private float waitAfterLaunchTime = 4.7f;
 	public float timeAfterEndToFade = 6f;
 	private float waitedTime = 0f;
 	public float flySpeed = 6f;
