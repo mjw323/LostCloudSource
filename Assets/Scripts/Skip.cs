@@ -41,6 +41,7 @@ public class Skip : MonoBehaviour
 	[SerializeField] private Transform skipNode2;
 	[SerializeField] private Transform skipNode3;
 	[SerializeField] private Transform endNode;
+	[SerializeField] private UpgradeCinematic upgradeCinematic;
 
 	private void UpdateTransform()
 	{
@@ -49,6 +50,10 @@ public class Skip : MonoBehaviour
 		} else {
 			targetTransform = player;
 		}
+	}
+	
+	public void NightTime(){
+				upgradeCinematic.Play();
 	}
 
 	// If the player is riding the hoverboard, this will be assigned to the Hoverboard's transform.

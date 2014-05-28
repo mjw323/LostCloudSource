@@ -28,8 +28,11 @@ public class SkipEditor : Editor
 		if (GUILayout.Button("Day Three")) {
 			instance.SkipDayThree();
 		}
-		if (GUILayout.Button("Night")) {
+		if (GUILayout.Button("SoundMachine")) {
 			instance.SkipNight();
+		}
+		if (GUILayout.Button("Night")) {
+			instance.NightTime();
 		}
 		if (GUILayout.Button("Ending")) {
 			instance.SkipEnding();
