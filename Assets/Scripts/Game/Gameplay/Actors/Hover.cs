@@ -407,9 +407,9 @@ public class Hover : MonoBehaviour
                 shouldDismount = false; // Reset to avoid boarding at unexpected time
 
                 ///////debug buttons
-                if (Input.GetButtonDown("Debug1")){canGlide = !canGlide;}
-                if (Input.GetButtonDown("Debug2")){canGrind = !canGrind;}
-                if (Input.GetButtonDown("Debug3")){canWater = !canWater;}
+                //if (Input.GetButtonDown("Debug1")){canGlide = !canGlide;}
+                //if (Input.GetButtonDown("Debug2")){canGrind = !canGrind;}
+                //if (Input.GetButtonDown("Debug3")){canWater = !canWater;}
         }
 
         void FixedUpdate()

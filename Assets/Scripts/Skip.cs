@@ -42,6 +42,7 @@ public class Skip : MonoBehaviour
 	[SerializeField] private Transform skipNode3;
 	[SerializeField] private Transform endNode;
 	[SerializeField] private UpgradeCinematic upgradeCinematic;
+	public bool skipButtons = false; //use these to control the game in builds!
 
 	private void UpdateTransform()
 	{
@@ -54,6 +55,17 @@ public class Skip : MonoBehaviour
 	
 	public void NightTime(){
 				upgradeCinematic.Play();
+	}
+	
+	private void Update(){
+		if (skipButtons){
+			if (Input.GetKeyDown(KeyCode.Alpha1)){SkipDayOne();}
+			if (Input.GetKeyDown(KeyCode.Alpha2)){SkipDayTwo();}
+			if (Input.GetKeyDown(KeyCode.Alpha3)){SkipDayThree();}
+			if (Input.GetKeyDown(KeyCode.Alpha0)){SkipNight();}
+			if (Input.GetKeyDown(KeyCode.Alpha4)){SkipEnding();}
+			if (Input.GetKeyDown(KeyCode.Alpha9)){NightTime();}
+		}
 	}
 
 	// If the player is riding the hoverboard, this will be assigned to the Hoverboard's transform.

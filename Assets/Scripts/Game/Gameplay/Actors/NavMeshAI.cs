@@ -312,8 +312,12 @@ public class NavMeshAI : MonoBehaviour
 			//Debug.Log("landing");
 				this.transform.position += Vector3.up * Mathf.Sign (JumpTarget.y - this.transform.position.y) * landingSpeed * Time.deltaTime;
 			} else {
-			this.transform.position += Vector3.up * Mathf.Sign (glideHeight - this.transform.position.y) * risingSpeed * Time.deltaTime; //otherwise, rise up toward glide height
-			lookDir.y = glideHeight - this.transform.position.y;
+			float goalHeight = glideHeight + (JumpTarget.z/30f);
+			if (Mathf.Abs (this.transform.position.y - goalHeight) > risingSpeed*Time.deltaTime){
+			this.transform.position += Vector3.up * Mathf.Sign (goalHeight - this.transform.position.y) * risingSpeed * Time.deltaTime; //otherwise, rise up toward glide height
+			}else{this.transform.position = new Vector3(this.transform.position.x,goalHeight,this.transform.position.z);}
+			
+			lookDir.y = goalHeight - this.transform.position.y;
 			}
 
 		this.transform.rotation = Quaternion.LookRotation (Vector3.RotateTowards(this.transform.forward,distLeft,1.0f * Time.deltaTime, 0.0f)); // rotate towards destination
