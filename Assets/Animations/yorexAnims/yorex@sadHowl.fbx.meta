@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c51bddfbc8825884a83c39d8e44901ad
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: baseSpine
     100002: body
@@ -644,9 +644,9 @@ ModelImporter:
       loop: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1287,4 +1287,5 @@ ModelImporter:
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9d589c0037ee9cb4b8e444aa143c9196,
     type: 3}
   animationType: 2
+  additionalBone: 0
   userData: 
